@@ -1,5 +1,7 @@
 library(styler)
 library(dplyr)
+
+# set working directory
 setwd("")
 wetter <- read.table("wetter.csv", head=TRUE, sep = ",")
 umdat <- read.csv("umsatzdaten_gekuerzt.csv")
@@ -13,3 +15,5 @@ nrow(alle)
 alle_gefiltert <- alle %>%
   filter(!is.na(Umsatz))
 nrow(alle_gefiltert)
+
+
