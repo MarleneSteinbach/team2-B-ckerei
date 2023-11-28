@@ -24,4 +24,8 @@ alle_gefiltert <- alle %>%
   filter(!is.na(Umsatz))
 nrow(alle_gefiltert)
 
+# KIWO: Alle NAs sind ja eigentlich 0 Werte, also Transformieren:
 
+
+replace(alle$KielerWoche, is.na(), 0)
+ifelse(alle$KielerWoche == NA, 0)
