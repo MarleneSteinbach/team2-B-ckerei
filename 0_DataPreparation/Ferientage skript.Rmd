@@ -1,0 +1,90 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+# Installiere das 'tidyverse'-Paket, falls es noch nicht installiert ist
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
+
+# Lade das 'tidyverse'-Paket
+library(tidyverse)
+
+# Funktion zur Erstellung der CSV-Datei
+create_csv <- function(start_date, end_date, ferien_data, output_filename) {
+  # Erzeuge eine Sequenz aller Tage im Zeitraum
+  date_sequence <- seq(as.Date(start_date), as.Date(end_date), by="days")
+  
+  # Erstelle ein Datenframe mit den Tagen
+  df <- data.frame(Tag = date_sequence, Ferien = 0)
+  
+  # Iteriere über die Ferienzeiträume und aktualisiere die Ferieninformationen im Dataframe
+  for (ferien_range in ferien_data) {
+    ferien_split <- unlist(strsplit(ferien_range, " - "))
+    start_date <- as.Date(ferien_split[1], format="%d.%m.%y")
+    end_date <- as.Date(ferien_split[2], format="%d.%m.%y") + 1  # Inklusive Enddatum
+    
+    # Aktualisiere die Ferieninformationen im Dataframe
+    df$Ferien[df$Tag >= start_date & df$Tag < end_date] <- 1
+  }
+  
+
+  
+  # Speichere Datenframe in CSV-Datei
+  write.csv(df, file = output_filename, row.names = FALSE)
+}
+
+# Definiere den Zeitraum
+start_date <- '2013-07-01'
+end_date <- '2019-07-30'
+
+# Feriendaten gemäß den bereitgestellten Informationen
+ferien_data <- c(
+  '04.04.19 - 18.04.19', '31.05.19', '01.07.19 - 09.08.19', '04.10.19 - 18.10.19', '23.12.19 - 06.01.2020',
+  '11.05.18', '09.07.18 - 17.08.18', '01.10.18 - 19.10.18', '21.12.18 - 04.01.19', '29.03.18 - 13.04.18',
+  '07.04.17 - 21.04.17', '24.07.17 - 01.09.17', '16.10.17 - 27.10.17', '21.12.17 - 05.01.18', '24.03.16 - 09.04.16',
+  '06.05.16', '25.07.16 - 03.09.16', '17.10.16 - 28.10.16', '23.12.16 - 06.01.17', '01.04.15 - 17.04.15', '15.05.15',
+  '20.07.15 - 29.08.15', '19.10.15 - 30.10.15', '21.12.15 - 06.01.16', '16.04.14 - 02.05.14', '30.05.14',
+  '14.07.14 - 22.08.14', '13.10.14 - 24.10.14', '22.12.14 - 06.01.15', '25.03.13 - 09.04.13', '10.05.13',
+  '24.06.13 - 02.08.13', '04.10.13 - 18.10.13', '23.12.13 - 03.01.14'
+)
+
+# Erstelle die CSV-Datei mit einem neuen Namen
+output_filename <- "neue_ferientage_count.csv"
+create_csv(start_date, end_date, ferien_data, output_filename)
+
+# Lese die neue CSV-Datei
+neue_ferientage_data <- read.csv(output_filename)
+
+# Zeige die ersten Zeilen der Daten an
+head(neue_ferientage_data)
+
+
+
+# Lese die CSV-Datei
+ferientage_data <- read.csv(output_filename)
+
+# Lese die CSV-Datei
+ferientage_data <- read.csv(output_filename)
+
+# Zeige die Tage ohne Ferien
+tage_ohne_ferien <- subset(ferientage_data, Ferien == 0)
+print(tage_ohne_ferien)
+
+# Zeige die Tage mit Ferien
+tage_mit_ferien <- subset(ferientage_data, Ferien == 1)
+print(tage_mit_ferien)
+```
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
