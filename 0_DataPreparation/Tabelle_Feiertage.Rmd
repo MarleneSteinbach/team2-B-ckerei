@@ -84,3 +84,18 @@ nrow(Feier_filter)
 
 head(Feier_filter)
 ```
+Einteilung des Datensatzes in Trainings- und Validierungsdatensatz
+```{r}
+# Annahme: Ihr Datensatz heißt 'daten'
+# Konvertieren Sie das Datum in ein geeignetes Format
+Feier_filter$Datum <- as.Date(Feier_filter$Datum)
+
+# Trainingsdatensatz (01.07.2013 bis 31.07.2017)
+train_data <- Feier_filter %>% 
+  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2017-07-31"))
+
+# Validierungsdatensatz (01.08.2017 bis 31.07.2018)
+valid_data <- Feier_filter %>% 
+  filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
+```
+
