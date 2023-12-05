@@ -91,7 +91,7 @@ neue_ferientage_data$Datum <- as.Date(neue_ferientage_data$Datum, format="%Y-%m-
 
 feiertage_ferientage <- full_join (Feier_filter, neue_ferientage_data, by = "Datum") %>%
   as_tibble()
-print(feiertage_ferientage )
+head(feiertage_ferientage )
 ```
 
 
