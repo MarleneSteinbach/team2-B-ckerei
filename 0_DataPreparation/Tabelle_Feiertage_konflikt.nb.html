@@ -1511,7 +1511,7 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
@@ -1537,7 +1537,7 @@ window.initializeCodeFolding = function(show) {
     //   * Change text
     //   * add a class for intermediate states styling
     div.on('hide.bs.collapse', function () {
-      showCodeText.text('Show');
+      showCodeText.text('Code');
       showCodeButton.addClass('btn-collapsing');
     });
     div.on('hidden.bs.collapse', function () {
@@ -1760,31 +1760,17 @@ toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
 <p>Hier habe ich noch einmal das Skript für die Ursprungstabelle</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzdHlsZXIpXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeShyZWFkcilcblxuY3N2d2V0dGVyIDwtIFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL29wZW5jYW1wdXMtc2gvZWluZnVlaHJ1bmctaW4tZGF0YS1zY2llbmNlLXVuZC1tbC9tYWluL3dldHRlci5jc3ZcIlxuY3N2dW1zYXR6ZGF0ZW5fZ2VrdWVyenQgPC0gXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vb3BlbmNhbXB1cy1zaC9laW5mdWVocnVuZy1pbi1kYXRhLXNjaWVuY2UtdW5kLW1sL21haW4vdW1zYXR6ZGF0ZW5fZ2VrdWVyenQuY3N2XCJcbmNzdmtpd28gPC0gXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vb3BlbmNhbXB1cy1zaC9laW5mdWVocnVuZy1pbi1kYXRhLXNjaWVuY2UtdW5kLW1sL21haW4va2l3by5jc3ZcIlxuXG53ZXR0ZXIgPC0gcmVhZC50YWJsZShjc3Z3ZXR0ZXIsIGhlYWQ9VFJVRSwgc2VwID0gXCIsXCIpXG51bWRhdCA8LSByZWFkLmNzdihjc3Z1bXNhdHpkYXRlbl9nZWt1ZXJ6dClcbmtpd28gPC0gcmVhZC5jc3YoY3N2a2l3bylcblxuYWxsZSA8LSBmdWxsX2pvaW4odW1kYXQsIHdldHRlciwgYnkgPSBcIkRhdHVtXCIpICU+JVxuICBmdWxsX2pvaW4oa2l3bywgYnkgPSBcIkRhdHVtXCIpXG5hc190aWJibGUoYWxsZSlcbm5yb3codW1kYXQpXG5cbm5yb3coYWxsZSlcbmFsbGVfZ2VmaWx0ZXJ0IDwtIGFsbGUgJT4lXG4gIGZpbHRlcighaXMubmEoVW1zYXR6KSlcbm5yb3coYWxsZV9nZWZpbHRlcnQpXG5cbiNhbGxlX2dlZmlsdGVydCBoYXQgbm9jaCBkZW4gZmFsc2NoZW4gVHlwIGJlaSBEYXR1bSwgaGFiIGRhcyBtYWwgYW5nZWdsaWNoZW5cbmFsbGVfZ2VmaWx0ZXJ0JERhdHVtIDwtIGFzLkRhdGUoYWxsZV9nZWZpbHRlcnQkRGF0dW0sIGZvcm1hdCA9IFwiJVktJW0tJWRcIilcbmBgYCJ9 -->
-<pre class="r"><code>library(styler)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShzdHlsZXIpXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeShyZWFkcilcblxuY3N2d2V0dGVyIDwtIFxcaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL29wZW5jYW1wdXMtc2gvZWluZnVlaHJ1bmctaW4tZGF0YS1zY2llbmNlLXVuZC1tbC9tYWluL3dldHRlci5jc3ZcXFxuY3N2dW1zYXR6ZGF0ZW5fZ2VrdWVyenQgPC0gXFxodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vb3BlbmNhbXB1cy1zaC9laW5mdWVocnVuZy1pbi1kYXRhLXNjaWVuY2UtdW5kLW1sL21haW4vdW1zYXR6ZGF0ZW5fZ2VrdWVyenQuY3N2XFxcbmNzdmtpd28gPC0gXFxodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vb3BlbmNhbXB1cy1zaC9laW5mdWVocnVuZy1pbi1kYXRhLXNjaWVuY2UtdW5kLW1sL21haW4va2l3by5jc3ZcXFxuXG53ZXR0ZXIgPC0gcmVhZC50YWJsZShjc3Z3ZXR0ZXIsIGhlYWQ9VFJVRSwgc2VwID0gXFxcbmBgYCJ9 -->
+<pre class="r"><code>```r
+library(styler)
 library(dplyr)
 library(readr)
 
-csvwetter &lt;- &quot;https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv&quot;
-csvumsatzdaten_gekuerzt &lt;- &quot;https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv&quot;
-csvkiwo &lt;- &quot;https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv&quot;
+csvwetter &lt;- \https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv\
+csvumsatzdaten_gekuerzt &lt;- \https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv\
+csvkiwo &lt;- \https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv\
 
-wetter &lt;- read.table(csvwetter, head=TRUE, sep = &quot;,&quot;)
-umdat &lt;- read.csv(csvumsatzdaten_gekuerzt)
-kiwo &lt;- read.csv(csvkiwo)
-
-alle &lt;- full_join(umdat, wetter, by = &quot;Datum&quot;) %&gt;%
-  full_join(kiwo, by = &quot;Datum&quot;)
-as_tibble(alle)
-nrow(umdat)
-
-nrow(alle)
-alle_gefiltert &lt;- alle %&gt;%
-  filter(!is.na(Umsatz))
-nrow(alle_gefiltert)
-
-#alle_gefiltert hat noch den falschen Typ bei Datum, hab das mal angeglichen
-alle_gefiltert$Datum &lt;- as.Date(alle_gefiltert$Datum, format = &quot;%Y-%m-%d&quot;)</code></pre>
+wetter &lt;- read.table(csvwetter, head=TRUE, sep = \</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1792,49 +1778,47 @@ alle_gefiltert$Datum &lt;- as.Date(alle_gefiltert$Datum, format = &quot;%Y-%m-%d
 zum “2019-08-01”</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbiMgRXJzdGVsbGUgZWluIERhdGVuZnJhbWUgbWl0IGRlbSBnZXfDvG5zY2h0ZW4gWmVpdHJhdW1cbnN0YXJ0X2RhdGUgPC0gYXMuRGF0ZShcIjIwMTItMDEtMDFcIilcbmVuZF9kYXRlIDwtIGFzLkRhdGUoXCIyMDE5LTA4LTAxXCIpXG5kYXRlX3NlcXVlbmNlIDwtIHNlcShzdGFydF9kYXRlLCBlbmRfZGF0ZSwgYnkgPSBcIjEgZGF5XCIpXG5cbkZlaWVydGFnZSA8LSBkYXRhLmZyYW1lKERhdHVtID0gZGF0ZV9zZXF1ZW5jZSlcblxuRmVpZXJ0YWdlJEZlaWVydGFnIDwtIGlmZWxzZShcbiAgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXCIlbS0lZFwiKSAlaW4lIGMoXCIwMS0wMVwiLCBcIjA1LTAxXCIsIFwiMTAtMDNcIiwgXCIxMC0zMVwiLCBcIjEyLTI0XCIsIFwiMTItMjVcIiwgXCIxMi0yNlwiLCBcIjEyLTMxXCIpIHwgXG4gIGZvcm1hdChGZWllcnRhZ2UkRGF0dW0sIFwiJVktJW0tJWRcIikgJWluJSBjKFwiMjAxMi0wNC0wNlwiLCBcIjIwMTItMDQtMDlcIiwgXCIyMDEyLTA1LTE3XCIsIFwiMjAxMi0wNS0yOFwiLCBcIjIwMTMtMDMtMjlcIiwgXCIyMDEzLTA0LTAxXCIsIFwiMjAxMy0wNS0wOVwiLCBcIjIwMTMtMDUtMjBcIiwgXCIyMDE0LTAwNC0xOFwiLCBcIjIwMTQtMDQtMjFcIiwgXCIyMDE0LTA1LTI5XCIsIFwiMjAxNC0wNi0wOVwiLCBcIjIwMTUtMDQtMDNcIiwgXCIyMDE1LTA0LTA2XCIsIFwiMjAxNS0wNS0xNFwiLCBcIjIwMTUtMDUtMjVcIiwgXCIyMDE2LTAzLTI1XCIsIFwiMjAxNi0wMy0yOFwiLCBcIjIwMTYtMDUtMDVcIiwgXCIyMDE2LTA1LTE2XCIsIFwiMjAxNy0wNC0xNFwiLCBcIjIwMTctMDQtMTdcIiwgXCIyMDE3LTA1LTI1XCIsIFwiMjAxNy0wNi0wNVwiLCBcIjIwMTgtMDMtMzBcIiwgXCIyMDE4LTA0LTAyXCIsIFwiMjAxOC0wNS0xMFwiLCBcIjIwMTgtMDUtMjFcIiwgXCIyMDE5LTA0LTE5XCIsIFwiMjAxOS0wNC0yMlwiLCBcIjIwMTktMDUtMzBcIiwgXCIyMDE5LTA2LTEwXCIpLFxuICBcIjFcIiwgXG4gIFwiMFwiXG4pXG4jIERpZSBKYS9OZWluIEFiZnJhZ2UgaW4gaW50IHVtd2FuZGVsblxuRmVpZXJ0YWdlJEZlaWVydGFnIDwtIGFzLmludGVnZXIoRmVpZXJ0YWdlJEZlaWVydGFnKVxuXG4jIEVyc3RlbGxlIGVpbmUgbGVlcmUgU3BhbHRlIGbDvHIgZGllIEFydCBkZXMgRmVpZXJ0YWdzXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3MgPC0gXCJcIlxuXG4jIEbDvGxsZSBkaWUgQXJ0IGRlcyBGZWllcnRhZ3MgZW50c3ByZWNoZW5kIGRlciBCZWRpbmd1bmdcbkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gXCIxXCIgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcIiVtLSVkXCIpID09IFwiMDEtMDFcIl0gPC0gXCJOZXVqYWhyXCJcbkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gXCIxXCIgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcIiVtLSVkXCIpID09IFwiMDUtMDFcIl0gPC0gXCJUYWcgZGVyIEFyYmVpdFwiXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09IFwiMVwiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXCIlbS0lZFwiKSA9PSBcIjEwLTAzXCJdIDwtIFwiVGFnIGRlciBEZXV0c2NoZW4gRWluaGVpdFwiXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09IFwiMVwiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXCIlbS0lZFwiKSA9PSBcIjEwLTMxXCJdIDwtIFwiUmVmb3JtYXRpb25zdGFnXCJcbkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gXCIxXCIgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcIiVtLSVkXCIpICVpbiUgYyhcIjEyLTI0XCIsIFwiMTItMjVcIiwgXCIxMi0yNlwiKV0gPC0gXCJXZWlobmFjaHRlblwiXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09IFwiMVwiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXCIlbS0lZFwiKSA9PSBcIjEyLTMxXCJdIDwtIFwiU2lsdmVzdGVyXCJcbkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gXCIxXCIgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcIiVtLSVkXCIpICVpbiUgYyhcIjA0LTA2XCIsIFwiMDQtMDlcIiwgXCIwMy0yOVwiLCBcIjA0LTAxXCIsIFwiMDQtMThcIiwgXCIwNC0yMVwiLCBcIjA0LTAzXCIsIFwiMDQtMDZcIiwgXCIwMy0yNVwiLCBcIjAzLTI4XCIsIFwiMDQtMTRcIiwgXCIwNC0xN1wiLCBcIjAzLTMwXCIsIFwiMDQtMDJcIiwgXCIwNC0xOVwiLCBcIjA0LTIyXCIpXSA8LSBcIk9zdGVyblwiXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09IFwiMVwiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXCIlbS0lZFwiKSAlaW4lIGMoXCIwNS0xN1wiLCBcIjA1LTI4XCIsIFwiMDUtMDlcIiwgXCIwNS0yMFwiLCBcIjA1LTI5XCIsIFwiMDYtMDlcIiwgXCIwNS0xNFwiLCBcIjA1LTI1XCIsIFwiMDUtMDVcIiwgXCIwNS0xNlwiLCBcIjA1LTI1XCIsIFwiMDYtMDVcIiwgXCIwNS0xMFwiLCBcIjA1LTIxXCIsIFwiMDUtMzBcIiwgXCIwNi0xMFwiKV0gPC0gXCJDaHJpc3RpIEhpbW1lbGZhaHJ0LCBQZmluZ3N0ZW5cIlxuRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzW0ZlaWVydGFnZSRGZWllcnRhZyA9PSBcIjBcIl0gPC0gXCJLZWluIEZlaWVydGFnXCJcbiMgQW56ZWlnZW4gZGVyIGVyc3RlbiBaZWlsZW4gZGVzIGVyc3RlbGx0ZW4gRGF0ZW5mcmFtZXNcbmhlYWQoRmVpZXJ0YWdlKVxuXG5gYGAifQ== -->
-<pre class="r"><code>library(tidyverse)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbiMgRXJzdGVsbGUgZWluIERhdGVuZnJhbWUgbWl0IGRlbSBnZXfDg8K8bnNjaHRlbiBaZWl0cmF1bVxuc3RhcnRfZGF0ZSA8LSBhcy5EYXRlKFxcMjAxMi0wMS0wMVxcKVxuZW5kX2RhdGUgPC0gYXMuRGF0ZShcXDIwMTktMDgtMDFcXClcbmRhdGVfc2VxdWVuY2UgPC0gc2VxKHN0YXJ0X2RhdGUsIGVuZF9kYXRlLCBieSA9IFxcMSBkYXlcXClcblxuRmVpZXJ0YWdlIDwtIGRhdGEuZnJhbWUoRGF0dW0gPSBkYXRlX3NlcXVlbmNlKVxuXG5GZWllcnRhZ2UkRmVpZXJ0YWcgPC0gaWZlbHNlKFxuICBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcXCVtLSVkXFwpICVpbiUgYyhcXDAxLTAxXFwsIFxcMDUtMDFcXCwgXFwxMC0wM1xcLCBcXDEwLTMxXFwsIFxcMTItMjRcXCwgXFwxMi0yNVxcLCBcXDEyLTI2XFwsIFxcMTItMzFcXCkgfCBcbiAgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXFwlWS0lbS0lZFxcKSAlaW4lIGMoXFwyMDEyLTA0LTA2XFwsIFxcMjAxMi0wNC0wOVxcLCBcXDIwMTItMDUtMTdcXCwgXFwyMDEyLTA1LTI4XFwsIFxcMjAxMy0wMy0yOVxcLCBcXDIwMTMtMDQtMDFcXCwgXFwyMDEzLTA1LTA5XFwsIFxcMjAxMy0wNS0yMFxcLCBcXDIwMTQtMDA0LTE4XFwsIFxcMjAxNC0wNC0yMVxcLCBcXDIwMTQtMDUtMjlcXCwgXFwyMDE0LTA2LTA5XFwsIFxcMjAxNS0wNC0wM1xcLCBcXDIwMTUtMDQtMDZcXCwgXFwyMDE1LTA1LTE0XFwsIFxcMjAxNS0wNS0yNVxcLCBcXDIwMTYtMDMtMjVcXCwgXFwyMDE2LTAzLTI4XFwsIFxcMjAxNi0wNS0wNVxcLCBcXDIwMTYtMDUtMTZcXCwgXFwyMDE3LTA0LTE0XFwsIFxcMjAxNy0wNC0xN1xcLCBcXDIwMTctMDUtMjVcXCwgXFwyMDE3LTA2LTA1XFwsIFxcMjAxOC0wMy0zMFxcLCBcXDIwMTgtMDQtMDJcXCwgXFwyMDE4LTA1LTEwXFwsIFxcMjAxOC0wNS0yMVxcLCBcXDIwMTktMDQtMTlcXCwgXFwyMDE5LTA0LTIyXFwsIFxcMjAxOS0wNS0zMFxcLCBcXDIwMTktMDYtMTBcXCksXG4gIFxcMVxcLCBcbiAgXFwwXFxcbilcbiMgRGllIEphL05laW4gQWJmcmFnZSBpbiBpbnQgdW13YW5kZWxuXG5GZWllcnRhZ2UkRmVpZXJ0YWcgPC0gYXMuaW50ZWdlcihGZWllcnRhZ2UkRmVpZXJ0YWcpXG5cbiMgRXJzdGVsbGUgZWluZSBsZWVyZSBTcGFsdGUgZsODwrxyIGRpZSBBcnQgZGVzIEZlaWVydGFnc1xuRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzIDwtIFxcXFxcblxuIyBGw4PCvGxsZSBkaWUgQXJ0IGRlcyBGZWllcnRhZ3MgZW50c3ByZWNoZW5kIGRlciBCZWRpbmd1bmdcbkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gXFwxXFwgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcXCVtLSVkXFwpID09IFxcMDEtMDFcXF0gPC0gXFxOZXVqYWhyXFxcbkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gXFwxXFwgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcXCVtLSVkXFwpID09IFxcMDUtMDFcXF0gPC0gXFxUYWcgZGVyIEFyYmVpdFxcXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09IFxcMVxcICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXFwlbS0lZFxcKSA9PSBcXDEwLTAzXFxdIDwtIFxcVGFnIGRlciBEZXV0c2NoZW4gRWluaGVpdFxcXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09IFxcMVxcICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXFwlbS0lZFxcKSA9PSBcXDEwLTMxXFxdIDwtIFxcUmVmb3JtYXRpb25zdGFnXFxcbkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gXFwxXFwgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcXCVtLSVkXFwpICVpbiUgYyhcXDEyLTI0XFwsIFxcMTItMjVcXCwgXFwxMi0yNlxcKV0gPC0gXFxXZWlobmFjaHRlblxcXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09IFxcMVxcICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXFwlbS0lZFxcKSA9PSBcXDEyLTMxXFxdIDwtIFxcU2lsdmVzdGVyXFxcbkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gXFwxXFwgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCBcXCVtLSVkXFwpICVpbiUgYyhcXDA0LTA2XFwsIFxcMDQtMDlcXCwgXFwwMy0yOVxcLCBcXDA0LTAxXFwsIFxcMDQtMThcXCwgXFwwNC0yMVxcLCBcXDA0LTAzXFwsIFxcMDQtMDZcXCwgXFwwMy0yNVxcLCBcXDAzLTI4XFwsIFxcMDQtMTRcXCwgXFwwNC0xN1xcLCBcXDAzLTMwXFwsIFxcMDQtMDJcXCwgXFwwNC0xOVxcLCBcXDA0LTIyXFwpXSA8LSBcXE9zdGVyblxcXG5GZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09IFxcMVxcICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgXFwlbS0lZFxcKSAlaW4lIGMoXFwwNS0xN1xcLCBcXDA1LTI4XFwsIFxcMDUtMDlcXCwgXFwwNS0yMFxcLCBcXDA1LTI5XFwsIFxcMDYtMDlcXCwgXFwwNS0xNFxcLCBcXDA1LTI1XFwsIFxcMDUtMDVcXCwgXFwwNS0xNlxcLCBcXDA1LTI1XFwsIFxcMDYtMDVcXCwgXFwwNS0xMFxcLCBcXDA1LTIxXFwsIFxcMDUtMzBcXCwgXFwwNi0xMFxcKV0gPC0gXFxDaHJpc3RpIEhpbW1lbGZhaHJ0XG5gYGAifQ== -->
+<pre class="r"><code>```r
+library(tidyverse)
 
-# Erstelle ein Datenframe mit dem gewünschten Zeitraum
-start_date &lt;- as.Date(&quot;2012-01-01&quot;)
-end_date &lt;- as.Date(&quot;2019-08-01&quot;)
-date_sequence &lt;- seq(start_date, end_date, by = &quot;1 day&quot;)
+# Erstelle ein Datenframe mit dem gewÃ¼nschten Zeitraum
+start_date &lt;- as.Date(\2012-01-01\)
+end_date &lt;- as.Date(\2019-08-01\)
+date_sequence &lt;- seq(start_date, end_date, by = \1 day\)
 
 Feiertage &lt;- data.frame(Datum = date_sequence)
 
 Feiertage$Feiertag &lt;- ifelse(
-  format(Feiertage$Datum, &quot;%m-%d&quot;) %in% c(&quot;01-01&quot;, &quot;05-01&quot;, &quot;10-03&quot;, &quot;10-31&quot;, &quot;12-24&quot;, &quot;12-25&quot;, &quot;12-26&quot;, &quot;12-31&quot;) | 
-  format(Feiertage$Datum, &quot;%Y-%m-%d&quot;) %in% c(&quot;2012-04-06&quot;, &quot;2012-04-09&quot;, &quot;2012-05-17&quot;, &quot;2012-05-28&quot;, &quot;2013-03-29&quot;, &quot;2013-04-01&quot;, &quot;2013-05-09&quot;, &quot;2013-05-20&quot;, &quot;2014-004-18&quot;, &quot;2014-04-21&quot;, &quot;2014-05-29&quot;, &quot;2014-06-09&quot;, &quot;2015-04-03&quot;, &quot;2015-04-06&quot;, &quot;2015-05-14&quot;, &quot;2015-05-25&quot;, &quot;2016-03-25&quot;, &quot;2016-03-28&quot;, &quot;2016-05-05&quot;, &quot;2016-05-16&quot;, &quot;2017-04-14&quot;, &quot;2017-04-17&quot;, &quot;2017-05-25&quot;, &quot;2017-06-05&quot;, &quot;2018-03-30&quot;, &quot;2018-04-02&quot;, &quot;2018-05-10&quot;, &quot;2018-05-21&quot;, &quot;2019-04-19&quot;, &quot;2019-04-22&quot;, &quot;2019-05-30&quot;, &quot;2019-06-10&quot;),
-  &quot;1&quot;, 
-  &quot;0&quot;
+  format(Feiertage$Datum, \%m-%d\) %in% c(\01-01\, \05-01\, \10-03\, \10-31\, \12-24\, \12-25\, \12-26\, \12-31\) | 
+  format(Feiertage$Datum, \%Y-%m-%d\) %in% c(\2012-04-06\, \2012-04-09\, \2012-05-17\, \2012-05-28\, \2013-03-29\, \2013-04-01\, \2013-05-09\, \2013-05-20\, \2014-004-18\, \2014-04-21\, \2014-05-29\, \2014-06-09\, \2015-04-03\, \2015-04-06\, \2015-05-14\, \2015-05-25\, \2016-03-25\, \2016-03-28\, \2016-05-05\, \2016-05-16\, \2017-04-14\, \2017-04-17\, \2017-05-25\, \2017-06-05\, \2018-03-30\, \2018-04-02\, \2018-05-10\, \2018-05-21\, \2019-04-19\, \2019-04-22\, \2019-05-30\, \2019-06-10\),
+  \1\, 
+  \0\
 )
 # Die Ja/Nein Abfrage in int umwandeln
 Feiertage$Feiertag &lt;- as.integer(Feiertage$Feiertag)
 
-# Erstelle eine leere Spalte für die Art des Feiertags
-Feiertage$Art_des_Feiertags &lt;- &quot;&quot;
+# Erstelle eine leere Spalte fÃ¼r die Art des Feiertags
+Feiertage$Art_des_Feiertags &lt;- \\
 
-# Fülle die Art des Feiertags entsprechend der Bedingung
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;1&quot; &amp; format(Feiertage$Datum, &quot;%m-%d&quot;) == &quot;01-01&quot;] &lt;- &quot;Neujahr&quot;
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;1&quot; &amp; format(Feiertage$Datum, &quot;%m-%d&quot;) == &quot;05-01&quot;] &lt;- &quot;Tag der Arbeit&quot;
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;1&quot; &amp; format(Feiertage$Datum, &quot;%m-%d&quot;) == &quot;10-03&quot;] &lt;- &quot;Tag der Deutschen Einheit&quot;
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;1&quot; &amp; format(Feiertage$Datum, &quot;%m-%d&quot;) == &quot;10-31&quot;] &lt;- &quot;Reformationstag&quot;
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;1&quot; &amp; format(Feiertage$Datum, &quot;%m-%d&quot;) %in% c(&quot;12-24&quot;, &quot;12-25&quot;, &quot;12-26&quot;)] &lt;- &quot;Weihnachten&quot;
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;1&quot; &amp; format(Feiertage$Datum, &quot;%m-%d&quot;) == &quot;12-31&quot;] &lt;- &quot;Silvester&quot;
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;1&quot; &amp; format(Feiertage$Datum, &quot;%m-%d&quot;) %in% c(&quot;04-06&quot;, &quot;04-09&quot;, &quot;03-29&quot;, &quot;04-01&quot;, &quot;04-18&quot;, &quot;04-21&quot;, &quot;04-03&quot;, &quot;04-06&quot;, &quot;03-25&quot;, &quot;03-28&quot;, &quot;04-14&quot;, &quot;04-17&quot;, &quot;03-30&quot;, &quot;04-02&quot;, &quot;04-19&quot;, &quot;04-22&quot;)] &lt;- &quot;Ostern&quot;
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;1&quot; &amp; format(Feiertage$Datum, &quot;%m-%d&quot;) %in% c(&quot;05-17&quot;, &quot;05-28&quot;, &quot;05-09&quot;, &quot;05-20&quot;, &quot;05-29&quot;, &quot;06-09&quot;, &quot;05-14&quot;, &quot;05-25&quot;, &quot;05-05&quot;, &quot;05-16&quot;, &quot;05-25&quot;, &quot;06-05&quot;, &quot;05-10&quot;, &quot;05-21&quot;, &quot;05-30&quot;, &quot;06-10&quot;)] &lt;- &quot;Christi Himmelfahrt, Pfingsten&quot;
-Feiertage$Art_des_Feiertags[Feiertage$Feiertag == &quot;0&quot;] &lt;- &quot;Kein Feiertag&quot;
-# Anzeigen der ersten Zeilen des erstellten Datenframes
-head(Feiertage)
-</code></pre>
+# FÃ¼lle die Art des Feiertags entsprechend der Bedingung
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == \1\ &amp; format(Feiertage$Datum, \%m-%d\) == \01-01\] &lt;- \Neujahr\
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == \1\ &amp; format(Feiertage$Datum, \%m-%d\) == \05-01\] &lt;- \Tag der Arbeit\
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == \1\ &amp; format(Feiertage$Datum, \%m-%d\) == \10-03\] &lt;- \Tag der Deutschen Einheit\
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == \1\ &amp; format(Feiertage$Datum, \%m-%d\) == \10-31\] &lt;- \Reformationstag\
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == \1\ &amp; format(Feiertage$Datum, \%m-%d\) %in% c(\12-24\, \12-25\, \12-26\)] &lt;- \Weihnachten\
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == \1\ &amp; format(Feiertage$Datum, \%m-%d\) == \12-31\] &lt;- \Silvester\
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == \1\ &amp; format(Feiertage$Datum, \%m-%d\) %in% c(\04-06\, \04-09\, \03-29\, \04-01\, \04-18\, \04-21\, \04-03\, \04-06\, \03-25\, \03-28\, \04-14\, \04-17\, \03-30\, \04-02\, \04-19\, \04-22\)] &lt;- \Ostern\
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == \1\ &amp; format(Feiertage$Datum, \%m-%d\) %in% c(\05-17\, \05-28\, \05-09\, \05-20\, \05-29\, \06-09\, \05-14\, \05-25\, \05-05\, \05-16\, \05-25\, \06-05\, \05-10\, \05-21\, \05-30\, \06-10\)] &lt;- \Christi Himmelfahrt</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Hier erstelle ich die Tabelle, in der ich Feiertage anfüge</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWxsZV9GZWllciA8LSBmdWxsX2pvaW4oYWxsZV9nZWZpbHRlcnQsIEZlaWVydGFnZSwgYnkgPSBcIkRhdHVtXCIpICU+JVxuICBhc190aWJibGUoKVxuXG5GZWllcl9maWx0ZXIgPC0gYWxsZV9GZWllciAlPiVcbiAgZmlsdGVyKCFpcy5uYShVbXNhdHopKVxubnJvdyhGZWllcl9maWx0ZXIpXG5cbmhlYWQoRmVpZXJfZmlsdGVyKVxuYGBgIn0= -->
-<pre class="r"><code>alle_Feier &lt;- full_join(alle_gefiltert, Feiertage, by = &quot;Datum&quot;) %&gt;%
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYWxsZV9GZWllciA8LSBmdWxsX2pvaW4oYWxsZV9nZWZpbHRlcnQsIEZlaWVydGFnZSwgYnkgPSBcXERhdHVtXFwpICU+JVxuICBhc190aWJibGUoKVxuXG5GZWllcl9maWx0ZXIgPC0gYWxsZV9GZWllciAlPiVcbiAgZmlsdGVyKCFpcy5uYShVbXNhdHopKVxubnJvdyhGZWllcl9maWx0ZXIpXG5cbmhlYWQoRmVpZXJfZmlsdGVyKVxuYGBgXG5gYGAifQ== -->
+<pre class="r"><code>```r
+alle_Feier &lt;- full_join(alle_gefiltert, Feiertage, by = \Datum\) %&gt;%
   as_tibble()
 
 Feier_filter &lt;- alle_Feier %&gt;%
@@ -1842,43 +1826,110 @@ Feier_filter &lt;- alle_Feier %&gt;%
 nrow(Feier_filter)
 
 head(Feier_filter)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD Ich füge den Datensatz Ferientage
-zu der Tabelle hinzu</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmV1ZV9mZXJpZW50YWdlX2RhdGEkRGF0dW0gPC0gYXMuRGF0ZShuZXVlX2ZlcmllbnRhZ2VfZGF0YSREYXR1bSwgZm9ybWF0PVwiJVktJW0tJWRcIilcblxuZmVpZXJ0YWdlX2ZlcmllbnRhZ2UgPC0gZnVsbF9qb2luIChGZWllcl9maWx0ZXIsIG5ldWVfZmVyaWVudGFnZV9kYXRhLCBieSA9IFwiRGF0dW1cIikgJT4lXG4gIGFzX3RpYmJsZSgpXG5oZWFkKGZlaWVydGFnZV9mZXJpZW50YWdlIClcbmBgYCJ9 -->
-<pre class="r"><code>neue_ferientage_data$Datum &lt;- as.Date(neue_ferientage_data$Datum, format=&quot;%Y-%m-%d&quot;)
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
 
-feiertage_ferientage &lt;- full_join (Feier_filter, neue_ferientage_data, by = &quot;Datum&quot;) %&gt;%
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Ich füge den Datensatz Ferientage zu der Tabelle hinzu 
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubmV1ZV9mZXJpZW50YWdlX2RhdGEkRGF0dW0gPC0gYXMuRGF0ZShuZXVlX2ZlcmllbnRhZ2VfZGF0YSREYXR1bSwgZm9ybWF0PVxcJVktJW0tJWRcXClcblxuZmVpZXJ0YWdlX2ZlcmllbnRhZ2UgPC0gZnVsbF9qb2luIChGZWllcl9maWx0ZXIsIG5ldWVfZmVyaWVudGFnZV9kYXRhLCBieSA9IFxcRGF0dW1cXCkgJT4lXG4gIGFzX3RpYmJsZSgpXG5oZWFkKGZlaWVydGFnZV9mZXJpZW50YWdlIClcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+neue_ferientage_data$Datum &lt;- as.Date(neue_ferientage_data$Datum, format=\%Y-%m-%d\)
+
+feiertage_ferientage &lt;- full_join (Feier_filter, neue_ferientage_data, by = \Datum\) %&gt;%
   as_tibble()
 head(feiertage_ferientage )</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Einteilung des Datensatzes in Trainings- und
-Validierungsdatensatz</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBLb252ZXJ0aWVyZW4gU2llIGRhcyBEYXR1bSBpbiBlaW4gZ2VlaWduZXRlcyBGb3JtYXRcbkZlaWVyX2ZpbHRlciREYXR1bSA8LSBhcy5EYXRlKEZlaWVyX2ZpbHRlciREYXR1bSlcblxuIyBUcmFpbmluZ3NkYXRlbnNhdHogKDAxLjA3LjIwMTMgYmlzIDMxLjA3LjIwMTcpXG50cmFpbl9kYXRhIDwtIEZlaWVyX2ZpbHRlciAlPiUgXG4gIGZpbHRlcihEYXR1bSA+PSBhcy5EYXRlKFwiMjAxMy0wNy0wMVwiKSAmIERhdHVtIDw9IGFzLkRhdGUoXCIyMDE3LTA3LTMxXCIpKVxuXG4jIFZhbGlkaWVydW5nc2RhdGVuc2F0eiAoMDEuMDguMjAxNyBiaXMgMzEuMDcuMjAxOClcbnZhbGlkX2RhdGEgPC0gRmVpZXJfZmlsdGVyICU+JSBcbiAgZmlsdGVyKERhdHVtID49IGFzLkRhdGUoXCIyMDE3LTA4LTAxXCIpICYgRGF0dW0gPD0gYXMuRGF0ZShcIjIwMTgtMDctMzFcIikpXG5gYGAifQ== -->
-<pre class="r"><code># Konvertieren Sie das Datum in ein geeignetes Format
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+Einteilung des Datensatzes in Trainings- und Validierungsdatensatz
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBLb252ZXJ0aWVyZW4gU2llIGRhcyBEYXR1bSBpbiBlaW4gZ2VlaWduZXRlcyBGb3JtYXRcbkZlaWVyX2ZpbHRlciREYXR1bSA8LSBhcy5EYXRlKEZlaWVyX2ZpbHRlciREYXR1bSlcblxuIyBUcmFpbmluZ3NkYXRlbnNhdHogKDAxLjA3LjIwMTMgYmlzIDMxLjA3LjIwMTcpXG50cmFpbl9kYXRhIDwtIEZlaWVyX2ZpbHRlciAlPiUgXG4gIGZpbHRlcihEYXR1bSA+PSBhcy5EYXRlKFxcMjAxMy0wNy0wMVxcKSAmIERhdHVtIDw9IGFzLkRhdGUoXFwyMDE3LTA3LTMxXFwpKVxuXG4jIFZhbGlkaWVydW5nc2RhdGVuc2F0eiAoMDEuMDguMjAxNyBiaXMgMzEuMDcuMjAxOClcbnZhbGlkX2RhdGEgPC0gRmVpZXJfZmlsdGVyICU+JSBcbiAgZmlsdGVyKERhdHVtID49IGFzLkRhdGUoXFwyMDE3LTA4LTAxXFwpICYgRGF0dW0gPD0gYXMuRGF0ZShcXDIwMTgtMDctMzFcXCkpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+# Konvertieren Sie das Datum in ein geeignetes Format
 Feier_filter$Datum &lt;- as.Date(Feier_filter$Datum)
 
 # Trainingsdatensatz (01.07.2013 bis 31.07.2017)
 train_data &lt;- Feier_filter %&gt;% 
-  filter(Datum &gt;= as.Date(&quot;2013-07-01&quot;) &amp; Datum &lt;= as.Date(&quot;2017-07-31&quot;))
+  filter(Datum &gt;= as.Date(\2013-07-01\) &amp; Datum &lt;= as.Date(\2017-07-31\))
 
 # Validierungsdatensatz (01.08.2017 bis 31.07.2018)
 valid_data &lt;- Feier_filter %&gt;% 
-  filter(Datum &gt;= as.Date(&quot;2017-08-01&quot;) &amp; Datum &lt;= as.Date(&quot;2018-07-31&quot;))</code></pre>
+  filter(Datum &gt;= as.Date(\2017-08-01\) &amp; Datum &lt;= as.Date(\2018-07-31\))</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+Kiwo und Wochentage richtig formatieren
+zuerst bei kiwo: wenn es NA ist durch 0 ersetzen
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhaW5fZGF0YSRLaXdvW2lzLm5hKHRyYWluX2RhdGEkS2l3byldIDwtIDBcblxuYGBgIn0= --&gt;
+
+```r
+train_data$Kiwo[is.na(train_data$Kiwo)] &lt;- 0
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybnVuZzogVW5rbm93biBvciB1bmluaXRpYWxpc2VkIGNvbHVtbjogYEtpd29gLldhcm51bmc6IFVua25vd24gb3IgdW5pbml0aWFsaXNlZCBjb2x1bW46IGBLaXdvYC5cbiJ9 -->
+<pre><code>Warnung: Unknown or uninitialised column: `Kiwo`.Warnung: Unknown or uninitialised column: `Kiwo`.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gYCQ8LWA6XG4hIEFzc2lnbmVkIGRhdGEgYDxkYmw+YCBtdXN0IGJlIGNvbXBhdGlibGUgd2l0aCBleGlzdGluZyBkYXRhLlxueCBFeGlzdGluZyBkYXRhIGhhcyA3NDkzIHJvd3MuXG54IEFzc2lnbmVkIGRhdGEgaGFzIDAgcm93cy5cbmkgT25seSB2ZWN0b3JzIG9mIHNpemUgMSBhcmUgcmVjeWNsZWQuXG5DYXVzZWQgYnkgZXJyb3IgaW4gYHZlY3RibF9yZWN5Y2xlX3Joc19yb3dzKClgOlxuISBDYW4ndCByZWN5Y2xlIGlucHV0IG9mIHNpemUgMCB0byBzaXplIDc0OTMuXG5CYWNrdHJhY2U6XG4gMS4gYmFzZTo6YCQ8LWAoYCp0bXAqYCwgS2l3bywgdmFsdWUgPSBgPGRibD5gKVxuIDIuIHRpYmJsZTo6OmAkPC0udGJsX2RmYChgKnRtcCpgLCBLaXdvLCB2YWx1ZSA9IGA8ZGJsPmApXG4gMy4gdGliYmxlOjo6dGJsX3N1YmFzc2lnbiguLi4pXG4gNC4gdGliYmxlOjo6dmVjdGJsX3JlY3ljbGVfcmhzX3Jvd3ModmFsdWUsIGZhc3RfbnJvdyh4byksIGlfYXJnID0gTlVMTCwgdmFsdWVfYXJnLCBjYWxsKVxuIn0= -->
+<pre><code>Error in `$&lt;-`:
+! Assigned data `&lt;dbl&gt;` must be compatible with existing data.
+x Existing data has 7493 rows.
+x Assigned data has 0 rows.
+i Only vectors of size 1 are recycled.
+Caused by error in `vectbl_recycle_rhs_rows()`:
+! Can&#39;t recycle input of size 0 to size 7493.
+Backtrace:
+ 1. base::`$&lt;-`(`*tmp*`, Kiwo, value = `&lt;dbl&gt;`)
+ 2. tibble:::`$&lt;-.tbl_df`(`*tmp*`, Kiwo, value = `&lt;dbl&gt;`)
+ 3. tibble:::tbl_subassign(...)
+ 4. tibble:::vectbl_recycle_rhs_rows(value, fast_nrow(xo), i_arg = NULL, value_arg, call)</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlRhYmVsbGUgZsO8ciBBdXN3ZXJ0dW5nIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLg0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCkhpZXIgaGFiZSBpY2ggbm9jaCBlaW5tYWwgZGFzIFNrcmlwdCBmw7xyIGRpZSBVcnNwcnVuZ3N0YWJlbGxlDQoNCmBgYHtyfQ0KbGlicmFyeShzdHlsZXIpDQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShyZWFkcikNCg0KY3N2d2V0dGVyIDwtICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vb3BlbmNhbXB1cy1zaC9laW5mdWVocnVuZy1pbi1kYXRhLXNjaWVuY2UtdW5kLW1sL21haW4vd2V0dGVyLmNzdiINCmNzdnVtc2F0emRhdGVuX2dla3Vlcnp0IDwtICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vb3BlbmNhbXB1cy1zaC9laW5mdWVocnVuZy1pbi1kYXRhLXNjaWVuY2UtdW5kLW1sL21haW4vdW1zYXR6ZGF0ZW5fZ2VrdWVyenQuY3N2Ig0KY3N2a2l3byA8LSAiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL29wZW5jYW1wdXMtc2gvZWluZnVlaHJ1bmctaW4tZGF0YS1zY2llbmNlLXVuZC1tbC9tYWluL2tpd28uY3N2Ig0KDQp3ZXR0ZXIgPC0gcmVhZC50YWJsZShjc3Z3ZXR0ZXIsIGhlYWQ9VFJVRSwgc2VwID0gIiwiKQ0KdW1kYXQgPC0gcmVhZC5jc3YoY3N2dW1zYXR6ZGF0ZW5fZ2VrdWVyenQpDQpraXdvIDwtIHJlYWQuY3N2KGNzdmtpd28pDQoNCmFsbGUgPC0gZnVsbF9qb2luKHVtZGF0LCB3ZXR0ZXIsIGJ5ID0gIkRhdHVtIikgJT4lDQogIGZ1bGxfam9pbihraXdvLCBieSA9ICJEYXR1bSIpDQphc190aWJibGUoYWxsZSkNCm5yb3codW1kYXQpDQoNCm5yb3coYWxsZSkNCmFsbGVfZ2VmaWx0ZXJ0IDwtIGFsbGUgJT4lDQogIGZpbHRlcighaXMubmEoVW1zYXR6KSkNCm5yb3coYWxsZV9nZWZpbHRlcnQpDQoNCiNhbGxlX2dlZmlsdGVydCBoYXQgbm9jaCBkZW4gZmFsc2NoZW4gVHlwIGJlaSBEYXR1bSwgaGFiIGRhcyBtYWwgYW5nZWdsaWNoZW4NCmFsbGVfZ2VmaWx0ZXJ0JERhdHVtIDwtIGFzLkRhdGUoYWxsZV9nZWZpbHRlcnQkRGF0dW0sIGZvcm1hdCA9ICIlWS0lbS0lZCIpDQpgYGANCg0KzpljaCBlcnN0ZWxsZSBoaWVyIGVpbmUgTGlzdGUgZsO8ciBkaWUgRmVpZXJ0YWdlIHZvbSAiMjAxMi0wMS0wMSIgYmlzIHp1bSAiMjAxOS0wOC0wMSINCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCg0KIyBFcnN0ZWxsZSBlaW4gRGF0ZW5mcmFtZSBtaXQgZGVtIGdld8O8bnNjaHRlbiBaZWl0cmF1bQ0Kc3RhcnRfZGF0ZSA8LSBhcy5EYXRlKCIyMDEyLTAxLTAxIikNCmVuZF9kYXRlIDwtIGFzLkRhdGUoIjIwMTktMDgtMDEiKQ0KZGF0ZV9zZXF1ZW5jZSA8LSBzZXEoc3RhcnRfZGF0ZSwgZW5kX2RhdGUsIGJ5ID0gIjEgZGF5IikNCg0KRmVpZXJ0YWdlIDwtIGRhdGEuZnJhbWUoRGF0dW0gPSBkYXRlX3NlcXVlbmNlKQ0KDQpGZWllcnRhZ2UkRmVpZXJ0YWcgPC0gaWZlbHNlKA0KICBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCAiJW0tJWQiKSAlaW4lIGMoIjAxLTAxIiwgIjA1LTAxIiwgIjEwLTAzIiwgIjEwLTMxIiwgIjEyLTI0IiwgIjEyLTI1IiwgIjEyLTI2IiwgIjEyLTMxIikgfCANCiAgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVZLSVtLSVkIikgJWluJSBjKCIyMDEyLTA0LTA2IiwgIjIwMTItMDQtMDkiLCAiMjAxMi0wNS0xNyIsICIyMDEyLTA1LTI4IiwgIjIwMTMtMDMtMjkiLCAiMjAxMy0wNC0wMSIsICIyMDEzLTA1LTA5IiwgIjIwMTMtMDUtMjAiLCAiMjAxNC0wMDQtMTgiLCAiMjAxNC0wNC0yMSIsICIyMDE0LTA1LTI5IiwgIjIwMTQtMDYtMDkiLCAiMjAxNS0wNC0wMyIsICIyMDE1LTA0LTA2IiwgIjIwMTUtMDUtMTQiLCAiMjAxNS0wNS0yNSIsICIyMDE2LTAzLTI1IiwgIjIwMTYtMDMtMjgiLCAiMjAxNi0wNS0wNSIsICIyMDE2LTA1LTE2IiwgIjIwMTctMDQtMTQiLCAiMjAxNy0wNC0xNyIsICIyMDE3LTA1LTI1IiwgIjIwMTctMDYtMDUiLCAiMjAxOC0wMy0zMCIsICIyMDE4LTA0LTAyIiwgIjIwMTgtMDUtMTAiLCAiMjAxOC0wNS0yMSIsICIyMDE5LTA0LTE5IiwgIjIwMTktMDQtMjIiLCAiMjAxOS0wNS0zMCIsICIyMDE5LTA2LTEwIiksDQogICIxIiwgDQogICIwIg0KKQ0KIyBEaWUgSmEvTmVpbiBBYmZyYWdlIGluIGludCB1bXdhbmRlbG4NCkZlaWVydGFnZSRGZWllcnRhZyA8LSBhcy5pbnRlZ2VyKEZlaWVydGFnZSRGZWllcnRhZykNCg0KIyBFcnN0ZWxsZSBlaW5lIGxlZXJlIFNwYWx0ZSBmw7xyIGRpZSBBcnQgZGVzIEZlaWVydGFncw0KRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzIDwtICIiDQoNCiMgRsO8bGxlIGRpZSBBcnQgZGVzIEZlaWVydGFncyBlbnRzcHJlY2hlbmQgZGVyIEJlZGluZ3VuZw0KRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzW0ZlaWVydGFnZSRGZWllcnRhZyA9PSAiMSIgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCAiJW0tJWQiKSA9PSAiMDEtMDEiXSA8LSAiTmV1amFociINCkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gIjEiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVtLSVkIikgPT0gIjA1LTAxIl0gPC0gIlRhZyBkZXIgQXJiZWl0Ig0KRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzW0ZlaWVydGFnZSRGZWllcnRhZyA9PSAiMSIgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCAiJW0tJWQiKSA9PSAiMTAtMDMiXSA8LSAiVGFnIGRlciBEZXV0c2NoZW4gRWluaGVpdCINCkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gIjEiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVtLSVkIikgPT0gIjEwLTMxIl0gPC0gIlJlZm9ybWF0aW9uc3RhZyINCkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gIjEiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVtLSVkIikgJWluJSBjKCIxMi0yNCIsICIxMi0yNSIsICIxMi0yNiIpXSA8LSAiV2VpaG5hY2h0ZW4iDQpGZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09ICIxIiAmIGZvcm1hdChGZWllcnRhZ2UkRGF0dW0sICIlbS0lZCIpID09ICIxMi0zMSJdIDwtICJTaWx2ZXN0ZXIiDQpGZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09ICIxIiAmIGZvcm1hdChGZWllcnRhZ2UkRGF0dW0sICIlbS0lZCIpICVpbiUgYygiMDQtMDYiLCAiMDQtMDkiLCAiMDMtMjkiLCAiMDQtMDEiLCAiMDQtMTgiLCAiMDQtMjEiLCAiMDQtMDMiLCAiMDQtMDYiLCAiMDMtMjUiLCAiMDMtMjgiLCAiMDQtMTQiLCAiMDQtMTciLCAiMDMtMzAiLCAiMDQtMDIiLCAiMDQtMTkiLCAiMDQtMjIiKV0gPC0gIk9zdGVybiINCkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gIjEiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVtLSVkIikgJWluJSBjKCIwNS0xNyIsICIwNS0yOCIsICIwNS0wOSIsICIwNS0yMCIsICIwNS0yOSIsICIwNi0wOSIsICIwNS0xNCIsICIwNS0yNSIsICIwNS0wNSIsICIwNS0xNiIsICIwNS0yNSIsICIwNi0wNSIsICIwNS0xMCIsICIwNS0yMSIsICIwNS0zMCIsICIwNi0xMCIpXSA8LSAiQ2hyaXN0aSBIaW1tZWxmYWhydCwgUGZpbmdzdGVuIg0KRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzW0ZlaWVydGFnZSRGZWllcnRhZyA9PSAiMCJdIDwtICJLZWluIEZlaWVydGFnIg0KIyBBbnplaWdlbiBkZXIgZXJzdGVuIFplaWxlbiBkZXMgZXJzdGVsbHRlbiBEYXRlbmZyYW1lcw0KaGVhZChGZWllcnRhZ2UpDQoNCmBgYA0KDQpIaWVyIGVyc3RlbGxlIGljaCBkaWUgVGFiZWxsZSwgaW4gZGVyIGljaCBGZWllcnRhZ2UgYW5mw7xnZQ0KDQpgYGB7cn0NCmFsbGVfRmVpZXIgPC0gZnVsbF9qb2luKGFsbGVfZ2VmaWx0ZXJ0LCBGZWllcnRhZ2UsIGJ5ID0gIkRhdHVtIikgJT4lDQogIGFzX3RpYmJsZSgpDQoNCkZlaWVyX2ZpbHRlciA8LSBhbGxlX0ZlaWVyICU+JQ0KICBmaWx0ZXIoIWlzLm5hKFVtc2F0eikpDQpucm93KEZlaWVyX2ZpbHRlcikNCg0KaGVhZChGZWllcl9maWx0ZXIpDQpgYGANCjw8PDw8PDwgSEVBRA0KSWNoIGbDvGdlIGRlbiBEYXRlbnNhdHogRmVyaWVudGFnZSB6dSBkZXIgVGFiZWxsZSBoaW56dSANCg0KYGBge3J9DQpuZXVlX2ZlcmllbnRhZ2VfZGF0YSREYXR1bSA8LSBhcy5EYXRlKG5ldWVfZmVyaWVudGFnZV9kYXRhJERhdHVtLCBmb3JtYXQ9IiVZLSVtLSVkIikNCg0KZmVpZXJ0YWdlX2ZlcmllbnRhZ2UgPC0gZnVsbF9qb2luIChGZWllcl9maWx0ZXIsIG5ldWVfZmVyaWVudGFnZV9kYXRhLCBieSA9ICJEYXR1bSIpICU+JQ0KICBhc190aWJibGUoKQ0KaGVhZChmZWllcnRhZ2VfZmVyaWVudGFnZSApDQpgYGANCkVpbnRlaWx1bmcgZGVzIERhdGVuc2F0emVzIGluIFRyYWluaW5ncy0gdW5kIFZhbGlkaWVydW5nc2RhdGVuc2F0eg0KYGBge3J9DQojIEtvbnZlcnRpZXJlbiBTaWUgZGFzIERhdHVtIGluIGVpbiBnZWVpZ25ldGVzIEZvcm1hdA0KRmVpZXJfZmlsdGVyJERhdHVtIDwtIGFzLkRhdGUoRmVpZXJfZmlsdGVyJERhdHVtKQ0KDQojIFRyYWluaW5nc2RhdGVuc2F0eiAoMDEuMDcuMjAxMyBiaXMgMzEuMDcuMjAxNykNCnRyYWluX2RhdGEgPC0gRmVpZXJfZmlsdGVyICU+JSANCiAgZmlsdGVyKERhdHVtID49IGFzLkRhdGUoIjIwMTMtMDctMDEiKSAmIERhdHVtIDw9IGFzLkRhdGUoIjIwMTctMDctMzEiKSkNCg0KIyBWYWxpZGllcnVuZ3NkYXRlbnNhdHogKDAxLjA4LjIwMTcgYmlzIDMxLjA3LjIwMTgpDQp2YWxpZF9kYXRhIDwtIEZlaWVyX2ZpbHRlciAlPiUgDQogIGZpbHRlcihEYXR1bSA+PSBhcy5EYXRlKCIyMDE3LTA4LTAxIikgJiBEYXR1bSA8PSBhcy5EYXRlKCIyMDE4LTA3LTMxIikpDQpgYGANCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlRhYmVsbGUgZsO8ciBBdXN3ZXJ0dW5nIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLg0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCkhpZXIgaGFiZSBpY2ggbm9jaCBlaW5tYWwgZGFzIFNrcmlwdCBmw7xyIGRpZSBVcnNwcnVuZ3N0YWJlbGxlDQoNCmBgYHtyfQ0KbGlicmFyeShzdHlsZXIpDQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShyZWFkcikNCg0KY3N2d2V0dGVyIDwtICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vb3BlbmNhbXB1cy1zaC9laW5mdWVocnVuZy1pbi1kYXRhLXNjaWVuY2UtdW5kLW1sL21haW4vd2V0dGVyLmNzdiINCmNzdnVtc2F0emRhdGVuX2dla3Vlcnp0IDwtICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vb3BlbmNhbXB1cy1zaC9laW5mdWVocnVuZy1pbi1kYXRhLXNjaWVuY2UtdW5kLW1sL21haW4vdW1zYXR6ZGF0ZW5fZ2VrdWVyenQuY3N2Ig0KY3N2a2l3byA8LSAiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL29wZW5jYW1wdXMtc2gvZWluZnVlaHJ1bmctaW4tZGF0YS1zY2llbmNlLXVuZC1tbC9tYWluL2tpd28uY3N2Ig0KDQp3ZXR0ZXIgPC0gcmVhZC50YWJsZShjc3Z3ZXR0ZXIsIGhlYWQ9VFJVRSwgc2VwID0gIiwiKQ0KdW1kYXQgPC0gcmVhZC5jc3YoY3N2dW1zYXR6ZGF0ZW5fZ2VrdWVyenQpDQpraXdvIDwtIHJlYWQuY3N2KGNzdmtpd28pDQoNCmFsbGUgPC0gZnVsbF9qb2luKHVtZGF0LCB3ZXR0ZXIsIGJ5ID0gIkRhdHVtIikgJT4lDQogIGZ1bGxfam9pbihraXdvLCBieSA9ICJEYXR1bSIpDQphc190aWJibGUoYWxsZSkNCm5yb3codW1kYXQpDQoNCm5yb3coYWxsZSkNCmFsbGVfZ2VmaWx0ZXJ0IDwtIGFsbGUgJT4lDQogIGZpbHRlcighaXMubmEoVW1zYXR6KSkNCm5yb3coYWxsZV9nZWZpbHRlcnQpDQoNCiNhbGxlX2dlZmlsdGVydCBoYXQgbm9jaCBkZW4gZmFsc2NoZW4gVHlwIGJlaSBEYXR1bSwgaGFiIGRhcyBtYWwgYW5nZWdsaWNoZW4NCmFsbGVfZ2VmaWx0ZXJ0JERhdHVtIDwtIGFzLkRhdGUoYWxsZV9nZWZpbHRlcnQkRGF0dW0sIGZvcm1hdCA9ICIlWS0lbS0lZCIpDQpgYGANCg0KzpljaCBlcnN0ZWxsZSBoaWVyIGVpbmUgTGlzdGUgZsO8ciBkaWUgRmVpZXJ0YWdlIHZvbSAiMjAxMi0wMS0wMSIgYmlzIHp1bSAiMjAxOS0wOC0wMSINCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCg0KIyBFcnN0ZWxsZSBlaW4gRGF0ZW5mcmFtZSBtaXQgZGVtIGdld8O8bnNjaHRlbiBaZWl0cmF1bQ0Kc3RhcnRfZGF0ZSA8LSBhcy5EYXRlKCIyMDEyLTAxLTAxIikNCmVuZF9kYXRlIDwtIGFzLkRhdGUoIjIwMTktMDgtMDEiKQ0KZGF0ZV9zZXF1ZW5jZSA8LSBzZXEoc3RhcnRfZGF0ZSwgZW5kX2RhdGUsIGJ5ID0gIjEgZGF5IikNCg0KRmVpZXJ0YWdlIDwtIGRhdGEuZnJhbWUoRGF0dW0gPSBkYXRlX3NlcXVlbmNlKQ0KDQpGZWllcnRhZ2UkRmVpZXJ0YWcgPC0gaWZlbHNlKA0KICBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCAiJW0tJWQiKSAlaW4lIGMoIjAxLTAxIiwgIjA1LTAxIiwgIjEwLTAzIiwgIjEwLTMxIiwgIjEyLTI0IiwgIjEyLTI1IiwgIjEyLTI2IiwgIjEyLTMxIikgfCANCiAgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVZLSVtLSVkIikgJWluJSBjKCIyMDEyLTA0LTA2IiwgIjIwMTItMDQtMDkiLCAiMjAxMi0wNS0xNyIsICIyMDEyLTA1LTI4IiwgIjIwMTMtMDMtMjkiLCAiMjAxMy0wNC0wMSIsICIyMDEzLTA1LTA5IiwgIjIwMTMtMDUtMjAiLCAiMjAxNC0wMDQtMTgiLCAiMjAxNC0wNC0yMSIsICIyMDE0LTA1LTI5IiwgIjIwMTQtMDYtMDkiLCAiMjAxNS0wNC0wMyIsICIyMDE1LTA0LTA2IiwgIjIwMTUtMDUtMTQiLCAiMjAxNS0wNS0yNSIsICIyMDE2LTAzLTI1IiwgIjIwMTYtMDMtMjgiLCAiMjAxNi0wNS0wNSIsICIyMDE2LTA1LTE2IiwgIjIwMTctMDQtMTQiLCAiMjAxNy0wNC0xNyIsICIyMDE3LTA1LTI1IiwgIjIwMTctMDYtMDUiLCAiMjAxOC0wMy0zMCIsICIyMDE4LTA0LTAyIiwgIjIwMTgtMDUtMTAiLCAiMjAxOC0wNS0yMSIsICIyMDE5LTA0LTE5IiwgIjIwMTktMDQtMjIiLCAiMjAxOS0wNS0zMCIsICIyMDE5LTA2LTEwIiksDQogICIxIiwgDQogICIwIg0KKQ0KIyBEaWUgSmEvTmVpbiBBYmZyYWdlIGluIGludCB1bXdhbmRlbG4NCkZlaWVydGFnZSRGZWllcnRhZyA8LSBhcy5pbnRlZ2VyKEZlaWVydGFnZSRGZWllcnRhZykNCg0KIyBFcnN0ZWxsZSBlaW5lIGxlZXJlIFNwYWx0ZSBmw7xyIGRpZSBBcnQgZGVzIEZlaWVydGFncw0KRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzIDwtICIiDQoNCiMgRsO8bGxlIGRpZSBBcnQgZGVzIEZlaWVydGFncyBlbnRzcHJlY2hlbmQgZGVyIEJlZGluZ3VuZw0KRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzW0ZlaWVydGFnZSRGZWllcnRhZyA9PSAiMSIgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCAiJW0tJWQiKSA9PSAiMDEtMDEiXSA8LSAiTmV1amFociINCkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gIjEiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVtLSVkIikgPT0gIjA1LTAxIl0gPC0gIlRhZyBkZXIgQXJiZWl0Ig0KRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzW0ZlaWVydGFnZSRGZWllcnRhZyA9PSAiMSIgJiBmb3JtYXQoRmVpZXJ0YWdlJERhdHVtLCAiJW0tJWQiKSA9PSAiMTAtMDMiXSA8LSAiVGFnIGRlciBEZXV0c2NoZW4gRWluaGVpdCINCkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gIjEiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVtLSVkIikgPT0gIjEwLTMxIl0gPC0gIlJlZm9ybWF0aW9uc3RhZyINCkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gIjEiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVtLSVkIikgJWluJSBjKCIxMi0yNCIsICIxMi0yNSIsICIxMi0yNiIpXSA8LSAiV2VpaG5hY2h0ZW4iDQpGZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09ICIxIiAmIGZvcm1hdChGZWllcnRhZ2UkRGF0dW0sICIlbS0lZCIpID09ICIxMi0zMSJdIDwtICJTaWx2ZXN0ZXIiDQpGZWllcnRhZ2UkQXJ0X2Rlc19GZWllcnRhZ3NbRmVpZXJ0YWdlJEZlaWVydGFnID09ICIxIiAmIGZvcm1hdChGZWllcnRhZ2UkRGF0dW0sICIlbS0lZCIpICVpbiUgYygiMDQtMDYiLCAiMDQtMDkiLCAiMDMtMjkiLCAiMDQtMDEiLCAiMDQtMTgiLCAiMDQtMjEiLCAiMDQtMDMiLCAiMDQtMDYiLCAiMDMtMjUiLCAiMDMtMjgiLCAiMDQtMTQiLCAiMDQtMTciLCAiMDMtMzAiLCAiMDQtMDIiLCAiMDQtMTkiLCAiMDQtMjIiKV0gPC0gIk9zdGVybiINCkZlaWVydGFnZSRBcnRfZGVzX0ZlaWVydGFnc1tGZWllcnRhZ2UkRmVpZXJ0YWcgPT0gIjEiICYgZm9ybWF0KEZlaWVydGFnZSREYXR1bSwgIiVtLSVkIikgJWluJSBjKCIwNS0xNyIsICIwNS0yOCIsICIwNS0wOSIsICIwNS0yMCIsICIwNS0yOSIsICIwNi0wOSIsICIwNS0xNCIsICIwNS0yNSIsICIwNS0wNSIsICIwNS0xNiIsICIwNS0yNSIsICIwNi0wNSIsICIwNS0xMCIsICIwNS0yMSIsICIwNS0zMCIsICIwNi0xMCIpXSA8LSAiQ2hyaXN0aSBIaW1tZWxmYWhydCwgUGZpbmdzdGVuIg0KRmVpZXJ0YWdlJEFydF9kZXNfRmVpZXJ0YWdzW0ZlaWVydGFnZSRGZWllcnRhZyA9PSAiMCJdIDwtICJLZWluIEZlaWVydGFnIg0KIyBBbnplaWdlbiBkZXIgZXJzdGVuIFplaWxlbiBkZXMgZXJzdGVsbHRlbiBEYXRlbmZyYW1lcw0KaGVhZChGZWllcnRhZ2UpDQoNCmBgYA0KDQpIaWVyIGVyc3RlbGxlIGljaCBkaWUgVGFiZWxsZSwgaW4gZGVyIGljaCBGZWllcnRhZ2UgYW5mw7xnZQ0KDQpgYGB7cn0NCmFsbGVfRmVpZXIgPC0gZnVsbF9qb2luKGFsbGVfZ2VmaWx0ZXJ0LCBGZWllcnRhZ2UsIGJ5ID0gIkRhdHVtIikgJT4lDQogIGFzX3RpYmJsZSgpDQoNCkZlaWVyX2ZpbHRlciA8LSBhbGxlX0ZlaWVyICU+JQ0KICBmaWx0ZXIoIWlzLm5hKFVtc2F0eikpDQpucm93KEZlaWVyX2ZpbHRlcikNCg0KaGVhZChGZWllcl9maWx0ZXIpDQpgYGANCjw8PDw8PDwgSEVBRA0KSWNoIGbDvGdlIGRlbiBEYXRlbnNhdHogRmVyaWVudGFnZSB6dSBkZXIgVGFiZWxsZSBoaW56dSANCg0KYGBge3J9DQpuZXVlX2ZlcmllbnRhZ2VfZGF0YSREYXR1bSA8LSBhcy5EYXRlKG5ldWVfZmVyaWVudGFnZV9kYXRhJERhdHVtLCBmb3JtYXQ9IiVZLSVtLSVkIikNCg0KZmVpZXJ0YWdlX2ZlcmllbnRhZ2UgPC0gZnVsbF9qb2luIChGZWllcl9maWx0ZXIsIG5ldWVfZmVyaWVudGFnZV9kYXRhLCBieSA9ICJEYXR1bSIpICU+JQ0KICBhc190aWJibGUoKQ0KaGVhZChmZWllcnRhZ2VfZmVyaWVudGFnZSApDQpgYGANCkVpbnRlaWx1bmcgZGVzIERhdGVuc2F0emVzIGluIFRyYWluaW5ncy0gdW5kIFZhbGlkaWVydW5nc2RhdGVuc2F0eg0KYGBge3J9DQojIEtvbnZlcnRpZXJlbiBTaWUgZGFzIERhdHVtIGluIGVpbiBnZWVpZ25ldGVzIEZvcm1hdA0KRmVpZXJfZmlsdGVyJERhdHVtIDwtIGFzLkRhdGUoRmVpZXJfZmlsdGVyJERhdHVtKQ0KDQojIFRyYWluaW5nc2RhdGVuc2F0eiAoMDEuMDcuMjAxMyBiaXMgMzEuMDcuMjAxNykNCnRyYWluX2RhdGEgPC0gRmVpZXJfZmlsdGVyICU+JSANCiAgZmlsdGVyKERhdHVtID49IGFzLkRhdGUoIjIwMTMtMDctMDEiKSAmIERhdHVtIDw9IGFzLkRhdGUoIjIwMTctMDctMzEiKSkNCg0KIyBWYWxpZGllcnVuZ3NkYXRlbnNhdHogKDAxLjA4LjIwMTcgYmlzIDMxLjA3LjIwMTgpDQp2YWxpZF9kYXRhIDwtIEZlaWVyX2ZpbHRlciAlPiUgDQogIGZpbHRlcihEYXR1bSA+PSBhcy5EYXRlKCIyMDE3LTA4LTAxIikgJiBEYXR1bSA8PSBhcy5EYXRlKCIyMDE4LTA3LTMxIikpDQpgYGANCktpd28gdW5kIFdvY2hlbnRhZ2UgcmljaHRpZyBmb3JtYXRpZXJlbg0KenVlcnN0IGJlaSBraXdvOiB3ZW5uIGVzIE5BIGlzdCBkdXJjaCAwIGVyc2V0emVuDQpgYGB7cn0NCnRyYWluX2RhdGEkS2llbGVyV29jaGVbaXMubmEodHJhaW5fZGF0YSRLaWVsZXJXb2NoZSldIDwtIDANCg0KIyBWYXJpYWJsZSB3b2NoZW50YWcgaGluenVmw7xnZW4NCnRyYWluX2RhdGEkV29jaGVudGFnIDwtIHdlZWtkYXlzKHRyYWluX2RhdGEkRGF0dW0pDQoNCiMgV29jaGVudGFnIGFscyBmYWt0b3INCnRyYWluX2RhdGEkV29jaGVudGFnIDwtIGFzLmZhY3Rvcih0cmFpbl9kYXRhJFdvY2hlbnRhZykNCmBgYA0KDQoNCmBgYHtyfQ0K</div>
 
 
 

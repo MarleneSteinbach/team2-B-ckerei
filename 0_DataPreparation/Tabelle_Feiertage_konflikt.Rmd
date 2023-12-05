@@ -110,4 +110,17 @@ train_data <- Feier_filter %>%
 valid_data <- Feier_filter %>% 
   filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
 ```
+Kiwo und Wochentage richtig formatieren
+zuerst bei kiwo: wenn es NA ist durch 0 ersetzen
+```{r}
+train_data$KielerWoche[is.na(train_data$KielerWoche)] <- 0
 
+# Variable wochentag hinzufügen
+train_data$Wochentag <- weekdays(train_data$Datum)
+
+# Wochentag als faktor
+train_data$Wochentag <- as.factor(train_data$Wochentag)
+```
+
+
+```{r}
