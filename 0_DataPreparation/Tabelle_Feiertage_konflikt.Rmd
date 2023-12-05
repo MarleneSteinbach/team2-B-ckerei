@@ -1,0 +1,113 @@
+---
+title: "Tabelle für Auswertung"
+output: html_notebook
+---
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+Hier habe ich noch einmal das Skript für die Ursprungstabelle
+
+```{r}
+library(styler)
+library(dplyr)
+library(readr)
+
+csvwetter <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv"
+csvumsatzdaten_gekuerzt <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv"
+csvkiwo <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv"
+
+wetter <- read.table(csvwetter, head=TRUE, sep = ",")
+umdat <- read.csv(csvumsatzdaten_gekuerzt)
+kiwo <- read.csv(csvkiwo)
+
+alle <- full_join(umdat, wetter, by = "Datum") %>%
+  full_join(kiwo, by = "Datum")
+as_tibble(alle)
+nrow(umdat)
+
+nrow(alle)
+alle_gefiltert <- alle %>%
+  filter(!is.na(Umsatz))
+nrow(alle_gefiltert)
+
+#alle_gefiltert hat noch den falschen Typ bei Datum, hab das mal angeglichen
+alle_gefiltert$Datum <- as.Date(alle_gefiltert$Datum, format = "%Y-%m-%d")
+```
+
+Ιch erstelle hier eine Liste für die Feiertage vom "2012-01-01" bis zum "2019-08-01"
+
+```{r}
+library(tidyverse)
+
+# Erstelle ein Datenframe mit dem gewünschten Zeitraum
+start_date <- as.Date("2012-01-01")
+end_date <- as.Date("2019-08-01")
+date_sequence <- seq(start_date, end_date, by = "1 day")
+
+Feiertage <- data.frame(Datum = date_sequence)
+
+Feiertage$Feiertag <- ifelse(
+  format(Feiertage$Datum, "%m-%d") %in% c("01-01", "05-01", "10-03", "10-31", "12-24", "12-25", "12-26", "12-31") | 
+  format(Feiertage$Datum, "%Y-%m-%d") %in% c("2012-04-06", "2012-04-09", "2012-05-17", "2012-05-28", "2013-03-29", "2013-04-01", "2013-05-09", "2013-05-20", "2014-004-18", "2014-04-21", "2014-05-29", "2014-06-09", "2015-04-03", "2015-04-06", "2015-05-14", "2015-05-25", "2016-03-25", "2016-03-28", "2016-05-05", "2016-05-16", "2017-04-14", "2017-04-17", "2017-05-25", "2017-06-05", "2018-03-30", "2018-04-02", "2018-05-10", "2018-05-21", "2019-04-19", "2019-04-22", "2019-05-30", "2019-06-10"),
+  "1", 
+  "0"
+)
+# Die Ja/Nein Abfrage in int umwandeln
+Feiertage$Feiertag <- as.integer(Feiertage$Feiertag)
+
+# Erstelle eine leere Spalte für die Art des Feiertags
+Feiertage$Art_des_Feiertags <- ""
+
+# Fülle die Art des Feiertags entsprechend der Bedingung
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "01-01"] <- "Neujahr"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "05-01"] <- "Tag der Arbeit"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "10-03"] <- "Tag der Deutschen Einheit"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "10-31"] <- "Reformationstag"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") %in% c("12-24", "12-25", "12-26")] <- "Weihnachten"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "12-31"] <- "Silvester"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") %in% c("04-06", "04-09", "03-29", "04-01", "04-18", "04-21", "04-03", "04-06", "03-25", "03-28", "04-14", "04-17", "03-30", "04-02", "04-19", "04-22")] <- "Ostern"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") %in% c("05-17", "05-28", "05-09", "05-20", "05-29", "06-09", "05-14", "05-25", "05-05", "05-16", "05-25", "06-05", "05-10", "05-21", "05-30", "06-10")] <- "Christi Himmelfahrt, Pfingsten"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "0"] <- "Kein Feiertag"
+# Anzeigen der ersten Zeilen des erstellten Datenframes
+head(Feiertage)
+
+```
+
+Hier erstelle ich die Tabelle, in der ich Feiertage anfüge
+
+```{r}
+alle_Feier <- full_join(alle_gefiltert, Feiertage, by = "Datum") %>%
+  as_tibble()
+
+Feier_filter <- alle_Feier %>%
+  filter(!is.na(Umsatz))
+nrow(Feier_filter)
+
+head(Feier_filter)
+```
+<<<<<<< HEAD
+Ich füge den Datensatz Ferientage zu der Tabelle hinzu 
+
+```{r}
+neue_ferientage_data$Datum <- as.Date(neue_ferientage_data$Datum, format="%Y-%m-%d")
+
+feiertage_ferientage <- full_join (Feier_filter, neue_ferientage_data, by = "Datum") %>%
+  as_tibble()
+head(feiertage_ferientage )
+```
+Einteilung des Datensatzes in Trainings- und Validierungsdatensatz
+```{r}
+# Konvertieren Sie das Datum in ein geeignetes Format
+Feier_filter$Datum <- as.Date(Feier_filter$Datum)
+
+# Trainingsdatensatz (01.07.2013 bis 31.07.2017)
+train_data <- Feier_filter %>% 
+  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2017-07-31"))
+
+# Validierungsdatensatz (01.08.2017 bis 31.07.2018)
+valid_data <- Feier_filter %>% 
+  filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
+```
+
