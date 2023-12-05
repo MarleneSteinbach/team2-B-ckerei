@@ -49,12 +49,19 @@ as_tibble(Zusammenfassung)
 
 Hier erstelle ich einen Tibble für Fussballspiele von Holstein Kiel in Kiel
 
- 
 ```{r}
-library(tibble)
+library(tidyverse)
 
-daten <- tibble(
-  Datum = as.Date(c(
+# Erstelle ein Datenframe mit dem gewünschten Zeitraum
+start_date <- as.Date("2012-01-01")
+end_date <- as.Date("2019-08-01")
+date_sequence <- seq(start_date, end_date, by = "1 day")
+
+Fussballspiele <- data.frame(Datum = date_sequence)
+
+# Erstelle die Spalte Fussballspiel und fülle sie entsprechend der Bedingung
+Fussballspiele$Fussballspiel <- ifelse(
+  format(Fussballspiele$Datum, "%Y-%m-%d") %in% c(
     "2011-07-22", "2011-08-06", "2011-08-20", "2011-09-10", "2011-09-24",
     "2011-10-15", "2011-10-29", "2011-11-19", "2011-12-03", "2011-12-17",
     "2012-02-04", "2012-02-18", "2012-03-03", "2012-03-17", "2012-03-31",
@@ -85,11 +92,14 @@ daten <- tibble(
     "2021-05-07", "2023-08-05", "2023-09-17", "2023-09-30", "2023-10-29",
     "2023-11-04", "2023-11-26", "2023-12-10", "2024-02-03", "2024-02-17",
     "2024-03-16", "2024-04-20"
-  ))
+  ),
+  "1",
+  "0"
 )
 
-daten
+# Anzeigen der ersten Zeilen des erstellten Datenframes
+head(Fussballspiele)
 
 
-```
+````
 

@@ -110,3 +110,11 @@ valid_data <- Feier_filter %>%
   filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
 ```
 
+
+Wochentage als Faktor hinzufügen
+
+```{r}
+data_weekdays <- valid_data %>%
+  mutate(Wochentag = wday(Datum, label = TRUE))
+```
+
