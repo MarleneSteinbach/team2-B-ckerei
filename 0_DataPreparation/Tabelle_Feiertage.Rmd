@@ -87,6 +87,17 @@ nrow(Feier_filter)
 
 head(Feier_filter)
 ```
+Ich füge den Datensatz Ferientage zu der Tabelle hinzu 
+
+```{r}
+neue_ferientage_data$Datum <- as.Date(neue_ferientage_data$Datum, format="%Y-%m-%d")
+
+feiertage_ferientage <- full_join (alle_Feier, neue_ferientage_data, by = "Datum") %>%
+  as_tibble()
+print(feiertage_ferientage )
+```
+
+
 Einteilung des Datensatzes in Trainings- und Validierungsdatensatz
 ```{r}
 # Konvertieren Sie das Datum in ein geeignetes Format
