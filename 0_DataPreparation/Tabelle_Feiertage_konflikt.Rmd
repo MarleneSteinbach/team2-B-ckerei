@@ -91,12 +91,34 @@ head(Feier_filter)
 Ich füge den Datensatz Ferientage zu der Tabelle hinzu 
 
 ```{r}
+neue_ferientage_data <- read.csv("neue_ferientage_count.csv")
 neue_ferientage_data$Datum <- as.Date(neue_ferientage_data$Datum, format="%Y-%m-%d")
 
 feiertage_ferientage <- full_join (Feier_filter, neue_ferientage_data, by = "Datum") %>%
   as_tibble()
 head(feiertage_ferientage )
+
+Feier_filter <- feiertage_ferientage
+
 ```
+
+
+Kiwo und Wochentage richtig formatieren
+zuerst bei kiwo: wenn es NA ist durch 0 ersetzen
+```{r}
+Feier_filter$KielerWoche[is.na(Feier_filter$KielerWoche)] <- 0
+
+# Variable wochentag hinzufügen
+Feier_filter$Wochentag <- weekdays(Feier_filter$Datum)
+
+# Wochentag als faktor
+Feier_filter$Wochentag <- as.factor(Feier_filter$Wochentag)
+```
+
+
+
+
+
 Einteilung des Datensatzes in Trainings- und Validierungsdatensatz
 ```{r}
 # Konvertieren Sie das Datum in ein geeignetes Format
@@ -110,17 +132,5 @@ train_data <- Feier_filter %>%
 valid_data <- Feier_filter %>% 
   filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
 ```
-Kiwo und Wochentage richtig formatieren
-zuerst bei kiwo: wenn es NA ist durch 0 ersetzen
-```{r}
-train_data$KielerWoche[is.na(train_data$KielerWoche)] <- 0
-
-# Variable wochentag hinzufügen
-train_data$Wochentag <- weekdays(train_data$Datum)
-
-# Wochentag als faktor
-train_data$Wochentag <- as.factor(train_data$Wochentag)
-```
-
 
 ```{r}
