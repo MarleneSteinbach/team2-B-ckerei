@@ -212,12 +212,34 @@ head(ourdata_fussball)
 colnames(train_data)
 
 #Berechne ein Regressionsmodell für den Umsatz für jede Warengruppe einzeln
-model_1 <- lm(Umsatz ~ Temperatur, data = train_data %>% filter(Warengruppe == "1"))
+model_1 <- lm(Umsatz ~ as.factor(Wochentag) + Temperatur + Bewoelkung, data = train_data %>% filter(Warengruppe == "1"))
 summary(model_1)
 
 ```
+## versuche, den Datensatz für kaggle richtig hochzuladen
+
 
 ```{r}
+# füge Datum und Warengruppe zu einer variable zusammen im Format 201801011 (01. Januar 2018, Warengruppe 1, entferne die Striche bei Datum)
+
+
+valid_data$id <- paste0(valid_data$Datum, valid_data$Warengruppe)
+# entferne die Striche bei Datum
+valid_data$id <- gsub("-", "", valid_data$id)
 
 ```
 
+## Füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen nach model_1
+
+```{r}
+valid_data$predUmsatz <- predict(model, valid_data)
+
+# erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
+valid_data_pred <- valid_data %>% 
+  select(id, predUmsatz)
+
+# exportiere als .csv datei in github repository
+write.csv(valid_data_pred, "valid_data_pred.csv", row.names = FALSE)
+
+
+```
