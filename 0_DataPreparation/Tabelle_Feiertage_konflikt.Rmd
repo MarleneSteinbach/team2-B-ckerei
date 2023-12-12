@@ -205,7 +205,7 @@ valid_data <- ourdata_fussball %>%
 regressionsgleichung aufstellen random
 
 ```{r}
-model <- lm(Umsatz ~ Temperatur * Wettercode * Bewoelkung * Windgeschwindigkeit + as.factor(Warengruppe) + Fussballspiel * Ferien * Feiertag  * KielerWoche + as.factor(Wochentag), data = train_data)
+model <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag), data = train_data)
 summary(model)
 head(ourdata_fussball)
 
