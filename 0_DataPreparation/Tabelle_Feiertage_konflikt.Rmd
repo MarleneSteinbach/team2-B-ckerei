@@ -232,13 +232,15 @@ valid_data$id <- gsub("-", "", valid_data$id)
 ## Füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen nach model_1
 
 ```{r}
-valid_data$predUmsatz <- predict(model, valid_data)
+valid_data$umsatz <- predict(model, valid_data)
 
 # erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
 valid_data_pred <- valid_data %>% 
-  select(id, predUmsatz)
+  select(id, predUmsatz) %>%
+  rename (umsatz = predUmsatz)
 
-# exportiere als .csv datei in github repository
+# exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
+
 write.csv(valid_data_pred, "valid_data_pred.csv", row.names = FALSE)
 
 
