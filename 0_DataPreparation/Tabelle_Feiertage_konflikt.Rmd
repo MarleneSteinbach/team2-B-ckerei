@@ -176,6 +176,8 @@ head(Fussballspiele)
 ````
 
 
+
+
 ```{r}
 ourdata_fussball <- left_join(Feier_filter, Fussballspiele, by = "Datum")
 
@@ -188,7 +190,27 @@ ourdata_fussball$Umsatz <- as.numeric(ourdata_fussball$Umsatz)
 ourdata_fussball$Temperatur <- as.numeric(ourdata_fussball$Temperatur)
 ```
 
+
+
+Füge hinzu, ob ein Flohmarkt stattgefunden hat: 
+```{r}
+# füge hinzu, ob ein Flohmarkt stattgefunden hat. erstelle eine Variable "Flohmarkt" mit den Werten 1 und 0. Von März bis September bekommt jeweils der erste Sonntag im Monat eine 1. Den Monat erkennt man am Datum.
+
+
+ourdata_fussball$Flohmarkt <- ifelse(ourdata_fussball$Datum %in% c("2013-03-03", "2013-04-07", "2013-05-05", "2013-06-02", "2013-07-07", "2013-08-04", "2013-09-01", "2014-03-02", "2014-04-06", "2014-05-04", "2014-06-01", "2014-07-06", "2014-08-03", "2014-09-07",  "2015-03-01", "2015-04-05", "2015-05-03", "2015-06-07", "2015-07-05", "2015-08-02", "2015-09-06", "2016-03-06", "2016-04-03", "2016-05-01", "2016-06-05", "2016-07-03", "2016-08-07", "2016-09-04", "2017-03-05", "2017-04-02", "2017-05-07", "2017-06-04", "2017-07-02", "2017-08-06", "2017-09-03", "2018-03-04", "2018-04-01", "2018-05-06", "2018-06-03", "2018-07-01", "2018-08-05", "2018-09-02"),1,0)
+
+#count how many Flohmarkt = 1
+sum(ourdata_fussball$Flohmarkt == 1)
+
+
+```
+
+
+
 Einteilung des Datensatzes in Trainings- und Validierungsdatensatz
+
+
+
 ```{r}
 # Konvertieren Sie das Datum in ein geeignetes Format
 ourdata_fussball$Datum <- as.Date(ourdata_fussball$Datum)
@@ -238,6 +260,8 @@ valid_data$umsatz <- predict(model, valid_data)
 valid_data_pred <- valid_data %>% 
   select(id, predUmsatz) %>%
   rename (umsatz = predUmsatz)
+# id solllte numerisch sein
+valid_data_pred$id <- as.numeric(valid_data_pred$id)
 
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
 
@@ -245,3 +269,5 @@ write.csv(valid_data_pred, "valid_data_pred.csv", row.names = FALSE)
 
 
 ```
+
+
