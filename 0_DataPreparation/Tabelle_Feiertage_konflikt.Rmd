@@ -222,20 +222,31 @@ train_data <- ourdata_fussball %>%
 # Validierungsdatensatz (01.08.2017 bis 31.07.2018)
 valid_data <- ourdata_fussball %>% 
   filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
+
+# alle Zeilen mit "Umsatz" = NA aus train_data entfernen
+train_data <- train_data %>% 
+  filter(!is.na(Umsatz))
+
+
 ```
 
 regressionsgleichung aufstellen random
 
 ```{r}
-model <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag), data = train_data)
+model <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt, data = train_data)
 summary(model)
 head(ourdata_fussball)
 
 colnames(train_data)
 
 #Berechne ein Regressionsmodell für den Umsatz für jede Warengruppe einzeln
-model_1 <- lm(Umsatz ~ as.factor(Wochentag) + Temperatur + Bewoelkung, data = train_data %>% filter(Warengruppe == "1"))
-summary(model_1)
+model_W1 <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt, data = train_data %>% filter(Warengruppe == 1))
+model_w2 <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt, data = train_data %>% filter(Warengruppe == 2))
+model_w3 <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt, data = train_data %>% filter(Warengruppe == 3))
+model_w4 <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt, data = train_data %>% filter(Warengruppe == 4))
+model_w5 <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt, data = train_data %>% filter(Warengruppe == 5))
+model_w6 <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt, data = train_data %>% filter(Warengruppe == 6))
+
 
 ```
 ## versuche, den Datensatz für kaggle richtig hochzuladen
@@ -248,18 +259,32 @@ summary(model_1)
 valid_data$id <- paste0(valid_data$Datum, valid_data$Warengruppe)
 # entferne die Striche bei Datum
 valid_data$id <- gsub("-", "", valid_data$id)
+levels_train <- levels(as.factor(train_data$Warengruppe))
+levels_valid <- levels(as.factor(valid_data$Warengruppe))
+
+# Überprüfen, ob die Stufen übereinstimmen
+if (!identical(levels_train, levels_valid)) {
+  # Wenn nicht, passen Sie die Stufen an oder fügen Sie fehlende Stufen hinzu
+  valid_data$Warengruppe <- factor(valid_data$Warengruppe, levels = levels_train)
+}
+valid_data$Warengruppe <- factor(valid_data$Warengruppe, levels = levels_train)
+
 
 ```
 
 ## Füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen nach model_1
 
 ```{r}
-valid_data$umsatz <- predict(model, valid_data)
+
+
+# füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
+
+valid_data$predUmsatz <- predict(model, valid_data)
 
 # erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
 valid_data_pred <- valid_data %>% 
   select(id, predUmsatz) %>%
-  rename (umsatz = predUmsatz)
+  rename(umsatz = predUmsatz)
 # id solllte numerisch sein
 valid_data_pred$id <- as.numeric(valid_data_pred$id)
 
