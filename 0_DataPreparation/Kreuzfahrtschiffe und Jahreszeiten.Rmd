@@ -41,7 +41,7 @@ get_season_start <- function(year, season) {
 
 # Erstelle eine leere Datenrahmen (data frame)
 data <- data.frame(
-  Datum = seq(as.Date("2013-07-01"), as.Date("2019-08-31"), by = "days")
+  Datum = seq(as.Date("2013-07-01"), as.Date("2019-07-30"), by = "days")
 )
 
 # Füge eine Spalte für die Jahreszeit hinzu und ersetze "Frühling" durch "Fruehling"
