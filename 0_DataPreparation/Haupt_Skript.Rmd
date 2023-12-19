@@ -273,6 +273,11 @@ valid_data <- ourdata_fussball %>%
 # alle Zeilen mit "Umsatz" = NA aus train_data entfernen
 train_data <- train_data %>% 
   filter(!is.na(Umsatz))
+valid_data <- valid_data %>%
+  filter(!is.na(Umsatz))
+
+train_data$Jahreszeit <- factor(train_data$Jahreszeit, levels = c("Sommer", "Frühling", "Herbst", "Winter"))
+valid_data$Jahreszeit <- factor(valid_data$Jahreszeit, levels = c("Sommer", "Frühling", "Herbst", "Winter"))
 
 
 ```
@@ -291,7 +296,7 @@ model_2 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatu
 
 model_3 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data)
 
-model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie)  + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data %>% filter(Warengruppe == 1))
+model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data)
 
 summary(model_1)
 summary(model_2)
@@ -337,11 +342,21 @@ valid_data$Warengruppe <- factor(valid_data$Warengruppe, levels = levels_train)
 ## Füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen nach model_1
 
 ```{r}
-
+levels(train_data$Jahreszeit)
+levels(valid_data$Jahreszeit)
+#Problembewältigung
+unique(valid_data$Jahreszeit)
+valid_data$Jahreszeit <- factor(valid_data$Jahreszeit, levels = c("Sommer", "Frühling", "Herbst", "Winter"))
+levels(valid_data$Jahreszeit)
+#Fehlende Werte werden gelöscht
+valid_data <- na.omit(valid_data)
+# Entferne die Gruppierung nach Jahreszeit
+valid_data <- ungroup(valid_data)
 
 # füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
 
-valid_data$predUmsatz <- predict(model_4, valid_data)
+valid_data$predUmsatz <- predict(model_2, valid_data)
+
 
 # erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
 valid_data_pred <- valid_data %>% 
