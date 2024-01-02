@@ -83,11 +83,11 @@ Hier erstelle ich die Tabelle, in der ich Feiertage anfüge
 alle_Feier <- full_join(alle_gefiltert, Feiertage, by = "Datum") %>%
   as_tibble()
 
-Feier_filter <- alle_Feier %>%
-  filter(!is.na(Umsatz))
-nrow(Feier_filter)
+#Feier_filter <- alle_Feier %>%
+ # filter(!is.na(Umsatz))
+#nrow(Feier_filter)
 
-head(Feier_filter)
+head(alle_Feier)
 ```
 <<<<<<< HEAD
 Ich füge den Datensatz Ferientage zu der Tabelle hinzu 
@@ -96,11 +96,13 @@ Ich füge den Datensatz Ferientage zu der Tabelle hinzu
 neue_ferientage_data <- read.csv("neue_ferientage_count.csv")
 neue_ferientage_data$Datum <- as.Date(neue_ferientage_data$Datum, format="%Y-%m-%d")
 
-feiertage_ferientage <- full_join (Feier_filter, neue_ferientage_data, by = "Datum") %>%
+feiertage_ferientage <- full_join(alle_Feier, neue_ferientage_data, by = "Datum") %>%
   as_tibble()
-head(feiertage_ferientage )
 
+head(feiertage_ferientage)
 
+#alle_Feier <- alle_Feier %>%
+ #select(-Ferien)
 ```
 
 
@@ -213,8 +215,8 @@ Jahreszeiten$Datum <- as.Date(Jahreszeiten$Datum)
 
 ourdata_fussball <- full_join(ourdata_fussball, Jahreszeiten, by = "Datum")
 head(ourdata_fussball)
-#ourdata_fussball <- ourdata_fussball %>%
- # select(-Jahreszeit.x)
+#feiertage_ferientage <- feiertage_ferientage %>%
+ #select(-Ferien.y)
 
 ```
 
@@ -278,6 +280,9 @@ Kreuzfahrten <- read.csv("kreuzfahrtengesamt.csv")
 Kreuzfahrten$Datum <- as.Date(Kreuzfahrten$Datum, format = "%y-%m-%d")
 
 ourdata_fussball <- full_join(ourdata_fussball, Kreuzfahrten, by = "Datum")
+
+# NA zu 0 formatieren
+ourdata_fussball$Kreuzfahrtschiffe <- replace(ourdata_fussball$Kreuzfahrtschiffe, is.na(ourdata_fussball$Kreuzfahrtschiffe), 0)
 
 head(ourdata_fussball)
 ```
@@ -409,17 +414,6 @@ head(valid_data_noNA)
 ## Füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen nach model_1
 
 ```{r}
-#levels(train_data_noNA$Jahreszeit)
-#levels(valid_data_noNA$Jahreszeit)
-##Problembewältigung
-# Get factor levels from the training data
-#factor_levels <- levels(train_data_noNA$Jahreszeit)
-
-## Ensure the factor levels in validation data match those from training data
-#valid_data_noNA$Jahreszeit <- factor(valid_data_noNA$Jahreszeit, levels = factor_levels)
-
-## Now, try making predictions again
-#valid_data_noNA$predUmsatz <- predict(model_3, newdata = valid_data_noNA)
 
 ## Entferne die Gruppierung nach Jahreszeit
 valid_data_noNA <- ungroup(valid_data_noNA)
