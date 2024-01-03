@@ -118,7 +118,7 @@ feiertage_ferientage$Wochentag <- weekdays(feiertage_ferientage$Datum)
 # Wochentag als faktor
 feiertage_ferientage$Wochentag <- as.factor(feiertage_ferientage$Wochentag)
 
-
+head(feiertage_ferientage)
 ```
 
 
@@ -283,6 +283,8 @@ ourdata_fussball <- full_join(ourdata_fussball, Kreuzfahrten, by = "Datum")
 
 # NA zu 0 formatieren
 ourdata_fussball$Kreuzfahrtschiffe <- replace(ourdata_fussball$Kreuzfahrtschiffe, is.na(ourdata_fussball$Kreuzfahrtschiffe), 0)
+ourdata_fussball$Wettercode <- replace(ourdata_fussball$Wettercode, is.na(ourdata_fussball$Wettercode), 0)
+ourdata_fussball$Bewoelkung <- replace(ourdata_fussball$Bewoelkung, is.na(ourdata_fussball$Bewoelkung), 0)
 
 head(ourdata_fussball)
 ```
@@ -434,7 +436,7 @@ valid_data_pred$id <- as.numeric(valid_data_pred$id)
 
 
 write.csv(valid_data_pred, "valid_data_pred_model_3.csv", row.names = FALSE)
-
+write.csv(valid_data, "valid_data.csv", row.names = FALSE)
 
 ```
 
