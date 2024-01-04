@@ -408,7 +408,7 @@ valid_data <- ourdata_fussball %>%
 
 # Testdatensatz (01.08.2018 bis 30.07.2019)
 test_data <- ourdata_fussball %>% 
-  filter(Datum >= as.Date("2018-08-01") & Datum <= as.Date("2019-07-30"))
+  filter(Datum >= as.Date("2018-08-01") & Datum <= as.Date("2019-08-01"))
 
 # alle Zeilen mit "Umsatz" = NA aus train_data entfernen
 train_data <- train_data %>% 
