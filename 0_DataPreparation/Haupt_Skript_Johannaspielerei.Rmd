@@ -567,9 +567,11 @@ test_data_pred <- test_data_pred[complete.cases(test_data_pred$id), ]
 test_data_pred$id <- as.numeric(test_data_pred$id)
 test_data$id <- as.numeric(test_data$id)
 
+#Löschen der 20 in der id
+test_data_pred <- test_data_pred %>%
+  mutate(id = as.numeric(str_remove(id, "^20")))
 
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
-diff_df_1 <- anti_join(test_data, test_data_pred, by="id")
 
 write.csv(test_data_pred, "valid_data_pred_model_2.csv", row.names = FALSE)
 
