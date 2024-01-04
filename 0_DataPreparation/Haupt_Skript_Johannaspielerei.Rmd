@@ -22,8 +22,20 @@ wetter <- read.table(csvwetter, head=TRUE, sep = ",")
 umdat <- read.csv(csvumsatzdaten_gekuerzt)
 kiwo <- read.csv(csvkiwo)
 
-alle <- full_join(wetter, umdat, by = "Datum") %>%
-  full_join(kiwo, by = "Datum")
+wetter$Datum <- as.Date(wetter$Datum, format="%Y-%m-%d")
+umdat$Datum <- as.Date(umdat$Datum, format="%Y-%m-%d")
+kiwo$Datum <- as.Date(kiwo$Datum, format="%Y-%m-%d")
+
+# Erstelle ein Datenframe mit dem gewünschten Zeitraum
+start_date <- as.Date("2012-01-01")
+end_date <- as.Date("2019-08-01")
+date_sequence <- seq(start_date, end_date, by = "1 day")
+
+Datum <- data.frame(Datum = date_sequence)
+
+alle <- full_join(Datum, wetter, by = "Datum") %>%
+  full_join(kiwo, by = "Datum") %>%
+  full_join(umdat, by = "Datum")
 as_tibble(alle)
 nrow(umdat)
 
@@ -547,22 +559,18 @@ test_data_pred <- test_data %>%
 
 # id solllte numerisch sein
 test_data_pred$id <- as.numeric(test_data_pred$id)
-test_data_pred_ <- test_data_pred[-nrow(test_data_pred), ]
+
 # Entfernen Sie vorübergehend Zeilen mit fehlenden Werten in der 'id'-Spalte
 test_data_pred <- test_data_pred[complete.cases(test_data_pred$id), ]
 
 # Führen Sie dann die Umwandlung durch
 test_data_pred$id <- as.numeric(test_data_pred$id)
+test_data$id <- as.numeric(test_data$id)
 
-#Löschen von "20"
-
-#valid_data_pred_ <- valid_data_pred_ %>%
- # mutate(id = as.numeric(str_remove(id, "^20")))
 
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
+diff_df_1 <- anti_join(test_data, test_data_pred, by="id")
 
-
-write.csv(valid_data_pred_, "valid_data_pred_model_3.csv", row.names = FALSE)
-write.csv(valid_data, "valid_data.csv", row.names = FALSE)
+write.csv(test_data_pred, "valid_data_pred_model_2.csv", row.names = FALSE)
 
 ```
