@@ -531,6 +531,11 @@ test_data_pred_4 <- test_data_4 %>%
   select(id, predUmsatz) %>%
   rename(umsatz = predUmsatz)
 
+test_data_pred_1 <- na.omit(test_data_pred_1)
+test_data_pred_2 <- na.omit(test_data_pred_2)
+test_data_pred_3 <- na.omit(test_data_pred_3)
+test_data_pred_4 <- na.omit(test_data_pred_4)
+
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
 
 write.csv(test_data_pred_1, "test_data_pred_model_1.csv", row.names = FALSE)
