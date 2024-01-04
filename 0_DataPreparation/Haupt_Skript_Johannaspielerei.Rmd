@@ -500,29 +500,42 @@ Füge eine Variable zu test_data hinzu, die predUmsatz heißt und wo die vorherg
 ## Entferne die Gruppierung nach Jahreszeit
 test_data <- ungroup(test_data)
 
-# füge eine Variable zu test_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
-
-test_data$predUmsatz <- predict(model_2, test_data)
-
-
-# erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
-test_data_pred <- test_data %>% 
-  select(id, predUmsatz) %>%
-  rename(umsatz = predUmsatz)
-
 # id solllte numerisch sein
 test_data_pred$id <- as.numeric(test_data_pred$id)
 
 # Entfernen Sie vorübergehend Zeilen mit fehlenden Werten in der 'id'-Spalte
 test_data_pred <- test_data_pred[complete.cases(test_data_pred$id), ]
 
+# füge eine Variable zu test_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
+test_data_1 <- test_data
+test_data_2 <- test_data
+test_data_3 <- test_data
+test_data_4 <- test_data
 
-#Löschen der 20 in der id
-#test_data_pred <- test_data_pred %>%
- # mutate(id = as.numeric(str_remove(id, "^20")))
+test_data_1$predUmsatz <- predict(model_1, test_data)
+test_data_2$predUmsatz <- predict(model_2, test_data)
+test_data_3$predUmsatz <- predict(model_3, test_data)
+test_data_4$predUmsatz <- predict(model_4, test_data)
+
+# erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
+test_data_pred_1 <- test_data_1 %>% 
+  select(id, predUmsatz) %>%
+  rename(umsatz = predUmsatz)#
+test_data_pred_2 <- test_data_2 %>% 
+  select(id, predUmsatz) %>%
+  rename(umsatz = predUmsatz)
+test_data_pred_3 <- test_data_3 %>% 
+  select(id, predUmsatz) %>%
+  rename(umsatz = predUmsatz)
+test_data_pred_4 <- test_data_4 %>% 
+  select(id, predUmsatz) %>%
+  rename(umsatz = predUmsatz)
 
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
 
-write.csv(test_data_pred, "test_data_pred_model_2.csv", row.names = FALSE)
+write.csv(test_data_pred_1, "test_data_pred_model_1.csv", row.names = FALSE)
+write.csv(test_data_pred_2, "test_data_pred_model_2.csv", row.names = FALSE)
+write.csv(test_data_pred_3, "test_data_pred_model_3.csv", row.names = FALSE)
+write.csv(test_data_pred_4, "test_data_pred_model_4.csv", row.names = FALSE)
 
 ```
