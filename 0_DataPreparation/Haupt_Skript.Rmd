@@ -298,13 +298,14 @@ model_3 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatu
 
 model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data)
 
-summary(model_1)
-summary(model_2)
-summary(model_3)
-summary(model_4)
-head(ourdata_fussball)
+#Modelle mit valid_data
+model_1v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-colnames(train_data)
+model_2v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+
+model_3v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+
+model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
 #Berechne ein Regressionsmodell für den Umsatz für jede Warengruppe einzeln
 model_W1 <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigkeit + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt, data = train_data %>% filter(Warengruppe == 1))
@@ -316,7 +317,40 @@ model_w6 <- lm(Umsatz ~ Temperatur + Wettercode + Bewoelkung + Windgeschwindigke
 
 
 ```
-## versuche, den Datensatz für kaggle richtig hochzuladen
+Testen welches Modell das beste ist
+```{r}
+# Funktion zur Berechnung des mittleren absoluten Fehlers (MAE)
+mae <- function(actual, predicted) mean(abs(actual - predicted))
+
+models <- list(
+  model_1 = predict(model_1),
+  model_2 = predict(model_2),
+  model_3 = predict(model_3),
+  model_4 = predict(model_4)
+)
+
+# Berechnung des MAE für jedes Modell
+mae_values <- lapply(models, function(pred) mae(train_data$Umsatz, pred))
+
+# Zusammenfügen der Ergebnisse in eine Tabelle
+result_table <- do.call(rbind, mae_values)
+
+models_valid <- list(
+  model_1v = predict(model_1v),
+  model_2v = predict(model_2v),
+  model_3v = predict(model_3v),
+  model_4v = predict(model_4v)
+)
+
+# Berechnung des MAE für jedes Modell
+mae_values_valid <- lapply(models_valid, function(pred) mae(valid_data$Umsatz, pred))
+
+# Zusammenfügen der Ergebnisse in eine Tabelle
+result_table_valid <- do.call(rbind, mae_values)
+```
+
+
+# versuche, den Datensatz für kaggle richtig hochzuladen
 
 
 ```{r}
@@ -355,7 +389,7 @@ valid_data <- ungroup(valid_data)
 
 # füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
 
-valid_data$predUmsatz <- predict(model_2, valid_data)
+valid_data$predUmsatz <- predict(model_1, valid_data)
 
 
 # erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
@@ -367,7 +401,7 @@ valid_data_pred$id <- as.numeric(valid_data_pred$id)
 
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
 
-write.csv(valid_data_pred, "valid_data_pred.csv", row.names = FALSE)
+write.csv(valid_data_pred, "valid_data_pred_model.csv", row.names = FALSE)
 
 
 ```
