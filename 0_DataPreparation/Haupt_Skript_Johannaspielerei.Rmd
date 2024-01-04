@@ -89,8 +89,8 @@ alle_Feier <- full_join(alle_gefiltert, Feiertage, by = "Datum") %>%
 
 head(alle_Feier)
 ```
-<<<<<<< HEAD
-Ich füge den Datensatz Ferientage zu der Tabelle hinzu 
+
+\<\<\<\<\<\<\< HEAD Ich füge den Datensatz Ferientage zu der Tabelle hinzu
 
 ```{r}
 neue_ferientage_data <- read.csv("neue_ferientage_count.csv")
@@ -105,9 +105,8 @@ head(feiertage_ferientage)
  #select(-Ferien)
 ```
 
+Kiwo und Wochentage richtig formatieren zuerst bei kiwo: wenn es NA ist durch 0 ersetzen
 
-Kiwo und Wochentage richtig formatieren
-zuerst bei kiwo: wenn es NA ist durch 0 ersetzen
 ```{r}
 library(dplyr)
 feiertage_ferientage$KielerWoche[is.na(feiertage_ferientage$KielerWoche)] <- 0
@@ -120,7 +119,6 @@ feiertage_ferientage$Wochentag <- as.factor(feiertage_ferientage$Wochentag)
 
 head(feiertage_ferientage)
 ```
-
 
 Hier erstelle ich einen Tibble für Fussballspiele von Holstein Kiel in Kiel
 
@@ -178,9 +176,6 @@ head(Fussballspiele)
 
 ```
 
-
-
-
 ```{r}
 ourdata_fussball <- full_join(feiertage_ferientage, Fussballspiele, by = "Datum")
 
@@ -193,8 +188,8 @@ ourdata_fussball$Umsatz <- as.numeric(ourdata_fussball$Umsatz)
 ourdata_fussball$Temperatur <- as.numeric(ourdata_fussball$Temperatur)
 ```
 
+Füge hinzu, ob ein Flohmarkt stattgefunden hat:
 
-Füge hinzu, ob ein Flohmarkt stattgefunden hat: 
 ```{r}
 # füge hinzu, ob ein Flohmarkt stattgefunden hat. erstelle eine Variable "Flohmarkt" mit den Werten 1 und 0. Von März bis September bekommt jeweils der erste Sonntag im Monat eine 1. Den Monat erkennt man am Datum.
 
@@ -208,6 +203,7 @@ sum(ourdata_fussball$Flohmarkt == 1)
 ```
 
 Füge Jahreszeiten hinzu
+
 ```{r}
 # Load the lubridate package for working with dates
 library(lubridate)
@@ -240,6 +236,7 @@ ourdata_fussball <- ourdata_fussball %>%
 ```
 
 Füge die Einordnung der Temperaturen nach high/medium/low ein
+
 ```{r}
 library(rsample)
 
@@ -265,7 +262,9 @@ ourdata_fussball <- ourdata_fussball %>%
 head(ourdata_fussball)
 
 ```
+
 Jahreszeiten und Temperaturkategorie umbenennen in Zahlenwerte
+
 ```{r}
 #Umbennenung Jahreszeiten
 ourdata_fussball <- ourdata_fussball %>%
@@ -289,7 +288,6 @@ head(ourdata_fussball)
 
 ```
 
-
 Füge Kreuzfahrten ein
 
 ```{r}
@@ -307,7 +305,9 @@ ourdata_fussball$Bewoelkung <- replace(ourdata_fussball$Bewoelkung, is.na(ourdat
 
 head(ourdata_fussball)
 ```
+
 Überprüfung nach richtiger Formatierung
+
 ```{r}
 column_classes <- sapply(ourdata_fussball, class)
 
@@ -323,8 +323,8 @@ ourdata_fussball <- ourdata_fussball %>%
 
 ```
 
-
 Einteilung des Datensatzes in Trainings- und Validierungsdatensatz
+
 ```{r}
 # Konvertieren Sie das Datum in ein geeignetes Format
 ourdata_fussball$Datum <- as.Date(ourdata_fussball$Datum)
@@ -340,7 +340,7 @@ train_data <- ourdata_fussball %>%
 
 # Validierungsdatensatz (01.08.2017 bis 31.07.2018)
 valid_data <- ourdata_fussball %>% 
-  filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-30"))
+  filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
 
 # alle Zeilen mit "Umsatz" = NA aus train_data entfernen
 train_data <- train_data %>% 
@@ -355,6 +355,7 @@ valid_data <- valid_data %>%
 ```
 
 Entfernung der NA
+
 ```{r}
 train_data_noNA <- na.omit(train_data)
 valid_data_noNA <- na.omit(valid_data)
@@ -385,7 +386,9 @@ model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperat
 
 
 ```
+
 Testen welches Modell das beste ist
+
 ```{r}
 # Funktion zur Berechnung des mittleren absoluten Fehlers (MAE)
 mae <- function(actual, predicted) mean(abs(actual - predicted))
@@ -417,8 +420,8 @@ mae_values_valid <- lapply(models_valid, function(pred) mae(valid_data_noNA$Umsa
 result_table_valid <- do.call(rbind, mae_values)
 ```
 
-
 versuche, den Datensatz für kaggle richtig hochzuladen
+
 ```{r}
 # füge Datum und Warengruppe zu einer variable zusammen im Format 201801011 (01. Januar 2018, Warengruppe 1, entferne die Striche bei Datum)
 
@@ -457,13 +460,12 @@ valid_data_pred <- valid_data_noNA %>%
   rename(umsatz = predUmsatz)
 # id solllte numerisch sein
 valid_data_pred$id <- as.numeric(valid_data_pred$id)
+valid_data_pred_ <- valid_data_pred[-nrow(valid_data_pred), ]
 
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
 
 
-write.csv(valid_data_pred, "valid_data_pred_model_3.csv", row.names = FALSE)
+write.csv(valid_data_pred_, "valid_data_pred_model_3.csv", row.names = FALSE)
 write.csv(valid_data, "valid_data.csv", row.names = FALSE)
 
 ```
-
-
