@@ -29,13 +29,22 @@ nrow(umdat)
 
 alle_gefiltert <- alle
 
+# Warengruppe für Vorhersage ins Skript schreiben
+
 #nrow(alle)
 # alle_gefiltert <- alle %>%
 #   filter(!is.na(Umsatz))
 # nrow(alle_gefiltert)
 
 #alle_gefiltert hat noch den falschen Typ bei Datum, hab das mal angeglichen
+
 alle_gefiltert$Datum <- as.Date(alle_gefiltert$Datum, format = "%Y-%m-%d")
+
+alle_gefiltert$Bewoelkung[is.na(alle_gefiltert$Bewoelkung)] <- mean(alle_gefiltert$Bewoelkung, na.rm = TRUE)
+alle_gefiltert$Wettercode[is.na(alle_gefiltert$Wettercode)] <- mean(alle_gefiltert$Wettercode, na.rm = TRUE)
+alle_gefiltert$Temperatur[is.na(alle_gefiltert$Temperatur)] <- mean(alle_gefiltert$Temperatur, na.rm = TRUE)
+alle_gefiltert$Windgeschwindigkeit[is.na(alle_gefiltert$Windgeschwindigkeit)] <- mean(alle_gefiltert$Windgeschwindigkeit, na.rm = TRUE)
+
 ```
 
 Ιch erstelle hier eine Liste für die Feiertage vom "2012-01-01" bis zum "2019-08-01"
@@ -188,13 +197,55 @@ ourdata_fussball$Umsatz <- as.numeric(ourdata_fussball$Umsatz)
 ourdata_fussball$Temperatur <- as.numeric(ourdata_fussball$Temperatur)
 ```
 
+Einfügen Warengruppe für Zeitraum Test
+```{r}
+
+# lösche alle Zeilen, wo im Umsatz NA steht aber nur bis zum 01.08.2018
+ourdata_fussball <- ourdata_fussball %>% 
+  filter(!(is.na(Umsatz) & Datum <= as.Date("2018-08-01")))
+
+
+# Warengruppe ergänzen: 
+#Bei Daten wo Warengruppe = NA ist, wird die Zeile 5 mal kopiert und die  Warengruppe 1, 2, 3, 4, 5 eingefügt
+# Erstellen Sie eine Funktion, die die Zeilen mit NA in Warengruppe expandiert
+expand_na_rows <- function(df) {
+  # Filtern Sie die Zeilen, wo Warengruppe NA ist
+  na_rows <- df %>% filter(is.na(Warengruppe))
+  
+  # Entfernen Sie die Zeilen mit NA aus dem ursprünglichen Datensatz
+  df <- df %>% filter(!is.na(Warengruppe))
+  
+  # Erstellen Sie einen Datensatz, der jede NA-Zeile fünfmal wiederholt
+  # und fügen Sie die Warengruppe 1 bis 5 hinzu
+    expanded_rows <- na_rows %>%
+    slice(rep(1:n(), each = 5)) %>%
+    mutate(Warengruppe = rep(1:5, length.out = n()))
+  
+  # Fügen Sie die expandierten Zeilen wieder an den ursprünglichen Datensatz an
+  df <- bind_rows(df, expanded_rows)
+  
+  # Rückgabe des bearbeiteten Datensatzes
+  return(df)
+}
+
+# Wende die Funktion auf Ihren Datensatz an
+ourdata_fussball <- expand_na_rows(ourdata_fussball)
+
+
+#sort by datum
+ourdata_fussball <- ourdata_fussball %>% 
+  arrange(Datum)
+
+```
+
+
 Füge hinzu, ob ein Flohmarkt stattgefunden hat:
 
 ```{r}
 # füge hinzu, ob ein Flohmarkt stattgefunden hat. erstelle eine Variable "Flohmarkt" mit den Werten 1 und 0. Von März bis September bekommt jeweils der erste Sonntag im Monat eine 1. Den Monat erkennt man am Datum.
 
 
-ourdata_fussball$Flohmarkt <- ifelse(ourdata_fussball$Datum %in% c("2013-03-03", "2013-04-07", "2013-05-05", "2013-06-02", "2013-07-07", "2013-08-04", "2013-09-01", "2014-03-02", "2014-04-06", "2014-05-04", "2014-06-01", "2014-07-06", "2014-08-03", "2014-09-07",  "2015-03-01", "2015-04-05", "2015-05-03", "2015-06-07", "2015-07-05", "2015-08-02", "2015-09-06", "2016-03-06", "2016-04-03", "2016-05-01", "2016-06-05", "2016-07-03", "2016-08-07", "2016-09-04", "2017-03-05", "2017-04-02", "2017-05-07", "2017-06-04", "2017-07-02", "2017-08-06", "2017-09-03", "2018-03-04", "2018-04-01", "2018-05-06", "2018-06-03", "2018-07-01", "2018-08-05", "2018-09-02"),1,0)
+ourdata_fussball$Flohmarkt <- ifelse(ourdata_fussball$Datum %in% c("2013-03-03", "2013-04-07", "2013-05-05", "2013-06-02", "2013-07-07", "2013-08-04", "2013-09-01", "2014-03-02", "2014-04-06", "2014-05-04", "2014-06-01", "2014-07-06", "2014-08-03", "2014-09-07",  "2015-03-01", "2015-04-05", "2015-05-03", "2015-06-07", "2015-07-05", "2015-08-02", "2015-09-06", "2016-03-06", "2016-04-03", "2016-05-01", "2016-06-05", "2016-07-03", "2016-08-07", "2016-09-04", "2017-03-05", "2017-04-02", "2017-05-07", "2017-06-04", "2017-07-02", "2017-08-06", "2017-09-03", "2018-03-04", "2018-04-01", "2018-05-06", "2018-06-03", "2018-07-01", "2018-08-05", "2018-09-02", "2019-03-03", "2019-04-07", "2019-05-05", "2019-06-02", "2019-07-07"),1,0)
 
 #count how many Flohmarkt = 1
 sum(ourdata_fussball$Flohmarkt == 1)
@@ -300,8 +351,8 @@ ourdata_fussball <- full_join(ourdata_fussball, Kreuzfahrten, by = "Datum")
 
 # NA zu 0 formatieren
 ourdata_fussball$Kreuzfahrtschiffe <- replace(ourdata_fussball$Kreuzfahrtschiffe, is.na(ourdata_fussball$Kreuzfahrtschiffe), 0)
-ourdata_fussball$Wettercode <- replace(ourdata_fussball$Wettercode, is.na(ourdata_fussball$Wettercode), 0)
-ourdata_fussball$Bewoelkung <- replace(ourdata_fussball$Bewoelkung, is.na(ourdata_fussball$Bewoelkung), 0)
+#ourdata_fussball$Wettercode <- replace(ourdata_fussball$Wettercode, is.na(ourdata_fussball$Wettercode), 0)
+#ourdata_fussball$Bewoelkung <- replace(ourdata_fussball$Bewoelkung, is.na(ourdata_fussball$Bewoelkung), 0)
 
 head(ourdata_fussball)
 ```
@@ -326,6 +377,19 @@ ourdata_fussball <- ourdata_fussball %>%
 Einteilung des Datensatzes in Trainings- und Validierungsdatensatz
 
 ```{r}
+# Laden Sie erforderliche Pakete (falls noch nicht installiert)
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
+
+if (!requireNamespace("caret", quietly = TRUE)) {
+  install.packages("caret")
+}
+
+# Laden Sie die Pakete
+library(tidyverse)
+library(caret)
+
 # Konvertieren Sie das Datum in ein geeignetes Format
 ourdata_fussball$Datum <- as.Date(ourdata_fussball$Datum)
 
@@ -342,15 +406,16 @@ train_data <- ourdata_fussball %>%
 valid_data <- ourdata_fussball %>% 
   filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
 
-# Testdatensatz (01.08.2018 bis 31.07.2019)
+# Testdatensatz (01.08.2018 bis 30.07.2019)
 test_data <- ourdata_fussball %>% 
-  filter(Datum >= as.Date("2018-08-01") & Datum <= as.Date("2019-07-31"))
+  filter(Datum >= as.Date("2018-08-01") & Datum <= as.Date("2019-07-30"))
 
 # alle Zeilen mit "Umsatz" = NA aus train_data entfernen
 train_data <- train_data %>% 
   filter(!is.na(Umsatz))
 valid_data <- valid_data %>%
   filter(!is.na(Umsatz))
+
 
 #train_data$Jahreszeit <- factor(train_data$Jahreszeit, levels = c("Sommer", "Frühling", "Herbst", #"Winter"))
 #valid_data$Jahreszeit <- factor(valid_data$Jahreszeit, levels = c("Sommer", "Frühling", "Herbst", #"Winter"))
@@ -380,19 +445,35 @@ model_3 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatu
 model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur *  as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
 #Modelle mit valid_data
-model_1v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur +  as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data_noNA)
+model_1v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_2v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur *  as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data_noNA)
+model_2v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_3v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur *  as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data_noNA)
+model_3v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur *  as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur *  as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data_noNA)
+model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
+# Vorhersagen für den Validierungsdatensatz
+pred_valid_1 <- predict(model_1, newdata = valid_data)
+pred_valid_2 <- predict(model_2, newdata = valid_data)
+pred_valid_3 <- predict(model_3, newdata = valid_data)
+pred_valid_4 <- predict(model_4, newdata = valid_data)
 
 ```
 
 Testen welches Modell das beste ist
-
+```{r}
+# Auswertung der Vorhersagen
+accuracy_1 <- postResample(pred = pred_valid_1, obs = valid_data$Umsatz)
+accuracy_2 <- postResample(pred = pred_valid_2, obs = valid_data$Umsatz)
+accuracy_3 <- postResample(pred = pred_valid_3, obs = valid_data$Umsatz)
+accuracy_4 <- postResample(pred = pred_valid_4, obs = valid_data$Umsatz)
+# Zusammenfügen der Ergebnisse in eine Tabelle
+accuracy <- list(
+  accuracy_1, accuracy_2, accuracy_3, accuracy_4
+)
+print(accuracy)
+```
 ```{r}
 # Funktion zur Berechnung des mittleren absoluten Fehlers (MAE)
 mae <- function(actual, predicted) mean(abs(actual - predicted))
@@ -429,47 +510,54 @@ versuche, den Datensatz für kaggle richtig hochzuladen
 ```{r}
 # füge Datum und Warengruppe zu einer variable zusammen im Format 201801011 (01. Januar 2018, Warengruppe 1, entferne die Striche bei Datum)
 
-
-valid_data_noNA$id <- paste0(valid_data_noNA$Datum, valid_data_noNA$Warengruppe)
+test_data$id <- paste0(test_data$Datum, test_data$Warengruppe)
 # entferne die Striche bei Datum
-valid_data_noNA$id <- gsub("-", "", valid_data_noNA$id)
+test_data$id <- gsub("-", "", test_data$id)
 levels_train <- levels(as.factor(train_data_noNA$Warengruppe))
 levels_valid <- levels(as.factor(valid_data_noNA$Warengruppe))
+levels_test <- levels(as.factor(test_data$Warengruppe))
+
 
 # Überprüfen, ob die Stufen übereinstimmen
-if (!identical(levels_train, levels_valid)) {
+if (!identical(levels_valid, levels_test)) {
   # Wenn nicht, passen Sie die Stufen an oder fügen Sie fehlende Stufen hinzu
-  valid_data_noNA$Warengruppe <- factor(valid_data_noNA$Warengruppe, levels = levels_train)
+  test_data$Warengruppe <- factor(test_data$Warengruppe, levels = levels_valid)
 }
-valid_data_noNA$Warengruppe <- factor(valid_data_noNA$Warengruppe, levels = levels_train)
-head(valid_data_noNA)
+test_data$Warengruppe <- factor(test_data$Warengruppe, levels = levels_valid)
+head(test_data)
 
 ```
 
-## Füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen nach model_1
+Füge eine Variable zu test_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen nach model_1
 
 ```{r}
 
 ## Entferne die Gruppierung nach Jahreszeit
-valid_data_noNA <- ungroup(valid_data_noNA)
+test_data <- ungroup(test_data)
 
-# füge eine Variable zu valid_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
+# füge eine Variable zu test_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
 
-valid_data_noNA$predUmsatz <- predict(model_3, valid_data_noNA)
+test_data$predUmsatz <- predict(model_2, test_data)
 
 
 # erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
-valid_data_pred <- valid_data_noNA %>% 
+test_data_pred <- test_data %>% 
   select(id, predUmsatz) %>%
   rename(umsatz = predUmsatz)
+
 # id solllte numerisch sein
-valid_data_pred$id <- as.numeric(valid_data_pred$id)
-valid_data_pred_ <- valid_data_pred[-nrow(valid_data_pred), ]
+test_data_pred$id <- as.numeric(test_data_pred$id)
+test_data_pred_ <- test_data_pred[-nrow(test_data_pred), ]
+# Entfernen Sie vorübergehend Zeilen mit fehlenden Werten in der 'id'-Spalte
+test_data_pred <- test_data_pred[complete.cases(test_data_pred$id), ]
+
+# Führen Sie dann die Umwandlung durch
+test_data_pred$id <- as.numeric(test_data_pred$id)
 
 #Löschen von "20"
 
-valid_data_pred_ <- valid_data_pred_ %>%
-  mutate(id = as.numeric(str_remove(id, "^20")))
+#valid_data_pred_ <- valid_data_pred_ %>%
+ # mutate(id = as.numeric(str_remove(id, "^20")))
 
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
 
