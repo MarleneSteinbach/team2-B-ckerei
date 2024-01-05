@@ -22,6 +22,11 @@ wetter <- read.table(csvwetter, head=TRUE, sep = ",")
 umdat <- read.csv(csvumsatzdaten_gekuerzt)
 kiwo <- read.csv(csvkiwo)
 
+#Wettercodes approximieren 
+library(zoo)
+wetter$Wettercode <- na.approx(wetter$Wettercode)
+wetter$Wettercode <- as.integer(wetter$Wettercode)
+
 alle <- full_join(wetter, umdat, by = "Datum") %>%
   full_join(kiwo, by = "Datum")
 as_tibble(alle)
@@ -282,10 +287,7 @@ valid_data$Jahreszeit <- factor(valid_data$Jahreszeit, levels = c("Sommer", "Fr�
 
 ```
 
-Entfernung der NA
-```{r}
 
-```
 
 regressionsgleichung aufstellen random
 
@@ -405,5 +407,10 @@ write.csv(valid_data_pred, "valid_data_pred_model.csv", row.names = FALSE)
 
 
 ```
-
+CSV für die Datenaufbereitung
+```{r}
+# Kreuzfahrtschiffe NAs entfernen und CSV für Python
+ourdata_fussball$Kreuzfahrtschiffe[is.na(ourdata_fussball$Kreuzfahrtschiffe)] <- 0
+write.csv(ourdata_fussball, "Gesamtdatensatz.csv", row.names = FALSE)
+```
 
