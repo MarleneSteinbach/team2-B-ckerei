@@ -23,9 +23,9 @@ umdat <- read.csv(csvumsatzdaten_gekuerzt)
 kiwo <- read.csv(csvkiwo)
 
 #Wettercodes approximieren 
-library(zoo)
-wetter$Wettercode <- na.approx(wetter$Wettercode)
-wetter$Wettercode <- as.integer(wetter$Wettercode)
+#library(zoo)
+#wetter$Wettercode <- na.approx(wetter$Wettercode)
+#wetter$Wettercode <- as.integer(wetter$Wettercode)
 
 alle <- full_join(wetter, umdat, by = "Datum") %>%
   full_join(kiwo, by = "Datum")
