@@ -160,7 +160,20 @@ data <- data %>%
 
 
 CSV für die Datenaufbereitung
+Feiertage speichern und in eine CSV Schreiben
+
 ```{r}
-write.csv(ourdata_fussball, "Gesamtdatensatz.csv", row.names = FALSE)
+
+# Dateipfad zur CSV-Datei im aktuellen Arbeitsverzeichnis erstellen
+file_path <- "Data.csv"
+
+# Schreiben Sie die CSV-Datei
+write.csv(data, file_path, row.names = FALSE)
+
+# Optional: Bestätigungsnachricht ausgeben
+cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeichert:", file_path, "\n")
+
+
 ```
+
 
