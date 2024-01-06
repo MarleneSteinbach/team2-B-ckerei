@@ -1,0 +1,77 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+# Create list with needed libraries
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo")
+
+# Load each listed library and check if it is installed and install if necessary
+for (pkg in pkgs) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+Jahreszeiten erstellen
+```{r}
+# Erstelle eine Funktion, um die Jahreszeit basierend auf dem Datum zu bestimmen
+get_season <- function(date) {
+  month_day <- as.numeric(format(date, "%m%d"))
+  
+  if (month_day >= 320 & month_day < 621) {
+    return("Fruehling")
+  } else if (month_day >= 621 & month_day < 923) {
+    return("Sommer")
+  } else if (month_day >= 923 & month_day < 1222) {
+    return("Herbst")
+  } else {
+    return("Winter")
+  }
+}
+
+# Erstelle eine Funktion, um das Startdatum der Jahreszeiten zu bestimmen
+get_season_start <- function(year, season) {
+  if (season == "Fruehling") {
+    return(as.Date(paste(year, "03-20", sep = "-")))
+  } else if (season == "Sommer") {
+    return(as.Date(paste(year, "06-21", sep = "-")))
+  } else if (season == "Herbst") {
+    return(as.Date(paste(year, "09-22", sep = "-")))
+  } else {
+    return(as.Date(paste(year, "12-21", sep = "-")))
+  }
+}
+
+# Erstelle eine leere Datenrahmen (data frame)
+data <- data.frame(
+  Datum = seq(as.Date("2013-07-01"), as.Date("2019-08-31"), by = "days")
+)
+
+# Füge eine Spalte für die Jahreszeit hinzu und ersetze "Frühling" durch "Fruehling"
+Jahreszeiten <- data %>%
+  mutate(Jahreszeit = sapply(Datum, get_season)) %>%
+  mutate(Jahreszeit = ifelse(Jahreszeit == "Fruehling", "Fruehling", Jahreszeit))
+
+```
+Jahreszeiten in eine CSV schreiben
+```{r}
+
+# Erstellen Sie den Dateipfad zum Zielverzeichnis
+subdirectory <- "../Datenvorbereitungcsv"
+target_directory <- file.path(getwd(), subdirectory)
+
+
+# Erstellen Sie den vollständigen Dateipfad zur CSV-Datei im Zielverzeichnis
+file_path <- file.path(target_directory, "Jahreszeiten.csv")
+
+# Schreiben Sie die CSV-Datei
+write.csv(Jahreszeiten, file_path, row.names = FALSE)
+
+# Optional: Bestätigungsnachricht ausgeben
+cat("CSV-Datei erfolgreich erstellt und im Zielverzeichnis gespeichert:", file_path, "\n")
+
+
+
+```

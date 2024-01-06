@@ -1,0 +1,1414 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Kreuzfahrtschiffe csv erstellen und Daten für 2013
+```{r}
+# Installieren und Laden der Bibliothek 'tidyverse'
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
+library(tidyverse)
+#juli fehlt noch
+
+rohdaten_april13 <- "
+Sa, 13.04.13, 08:00, 13.04.13, 17:00, AIDAcara, Ostseekai
+Mi, 17.04.13, 08:00, 17.04.13, 17:00, AIDAcara, Ostseekai
+Sa, 20.04.13, 08:00, 20.04.13, 17:00, AIDAcara, Ostseekai
+Di, 23.04.13, 07:30, 23.04.13, 17:30, Astor, Norwegenkai
+Mi, 24.04.13, 08:00, 24.04.13, 17:00, AIDAcara, Ostseekai
+Do, 25.04.13, 10:00, 25.04.13, 16:00, MSC Musica, Ostseekai
+Sa, 27.04.13, 08:00, 27.04.13, 17:00, AIDAcara, Ostseekai
+So, 28.04.13, 10:00, 28.04.13, 16:00, MSC Musica, Ostseekai
+Di, 30.04.13, 08:00, 30.04.13, 23:00, Rotterdam, Ostseekai
+"
+
+rohdaten_mai13 <- "
+Mi, 01.05.13, 08:00, 01.05.13, 17:00, AIDAcara, Ostseekai
+Mi, 01.05.13, 09:00, 01.05.13, 17:00, Costa Pacifica, Ostseekai
+Sa, 04.05.13, 08:00, 04.05.13, 17:00, AIDAcara, Ostseekai
+So, 05.05.13, 08:00, 05.05.13, 16:00, MSC Musica, Ostseekai
+So, 05.05.13, 08:00, 05.05.13, 17:00, Delphin, Norwegenkai
+Di, 07.05.13, 10:00, 07.05.13, 18:00, MSC Poesia, Ostseekai
+Sa, 10.05.13, 08:00, 10.05.13, 17:00, AIDAcara, Ostseekai
+Sa, 10.05.13, 08:00, 10.05.13, 18:00, MSC Poesia, Ostseekai
+So, 11.05.13, 08:00, 11.05.13, 16:00, MSC Musica, Ostseekai
+So, 11.05.13, 08:00, 11.05.13, 17:00, Costa Pacifica, Ostseekai
+Mo, 13.05.13, 08:00, 13.05.13, 16:00, Delphin, Norwegenkai
+Do, 16.05.13, 07:00, 16.05.13, 22:00, Deutschland, Ostseekai
+Sa, 18.05.13, 08:00, 18.05.13, 17:00, AIDAcara, Ostseekai
+Sa, 18.05.13, 10:00, 18.05.13, 18:00, MSC Poesia, Ostseekai
+So, 19.05.13, 08:00, 19.05.13, 16:00, MSC Musica, Ostseekai
+Do, 23.05.13, 08:00, 23.05.13, 17:00, Costa Pacifica, Ostseekai
+Sa, 25.05.13, 08:00, 25.05.13, 17:00, AIDAcara, Ostseekai
+Sa, 25.05.13, 10:00, 25.05.13, 18:00, MSC Poesia, Norwegenkai
+So, 26.05.13, 08:00, 26.05.13, 16:00, MSC Musica, Ostseekai
+Mi, 28.05.13, 08:00, 28.05.13, 23:00, Rotterdam, Ostseekai
+Mi, 29.05.13, 07:00, 29.05.13, 17:00, Mein Schiff 1, Ostseekai
+Do, 29.05.13, 10:00, 29.05.13, 14:30, Ocean Majesty, Ostseekai
+Fr, 30.05.13, 07:00, 30.05.13, 17:00, Eurodam, Ostseekai
+Fr, 31.05.13, 08:00, 31.05.13, 17:30, Hamburg, Ostseekai
+"
+
+rohdaten_juni13 <- "
+Sa, 01.06.13, 08:00, 01.06.13, 17:00, AIDAcara, Ostseekai
+Sa, 01.06.13, 10:00, 01.06.13, 18:00, MSC Poesia, Ostseekai
+So, 02.06.13, 08:00, 02.06.13, 16:00, MSC Musica, Ostseekai
+Mo, 03.06.13, 09:00, 03.06.13, 17:00, Costa Pacifica, Ostseekai
+Mo, 03.06.13, 10:00, 03.06.13, 19:00, Delphin, Norwegenkai
+Di, 04.06.13, 07:00, 04.06.13, 19:00, Mein Schiff 1, Ostseekai
+Sa, 08.06.13, 08:00, 08.06.13, 15:00, Ocean Majesty, Norwegenkai
+Sa, 08.06.13, 08:00, 08.06.13, 17:00, AIDAcara, Ostseekai
+Sa, 08.06.13, 10:00, 08.06.13, 18:00, MSC Poesia, Norwegenkai
+So, 09.06.13, 07:00, 09.06.13, 17:00, Eurodam, Ostseekai
+So, 09.06.13, 07:00, 09.06.13, 19:00, Mein Schiff 1, Ostseekai
+So, 09.06.13, 08:00, 09.06.13, 16:00, MSC Musica, Ostseekai
+Mi, 12.06.13, 08:00, 12.06.13, 17:00, AIDAcara, Ostseekai
+Do, 13.06.13, 09:00, 13.06.13, 17:00, Costa Pacifica, Ostseekai
+Sa, 15.06.13, 08:00, 15.06.13, 17:00, AIDAcara, Norwegenkai
+Sa, 15.06.13, 10:00, 15.06.13, 14:00, Ocean Majesty, Ostseekai
+Sa, 15.06.13, 10:00, 15.06.13, 18:00, MSC Poesia, Norwegenkai
+So, 16.06.13, 07:00, 16.06.13, 18:00, Columbus 2, Ostuferhafen
+So, 16.06.13, 08:00, 16.06.13, 16:00, MSC Musica, Ostseekai
+Mi, 19.06.13, 07:00, 19.06.13, 17:00, Eurodam, Norwegenkai
+Do, 20.06.13, 07:00, 20.06.13, 19:00, Mein Schiff 1, Ostseekai
+Sa, 22.06.13, 10:00, 22.06.13, 18:00, MSC Poesia, Norwegenkai
+So, 23.06.13, 08:00, 23.06.13, 16:00, MSC Musica, Ostseekai
+Mo, 24.06.13, 12:00, 24.06.13, 18:00, Amadea, Norwegenkai
+Do, 27.06.13, 10:00, 27.06.13, 15:00, Ocean Majesty, Ostseekai
+Fr, 28.06.13, 06:00, 28.06.13, 18:00, Deutschland, Ostseekai
+Fr, 28.06.13, 07:00, 28.06.13, 18:00, Columbus 2, Ostseekai
+Sa, 29.06.13, 07:00, 29.06.13, 17:00, MSC Poesia, Norwegenkai
+Sa, 29.06.13, 07:30, 29.06.13, 17:30, Black Watch, Norwegenkai
+Sa, 29.06.13, 08:00, 29.06.13, 17:00, MSC Musica, Ostseekai
+Sa, 29.06.13, 10:00, 29.06.13, 18:00, Azamara Quest, Ostseekai
+So, 30.06.13, 08:00, 30.06.13, 16:00, Ostseekai, Ostuferhafen
+So, 30.06.13, 08:00, 30.06.13, 23:59, Ostseekai, Ostseekai
+"
+rohdaten_juli13 <- "
+Di, 02.07.13, 08:00, 02.07.13, 17:00, AIDAcara, Ostseekai
+Do, 04.07.13, 07:00, 04.07.13, 19:00, Mein Schiff 1, Ostseekai
+Sa, 06.07.13, 10:00, 06.07.13, 18:00, MSC Poesia, Ostseekai
+So, 07.07.13, 08:00, 07.07.13, 16:00, MSC Musica, Ostseekai
+Di, 09.07.13, 07:00, 09.07.13, 17:00, Eurodam, Ostseekai
+Di, 09.07.13, 07:00, 09.07.13, 18:00, Columbus 2, Norwegenkai
+Di, 09.07.13, 08:00, 09.07.13, 23:00, Rotterdam, Ostseekai
+Do, 11.07.13, 10:00, 11.07.13, 14:00, Ocean Majesty, Ostseekai
+Sa, 13.07.13, 07:30, 13.07.13, 17:30, Astor, Norwegenkai
+Sa, 13.07.13, 10:00, 13.07.13, 18:00, MSC Poesia, Norwegenkai
+So, 14.07.13, 07:00, 14.07.13, 19:00, Mein Schiff 1, Ostseekai
+So, 14.07.13, 08:00, 14.07.13, 16:00, MSC Musica, Ostseekai
+Mi, 17.07.13, 09:00, 17.07.13, 19:00, FTI Berlin, Ostseekai
+Do, 18.07.13, 07:00, 18.07.13, 17:00, Rotterdam, Ostseekai
+Fr, 19.07.13, 07:00, 19.07.13, 17:00, Eurodam, Ostseekai
+Fr, 19.07.13, 08:00, 19.07.13, 17:00, AIDAcara, Ostseekai
+Sa, 20.07.13, 10:00, 20.07.13, 18:00, MSC Poesia, Ostseekai
+So, 21.07.13, 07:00, 21.07.13, 18:00, Columbus 2, Ostseekai
+So, 21.07.13, 08:00, 21.07.13, 16:00, MSC Musica, Ostseekai
+Mo, 22.07.13, 07:00, 22.07.13, 19:00, Mein Schiff 1, Ostseekai
+Mo, 22.07.13, 07:00, 22.07.13, 18:00, MSC Poesia, Ostseekai
+Mi, 24.07.13, 08:30, 24.07.13, 15:00, Europa, Ostseekai
+Sa, 27.07.13, 10:00, 27.07.13, 18:00, Ocean Majesty, Ostseekai
+So, 28.07.13, 08:00, 28.07.13, 16:00, MSC Poesia, Ostseekai
+"
+
+rohdaten_august13 <- "
+Fr, 02.08.13, 07:00, 02.08.13, 19:00, Mein Schiff 1, Ostseekai
+Sa, 03.08.13, 10:00, 03.08.13, 18:00, MSC Poesia, Ostseekai
+So, 04.08.13, 08:00, 04.08.13, 16:00, MSC Musica, Ostseekai
+Mo, 05.08.13, 08:00, 05.08.13, 17:00, AIDAcara, Ostseekai
+Sa, 10.08.13, 08:00, 10.08.13, 17:00, AIDAcara, Ostseekai
+Sa, 10.08.13, 10:00, 10.08.13, 18:00, MSC Poesia, Ostseekai
+Sa, 10.08.13, 16:00, 10.08.13, 18:00, Ocean Majesty, Norwegenkai
+So, 11.08.13, 08:00, 11.08.13, 16:00, MSC Musica, Ostseekai
+Mo, 12.08.13, 07:00, 12.08.13, 19:00, Mein Schiff 1, Ostseekai
+Do, 15.08.13, 08:00, 15.08.13, 17:00, Costa Pacifica, Ostseekai
+Sa, 17.08.13, 10:00, 17.08.13, 18:00, MSC Poesia, Ostseekai
+So, 18.08.13, 08:00, 18.08.13, 16:00, MSC Musica, Ostseekai
+Mi, 21.08.13, 07:00, 21.08.13, 19:00, Europa, Ostseekai
+Do, 22.08.13, 07:00, 22.08.13, 19:00, Mein Schiff 1, Ostseekai
+Sa, 24.08.13, 08:00, 24.08.13, 17:00, AIDAcara, Ostseekai
+Sa, 24.08.13, 10:00, 24.08.13, 18:00, MSC Poesia, Ostseekai
+So, 25.08.13, 08:00, 25.08.13, 16:00, MSC Musica, Ostseekai
+So, 25.08.13, 08:00, 25.08.13, 17:00, Costa Pacifica, Ostseekai
+Di, 27.08.13, 08:00, 27.08.13, 18:00, Hamburg, Ostseekai
+Fr, 30.08.13, 07:00, 30.08.13, 19:00, Mein Schiff 1, Ostseekai
+Sa, 31.08.13, 10:00, 31.08.13, 18:00, MSC Poesia, Ostseekai
+"
+
+ 
+rohdaten_september13 <- "
+So, 01.09.13, 08:00, 01.09.13, 16:00, MSC Musica, Ostseekai
+Di, 03.09.13, 08:00, 03.09.13, 18:00, Deutschland, Norwegenkai
+Mi, 04.09.13, 08:00, 04.09.13, 17:00, Costa Pacifica, Ostseekai
+Sa, 07.09.13, 08:00, 07.09.13, 17:00, AIDAcara, Ostseekai
+Sa, 07.09.13, 08:00, 07.09.13, 17:00, Delphin, Norwegenkai
+Sa, 07.09.13, 10:00, 07.09.13, 18:00, MSC Poesia, Ostseekai
+So, 08.09.13, 08:00, 08.09.13, 16:00, MSC Musica, Ostseekai
+Mo, 09.09.13, 07:00, 09.09.13, 19:00, Mein Schiff 1, Ostseekai
+Sa, 14.09.13, 08:00, 14.09.13, 17:00, AIDAcara, Norwegenkai
+Sa, 14.09.13, 10:00, 14.09.13, 18:00, MSC Poesia, Ostseekai
+Sa, 21.09.13, 08:00, 21.09.13, 17:00, AIDAcara, Ostseekai
+Sa, 28.09.13, 08:00, 28.09.13, 17:00, AIDAcara, Ostseekai
+"
+
+rohdaten_oktober13 <- "
+Mi, 02.10.13, 08:00, 02.10.13, 17:00, AIDAcara, Ostseekai
+"
+
+rohdaten_dezember13 <- "
+Mi, 04.12.13, 07:00, 04.12.13, 18:00, Black Watch, Ostseekai
+"
+
+rohdaten_2013 <- paste(rohdaten_april13, rohdaten_mai13, rohdaten_juni13,rohdaten_juli13, rohdaten_august13,rohdaten_september13,rohdaten_oktober13, sep = "\n")
+
+# Datenrahmen für 2013 erstellen und hinzufügen
+daten_2013 <- read.table(text = rohdaten_2013, sep = ",", header = FALSE, stringsAsFactors = FALSE)
+colnames(daten_2013) <- c("Tag","Datum", "UhrzeitVon", "DatumBis", "UhrzeitBis", "Schiff", "Terminal")
+daten_2013$Datum <- as.Date(daten_2013$Datum, format="%d.%m.%Y")
+daten_2013$Startzeit <- as.POSIXct(paste(daten_2013$Datum, daten_2013$UhrzeitVon), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+daten_2013$Endzeit <- as.POSIXct(paste(daten_2013$DatumBis, daten_2013$UhrzeitBis), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+
+
+
+# Daten für Oktober 2014 zur bestehenden Tabelle hinzufügen
+ergebnisse2013 <- (daten_2013 %>%
+      select(Datum, Startzeit, Endzeit, Schiff) %>%
+      filter(!is.na(Datum)) %>%
+      group_by(Datum) %>%
+      summarize(Kreuzfahrtschiffe = n())
+  )
+# Gesamtanzahl der Kreuzfahrtschiffe für das Jahr 2013 berechnen
+gesamtanzahl_kreuzfahrtschiffe_2013 <- sum(ergebnisse2013$Kreuzfahrtschiffe)
+
+# Ausgabe der Gesamtanzahl
+print(paste("Die Gesamtanzahl der Kreuzfahrtschiffe im Jahr 2013 beträgt:", gesamtanzahl_kreuzfahrtschiffe_2013))
+
+#aktuell 100 es fehlt juni mit 24 insgesamt 125 also in Ordnung 
+
+# Aktualisierte Daten in CSV exportieren
+#write.csv(ergebnisse2013, file = "kreuzfahrten_2013.csv", row.names = FALSE)
+
+# Ausgabe
+print("CSV-Datei erfolgreich erstellt: kreuzfahrten_2013.csv")
+#file.show("kreuzfahrten_2013.csv")
+
+```
+j
+ 
+
+Daten 2014
+```{r}
+# Daten für die erste Hälfte von April 2014
+rohdaten_april14 <- "
+05.04.14,08:00,05.04.14,17:00,AIDAcara,,,Ostseekai
+10.04.14,08:00,10.04.14,17:00,AIDAcara,,,Ostseekai
+12.04.14,08:00,12.04.14,17:00,AIDAcara,,,Ostseekai
+19.04.14,08:00,19.04.14,17:00,AIDAcara,,,Ostseekai
+26.04.14,08:00,26.04.14,17:00,AIDAcara,,,Ostseekai
+30.04.14,09:00,30.04.14,17:00,Costa Pacifica,,,Ostseekai
+"
+
+# Daten für die erste Hälfte von Mai 2014
+rohdaten_mai14 <- "
+03.05.14,08:00,03.05.14,17:00,Schiff1,,,Liegeplatz1
+10.05.14,08:00,10.05.14,17:00,Schiff2,,,Liegeplatz2
+10.05.14,08:00,10.05.14,17:00,Schiff3,,,Liegeplatz3
+10.05.14,10:00,10.05.14,18:00,Schiff4,,,Liegeplatz4
+11.05.14,09:00,11.05.14,17:00,Schiff5,,,Liegeplatz5
+14.05.14,10:00,14.05.14,18:00,Schiff6,,,Liegeplatz6
+15.05.14,08:00,15.05.14,17:00,Schiff7,,,Liegeplatz7
+17.05.14,08:00,17.05.14,17:00,Schiff8,,,Liegeplatz8
+17.05.14,10:00,17.05.14,18:00,Schiff9,,,Liegeplatz9
+19.05.14,07:00,19.05.14,13:00,Schiff10,,,Liegeplatz10
+19.05.14,08:00,19.05.14,16:00,Schiff11,,,Liegeplatz11
+21.05.14,07:00,21.05.14,17:00,Schiff12,,,Liegeplatz12
+22.05.14,09:00,22.05.14,17:00,Schiff13,,,Liegeplatz13
+24.05.14,08:00,24.05.14,17:00,Schiff14,,,Liegeplatz14
+24.05.14,10:00,24.05.14,18:00,Schiff15,,,Liegeplatz15
+25.05.14,09:00,25.05.14,16:00,Schiff16,,,Liegeplatz16
+27.05.14,08:00,27.05.14,18:00,Schiff17,,,Liegeplatz17
+29.05.14,07:00,29.05.14,19:00,Schiff18,,,Liegeplatz18
+31.05.14,08:00,31.05.14,17:00,Schiff19,,,Liegeplatz19
+31.05.14,07:00,31.05.14,16:00,Schiff20,,,Liegeplatz20
+31.05.14,10:00,31.05.14,18:00,Schiff21,,,Liegeplatz21
+"
+# Daten für Juni 2014
+rohdaten_juni14 <- "
+01.06.14,07:00,01.06.14,19:00,Mein Schiff 2,,,Ostseekai
+01.06.14,07:30,01.06.14,17:00,Azores,,,Norwegenkai
+01.06.14,09:00,01.06.14,18:00,Artania,,,Ostseekai
+02.06.14,07:00,02.06.14,19:00,Mein Schiff 1,,,Ostseekai
+02.06.14,08:00,02.06.14,17:00,Eurodam,,,Ostseekai
+02.06.14,09:00,02.06.14,17:00,Costa Pacifica,,,Ostseekai
+03.06.14,08:00,03.06.14,17:00,AIDAcara,,,Norwegenkai
+04.06.14,07:00,04.06.14,19:00,Mein Schiff 3,,,Ostseekai
+04.06.14,12:00,04.06.14,16:30,Ocean Majesty,,,Ostseekai
+06.06.14,07:00,06.06.14,19:00,Mein Schiff 3,,,Ostseekai
+06.06.14,08:00,06.06.14,17:00,AIDAcara,,,Ostseekai
+07.06.14,10:00,07.06.14,19:00,MSC Orchestra,,,Ostseekai
+09.06.14,08:00,09.06.14,17:00,AIDAcara,,,Ostseekai
+09.06.14,08:00,09.06.14,17:00,Delphin,,,Norwegenkai
+11.06.14,07:00,11.06.14,17:00,Europa 2,,,Ostseekai
+11.06.14,07:00,11.06.14,17:00,Mein Schiff 2,,,Ostseekai
+11.06.14,08:00,11.06.14,17:00,Hamburg,,,Norwegenkai
+12.06.14,08:00,12.06.14,17:00,AIDAcara,,,Ostseekai
+12.06.14,09:00,12.06.14,17:00,Costa Pacifica,,,Ostseekai
+13.06.14,07:00,13.06.14,19:00,Mein Schiff 1,,,Norwegenkai
+13.06.14,09:00,13.06.14,18:00,Artania,,,Ostseekai
+13.06.14,10:30,13.06.14,10:30,AIDAcara,,,Norwegenkai
+14.06.14,10:00,14.06.14,18:00,MSC Orchestra,,,Ostseekai
+14.06.14,08:00,14.06.14,15:00,Ocean Majesty,,,Ostseekai
+15.06.14,07:00,15.06.14,19:00,Europa 2,,,Ostseekai
+19.06.14,07:00,19.06.14,19:00,Mein Schiff 2,,,Ostseekai
+21.06.14,10:00,21.06.14,18:00,Hamburg,,,Norwegenkai
+21.06.14,10:00,21.06.14,18:00,AIDAcara,,,Ostseekai
+22.06.14,07:00,22.06.14,19:00,Mein Schiff 3,,,Ostseekai
+22.06.14,08:00,22.06.14,16:00,Delphin,,,Ostseekai
+23.06.14,09:00,23.06.14,17:00,Costa Pacifica,,,Norwegenkai
+24.06.14,08:00,24.06.14,17:00,Eurodam,,,Ostseekai
+25.06.14,09:00,25.06.14,22:00,Artania,,,Ostseekai
+25.06.14,12:00,25.06.14,18:00,Azores,,,Norwegenkai
+27.06.14,07:00,27.06.14,19:00,MSC Orchestra,,,Ostseekai
+28.06.14,06:00,28.06.14,16:00,Ocean Majesty,,,Ostseekai
+28.06.14,06:00,28.06.14,23:00,Mein Schiff 2,,,Norwegenkai
+28.06.14,10:00,28.06.14,18:00,Delphin,,,Ostseekai
+29.06.14,08:00,29.06.14,17:00,Costa Pacifica,,,Ostseekai
+30.06.14,07:00,30.06.14,19:00,Eurodam,,,Ostseekai
+"
+
+# Daten für Juli 2014
+rohdaten_juli14 <- "
+02.07.14,07:00,02.07.14,19:00,Mein Schiff 2,,,Ostseekai
+03.07.14,10:00,03.07.14,15:00,Azores,,,Ostseekai
+05.07.14,10:00,05.07.14,18:00,Artania,,,Ostseekai
+06.07.14,08:00,06.07.14,17:00,Mein Schiff 1,,,Ostseekai
+09.07.14,07:00,09.07.14,19:00,Eurodam,,,Ostseekai
+09.07.14,09:00,09.07.14,17:00,Costa Pacifica,,,Ostseekai
+10.07.14,10:00,10.07.14,16:00,AIDAcara,,,Ostseekai
+12.07.14,10:00,12.07.14,18:00,Mein Schiff 3,,,Ostseekai
+13.07.14,09:00,13.07.14,20:00,Ocean Majesty,,,Ostseekai
+14.07.14,07:00,14.07.14,19:00,Mein Schiff 3,,,Ostseekai
+16.07.14,08:00,16.07.14,17:00,AIDAcara,,,Ostseekai
+17.07.14,10:00,17.07.14,14:00,MSC Orchestra,,,Ostseekai
+18.07.14,07:00,18.07.14,17:00,AIDAcara,,,Ostseekai
+19.07.14,10:00,19.07.14,18:00,Delphin,,,Ostseekai
+20.07.14,09:00,20.07.14,17:00,Europa 2,,,Ostseekai
+22.07.14,07:00,22.07.14,19:00,Mein Schiff 2,,,Ostseekai
+22.07.14,08:00,22.07.14,16:00,Artania,,,Ostseekai
+26.07.14,10:00,26.07.14,18:00,Azores,,,Ostseekai
+29.07.14,07:00,29.07.14,23:00,MSC Orchestra,,,Ostseekai
+31.07.14,10:00,31.07.14,15:00,Mein Schiff 1,,,Ostseekai
+"
+
+
+# Daten für August 2014
+rohdaten_august14 <- "
+01.08.14,07:00,01.08.14,19:00,Mein Schiff 2,,,Ostseekai
+02.08.14,08:00,02.08.14,18:00,AIDAcara,,,Ostseekai
+02.08.14,10:00,02.08.14,18:00,MSC Orchestra,,,Ostseekai
+03.08.14,08:00,03.08.14,18:00,Hamburg,,,Ostseekai
+03.08.14,09:00,03.08.14,17:00,Costa Pacifica,,,Ostseekai
+05.08.14,08:00,05.08.14,18:00,Eurodam,,,Ostseekai
+09.08.14,07:00,09.08.14,19:00,Mein Schiff 2,,,Ostseekai
+09.08.14,10:00,09.08.14,18:00,MSC Orchestra,,,Ostseekai
+14.08.14,09:00,14.08.14,17:00,Costa Pacifica,,,Ostseekai
+16.08.14,08:00,16.08.14,18:00,AIDAcara,,,Ostseekai
+16.08.14,10:00,16.08.14,18:00,MSC Orchestra,,,Ostseekai
+17.08.14,07:00,17.08.14,19:00,Mein Schiff 2,,,Ostseekai
+18.08.14,07:30,18.08.14,17:30,Astor,,,Norwegenkai
+19.08.14,07:00,19.08.14,19:00,Europa,,,Ostseekai
+23.08.14,10:00,23.08.14,18:00,MSC Orchestra,,,Ostseekai
+25.08.14,08:00,25.08.14,18:00,Eurodam,,,Ostseekai
+25.08.14,09:00,25.08.14,17:00,Costa Pacifica,,,Ostseekai
+27.08.14,07:00,27.08.14,19:00,Mein Schiff 2,,,Ostseekai
+30.08.14,08:00,30.08.14,18:00,MSC Orchestra,,,Ostseekai
+30.08.14,10:00,30.08.14,18:00,MSC Orchestra,,,Ostseekai
+"
+
+# Daten für September 2014
+rohdaten_september14 <- "
+04.09.14,09:00,04.09.14,17:00,Costa Pacifica,,,Ostseekai
+06.09.14,07:00,06.09.14,19:00,Mein Schiff 2,,,Ostseekai
+06.09.14,08:00,06.09.14,19:00,AIDAcara,,,Schwedenkai
+06.09.14,10:00,06.09.14,18:00,MSC Orchestra,,,Ostseekai
+13.09.14,08:00,13.09.14,17:00,AIDAcara,,,Ostseekai
+15.09.14,06:00,15.09.14,16:00,Adonia,,,Norwegenkai
+20.09.14,08:00,20.09.14,17:00,AIDAcara,,,Ostseekai
+22.09.14,07:30,22.09.14,17:30,Astor,,,Norwegenkai
+27.09.14,08:00,27.09.14,17:00,AIDAcara,,,Ostseekai
+"
+
+# Daten für Oktober 2014
+rohdaten_oktober14 <- "
+04.10.14,08:00,04.10.14,17:00,Mein Schiff 2,,,Ostseekai
+06.10.14,07:30,06.10.14,21:00,AIDAcara,,,Ostseekai
+11.10.14,08:00,11.10.14,17:00,MSC Orchestra,,,Ostseekai
+18.10.14,08:00,18.10.14,17:00,AIDAcara,,,Ostseekai
+"
+rohdaten_2014 <- paste(rohdaten_april14, rohdaten_mai14, rohdaten_juni14,rohdaten_juli14,rohdaten_august14,rohdaten_september14,rohdaten_oktober14, sep = "\n")
+
+# Datenrahmen für 2014 erstellen und hinzufügen
+daten_2014 <- read.table(text = rohdaten_2014, sep = ",", header = FALSE, stringsAsFactors = FALSE)
+colnames(daten_2014) <- c("Datum", "UhrzeitVon", "DatumBis", "UhrzeitBis", "Schiff", "Laenge", "Terminal", "VonNach")
+daten_2014$Datum <- as.Date(daten_2014$Datum, format="%d.%m.%Y")
+daten_2014$Startzeit <- as.POSIXct(paste(daten_2014$Datum, daten_2014$UhrzeitVon), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+daten_2014$Endzeit <- as.POSIXct(paste(daten_2014$DatumBis, daten_2014$UhrzeitBis), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+
+
+
+# Daten für Oktober 2014 zur bestehenden Tabelle hinzufügen
+ergebnisse2014 <- (daten_2014 %>%
+      select(Datum, Startzeit, Endzeit, Schiff) %>%
+      filter(!is.na(Datum)) %>%
+      group_by(Datum) %>%
+      summarize(Kreuzfahrtschiffe = n())
+  )
+# Gesamtanzahl der Kreuzfahrtschiffe für das Jahr 2013 berechnen
+gesamtanzahl_kreuzfahrtschiffe_2013 <- sum(ergebnisse2014$Kreuzfahrtschiffe)
+
+# Ausgabe der Gesamtanzahl
+print(paste("Die Gesamtanzahl der Kreuzfahrtschiffe im Jahr 2013 beträgt:", gesamtanzahl_kreuzfahrtschiffe_2013))
+#120 von 121 
+# Aktualisierte Daten in CSV exportieren
+#write.csv(ergebnisse2014, file = "kreuzfahrten_20142.csv", row.names = FALSE)
+
+# Ausgabe
+print("CSV-Datei erfolgreich erstellt: kreuzfahrten_20142.csv")
+#file.show("kreuzfahrten_20142.csv")
+
+```
+Daten für 2015
+```{r}
+# Daten für April 2015
+rohdaten_april15 <- "
+04.04.15,08:00,04.04.15,17:00,AIDAcara,,,Ostseekai
+11.04.15,08:00,11.04.15,17:00,AIDAcara,,,Ostseekai
+18.04.15,08:00,18.04.15,17:00,AIDAcara,,,Ostseekai
+20.04.15,08:00,20.04.15,18:00,AIDAcara,,,Ostseekai
+24.04.15,08:00,24.04.15,18:00,AIDAluna,,,Ostseekai
+25.04.15,08:00,25.04.15,17:00,AIDAcara,,,Ostseekai
+28.04.15,08:00,28.04.15,17:00,Costa Pacifica,,,Ostseekai
+28.04.15,08:00,28.04.15,18:00,AIDAluna,,,Ostseekai
+"
+
+# Daten für Mai 2015
+rohdaten_mai15 <- "
+02.05.15,08:00,02.05.15,18:00,AIDAcara,,,Ostseekai
+02.05.15,08:00,02.05.15,18:00,AIDAcara,,,Ostseekai
+09.05.15,07:00,09.05.15,17:00,Mein Schiff 2,,,Ostseekai
+09.05.15,08:00,09.05.15,17:00,Mein Schiff 2,,,Ostseekai
+09.05.15,08:00,09.05.15,18:00,Mein Schiff 2,,,Ostseekai
+12.05.15,08:00,12.05.15,19:00,AIDAcara,,,Ostseekai
+14.05.15,07:00,14.05.15,19:00,AIDAcara,,,Ostseekai
+14.05.15,07:00,14.05.15,23:00,AIDAluna,,,Ostseekai
+16.05.15,08:00,16.05.15,18:00,AIDAcara,,,Ostseekai
+16.05.15,08:00,16.05.15,18:00,AIDAcara,,,Ostseekai
+16.05.15,09:00,16.05.15,19:00,AIDAcara,,,Ostseekai
+17.05.15,07:00,17.05.15,19:00,Mein Schiff 2,,,Ostseekai
+17.05.15,11:30,17.05.15,22:00,AIDAluna,,,Ostseekai
+20.05.15,07:00,20.05.15,19:00,AIDAcara,,,Ostseekai
+20.05.15,08:00,20.05.15,17:00,AIDAcara,,,Ostseekai
+21.05.15,07:00,21.05.15,17:00,AIDAcara,,,Ostseekai
+21.05.15,07:00,21.05.15,19:00,AIDAluna,,,Ostseekai
+23.05.15,08:00,23.05.15,18:00,AIDAcara,,,Ostseekai
+23.05.15,09:00,23.05.15,19:00,AIDAluna,,,Ostseekai
+25.05.15,09.00,25.05.15,19.00,AIDAcara,,,Ostseekai
+30.05.15,08:00,30.05.15,18:00,Mein Schiff 2,,,Ostseekai
+30.05.15,08:00,30.05.15,18:00,Mein Schiff 2,,,Ostseekai
+30.05.15,09:00,30.05.15,19:00,Mein Schiff 2,,,Ostseekai
+31.05.15,08:00,31.05.15,17:00,AIDAcara,,,Ostseekai
+"
+
+# Daten für Juni 2015
+rohdaten_juni15 <- "
+02.06.15,07:00,02.06.15,17:00,Eurodam,,,Ostseekai
+03.06.15,08:00,03.06.15,18:00,AIDAluna,,,Ostseekai
+03.06.15,11:30,03.06.15,18:00,Ocean Majesty,,,Norwegenkai
+04.06.15,06:30,04.06.15,19:00,Mein Schiff 4,,,Ostseekai
+06.06.15,09:00,06.06.15,19:00,MSC Orchestra,,,Ostseekai
+06.06.15,20:30,06.06.15,19:00,Deutschland,,,Ostuferhafen
+07.06.15,08:00,07.06.15,18:00,AIDAluna,,,Norwegenkai
+07.06.15,10:00,07.06.15,18:00,Artania,,,Ostseekai
+11.06.15,08:00,11.06.15,19:00,Costa Pacifica,,,Ostseekai
+11.06.15,08:00,11.06.15,19:00,AIDAluna,,,Ostseekai
+13.06.15,08:00,13.06.15,19:00,AIDAcara,,,Ostseekai
+13.06.15,09:00,13.06.15,19:00,MSC Orchestra,,,Ostseekai
+13.06.15,12:00,13.06.15,17:00,Ocean Majesty,,,Ostseekai
+14.06.15,06:30,14.06.15,19:00,Mein Schiff 4,,,Ostseekai
+14.06.15,07:00,14.06.15,17:00,Eurodam,,,Ostseekai
+17.06.15,09:00,17.06.15,18:00,Artania,,,Norwegenkai
+18.06.15,06:30,18.06.15,19:00,Costa Pacifica,,,Ostseekai
+20.06.15,08:00,20.06.15,17:00,AIDAluna,,,Ostseekai
+20.06.15,09:00,20.06.15,19:00,AIDAcara,,,Ostseekai
+20.06.15,14:00,20.06.15,17:00,MSC Orchestra,,,Ostseekai
+22.06.15,08:00,22.06.15,17:00,Ocean Majesty,,,Ostseekai
+26.06.15,07:00,26.06.15,17:00,Astor,,,Norwegenkai
+26.06.15,08.00,26.06.15,18:00,Mein Schiff 4,,,Ostseekai
+26.06.15,12:00,26.06.15,18:00,Ostseekai,,,Ostseekai
+27.06.15,08:00,27.06.15,19:00,Ostseekai,,,Ostseekai
+27.06.15,09:00,27.06.15,19:00,Ostseekai,,,Ostseekai
+28.06.15,08:00,28.06.15,18:00,Ostseekai,,,Ostseekai
+28.06.15,09:30,28.06.15,17:00,Norwegenkai,,,Norwegenkai
+29.06.15,06:30,29.06.15,19:00,Ostseekai,,,Ostseekai
+"
+
+# Daten für Juli 2015
+rohdaten_juli15 <- "
+02.07.15,09:00,02.07.15,18:00,Eurodam,,,Ostseekai
+02.07.15,10:00,02.07.15,15:00,AIDAluna,,,Ostseekai
+03.07.15,08:00,03.07.15,17:00,Ocean Majesty,,,Norwegenkai
+04.07.15,09:00,04.07.15,19:00,Mein Schiff 4,,,Ostseekai
+05.07.15,07:00,05.07.15,19:00,MSC Orchestra,,,Ostseekai
+07.07.15,06:30,07.07.15,18:00,Deutschland,,,Norwegenkai
+08.07.15,07:00,08.07.15,17:00,AIDAluna,,,Ostseekai
+10.07.15,05:00,10.07.15,20:00,Artania,,,Ostseekai
+10.07.15,09:30,10.07.15,20:00,Costa Pacifica,,,Ostseekai
+11.07.15,08:00,11.07.15,19:00,AIDAluna,,,Ostseekai
+11.07.15,08:00,11.07.15,19:00,AIDAcara,,,Ostseekai
+11.07.15,09:00,11.07.15,19:00,AIDAluna,,,Norwegenkai
+14.07.15,08:00,14.07.15,17:00,AIDAcara,,,Ostseekai
+15.07.15,08:00,15.07.15,18:00,AIDAluna,,,Ostseekai
+17.07.15,06:30,17.07.15,19:00,Ocean Majesty,,,Ostseekai
+18.07.15,09:00,18.07.15,19:00,Mein Schiff 4,,,Ostseekai
+20.07.15,07:00,20.07.15,17:00,MSC Orchestra,,,Ostseekai
+21.07.15,07:00,21.07.15,18:00,Sea Cloud II,,,Norwegenkai
+25.07.15,06:30,25.07.15,19:00,Amadea,,,Ostseekai
+25.07.15,08:00,25.07.15,17:00,AIDAcara,,,Norwegenkai
+25.07.15,08:00,25.07.15,18:00,Astor,,,Ostseekai
+25.07.15,09:00,25.07.15,18:00,MSC Orchestra,,,Ostseekai
+26.07.15,11:30,26.07.15,19:00,AIDAluna,,,Ostseekai
+"
+
+# Daten für August 2015
+rohdaten_august15 <- "
+01.08.15,08:00,01.08.15,18:00,AIDAluna,,,Ostseekai
+01.08.15,09:00,01.08.15,19:00,MSC Orchestra,,,Ostseekai
+02.08.15,06:30,02.08.15,17:00,Mein Schiff 4,,,Ostseekai
+05.08.15,08:00,05.08.15,19:00,Costa Pacifica,,,Ostseekai
+08.08.15,07:00,08.08.15,19:00,Eurodam,,,Ostseekai
+08.08.15,08:00,08.08.15,18:00,AIDAcara,,,Norwegenkai
+08.08.15,08:00,08.08.15,18:00,AIDAluna,,,Ostseekai
+08.08.15,09:00,08.08.15,19:00,MSC Orchestra,,,Ostseekai
+10.08.15,10:00,10.08.15,20:00,Deutschland,,,Ostseekai
+10.08.15,10:00,10.08.15,20:00,Hamburg,,,Ostuferhafen
+12.08.15,06:30,12.08.15,17:00,Mein Schiff 4,,,Ostseekai
+15.08.15,08:00,15.08.15,19:00,AIDAluna,,,Ostseekai
+15.08.15,09:00,15.08.15,18:00,MSC Orchestra,,,Ostseekai
+16.08.15,08:00,16.08.15,17:00,Costa Pacifica,,,Ostseekai
+20.08.15,08:00,20.08.15,19:00,Queen Elizabeth,,,Ostseekai
+22.08.15,06:30,22.08.15,19:00,Mein Schiff 4,,,Ostseekai
+22.08.15,08:00,22.08.15,18:00,AIDAcara,,,Ostseekai
+22.08.15,08:00,22.08.15,18:00,AIDAluna,,,Ostseekai
+22.08.15,09:00,22.08.15,19:00,MSC Orchestra,,,Ostseekai
+26.08.15,08:00,26.08.15,19:00,AIDAluna,,,Ostseekai
+27.08.15,06:30,27.08.15,19:00,Mein Schiff 1,,,Ostuferhafen
+27.08.15,07:00,27.08.15,18:00,Eurodam,,,Ostseekai
+27.08.15,08:00,27.08.15,18:00,Costa Pacifica,,,Ostseekai
+29.08.15,09:00,29.08.15,19:00,Amadea,,,Ostseekai
+30.08.15,06:30,30.08.15,18:00,AIDAluna,,,Norwegenkai
+30.08.15,08:00,30.08.15,18:00,AIDAluna,,,Ostseekai
+31.08.15,06:00,31.08.15,06:00,AIDAstella,,,Ostseekai
+
+"
+rohdaten_september15 <- "
+05.09.15, 08:00, 05.09.15, 18:00, AIDAcara,,, Ostseekai
+05.09.15, 09:00, 05.09.15, 19:00, MSC Orchestra,,,Ostuferhafen
+06.09.15, 06:00, 06.09.15, 19:00, MSC Sinfonia,,,Ostseekai
+07.09.15, 06:30, 07.09.15, 19:00, Mein Schiff 4,,,Ostseekai
+07.09.15, 08:00, 07.09.15, 17:00, Costa Pacifica,,,Ostseekai
+09.09.15, 08:00, 09.09.15, 16:00, Astor,,,Ostuferhafen
+ 12.09.15, 09:00, 12.09.15, 19:00, MSC Orchestra,,,Ostseekai
+ 19.09.15, 07:00, 19.09.15, 20:00, Europa,,,Ostseekai
+ 19.09.15, 08:00, 19.09.15, 18:00, AIDAcara,,,Ostseekai
+19.09.15, 09:00, 19.09.15, 19:00, MSC Orchestra,,,Ostuferhafen
+"
+
+# Daten für Oktober 2015
+rohdaten_oktober15 <- "
+03.10.15,08:00,03.10.15,18:00,Schiff1,,,Ostseekai
+17.10.15,08:00,17.10.15,18:00,Schiff2,,,Ostseekai
+20.10.15,08:00,20.10.15,18:00,Schiff3,,,Ostseekai
+"
+
+rohdaten_2015 <- paste(rohdaten_april15, rohdaten_mai15, rohdaten_juni15,rohdaten_juli15,rohdaten_august15,rohdaten_september15, rohdaten_oktober15, sep = "\n")
+
+# Datenrahmen für 2014 erstellen und hinzufügen
+daten_2015 <- read.table(text = rohdaten_2015, sep = ",", header = FALSE, stringsAsFactors = FALSE)
+colnames(daten_2015) <- c("Datum", "UhrzeitVon", "DatumBis", "UhrzeitBis", "Schiff", "Laenge", "Terminal", "VonNach")
+daten_2015$Datum <- as.Date(daten_2015$Datum, format="%d.%m.%Y")
+daten_2015$Startzeit <- as.POSIXct(paste(daten_2015$Datum, daten_2015$UhrzeitVon), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+daten_2015$Endzeit <- as.POSIXct(paste(daten_2015$DatumBis, daten_2015$UhrzeitBis), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+
+
+
+# Daten für Oktober 2014 zur bestehenden Tabelle hinzufügen
+ergebnisse2015 <- (daten_2015 %>%
+      select(Datum, Startzeit, Endzeit, Schiff) %>%
+      filter(!is.na(Datum)) %>%
+      group_by(Datum) %>%
+      summarize(Kreuzfahrtschiffe = n())
+  )
+
+# Aktualisierte Daten in CSV exportieren
+#write.csv(ergebnisse2015, file = "kreuzfahrten_2015.csv", row.names = FALSE)
+
+# Ausgabe
+print("CSV-Datei erfolgreich erstellt: kreuzfahrten_2015.csv")
+#file.show("kreuzfahrten_2015.csv")
+
+# Gesamtanzahl der Kreuzfahrtschiffe für das Jahr 2013 berechnen
+gesamtanzahl_kreuzfahrtschiffe_2013 <- sum(ergebnisse2015$Kreuzfahrtschiffe)
+
+# Ausgabe der Gesamtanzahl
+print(paste("Die Gesamtanzahl der Kreuzfahrtschiffe im Jahr 2013 beträgt:", gesamtanzahl_kreuzfahrtschiffe_2013))
+#114/125 september fehlt 
+```
+Das selbe nun für 2016
+```{r}
+# Daten für April 2016
+rohdaten_april16 <- "
+25.04.16,18:00,25.04.16,18:00,AIDAluna,,,Ostseekai
+29.04.16,18:00,29.04.16,18:00,AIDAluna,,,Ostseekai
+30.04.16,18:00,30.04.16,18:00,MSC Musica,,,Ostuferhafen
+"
+
+
+# Daten für Mai 2016
+rohdaten_mai16 <- "
+03.05.16,08:00,03.05.16,18:00,Schiff1,,,Ostseekai
+07.05.16,08:00,07.05.16,18:00,Schiff2,,,Ostseekai
+07.05.16,08:00,07.05.16,18:00,Schiff3,,,Ostseekai
+07.05.16,08:00,07.05.16,18:00,Schiff4,,,Ostseekai
+11.05.16,08:00,11.05.16,18:00,Schiff5,,,Ostseekai
+14.05.16,07:00,14.05.16,17:00,Schiff6,,,Ostseekai
+14.05.16,10:00,14.05.16,18:00,Schiff7,,,Ostseekai
+15.05.16,08:00,15.05.16,18:00,Schiff8,,,Ostseekai
+15.05.16,08:00,15.05.16,18:00,Schiff9,,,Ostseekai
+19.05.16,08:00,19.05.16,18:00,Schiff10,,,Ostseekai
+21.05.16,06:30,21.05.16,19:00,Schiff11,,,Ostseekai
+21.05.16,08:00,21.05.16,18:00,Schiff12,,,Ostseekai
+21.05.16,08:00,21.05.16,18:00,Schiff13,,,Ostseekai
+22.05.16,07:00,22.05.16,18:00,Schiff14,,,Ostseekai
+22.05.16,08:00,22.05.16,18:00,Schiff15,,,Ostseekai
+23.05.16,08:00,23.05.16,18:00,Schiff16,,,Ostseekai
+28.05.16,10:00,28.05.16,18:00,Schiff17,,,Ostseekai
+29.05.16,06:30,29.05.16,19:00,Schiff18,,,Ostseekai
+29.05.16,08:00,29.05.16,18:00,Schiff19,,,Ostseekai
+30.05.16,21:30,30.05.16,21:30,Schiff20,,,Ostseekai
+31.05.16,08:00,31.05.16,18:00,Schiff21,,,Ostseekai
+"
+
+# Daten für Juni 2016
+rohdaten_juni16 <- "
+01.06.16,11:30,01.06.16,16:30,Schiff1,,,Ostseekai
+02.06.16,08:00,02.06.16,18:00,Schiff2,,,Ostseekai
+04.06.16,07:00,04.06.16,18:00,Schiff3,,,Ostseekai
+04.06.16,08:00,04.06.16,18:00,Schiff4,,,Ostseekai
+04.06.16,08:00,04.06.16,18:00,Schiff5,,,Ostseekai
+05.06.16,10:00,05.06.16,17:00,Schiff6,,,Ostseekai
+06.06.16,08:00,06.06.16,19:00,Schiff7,,,Ostseekai
+07.06.16,07:00,07.06.16,17:00,Schiff8,,,Ostseekai
+07.06.16,08:00,07.06.16,18:00,Schiff9,,,Ostseekai
+08.06.16,06:30,08.06.16,19:00,Schiff10,,,Ostseekai
+09.06.16,08:00,09.06.16,18:00,Schiff11,,,Ostseekai
+11.06.16,06:00,11.06.16,15:00,Schiff12,,,Ostseekai
+11.06.16,08:00,11.06.16,18:00,Schiff13,,,Ostseekai
+11.06.16,10:00,11.06.16,18:00,Schiff14,,,Ostseekai
+12.06.16,06:00,12.06.16,16:00,Schiff15,,,Ostseekai
+13.06.16,09:30,13.06.16,17:00,Schiff16,,,Ostseekai
+16.06.16,08:00,16.06.16,18:00,Schiff17,,,Ostseekai
+18.06.16,06:30,18.06.16,19:00,Schiff18,,,Ostseekai
+18.06.16,07:00,18.06.16,19:00,Schiff19,,,Ostseekai
+18.06.16,08:00,18.06.16,18:00,Schiff20,,,Ostseekai
+18.06.16,08:00,18.06.16,18:00,Schiff21,,,Ostseekai
+18.06.16,10:00,18.06.16,18:00,Schiff22,,,Ostseekai
+19.06.16,07:00,19.06.16,17:00,Schiff23,,,Ostseekai
+22.06.16,08:00,22.06.16,17:00,Schiff24,,,Ostseekai
+23.06.16,10:00,23.06.16,17:00,Schiff25,,,Ostseekai
+23.06.16,14:00,23.06.16,14:00,Schiff26,,,Ostseekai
+25.06.16,08:00,25.06.16,18:00,Schiff27,,,Ostseekai
+25.06.16,10:00,25.06.16,18:00,Schiff28,,,Ostseekai
+26.06.16,06:30,26.06.16,19:00,Schiff29,,,Ostseekai
+26.06.16,06:30,26.06.16,19:00,Schiff30,,,Ostseekai
+26.06.16,08:00,26.06.16,18:00,Schiff31,,,Ostseekai
+26.06.16,20:00,26.06.16,20:00,Schiff32,,,Ostseekai
+29.06.16,08:00,29.06.16,19:00,Schiff33,,,Ostseekai
+29.06.16,08:00,29.06.16,19:00,Schiff34,,,Ostseekai
+30.06.16,07:00,30.06.16,17:00,Schiff35,,,Ostseekai
+30.06.16,09:00,30.06.16,15:00,Schiff36,,,Ostseekai
+"
+
+# Daten für Juli 2016
+rohdaten_juli16 <- "
+02.07.16,08:00,02.07.16,18:00,Schiff1,,,Ostseekai
+02.07.16,08:00,02.07.16,18:00,Schiff2,,,Ostseekai
+03.07.16,06:30,03.07.16,19:00,Schiff3,,,Ostseekai
+03.07.16,07:00,03.07.16,18:00,Schiff4,,,Ostseekai
+06.07.16,06:30,06.07.16,19:00,Schiff5,,,Ostseekai
+06.07.16,06:30,06.07.16,19:00,Schiff6,,,Ostseekai
+07.07.16,06:30,07.07.16,19:00,Schiff7,,,Ostseekai
+07.07.16,07:00,07.07.16,18:00,Schiff8,,,Ostseekai
+09.07.16,09:00,09.07.16,20:00,Schiff9,,,Ostseekai
+09.07.16,10:00,09.07.16,18:00,Schiff10,,,Ostseekai
+10.07.16,06:30,10.07.16,19:00,Schiff11,,,Ostseekai
+13.07.16,07:00,13.07.16,17:00,Schiff12,,,Ostseekai
+13.07.16,08:00,13.07.16,18:00,Schiff13,,,Ostseekai
+14.07.16,06:30,14.07.16,19:00,Schiff14,,,Ostseekai
+15.07.16,08:00,15.07.16,17:00,Schiff15,,,Ostseekai
+16.07.16,06:30,16.07.16,19:00,Schiff16,,,Ostseekai
+16.07.16,08:00,16.07.16,18:00,Schiff17,,,Ostseekai
+16.07.16,08:00,16.07.16,18:00,Schiff18,,,Ostseekai
+16.07.16,08:00,16.07.16,18:00,Schiff19,,,Ostseekai
+18.07.16,06:30,18.07.16,19:00,Schiff20,,,Ostseekai
+21.07.16,09:00,21.07.16,19:00,Schiff21,,,Ostseekai
+23.07.16,06:30,23.07.16,19:00,Schiff22,,,Ostseekai
+23.07.16,10:00,23.07.16,18:00,Schiff23,,,Ostseekai
+24.07.16,06:30,24.07.16,19:00,Schiff24,,,Ostseekai
+25.07.16,07:00,25.07.16,18:00,Schiff25,,,Ostseekai
+26.07.16,08:00,26.07.16,17:00,Schiff26,,,Ostseekai
+29.07.16,06:30,29.07.16,19:00,Schiff27,,,Ostseekai
+29.07.16,09:00,29.07.16,18:00,Schiff28,,,Ostseekai
+30.07.16,08:00,30.07.16,18:00,Schiff29,,,Ostseekai
+30.07.16,08:00,30.07.16,18:00,Schiff30,,,Ostseekai
+30.07.16,08:00,30.07.16,18:00,Schiff31,,,Ostseekai
+30.07.16,08:00,30.07.16,18:00,Schiff32,,,Ostseekai
+"
+
+
+# Daten für August 2016
+rohdaten_august16 <- "
+01.08.16,06:30,01.08.16,19:00,Schiff1,,,Ostseekai
+05.08.16,08:00,05.08.16,17:00,Schiff2,,,Ostseekai
+06.08.16,06:30,06.08.16,19:00,Schiff3,,,Ostseekai
+06.08.16,08:00,06.08.16,18:00,Schiff4,,,Ostseekai
+06.08.16,08:00,06.08.16,18:00,Schiff5,,,Ostseekai
+11.08.16,06:30,11.08.16,19:00,Schiff6,,,Ostseekai
+13.08.16,08:00,13.08.16,18:00,Schiff7,,,Ostseekai
+13.08.16,08:00,13.08.16,18:00,Schiff8,,,Ostseekai
+13.08.16,08:00,13.08.16,18:00,Schiff9,,,Ostseekai
+13.08.16,08:00,13.08.16,17:00,Schiff10,,,Ostseekai
+14.08.16,06:30,14.08.16,19:00,Schiff11,,,Ostseekai
+17.08.16,08:00,17.08.16,17:00,Schiff12,,,Ostseekai
+18.08.16,07:00,18.08.16,17:00,Schiff13,,,Ostseekai
+20.08.16,08:00,20.08.16,18:00,Schiff14,,,Ostseekai
+20.08.16,08:00,20.08.16,18:00,Schiff15,,,Ostseekai
+20.08.16,08:00,20.08.16,18:00,Schiff16,,,Ostseekai
+21.08.16,10:30,21.08.16,17:00,Schiff17,,,Ostseekai
+22.08.16,06:30,22.08.16,19:00,Schiff18,,,Ostseekai
+22.08.16,06:30,22.08.16,19:00,Schiff19,,,Ostseekai
+24.08.16,08:00,24.08.16,18:00,Schiff20,,,Ostseekai
+26.08.16,09:30,26.08.16,15:30,Schiff21,,,Ostseekai
+27.08.16,08:00,27.08.16,18:00,Schiff22,,,Ostseekai
+27.08.16,08:00,27.08.16,18:00,Schiff23,,,Ostseekai
+27.08.16,08:00,27.08.16,18:00,Schiff24,,,Ostseekai
+28.08.16,08:00,28.08.16,17:00,Schiff25,,,Ostseekai
+29.08.16,08:00,29.08.16,15:00,Schiff26,,,Ostseekai
+30.08.16,06:30,30.08.16,19:00,Schiff27,,,Ostseekai
+
+"
+# Daten für September und Oktober 2016
+rohdaten_september16 <- "
+03.09.16,10:00,03.09.16,18:00,Schiff1,,,Ostseekai
+05.09.16,08:00,05.09.16,18:00,Schiff2,,,Ostseekai
+06.09.16,06:30,06.09.16,19:00,Schiff3,,,Ostseekai
+06.09.16,08:00,06.09.16,17:00,Schiff4,,,Ostseekai
+07.09.16,06:30,07.09.16,19:00,Schiff5,,,Ostseekai
+10.09.16,08:00,10.09.16,18:00,Schiff6,,,Ostseekai
+10.09.16,08:00,10.09.16,18:00,Schiff7,,,Ostseekai
+10.09.16,10:00,10.09.16,18:00,Schiff8,,,Ostseekai
+12.09.16,08:00,12.09.16,18:00,Schiff9,,,Ostseekai
+15.09.16,07:00,15.09.16,17:00,Schiff10,,,Ostseekai
+16.09.16,08:00,16.09.16,18:00,Schiff11,,,Ostseekai
+17.09.16,06:30,17.09.16,19:00,Schiff12,,,Ostseekai
+20.09.16,08:00,20.09.16,18:00,Schiff13,,,Ostseekai
+24.09.16,08:00,24.09.16,18:00,Schiff14,,,Ostseekai
+24.09.16,08:00,24.09.16,20:00,Schiff15,,,Ostseekai
+27.09.16,08:00,27.09.16,18:00,Schiff16,,,Ostseekai
+28.09.16,08:00,28.09.16,18:00,Schiff17,,,Ostseekai
+08.10.16,08:00,08.10.16,16:00,Schiff18,,,Ostseekai
+"
+
+rohdaten_2016 <- paste(rohdaten_april16, rohdaten_mai16, rohdaten_juni16,rohdaten_juli16,rohdaten_august16,rohdaten_september16, sep = "\n")
+
+# Datenrahmen für 2016 erstellen und hinzufügen
+daten_2016 <- read.table(text = rohdaten_2016, sep = ",", header = FALSE, stringsAsFactors = FALSE)
+colnames(daten_2016) <- c("Datum", "UhrzeitVon", "DatumBis", "UhrzeitBis", "Schiff", "Laenge", "Terminal", "VonNach")
+daten_2016$Datum <- as.Date(daten_2016$Datum, format="%d.%m.%Y")
+daten_2016$Startzeit <- as.POSIXct(paste(daten_2016$Datum, daten_2016$UhrzeitVon), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+daten_2016$Endzeit <- as.POSIXct(paste(daten_2016$DatumBis, daten_2016$UhrzeitBis), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+
+
+
+# Daten für 2016 zur Tabelle hinzufügen
+ergebnisse2016 <- (daten_2016 %>%
+      select(Datum, Startzeit, Endzeit, Schiff) %>%
+      filter(!is.na(Datum)) %>%
+      group_by(Datum) %>%
+      summarize(Kreuzfahrtschiffe = n())
+  )
+
+# Aktualisierte Daten in CSV exportieren
+#write.csv(ergebnisse2016, file = "kreuzfahrten_2016.csv", row.names = FALSE)
+
+# Ausgabe
+print("CSV-Datei erfolgreich erstellt: kreuzfahrten_2016.csv")
+#file.show("kreuzfahrten_2016.csv")
+
+# Gesamtanzahl der Kreuzfahrtschiffe für das Jahr 2013 berechnen
+gesamtanzahl_kreuzfahrtschiffe_2013 <- sum(ergebnisse2016$Kreuzfahrtschiffe)
+
+# Ausgabe der Gesamtanzahl
+print(paste("Die Gesamtanzahl der Kreuzfahrtschiffe im Jahr 2013 beträgt:", gesamtanzahl_kreuzfahrtschiffe_2013))
+#137/136
+```
+Daten 2017
+```{r}
+# Daten für April, Mai, Juni, Juli, August, September und Oktober 2017
+rohdaten_april_oktober_2017 <- "
+09.04.17,08:00,09.04.17,17:00,Schiff1,,,Ostseekai
+16.04.17,08:00,16.04.17,17:00,Schiff1,,,Ostseekai
+23.04.17,08:00,23.04.17,17:00,Schiff1,,,Ostseekai
+25.04.17,02:00,25.04.17,17:00,Schiff2,,,Norwegenkai
+29.04.17,10:00,29.04.17,18:00,Schiff3,,,Ostseekai
+30.04.17,08:00,30.04.17,17:00,Schiff1,,,Ostseekai
+
+06.05.17,10:00,06.05.17,18:00,Schiff4,,,Ostseekai
+06.05.17,11:00,06.05.17,21:00,Schiff5,,,Ostseekai
+07.05.17,08:00,07.05.17,20:00,Schiff6,,,Ostseekai
+11.05.17,06:30,11.05.17,20:00,Schiff7,,,Ostseekai
+12.05.17,05:30,12.05.17,19:00,Schiff8,,,Ostseekai
+13.05.17,10:00,13.05.17,19:00,Schiff9,,,Ostseekai
+16.05.17,08:00,16.05.17,19:00,Schiff10,,,Ostseekai
+17.05.17,10:00,17.05.17,15:00,Schiff11,,,Ostseekai
+18.05.17,08:00,18.05.17,18:00,Schiff12,,,Ostseekai
+19.05.17,06:30,19.05.17,19:00,Schiff13,,,Ostseekai
+19.05.17,06:30,19.05.17,19:00,Schiff14,,,Ostseekai
+20.05.17,10:00,20.05.17,18:00,Schiff15,,,Ostseekai
+21.05.17,08:00,21.05.17,18:00,Schiff16,,,Ostseekai
+22.05.17,08:00,22.05.17,18:00,Schiff17,,,Ostseekai
+23.05.17,06:30,23.05.17,19:00,Schiff18,,,Ostseekai
+23.05.17,08:00,23.05.17,18:00,Schiff19,,,Ostseekai
+26.05.17,08:00,26.05.17,17:00,Schiff20,,,Ostseekai
+27.05.17,06:30,27.05.17,19:00,Schiff21,,,Ostseekai
+27.05.17,08:00,27.05.17,18:00,Schiff22,,,Ostseekai
+27.05.17,10:00,27.05.17,18:00,Schiff23,,,Ostseekai
+28.05.17,06:30,28.05.17,19:00,Schiff24,,,Ostseekai
+30.05.17,11:00,30.05.17,21:00,Schiff25,,,Ostseekai
+31.05.17,08:00,31.05.17,18:00,Schiff26,,,Ostseekai
+
+01.06.17,07:00,01.06.17,17:00,Schiff27,,,Ostseekai
+03.06.17,06:30,03.06.17,19:00,Schiff28,,,Ostseekai
+03.06.17,08:00,03.06.17,19:00,Schiff29,,,Ostseekai
+03.06.17,09:00,03.06.17,18:00,Schiff30,,,Ostseekai
+03.06.17,10:00,03.06.17,13:00,Schiff31,,,Ostseekai
+04.06.17,08:00,04.06.17,18:00,Schiff32,,,Ostseekai
+06.06.17,06:30,06.06.17,19:00,Schiff33,,,Ostseekai
+06.06.17,08:30,06.06.17,17:00,Schiff34,,,Ostseekai
+08.06.17,08:00,08.06.17,18:00,Schiff35,,,Ostseekai
+10.06.17,08:00,10.06.17,15:00,Schiff36,,,Ostseekai
+10.06.17,10:00,10.06.17,18:00,Schiff37,,,Ostseekai
+11.06.17,11:00,11.06.17,21:00,Schiff38,,,Ostseekai
+14.06.17,06:30,14.06.17,19:00,Schiff39,,,Ostseekai
+14.06.17,06:30,14.06.17,19:00,Schiff40,,,Ostseekai
+17.06.17,08:00,17.06.17,18:00,Schiff41,,,Ostseekai
+17.06.17,10:00,17.06.17,18:00,Schiff42,,,Ostseekai
+18.06.17,06:30,18.06.17,19:00,Schiff43,,,Ostseekai
+18.06.17,08:00,18.06.17,18:00,Schiff44,,,Ostseekai
+21.06.17,08:00,21.06.17,18:00,Schiff45,,,Ostseekai
+21.06.17,09:00,21.06.17,18:00,Schiff46,,,Ostseekai
+21.06.17,09:00,21.06.17,18:00,Schiff47,,,Ostseekai
+22.06.17,08:00,22.06.17,18:00,Schiff48,,,Ostseekai
+23.06.17,09:00,23.06.17,14:00,Schiff49,,,Ostseekai
+23.06.17,13:00,23.06.17,22:00,Schiff50,,,Ostseekai
+24.06.17,10:00,24.06.17,18:00,Schiff51,,,Ostseekai
+25.06.17,08:00,25.06.17,18:00,Schiff52,,,Ostseekai
+26.06.17,08:00,26.06.17,10:00,Schiff53,,,Ostseekai
+26.06.17,10:00,26.06.17,18:00,Schiff54,,,Ostseekai
+28.06.17,06:30,28.06.17,19:00,Schiff55,,,Ostseekai
+28.06.17,06:30,28.06.17,19:00,Schiff56,,,Ostseekai
+30.06.17,08:00,30.06.17,18:00,Schiff57,,,Ostseekai
+
+01.07.17,08:00,01.07.17,18:00,Schiff58,,,Ostseekai
+01.07.17,10:00,01.07.17,18:00,Schiff59,,,Ostseekai
+02.07.17,08:00,02.07.17,18:00,Schiff60,,,Ostseekai
+03.07.17,10:00,03.07.17,16:00,Schiff61,,,Ostseekai
+05.07.17,11:00,05.07.17,21:00,Schiff62,,,Ostseekai
+07.07.17,08:00,07.07.17,18:00,Schiff63,,,Ostseekai
+07.07.17,08:30,07.07.17,16:00,Schiff64,,,Ostseekai
+08.07.17,06:30,08.07.17,06:00,Schiff65,,,Sartorikai
+08.07.17,10:00,08.07.17,18:00,Schiff66,,,Ostseekai
+10.07.17,09:00,10.07.17,18:00,Schiff67,,,Ostseekai
+11.07.17,09:00,11.07.17,18:00,Schiff68,,,Ostseekai
+12.07.17,08:00,12.07.17,18:00,Schiff69,,,Ostseekai
+14.07.17,08:00,14.07.17,18:00,Schiff70,,,Ostseekai
+15.07.17,06:30,15.07.17,19:00,Schiff71,,,Ostseekai
+15.07.17,08:00,15.07.17,18:00,Schiff72,,,Ostseekai
+15.07.17,10:00,15.07.17,18:00,Schiff73,,,Ostseekai
+18.07.17,06:30,18.07.17,19:00,Schiff74,,,Ostseekai
+20.07.17,09:00,20.07.17,18:00,Schiff75,,,Ostseekai
+22.07.17,10:00,22.07.17,18:00,Schiff76,,,Ostseekai
+24.07.17,08:00,24.07.17,18:00,Schiff77,,,Ostseekai
+26.07.17,06:30,26.07.17,19:00,Schiff78,,,Ostseekai
+26.07.17,09:00,26.07.17,18:00,Schiff79,,,Ostseekai
+28.07.17,06:30,28.07.17,19:00,Schiff80,,,Ostseekai
+29.07.17,08:00,29.07.17,18:00,Schiff81,,,Ostseekai
+29.07.17,08:00,29.07.17,18:00,Schiff82,,,Ostseekai
+29.07.17,10:00,29.07.17,18:00,Schiff83,,,Ostseekai
+
+01.08.17,07:00,01.08.17,18:00,Schiff84,,,Ostseekai
+02.08.17,08:00,02.08.17,18:00,Schiff85,,,Ostseekai
+03.08.17,06.30,03.08.17,19:00,Schiff86,,,Ostseekai
+05.08.17,06:30,05.08.17,19:00,Mein Schiff 3,,,Ostseekai
+05.08.17,08:00,05.08.17,19:00,AIDAluna,,,Ostseekai
+05.08.17,10:00,05.08.17,18:00,MSC Fantasia,,,Ostseekai
+06.08.17,09:00,06.08.17,17:00,Costa Pacifica,,,Ostseekai
+11.08.17,08:00,11.08.17,18:00,AIDAbella,,,Ostseekai
+11.08.17,10:30,11.08.17,17:00,Berlin,,,Ostseekai
+12.08.17,08:00,12.08.17,18:00,AIDAluna,,,Ostseekai
+12.08.17,08:00,12.08.17,18:00,AIDAvita,,,Ostseekai
+12.08.17,10:00,12.08.17,18:00,MSC Fantasia,,,Ostseekai
+12.08.17,11:00,12.08.17,18:00,Zuiderdam,,,Ostseekai
+13.08.17,06:30,13.08.17,19:00,Mein Schiff 6,,,Ostseekai
+13.08.17,08:00,13.08.17,18:00,Astor,,,Ostseekai
+16.08.17,06:30,16.08.17,19:00,Mein Schiff 3,,,Ostseekai
+16.08.17,13:30,16.08.17,22:00,Mein Schiff 3,,,Ostseekai
+17.08.17,09:00,17.08.17,17:00,Balmoral,,,Ostseekai
+19.08.17,08:00,19.08.17,18:00,Costa Pacifica,,,Ostseekai
+19.08.17,10:00,19.08.17,18:00,AIDAcara,,,Ostseekai
+20.08.17,07:30,20.08.17,16:00,AIDAluna,,,Ostseekai
+21.08.17,08:00,21.08.17,18:00,AIDAvita,,,Ostseekai
+23.08.17,08:00,23.08.17,18:00,MSC Fantasia,,,Ostseekai
+24.08.17,06:30,24.08.17,19:00,Berlin,,,Ostseekai
+26.08.17,08:00,26.08.17,18:00,AIDAbella,,,Ostseekai
+26.08.17,10:00,26.08.17,18:00,AIDAluna,,,Ostseekai
+28.08.17,09:00,28.08.17,17:00,Mein Schiff 6,,,Ostseekai
+29.08.17,08:00,29.08.17,15:00,AIDAvita,,,Ostseekai
+01.09.17,06:30,01.09.17,19:00,Mein Schiff 3,,,Ostseekai
+02.09.17,10:00,02.09.17,18:00,MSC Fantasia,,,Ostseekai
+05.09.17,06:30,05.09.17,19:00,Mein Schiff 3,,,Ostseekai
+06.09.17,07:00,06.09.17,19:00,Europa 2,,,Ostseekai
+08.09.17,09:00,08.09.17,17:00,Costa Pacifica,,,Ostseekai
+09.09.17,08:00,09.09.17,18:00,AIDAvita,,,Ostseekai
+09.09.17,10:00,09.09.17,18:00,MSC Fantasia,,,Ostseekai
+13.09.17,07:00,13.09.17,18:00,Europa,,,Ostseekai
+13.09.17,08:00,13.09.17,18:00,AIDAvita,,,Ostseekai
+14.09.17,07:00,14.09.17,17:00,Koningsdam,,,Ostseekai
+16.09.17,08:00,16.09.17,18:00,AIDAvita,,,Ostseekai
+16.09.17,10:00,16.09.17,18:00,MSC Fantasia,,,Ostseekai
+20.09.17,08:00,20.09.17,18:00,AIDAvita,,,Ostseekai
+23.09.17,08:00,23.09.17,18:00,AIDAcara,,,Ostseekai
+24.09.17,08:00,24.09.17,18:00,AIDAvita,,,Ostseekai
+27.09.17,08:00,27.09.17,18:00,AIDAvita,,,Ostseekai
+30.09.17,08:00,30.09.17,18:00,Mein Schiff 3,,,Ostseekai
+02.10.17,08:00,02.10.17,18:00,AIDAcara,,,Ostseekai
+02.10.17,08:00,02.10.17,14:00,Black Watch,,,Ostseekai
+04.10.17,08:00,04.10.17,18:00,AIDAvita,,,Ostseekai
+07.10.17,08:00,07.10.17,18:00,AIDAvita,,,Ostseekai
+09.10.17,08:00,09.10.17,18:00,AIDAcara,,,Ostseekai
+14.10.17,08:00,14.10.17,18:00,AIDAvita,,,Ostseekai
+21.10.17,08:00,21.10.17,18:00,AIDAvita,,,Ostseekai"
+
+# Datenrahmen für 2017 erstellen und hinzufügen
+daten_2017 <- read.table(text = rohdaten_april_oktober_2017, sep = ",", header = FALSE, stringsAsFactors = FALSE)
+colnames(daten_2017) <- c("Datum", "UhrzeitVon", "DatumBis", "UhrzeitBis", "Schiff", "Laenge", "Terminal", "VonNach")
+daten_2017$Datum <- as.Date(daten_2017$Datum, format="%d.%m.%Y")
+daten_2017$Startzeit <- as.POSIXct(paste(daten_2017$Datum, daten_2017$UhrzeitVon), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+daten_2017$Endzeit <- as.POSIXct(paste(daten_2017$DatumBis, daten_2017$UhrzeitBis), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+
+
+
+# Daten für 2017 zur Tabelle hinzufügen
+ergebnisse2017 <- (daten_2017 %>%
+      select(Datum, Startzeit, Endzeit, Schiff) %>%
+      filter(!is.na(Datum)) %>%
+      group_by(Datum) %>%
+      summarize(Kreuzfahrtschiffe = n())
+  )
+
+# Aktualisierte Daten in CSV exportieren
+#write.csv(ergebnisse2017, file = "kreuzfahrten_2017.csv", row.names = FALSE)
+
+# Ausgabe
+print("CSV-Datei erfolgreich erstellt: kreuzfahrten_2017.csv")
+#file.show("kreuzfahrten_2017.csv")
+# Gesamtanzahl der Kreuzfahrtschiffe für das Jahr 2013 berechnen
+gesamtanzahl_kreuzfahrtschiffe_2013 <- sum(ergebnisse2017$Kreuzfahrtschiffe)
+
+# Ausgabe der Gesamtanzahl
+print(paste("Die Gesamtanzahl der Kreuzfahrtschiffe im Jahr 2013 beträgt:", gesamtanzahl_kreuzfahrtschiffe_2013))
+#138/138
+```
+Daten 2018
+```{r}
+rohdaten_april18 <- "
+06.04.18,11:30,06.04.18,23:00,Boudicca,,,Ostseekai
+08.04.18,08:00,08.04.18,18:00,AIDAcara,,,Ostseekai
+15.04.18,08:00,15.04.18,18:00,AIDAcara,,,Ostseekai
+22.04.18,08:00,22.04.18,18:00,AIDAcara,,,Ostseekai
+26.04.18,08:00,26.04.18,18:00,AIDAluna,,,Ostseekai
+27.04.18,06:30,27.04.18,23:00,Mein Schiff 1,,,Ostseekai
+28.04.18,08:00,28.04.18,18:00,AIDAluna,,,Ostseekai
+28.04.18,10:00,28.04.18,18:00,MSC Preziosa,,,Ostseekai
+29.04.18,06:30,29.04.18,19:00,Mein Schiff 1,,,Ostseekai
+29.04.18,08:00,29.04.18,18:00,AIDAcara,,,Ostseekai
+"
+
+# Daten für Mai 2018
+rohdaten_mai18 <- "
+04.05.18,06:30,04.05.18,19:00,Mein Schiff 1,,,Ostseekai
+04.05.18,12:30,04.05.18,20:30,Zenith,,,Ostseekai
+05.05.18,08:00,05.05.18,18:00,AIDAluna,,,Ostseekai
+05.05.18,10:00,05.05.18,18:00,MSC Preziosa,,,Ostseekai
+09.05.18,08:00,09.05.18,18:00,AIDAbella,,,Ostseekai
+11.05.18,08:00,11.05.18,15:00,Ocean Majesty,,,Ostseekai
+12.05.18,08:00,12.05.18,18:00,AIDAluna,,,Ostseekai
+12.05.18,10:00,12.05.18,18:00,MSC Preziosa,,,Ostseekai
+13.05.18,08:00,13.05.18,18:00,AIDAbella,,,Ostseekai
+13.05.18,08:00,13.05.18,18:00,AIDAcara,,,Ostseekai
+15.05.18,06:30,15.05.18,19:00,Mein Schiff 4,,,Ostseekai
+17.05.18,08:00,17.05.18,17:00,Saga Sapphire,,,Ostseekai
+17.05.18,14:00,17.05.18,18:45,Le Soleal,,,Ostseekai
+19.05.18,06:30,19.05.18,19:00,Mein Schiff 1,,,Ostseekai
+19.05.18,08:00,19.05.18,16:00,Zuiderdam,,,Ostseekai
+19.05.18,10:00,19.05.18,18:00,MSC Preziosa,,,Ostseekai
+19.05.18,14:30,19.05.18,18:00,AIDAluna,,,Ostseekai
+20.05.18,08:00,20.05.18,18:00,AIDAbella,,,Norwegenkai
+21.05.18,08:00,21.05.18,18:00,AIDAluna,,,Ostseekai
+21.05.18,08:00,21.05.18,18:00,Ocean Majesty,,,Ostseekai
+21.05.18,09:00,21.05.18,17:00,Queen Elizabeth,,,Ostseekai
+23.05.18,06:30,23.05.18,19:00,Mein Schiff 4,,,Ostseekai
+25.05.18,08:00,25.05.18,17:00,Astor,,,Ostseekai
+26.05.18,10:00,26.05.18,18:00,MSC Preziosa,,,Ostseekai
+27.05.18,08:00,27.05.18,18:00,AIDAbella,,,Ostseekai
+27.05.18,08:00,27.05.18,18:00,AIDAcara,,,Norwegenkai
+29.05.18,06:30,29.05.18,19:00,Mein Schiff 1,,,Ostseekai
+29.05.18,08:00,29.05.18,18:00,AIDAaura,,,Ostseekai
+31.05.18,06:30,31.05.18,19:00,MSC Preziosa,,,Ostseekai
+31.05.18,07:00,31.05.18,17:00,Koningsdam,,,Ostseekai
+"
+
+# Daten für Juni 2018
+rohdaten_juni18 <- "
+01.06.18,06:30,01.06.18,19:00,Mein Schiff 1,,,Ostseekai
+02.06.18,08:00,02.06.18,18:00,Ocean Majesty,,,Norwegenkai
+02.06.18,10:00,02.06.18,18:00,MSC Preziosa,,,Ostseekai
+03.06.18,08:00,03.06.18,18:00,AIDAbella,,,Ostseekai
+03.06.18,10:00,03.06.18,17:00,Saga Pearl II,,,Ostseekai
+04.06.18,05:00,04.06.18,23:00,Balmoral,,,Ostseekai
+06.06.18,08:00,06.06.18,18:00,AIDAcara,,,Ostseekai
+07.06.18,08:00,07.06.18,18:00,AIDAluna,,,Ostseekai
+09.06.18,06:30,09.06.18,19:00,Mein Schiff 1,,,Ostseekai
+09.06.18,08:00,09.06.18,15:00,Ocean Majesty,,,Ostseekai
+09.06.18,08:00,09.06.18,18:00,AIDAcara,,,Ostseekai
+09.06.18,10:00,09.06.18,18:00,MSC Preziosa,,,Ostseekai
+10.06.18,08:00,10.06.18,18:00,AIDAbella,,,Norwegenkai
+11.06.18,06:30,11.06.18,19:00,AIDAluna,,,Ostseekai
+12.06.18,08:00,12.06.18,16:00,MSC Preziosa,,,Ostseekai
+16.06.18,08:00,16.06.18,18:00,Mein Schiff 1,,,Ostseekai
+16.06.18,10:00,16.06.18,18:00,AIDAbella,,,Ostseekai
+17.06.18,06:30,17.06.18,19:00,AIDAcara,,,Ostseekai
+17.06.18,08:00,17.06.18,18:00,Ocean Majesty,,,Ostseekai
+17.06.18,08:00,17.06.18,18:00,MSC Preziosa,,,Ostseekai
+19.06.18,08:00,19.06.18,16:00,Boudicca,,,Ostseekai
+23.06.18,10:00,23.06.18,18:00,Artania,,,Ostseekai
+23.06.18,13:30,23.06.18,23:59,AIDAbella,,,Ostseekai
+23.06.18,19:00,23.06.18,23:00,AIDAluna,,,Ostseekai
+24.06.18,08:00,24.06.18,18:00,Mein Schiff 4,,,Ostseekai
+24.06.18,08:00,24.06.18,18:00,AIDAaura,,,Ostseekai
+25.06.18,06:30,25.06.18,19:00,MSC Preziosa,,,Ostseekai
+26.06.18,08:00,26.06.18,17:00,Mein Schiff 1,,,Ostseekai
+27.06.18,06:30,27.06.18,19:00,AIDAbella,,,Ostseekai
+30.06.18,08:00,30.06.18,18:00,AIDAluna,,,Ostseekai
+30.06.18,10:00,30.06.18,18:00,MSC Preziosa,,,Ostseekai
+"
+# Daten für Juli 2018
+rohdaten_juli18 <- "
+01.07.18,08:00,01.07.18,18:00,AIDAbella,,,Ostseekai
+01.07.18,08:00,01.07.18,18:00,AIDAcara,,,Ostseekai
+01.07.18,09:00,01.07.18,15:00,Ocean Majesty,,,Ostseekai
+03.07.18,08:00,03.07.18,17:00,Viking Sun,,,Ostseekai
+05.07.18,06:30,05.07.18,19:00,Mein Schiff 1,,,Ostseekai
+06.07.18,06:30,06.07.18,18:00,Mein Schiff 4,,,Ostseekai
+06.07.18,08:00,06.07.18,18:00,Zuiderdam,,,Ostseekai
+06.07.18,09:00,06.07.18,16:00,Artania,,,Ostseekai
+07.07.18,08:30,07.07.18,18:00,Hamburg,,,Norwegenkai
+07.07.18,10:00,07.07.18,18:00,MSC Preziosa,,,Ostseekai
+08.07.18,08:00,08.07.18,18:00,AIDAbella,,,Ostseekai
+09.07.18,07:00,09.07.18,18:00,Europa,,,Ostseekai
+11.07.18,08:00,11.07.18,15:00,AIDAluna,,,Ostseekai
+11.07.18,09:00,11.07.18,17:00,Ocean Majesty,,,Ostseekai
+14.07.18,08:00,14.07.18,18:00,AIDAaura,,,Ostseekai
+14.07.18,10:00,14.07.18,18:00,MSC Preziosa,,,Ostseekai
+15.07.18,06:30,15.07.18,19:00,Mein Schiff 1,,,Ostseekai
+15.07.18,08:00,15.07.18,18:00,AIDAbella,,,Ostseekai
+17.07.18,06:30,17.07.18,19:00,Mein Schiff 4,,,Ostseekai
+17.07.18,09:00,17.07.18,17:00,Queen Victoria,,,Ostseekai
+18.07.18,08:00,18.07.18,16:00,Hamburg,,,Ostseekai
+20.07.18,09:00,20.07.18,17:00,Costa Pacifica,,,Ostseekai
+21.07.18,10:00,21.07.18,18:00,MSC Preziosa,,,Ostseekai
+22.07.18,08:00,22.07.18,18:00,AIDAbella,,,Norwegenkai
+23.07.18,06:30,23.07.18,19:00,Mein Schiff 1,,,Ostseekai
+28.07.18,08:00,28.07.18,18:00,AIDAbella,,,Ostseekai
+28.07.18,08:00,28.07.18,18:00,AIDAcara,,,Ostseekai
+28.07.18,10:00,28.07.18,18:00,MSC Preziosa,,,Ostseekai
+29.07.18,06:30,29.07.18,19:00,AIDAluna,,,Ostseekai
+29.07.18,08:00,29.07.18,18:00,Costa Pacifica,,,Ostseekai
+30.07.18,07:00,30.07.18,18:00,AIDAbella,,,Ostseekai
+30.07.18,08:00,30.07.18,16:00,AIDAluna,,,Ostseekai
+30.07.18,22:00,30.07.18,18:00,MSC Preziosa,,,Ostseekai
+31.07.18,06:30,31.07.18,16:30,Mein Schiff 4,,,Ostseekai
+31.07.18,09:00,31.07.18,19:00,Mein Schiff 4,,,Ostseekai
+31.07.18,17:00,31.07.18,17:00,Mein Schiff 4,,,Ostseekai
+"
+# Fortsetzen der Daten für August
+rohdaten_august18 <- "
+04.08.18,08:00,04.08.18,18:00,AIDAluna,,,Ostseekai
+04.08.18,10:00,04.08.18,18:00,MSC Preziosa,,,Ostseekai
+05.08.18,08:00,05.08.18,18:00,AIDAbella,,,Ostseekai
+10.08.18,06:30,10.08.18,19:00,Mein Schiff 1,,,Ostseekai
+11.08.18,08:00,11.08.18,18:00,AIDAaura,,,Ostseekai
+11.08.18,08:00,11.08.18,18:00,AIDAluna,,,Ostseekai
+11.08.18,09:00,11.08.18,17:00,Costa Pacifica,,,Ostseekai
+11.08.18,10:00,11.08.18,18:00,MSC Preziosa,,,Ostseekai
+11.08.18,10:30,11.08.18,18:00,Astor,,,Ostseekai
+12.08.18,06:30,12.08.18,19:00,Mein Schiff 4,,,Ostseekai
+12.08.18,08:00,12.08.18,18:00,AIDAbella,,,Ostseekai
+17.08.18,08:00,17.08.18,18:00,Astor,,,Norwegenkai
+18.08.18,08:00,18.08.18,18:00,AIDAluna,,,Ostseekai
+18.08.18,10:00,18.08.18,18:00,MSC Preziosa,,,Ostseekai
+19.08.18,08:00,19.08.18,18:00,AIDAbella,,,Ostseekai
+20.08.18,06:30,20.08.18,19:00,Mein Schiff 1,,,Ostseekai
+20.08.18,07:00,20.08.18,18:00,Europa 2,,,Ostseekai
+22.08.18,09:00,22.08.18,17:00,Costa Pacifica,,,Ostseekai
+23.08.18,06:30,23.08.18,19:00,Mein Schiff 4,,,Ostseekai
+23.08.18,08:00,23.08.18,16:00,Zuiderdam,,,Ostseekai
+25.08.18,08:00,25.08.18,18:00,AIDAaura,,,Ostseekai
+25.08.18,08:00,25.08.18,18:00,AIDAluna,,,Ostseekai
+25.08.18,10:00,25.08.18,18:00,MSC Preziosa,,,Ostseekai
+26.08.18,08:00,26.08.18,18:00,AIDAbella,,,Ostseekai
+31.08.18,06:30,31.08.18,19:00,Mein Schiff 4,,,Ostseekai
+31.08.18,19:00,31.08.18,17:00,Mein Schiff 4,,,Ostseekai
+31.08.18,19:00,31.08.18,19:00,Mein Schiff 4,,,Ostseekai
+"
+
+# Fortsetzen der Daten für September
+rohdaten_september18 <- "
+01.09.18,10:00,01.09.18,18:00,MSC Preziosa,,,Ostseekai
+02.09.18,08:00,02.09.18,18:00,AIDAbella,,,Ostseekai
+02.09.18,09:00,02.09.18,17:00,Cost Pacifica,,,Ostseekai
+06.09.18,07:00,06.09.18,17:00,Berlin,,,Ostseekai
+08.09.18,08:00,08.09.18,18:00,AIDAaura,,,Ostseekai
+08.09.18,10:00,08.09.18,18:00,MSC Preziosa,,,Ostseekai
+09.09.18,08:00,09.09.18,18:00,AIDAbella,,,Ostseekai
+10.09.18,13:30,10.09.18,17:00,Saga Sapphire,,,Ostseekai
+10.09.18,08:00,10.09.18,16:00,Berlin,,,Norwegenkai
+11.09.18,09:00,11.09.18,17:00,Aurora,,,Ostseekai
+13.09.18,07:00,13.09.18,17:00,Koningsdam,,,Ostseekai
+16.09.18,08:00,16.09.18,18:00,AIDAbella,,,Ostseekai
+17.09.18,08:00,17.09.18,18:00,AIDAaura,,,Ostseekai
+23.09.18,08:00,23.09.18,18:00,AIDAbella,,,Ostseekai
+26.09.18,08:00,26.09.18,18:00,AIDAvita,,,Ostseekai
+27.09.18,08:00,27.09.18,18:00,AIDAaura,,,Ostseekai
+30.09.18,08:00,30.09.18,18:00,AIDAbella,,,Ostseekai
+30.09.18,18:00,30.09.18,18:00,Mein Schiff 4,,,Ostseekai
+30.09.18,18:00,30.09.18,18:00,Mein Schiff 4,,,Ostseekai
+"
+
+# Fortsetzen der Daten für Oktober
+rohdaten_oktober18 <- "
+02.10.18,08:00,02.10.18,17:00,Viking Sky,,,Ostseekai
+06.10.18,03:30,06.10.18,23:00,Saga Pearl II,,,Ostseekai
+06.10.18,08:00,06.10.18,18:00,AIDAaura,,,Ostseekai
+07.10.18,08:00,07.10.18,18:00,AIDAbella,,,Ostseekai
+14.10.18,08:00,14.10.18,18:00,AIDAbella,,,Ostseekai
+21.10.18,08:00,21.10.18,18:00,AIDAbella,,,Ostseekai
+24.10.18,08:30,24.10.18,23:00,Balmoral,,,Ostseekai
+28.10.18,08:00,28.10.18,18:00,AIDAbella,,,Ostseekai
+30.10.18,08:00,30.10.18,18:00,Braemar,,,Ostseekai
+"
+
+rohdaten_2018 <- paste(rohdaten_april18, rohdaten_mai18, rohdaten_juni18,rohdaten_juli18,rohdaten_august18,rohdaten_september18,rohdaten_oktober18, sep = "\n")
+
+# Datenrahmen für 2014 erstellen und hinzufügen
+daten_2018 <- read.table(text = rohdaten_2018, sep = ",", header = FALSE, stringsAsFactors = FALSE)
+colnames(daten_2018) <- c("Datum", "UhrzeitVon", "DatumBis", "UhrzeitBis", "Schiff", "Laenge", "Terminal", "VonNach")
+daten_2018$Datum <- as.Date(daten_2018$Datum, format="%d.%m.%Y")
+daten_2018$Startzeit <- as.POSIXct(paste(daten_2018$Datum, daten_2018$UhrzeitVon), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+daten_2018$Endzeit <- as.POSIXct(paste(daten_2018$DatumBis, daten_2018$UhrzeitBis), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+
+
+
+# Daten für Oktober 2014 zur bestehenden Tabelle hinzufügen
+ergebnisse2018 <- (daten_2018 %>%
+      select(Datum, Startzeit, Endzeit, Schiff) %>%
+      filter(!is.na(Datum)) %>%
+      group_by(Datum) %>%
+      summarize(Kreuzfahrtschiffe = n())
+  )
+
+# Aktualisierte Daten in CSV exportieren
+#write.csv(ergebnisse2018, file = "kreuzfahrten_2018.csv", row.names = FALSE)
+
+# Ausgabe
+print("CSV-Datei erfolgreich erstellt: kreuzfahrten_2018.csv")
+#file.show("kreuzfahrten_2018.csv")
+
+# Gesamtanzahl der Kreuzfahrtschiffe für das Jahr 2013 berechnen
+gesamtanzahl_kreuzfahrtschiffe_2013 <- sum(ergebnisse2018$Kreuzfahrtschiffe)
+
+# Ausgabe der Gesamtanzahl
+print(paste("Die Gesamtanzahl der Kreuzfahrtschiffe im Jahr 2013 beträgt:", gesamtanzahl_kreuzfahrtschiffe_2013))
+#162/157 
+
+```
+Rohdaten 2019
+```{r}
+# Rohdaten für Januar, April, Mai und Juni
+rohdaten_januar19 <- "
+
+Sa,05.01.19, 09:30,23.01.19, 19:00,Mein Schiff 2,Ostseekai"
+
+rohdaten_april19 <- "
+So,07.04.19, 08:00,07.04.19, 17:00,AIDAcara,Ostseekai
+Fr,12.04.19, 08:00,12.04.19, 17:00,Viking Sky,Ostseekai
+So,14.04.19, 08:00,14.04.19, 18:00,AIDAcara,Ostseekai
+Sa,20.04.19, 08:00,20.04.19, 18:00,Viking Sky,Ostseekai
+So,21.04.19, 08:00,21.04.19, 18:00,AIDAcara,Ostseekai
+Mi,24.04.19, 06:00,24.04.19, 17:00,Astor,Ostseekai
+Sa,27.04.19, 07:00,27.04.19, 19:00,MSC Meraviglia,Ostuferhafen
+So,28.04.19, 08:00,28.04.19, 18:00,AIDAcara,Ostseekai"
+
+rohdaten_mai19 <- "
+Sa,04.05.19, 07:00,04.05.19, 19:00,MSC Meraviglia,Ostseekai
+Do,09.05.19, 09:00,09.05.19, 17:00,Queen Victoria,Ostseekai
+Fr,10.05.19, 06:30,10.05.19, 19:00,Mein Schiff 1,Ostseekai
+Fr,10.05.19, 08:00,10.05.19, 06:00,Saga Sapphire,Ostseekai
+Sa,11.05.19, 07:00,11.05.19, 19:00,MSC Meraviglia,Ostseekai
+So,11.05.19, 08:00,11.05.19, 18:00,AIDAcara,Ostseekai
+Mo,13.05.19, 08:00,13.05.19, 17:00,Hamburg,Ostseekai
+Di,14.05.19, 06:30,14.05.19, 19:00,Mein Schiff 1,Ostseekai
+Di,14.05.19, 08:00,14.05.19, 18:00,AIDAluna,Ostseekai
+Do,16.05.19, 07:00,16.05.19, 17:00,Zuiderdam,Ostseekai
+Do,16.05.19, 08:00,16.05.19, 18:00,AIDAluna,Ostseekai
+Fr,17.05.19, 08:00,17.05.19, 18:00,AIDAprima,Ostseekai
+Sa,18.05.19, 07:00,18.05.19, 19:00,Mein Schiff 1,Ostseekai
+So,19.05.19, 06:30,19.05.19, 19:00,AIDAluna,Ostseekai
+Mo,20.05.19, 06:30,20.05.19, 19:00,AIDAprima,Ostseekai
+Mo,20.05.19, 08:00,20.05.19, 18:00,Mein Schiff 4,Ostseekai
+Mi,22.05.19, 08:00,22.05.19, 18:00,Nieuw Statendam,Ostseekai
+Sa,24.05.19, 06:30,24.05.19, 19:00,Ocean Majesty,Ostseekai
+Sa,24.05.19, 07:00,24.05.19, 17:00,AIDAcara,Ostseekai
+Sa,24.05.19, 12:30,24.05.19, 15:30,Mein Schiff 1,Ostseekai
+So,26.05.19, 07:00,26.05.19, 19:00,AIDAprima,Ostseekai
+Mo,27.05.19, 08:00,27.05.19, 18:00,Mein Schiff 4,Ostseekai
+Di,28.05.19, 06:30,28.05.19, 19:00,AIDAbella,Ostseekai
+Di,28.05.19, 08:00,28.05.19, 18:00,Ocean Majesty,Ostseekai
+Mi,29.05.19, 06:30,29.05.19, 19:00,AIDAcara,Ostuferhafen
+Do,30.05.19, 08:00,30.05.19, 18:00,Mein Schiff 1,Ostseekai
+Fr,31.05.19, 08:00,31.05.19, 15:30,AIDAprima,Ostseekai"
+
+rohdaten_juni19 <- "
+Sa,01.06.19, 07:00,01.06.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,01.06.19, 08:00,01.06.19, 18:00,AIDAprima,Ostseekai
+So,02.06.19, 08:00,02.06.19, 18:00,AIDAbella,Ostseekai
+So,02.06.19, 08:00,02.06.19, 16:30,Hamburg,Ostseekai
+Mi,05.06.19, 08:00,05.06.19, 18:00,AIDAcara,Ostseekai
+Do,06.06.19, 06:30,06.06.19, 19:00,Mein Schiff 1,Ostseekai
+Do,06.06.19, 08:00,06.06.19, 18:00,AIDAluna,Ostseekai
+Do,06.06.19, 08:00,06.06.19, 15:00,Ocean Majesty,Ostseekai
+Fr,07.06.19, 08:00,07.06.19, 17:00,Costa Pacifica,Ostseekai
+Sa,08.06.19, 06:30,08.06.19, 19:00,Mein Schiff 4,Ostseekai
+Sa,08.06.19, 07:00,08.06.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,08.06.19, 08:00,08.06.19, 18:00,AIDAprima,Ostseekai
+So,09.06.19, 08:00,09.06.19, 16:00,Zuiderdam,Ostseekai
+Mo,10.06.19, 06:30,10.06.19, 19:00,Mein Schiff 1,Ostseekai
+Do,13.06.19, 09:00,13.06.19, 17:00,Hamburg,Ostseekai
+Sa,15.06.19, 07:00,15.06.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,15.06.19, 08:00,15.06.19, 18:00,AIDAcara,Ostseekai
+Sa,15.06.19, 08:00,15.06.19, 18:00,AIDAprima,Ostseekai
+So,16.06.19, 08:00,16.06.19, 15:00,Ocean Majesty,Ostseekai
+So,16.06.19, 08:00,16.06.19, 18:00,AIDAbella,Ostseekai
+Di,18.06.19, 08:00,18.06.19, 17:00,Costa Pacifica,Ostseekai
+Do,20.06.19, 06:30,20.06.19, 19:00,Mein Schiff 1,Ostseekai
+Sa,22.06.19, 06:30,22.06.19, 19:00,Mein Schiff 4,Ostseekai
+Sa,22.06.19, 07:00,22.06.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,22.06.19, 08:00,22.06.19, 18:00,AIDAprima,Ostseekai
+So,23.06.19, 08:00,23.06.19, 18:00,Amadea,Ostseekai
+So,23.06.19, 09.00,23.06.19, 15:00,Artania,Ostseekai
+So,23.06.19, 14:00,23.06.19, 23:00,Hamburg,Norwegenkai
+Mo,24.06.19, 08:30,24.06.19, 17:00,Albatros,Ostuferhafen
+Di,25.06.19, 13:00,25.06.19, 23:00,Costa Pacifica,Ostseekai
+Fr,28.06.19, 08:00,28.06.19, 17:00,MSC Meraviglia,Ostseekai
+Sa,29.06.19, 07:00,29.06.19, 19:00,AIDAcara,Ostseekai
+Sa,29.06.19, 08:00,29.06.19, 18:00,AIDAprima,Ostseekai
+Sa,29.06.19, 08:00,29.06.19, 18:00,Mein Schiff 4,Ostseekai
+So,30.06.19, 06:30,30.06.19, 19:00,AIDAbella,Ostseekai
+So,30.06.19, 08:00,30.06.19, 18:00,Ocean Majesty,Ostseekai"
+
+# Rohdaten für Juli, August und September
+# Rohdaten für Juli 2019
+rohdaten_juli19 <- "
+Mo,01.07.19, 06:30,01.07.19, 09:00,Mein Schiff 1,Ostseekai
+Mo,01.07.19, 19:00,01.07.19, 16:00,Mein Schiff 1,Ostseekai
+Mi,03.07.19, 08:00,03.07.19, 17:00,Boudicca,Ostseekai
+Do,04.07.19, 08:00,04.07.19, 16:00,Zuiderdam,Ostseekai
+Sa,06.07.19, 07:00,06.07.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,06.07.19, 08:00,06.07.19, 18:00,AIDAprima,Ostseekai
+Di,09.07.19, 09:00,09.07.19, 09:00,Costa Pacifica,Ostseekai
+Di,09.07.19, 09:00,09.07.19, 20:00,Artania,Ostseekai
+Mi,10.07.19, 08:00,10.07.19, 18:00,AIDAluna,Ostseekai
+Fr,12.07.19, 10:00,12.07.19, 15:00,Ocean Majesty,Ostseekai
+Sa,13.07.19, 06:30,13.07.19, 19:00,Mein Schiff 1,Ostseekai
+Sa,13.07.19, 07:00,13.07.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,13.07.19, 08:00,13.07.19, 18:00,AIDAprima,Ostseekai
+So,14.07.19, 06:30,14.07.19, 08:00,Mein Schiff 4,Ostseekai
+So,14.07.19, 08:00,14.07.19, 18:00,AIDAbella,Ostseekai
+Mo,15.07.19, 07:00,15.07.19, 17:00,Europa,Ostseekai
+Di,16.07.19, 08:00,16.07.19, 17:00,Marella Explorer,Ostseekai
+Fr,19.07.19, 09:00,19.07.19, 17:00,Costa Pacifica,Ostseekai
+Fr,19.07.19, 09:30,19.07.19, 16:00,Vasco da Gama,Ostseekai
+Sa,20.07.19, 07:00,20.07.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,20.07.19, 08:00,20.07.19, 18:00,AIDAprima,Ostseekai
+So,21.07.19, 06:30,21.07.19, 09:00,Mein Schiff 1,Ostseekai
+Mo,22.07.19, 10:30,22.07.19, 18:00,Vasco da Gama,Ostseekai
+Do,25.07.19, 09:00,25.07.19, 17:00,Queen Victoria,Ostseekai
+Sa,27.07.19, 07:00,27.07.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,27.07.19, 08:00,27.07.19, 18:00,AIDAprima,Ostseekai
+Sa,27.07.19, 08:00,27.07.19, 18:00,Mein Schiff 4,Ostseekai
+So,28.07.19, 06:30,28.07.19, 19:00,AIDAbella,Ostseekai
+So,28.07.19, 08:00,28.07.19, 18:00,Ocean Majesty,Ostseekai
+Mo,29.07.19, 08:00,29.07.19, 08:00,AIDAluna,Ostuferhafen
+Di,30.07.19, 09:00,30.07.19, 09:00,Mein Schiff 1,Ostseekai
+Mi,31.07.19, 06:30,31.07.19, 19:00,Mein Schiff 1,Ostseekai"
+
+rohdaten_august19 <- "
+Do,01.08.19, 08:30,01.08.19, 19:00,Vasco Da Gama,Ostseekai
+Fr,02.08.19, 19:00,02.08.19, 23:00,Azamara Journey,Ostseekai
+Sa,03.08.19, 07:00,03.08.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,03.08.19, 08:00,03.08.19, 18:00,AIDAprima,Ostseekai
+Mo,05.08.19, 09:00,05.08.19, 18:00,Astor,Ostseekai
+Do,08.08.19, 06:30,08.08.19, 19:00,Mein Schiff 1,Ostseekai
+Do,08.08.19, 06:30,08.08.19, 19:00,Mein Schiff 4,Ostseekai
+Fr,09.08.19, 09:00,09.08.19, 17:00,Costa Pacifica,Ostseekai
+Sa,10.08.19, 07:00,10.08.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,10.08.19, 08:00,10.08.19, 18:00,AIDAprima,Ostseekai
+So,11.08.19, 08:00,11.08.19, 18:00,AIDAbella,Ostseekai
+Di,13.08.19, 08:30,13.08.19, 18:00,Vasco Da Gama,Ostseekai
+Do,15.08.19, 08:00,15.08.19, 19:00,AIDAluna,Ostseekai
+Sa,17.08.19, 07:00,17.08.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,17.08.19, 08:00,17.08.19, 18:00,AIDAluna,Ostseekai
+Sa,17.08.19, 08:00,17.08.19, 18:00,AIDAprima,Ostseekai
+Sa,17.08.19, 14:30,17.08.19, 20:00,Vasco Da Gama,Ostseekai
+So,18.08.19, 06:30,18.08.19, 19:00,Mein Schiff 1,Ostseekai
+Mo,20.08.19, 06:30,20.08.19, 19:00,Mein Schiff 4,Ostseekai
+Mo,20.08.19, 09:00,20.08.19, 17:00,Costa Pacifica,Ostseekai
+Sa,24.08.19, 07:00,24.08.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,24.08.19, 08:00,24.08.19, 18:00,AIDAprima,Ostseekai
+So,25.08.19, 08:00,25.08.19, 18:00,AIDAluna,Ostseekai
+Di,27.08.19, 06:30,27.08.19, 19:00,Mein Schiff 1,Ostseekai
+Mi,28.08.19, 08:00,28.08.19, 18:00,AIDAprima,Ostseekai
+Fr,30.08.19, 06:30,30.08.19, 19:00,Mein Schiff 4,Ostseekai
+Fr,30.08.19, 09:00,30.08.19, 17:00,Costa Pacifica,Ostseekai
+Sa,31.08.19, 07:00,31.08.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,31.08.19, 08:00,31.08.19, 18:00,AIDAprima,Ostseekai
+"
+rohdaten_september19 <- "
+So,01.09.19, 07:00,01.09.19, 18:00,Europa 2,Ostseekai
+So,01.09.19, 08:00,01.09.19, 18:00,AIDAbella,Ostseekai
+Mo,02.09.19, 07:00,02.09.19, 19:00,Europa,Ostseekai
+Do,05.09.19, 07:00,05.09.19, 17:00,Nieuw Statendam,Ostseekai
+Sa,07.09.19, 06:30,07.09.19, 19:00,Mein Schiff 3,Ostseekai
+Sa,07.09.19, 07:00,07.09.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,07.09.19, 08:00,07.09.19, 18:00,AIDAprima,Ostseekai
+So,08.09.19, 08:00,08.09.19, 18:00,AIDAbella,Ostseekai
+Di,10.09.19, 09:00,10.09.19, 17:00,Costa Pacifica,Ostseekai
+Mi,11.09.19, 06:30,11.09.19, 19:00,Mein Schiff 3,Ostseekai
+Do,12.09.19, 08:00,12.09.19, 18:00,AIDAbella,Ostseekai
+Sa,14.09.19, 07:00,14.09.19, 19:00,MSC Meraviglia,Ostseekai
+Sa,14.09.19, 08:00,14.09.19, 18:00,AIDAprima,Ostseekai
+So,15.09.19, 08:00,15.09.19, 18:00,AIDAbella,Ostseekai
+Mi,18.09.19, 06:30,18.09.19, 19:00,Mein Schiff 3,Ostseekai
+Mi,18.09.19, 07:00,18.09.19, 18:00,AIDAbella,Ostseekai
+Do,19.09.19, 08:00,19.09.19, 18:00,MSC Meraviglia,Ostseekai
+Sa,21.09.19, 07:00,21.09.19, 19:00,AIDAprima,Ostseekai
+Sa,21.08.19, 08:00,21.08.19, 18:00,AIDAbella,Ostseekai
+So,22.08.19, 08:00,22.08.19, 18:00,Mein Schiff 3,Ostseekai
+Do,26.09.19, 08:00,26.09.19, 18:00,AIDAprima,Ostseekai
+Fr,27.09.19, 06:30,27.09.19, 19:00,AIDAbella,Ostseekai
+Sa,28.09.19, 08:00,28.09.19, 18:00,Mein Schiff 3,Ostseekai
+So,29.09.19, 06:30,29.09.19, 19:00,AIDAprima,Ostseekai
+So,29.09.19, 08:00,29.09.19, 18:00,AIDAbella,Ostseekai
+"
+rohdaten_oktober19 <- "
+Do,03.10.19, 08:00,03.10.19, 18:00,AIDAbella,Ostseekai
+Sa,05.10.19 ,08:00,05.10.19 ,18:00,AIDAprima,Ostseekai
+Di,08.10.19 ,07:30,08.10.19 ,14:00,Astor,Norwegenkai
+Sa,12.10.19, 08:00,12.10.19 ,18:00,AIDAprima,Ostseekai
+"
+
+rohdaten_2019 <- paste(rohdaten_januar19,rohdaten_april19, rohdaten_mai19, rohdaten_juni19,rohdaten_juli19,rohdaten_august19,rohdaten_september19,rohdaten_oktober19, sep = "\n")
+
+# Datenrahmen für 2014 erstellen und hinzufügen
+daten_2019 <- read.table(text = rohdaten_2019, sep = ",", header = FALSE, stringsAsFactors = FALSE)
+colnames(daten_2019) <- c("Tag","Datum", "UhrzeitVon", "DatumBis", "UhrzeitBis", "Schiff",  "Terminal")
+daten_2019$Datum <- as.Date(daten_2019$Datum, format="%d.%m.%Y")
+daten_2019$Startzeit <- as.POSIXct(paste(daten_2019$Datum, daten_2019$UhrzeitVon), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+daten_2019$Endzeit <- as.POSIXct(paste(daten_2019$DatumBis, daten_2019$UhrzeitBis), format="%Y-%m-%d %H:%M:%S", tz="UTC")
+
+
+
+# Daten für Oktober 2014 zur bestehenden Tabelle hinzufügen
+ergebnisse2019 <- (daten_2019 %>%
+      select(Datum, Startzeit, Endzeit, Schiff) %>%
+      filter(!is.na(Datum)) %>%
+      group_by(Datum) %>%
+      summarize(Kreuzfahrtschiffe = n())
+  )
+
+# Aktualisierte Daten in CSV exportieren
+#write.csv(ergebnisse2019, file = "kreuzfahrten_2019.csv", row.names = FALSE)
+
+# Ausgabe
+print("CSV-Datei erfolgreich erstellt: kreuzfahrten_2019.csv")
+#file.show("kreuzfahrten_2019.csv")
+
+# Gesamtanzahl der Kreuzfahrtschiffe für das Jahr 2013 berechnen
+gesamtanzahl_kreuzfahrtschiffe_2013 <- sum(ergebnisse2019$Kreuzfahrtschiffe)
+
+# Ausgabe der Gesamtanzahl
+print(paste("Die Gesamtanzahl der Kreuzfahrtschiffe im Jahr 2013 beträgt:", gesamtanzahl_kreuzfahrtschiffe_2013))
+#162/162 eventuell irgendwas mit 2018 vermischt oder Zufall
+
+```
+
+Alle Daten zusammenfügen
+
+```{r}
+combined_results <- rbind(ergebnisse2013, ergebnisse2014, ergebnisse2015, ergebnisse2016, ergebnisse2017, ergebnisse2018, 
+ergebnisse2019)
+
+combined_results$Datum <- as.Date(combined_results$Datum, format = "%y-%m-%d")
+```
+CSV schreiben
+Feiertage speichern und in eine CSV Schreiben
+```{r}
+
+# Erstellen Sie den Dateipfad zum Zielverzeichnis
+subdirectory <- "../Datenvorbereitungcsv"
+target_directory <- file.path(getwd(), subdirectory)
+
+
+# Erstellen Sie den vollständigen Dateipfad zur CSV-Datei im Zielverzeichnis
+file_path <- file.path(target_directory, "Kreuzfahrten.csv")
+
+# Schreiben Sie die CSV-Datei
+write.csv(combined_results, file_path, row.names = FALSE)
+
+# Optional: Bestätigungsnachricht ausgeben
+cat("CSV-Datei erfolgreich erstellt und im Zielverzeichnis gespeichert:", file_path, "\n")
+
+
+
+```
