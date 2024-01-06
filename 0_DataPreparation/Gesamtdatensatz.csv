@@ -1,4 +1,398 @@
 "Datum","Bewoelkung","Temperatur","Windgeschwindigkeit","Wettercode","Warengruppe","Umsatz","KielerWoche","Feiertag","Art_des_Feiertags","Ferien","Wochentag","Fussballspiel","Flohmarkt","Jahreszeit","Temperaturkategorie","Kreuzfahrtschiffe"
+2012-01-01,8,9.825,14,58,NA,NA,0,1,"Neujahr",NA,"Sonntag","0",0,NA,"mittel",0
+2012-01-02,7,7.4375,12,60,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-01-03,8,5.5375,18,63,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-01-04,4,5.6875,19,80,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-01-05,6,5.3,23,80,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-01-06,3,2.625,10,70,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-01-07,7,6.528571,14,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-01-08,7,5.9625,10,80,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-01-09,8,5.15,12,61,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-01-10,6,6.1125,10,56,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-01-11,6,7.8625,16,51,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-01-12,7,7.4375,25,61,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-01-13,2,4.8,18,61,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-01-14,3,2.8875,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-01-15,1,2.225,6,61,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-01-16,8,3.0625,6,61,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-01-17,6,4.4875,10,56,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-01-18,7,2.35,12,51,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-01-19,8,5.2625,16,80,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-01-20,6,3.4375,12,26,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-01-21,7,3.5375,16,68,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-01-22,6,3.7875,12,21,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-01-23,5,2.2125,4,10,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-01-24,3,1.7625,6,25,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-01-25,3,-0.1875,8,40,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-01-26,2,0.3625,12,55,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-01-27,8,-1,10,71,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-01-28,6,-1.3875,10,10,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-01-29,7,-3.1625,8,71,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-01-30,3,-2.275,12,71,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-01-31,1,-2.375,18,71,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-02-01,7,-1.825,16,71,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-02-02,6,-5.85,8,85,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-02-03,4,-5.85,14,3,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-02-04,4,-7.5375,10,71,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"niedrig",0
+2012-02-05,5,-7.7125,8,40,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-02-06,4,-10.25,6,10,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-02-07,6,-3,18,71,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-02-08,6,-2.7625,10,37,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-02-09,6,-1.6625,21,3,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-02-10,6,-2.8125,8,71,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-02-11,7,-4.575,8,78,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-02-12,8,-1.2375,16,72,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-02-13,6,-2.325,8,10,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-02-14,8,1.3,10,47,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-02-15,1,4.8625,18,54,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-02-16,7,2.9625,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-02-17,5,5.5625,14,61,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-02-18,8,6.175,14,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"niedrig",0
+2012-02-19,4,4.2,18,25,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-02-20,5,4.1125,14,41,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-02-21,8,4.95,14,58,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-02-22,7,7.175,18,51,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-02-23,6,8.4125,18,35,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-02-24,7,8.35,19,20,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-02-25,6,6.525,19,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-02-26,1,4.675,8,61,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-02-27,8,3.725,12,61,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-02-28,8,7.675,14,51,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-02-29,8,7.775,10,47,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-03-01,6,7.625,12,43,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-03-02,7,5.9125,6,28,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-03-03,5,7.0375,14,34,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"niedrig",0
+2012-03-04,7,4.675,8,41,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-03-05,7,4.875,10,47,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-03-06,4,4.5125,10,54,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-03-07,7,4.05,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-03-08,2,7.5125,14,35,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-03-09,8,7.825,14,10,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-03-10,6,8.7,19,10,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-03-11,6,8.95,14,7,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-03-12,5,9.0125,18,4,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-03-13,6,9.95,16,1,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-03-14,7,7.7875,10,4,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-03-15,6,7.4,8,7,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-03-16,3,12.0375,14,10,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-03-17,6,9.775,14,10,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"mittel",0
+2012-03-18,7,9.8375,16,61,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-03-19,4,8.1125,18,56,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-03-20,7,8.0875,18,51,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-03-21,5,12.625,16,26,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-03-22,0,12.7625,6,2,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-03-23,0,13.4875,6,6,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-03-24,5,7.8375,8,10,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-03-25,0,13.1375,10,1,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-03-26,7,8.4875,8,51,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-03-27,4,15.5,10,28,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-03-28,3,14.8375,18,5,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-03-29,6,8.9875,19,21,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-03-30,3,9.9625,18,1,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-03-31,4,6.1125,19,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"niedrig",0
+2012-04-01,7,6.525,19,25,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-04-02,7,5.5875,16,23,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-04-03,7,3.3,10,22,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-04-04,7,4.5875,18,21,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-04-05,1,5.6375,10,41,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-04-06,7,6.2,18,61,NA,NA,0,1,"Ostern",NA,"Freitag","0",0,NA,"niedrig",0
+2012-04-07,4,3.7125,19,60,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"niedrig",0
+2012-04-08,2,5.75,10,59,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-04-09,8,6.5125,10,58,NA,NA,0,1,"Ostern",NA,"Montag","0",0,NA,"niedrig",0
+2012-04-10,8,10.5875,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-04-11,7,10.475,12,71,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-04-12,6,9.575,12,81,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-04-13,7,8.725,10,53,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-04-14,6,8.8125,8,25,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"niedrig",0
+2012-04-15,7,8.075,10,21,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-04-16,4,7.5,16,80,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-04-17,5,8.0375,12,83,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-04-18,6,9.6125,10,87,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-04-19,2,14.2375,14,91,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-04-20,6,9.225,10,95,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-04-21,6,12.2,10,91,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-04-22,6,9.9875,10,80,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-04-23,6,9.95,10,81,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-04-24,7,10,8,61,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-04-25,6,11.6375,12,60,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-04-26,6,14.1875,14,60,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-04-27,5,14.925,12,25,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-04-28,6,9.5125,18,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-04-29,7,11.4625,23,64,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-04-30,3,16.2375,8,67,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-05-01,5,13.4125,19,70,NA,NA,0,1,"Tag der Arbeit",NA,"Dienstag","0",0,NA,"mittel",0
+2012-05-02,1,13.45,12,73,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-05-03,6,16.6,8,76,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-05-04,7,12.65,10,80,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-05-05,2,10.5,8,73,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-05-06,5,8.6,8,67,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"niedrig",0
+2012-05-07,7,7.575,6,61,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-05-08,6,16.075,8,71,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-05-09,6,16.85,10,81,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-05-10,7,17.85,12,61,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-05-11,5,16.525,19,70,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-05-12,5,9.3875,23,80,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-05-13,6,11.0125,10,80,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-05-14,6,14.525,12,80,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-05-15,7,11.45,10,80,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-05-16,6,8.8875,19,80,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-05-17,4,10.8125,18,3,NA,NA,0,1,"Christi Himmelfahrt, Pfingsten",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-05-18,6,16.2125,10,7,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-05-19,5,17.7625,6,11,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-05-20,6,18.475,10,15,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-05-21,5,18.514285,14,19,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-05-22,4,19.2,12,23,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-05-23,4,18.2375,14,27,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-05-24,0,18.8625,12,32,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-05-25,0,19.85,10,36,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-05-26,4,21.45,8,40,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-05-27,1,19.875,10,44,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-05-28,2,22.8375,14,48,NA,NA,0,1,"Christi Himmelfahrt, Pfingsten",NA,"Montag","0",0,NA,"hoch",0
+2012-05-29,4,15.35,12,52,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-05-30,6,12.9375,14,56,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-05-31,7,13.2625,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-06-01,4,12.8875,19,25,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-06-02,4,12.4625,16,25,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-06-03,7,12.35,12,25,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-06-04,7,13.2125,14,25,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-06-05,5,13.2125,16,25,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-06-06,7,13.8375,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-06-07,7,15.1875,10,51,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-06-08,4,19.3375,12,95,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-06-09,6,14.6,14,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-06-10,6,15,16,51,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-06-11,3,16.525,8,57,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-06-12,7,14.1125,6,63,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-06-13,4,15.1625,12,63,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-06-14,6,14.05,12,63,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-06-15,7,18.3125,8,63,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-06-16,6,18.4625,10,25,NA,NA,1,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-06-17,6,16.9625,14,25,NA,NA,1,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-06-18,6,19.5875,19,95,NA,NA,1,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-06-19,6,17.3125,6,78,NA,NA,1,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-06-20,6,17.65,12,62,NA,NA,1,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-06-21,4,18.5125,16,45,NA,NA,1,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-06-22,4,18.325,14,29,NA,NA,1,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-06-23,6,16.8875,12,80,NA,NA,1,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-06-24,8,12.875,12,63,NA,NA,1,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-06-25,6,13.8875,18,80,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-06-26,6,14.3,18,20,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-06-27,8,14.5625,10,45,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-06-28,6,18.2625,8,70,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-06-29,6,22.75,8,95,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-06-30,5,23.1375,10,80,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-07-01,4,19.5125,14,66,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-07-02,6,19.4375,10,52,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-07-03,3,20.5375,12,38,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-07-04,5,19.95,12,24,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-07-05,7,17.2625,12,10,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-07-06,7,18.5375,10,60,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-07-07,7,20.7875,4,77,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-07-08,5,22.975,10,95,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-07-09,7,16.5,16,61,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-07-10,6,18.825,14,1,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-07-11,6,17.15,14,29,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-07-12,5,15.4875,14,81,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-07-13,6,17.0875,6,21,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-07-14,6,17.9125,19,25,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-07-15,5,16.375,16,25,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-07-16,5,16.875,16,80,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-07-17,5,17.1375,18,80,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-07-18,7,16.95,6,63,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-07-19,7,15.8125,16,81,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-07-20,6,15.25,16,80,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-07-21,6,16.1625,16,77,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-07-22,4,18.325,12,75,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-07-23,2,22.483333,12,72,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-07-25,1,25.65,8,70,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-07-26,1,22.5875,8,67,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-07-27,1,26.075,10,65,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-07-28,7,18.95,14,63,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-07-29,7,16.0375,8,61,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-07-30,6,15.1875,10,95,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-07-31,5,17.1625,12,73,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-08-01,6,21.0625,6,51,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-08-02,6,22.725,10,29,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-08-03,4,20.6875,10,91,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-08-04,6,18.225,6,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"hoch",0
+2012-08-05,6,21.6125,4,70,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-08-06,5,19.575,16,80,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-08-07,6,17.3125,14,80,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-08-08,4,17.9,16,80,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-08-09,5,18.35,12,52,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-08-10,6,17.3,14,25,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-08-11,2,18.85,10,31,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-08-12,1,19.7875,12,37,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-08-13,2,20.0375,14,44,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-08-14,2,20.1625,12,50,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-08-15,1,20.4,14,56,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-08-16,6,17.325,10,63,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-08-17,5,21.9375,8,65,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","1",0,NA,"hoch",0
+2012-08-18,6,27.525,8,67,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-08-19,2,26.875,8,70,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-08-20,3,26.15,16,72,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-08-21,6,20.8125,6,75,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-08-22,4,20.0125,18,77,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-08-23,5,19.8375,18,80,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-08-24,7,16.2625,4,61,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-08-25,6,18.8625,8,80,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-08-26,6,17.325,14,95,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-08-27,2,17.8625,12,78,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-08-28,7,19.5875,8,61,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-08-29,4,20.6625,8,3,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-08-30,7,19.2375,6,14,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-08-31,3,17.2875,14,25,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-09-01,6,16.6,12,36,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-09-02,6,19.15,14,47,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-09-03,4,19.475,12,58,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-09-04,4,20.5375,14,69,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-09-05,6,17.1375,14,80,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2012-09-06,7,16.1125,14,69,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-09-07,7,16.125,12,58,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-09-08,5,18.4625,16,51,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",0
+2012-09-09,4,21.075,6,54,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-09-10,4,23.125,12,57,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-09-11,7,17.0875,12,61,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2012-09-12,4,13.9625,12,80,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-09-13,3,15.1,8,70,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-09-14,8,13.7125,16,61,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","1",0,NA,"mittel",0
+2012-09-15,6,15.625,18,80,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-09-16,3,18.35,12,52,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",0
+2012-09-17,4,17.4375,14,25,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2012-09-18,6,15.0375,14,80,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-09-19,5,10.6375,16,81,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-09-20,6,11.4875,12,80,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-09-21,7,14.25,14,21,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-09-22,5,11.5,14,25,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-09-23,4,13.65,10,43,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","1",0,NA,"mittel",0
+2012-09-24,8,10.4125,16,61,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-09-25,7,14.925,10,80,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-09-26,7,12.5625,6,61,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-09-27,7,13.2,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-09-28,6,13.5625,12,43,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-09-29,5,13.2625,16,25,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",0
+2012-09-30,4,13.875,14,25,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2012-10-01,7,13.8625,10,17,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-10-02,6,15.1625,10,10,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-10-03,7,14.175,12,65,NA,NA,0,1,"Tag der Deutschen Einheit",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-10-04,7,10.45,10,80,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-10-05,7,9.7375,14,61,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-10-08,4,12.4375,12,80,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-10-09,1,10.9875,19,80,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-10-10,5,10.1,12,80,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-10-11,4,11.4375,6,70,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-10-12,6,10.1375,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-10-15,6,9.5875,10,51,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-10-16,7,10.8875,12,61,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-10-17,7,12.1,12,21,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-10-18,6,16.775,8,17,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2012-10-19,3,19.35,6,13,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2012-10-22,8,12.675,8,10,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2012-10-23,8,11.8875,8,51,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2012-10-24,8,10.9875,6,51,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-10-25,6,8.7375,16,80,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-10-26,5,5.1875,8,70,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-10-29,8,3.625,14,61,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-10-30,4,7.0625,8,25,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-10-31,6,7.95,10,10,NA,NA,0,1,"Reformationstag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-11-01,7,5.8125,10,15,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-11-02,7,7.475,12,21,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-11-05,7,6.5875,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-11-06,6,7.45,14,80,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-11-07,7,10.3,16,51,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-11-08,7,9.6625,16,80,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-11-09,7,9.5,8,20,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2012-11-12,6,7.3125,12,80,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-11-13,7,7.2,8,10,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-11-14,8,9.6625,6,10,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2012-11-15,7,8.7125,6,5,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-11-16,7,-0.275,6,10,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-11-19,3,6.125,8,3,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-11-20,6,7.675,8,10,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-11-21,8,6.1875,12,10,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-11-22,4,9.1,14,3,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2012-11-23,7,6.7,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-11-26,6,8.1625,10,40,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-11-27,7,7.625,8,20,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-11-28,8,5.325,8,51,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-11-29,7,3.4625,14,61,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-11-30,2,0.725,10,35,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-12-03,8,1.033333,8,10,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-12-04,7,1.375,8,69,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-12-05,2,-4.7875,10,49,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-12-06,1,-4.45,8,29,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-12-07,4,-1.7875,8,10,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-12-10,8,0.1875,18,71,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-12-11,6,-1.8625,14,40,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-12-12,3,-5.7375,4,10,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-12-13,7,-2.0625,4,78,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-12-14,7,-2.6875,10,10,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2012-12-17,8,4.1875,4,47,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"niedrig",0
+2012-12-18,8,3.6375,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"niedrig",0
+2012-12-19,7,2.8625,6,20,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"niedrig",0
+2012-12-20,7,2.0875,12,5,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"niedrig",0
+2012-12-21,7,-0.2125,10,13,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"niedrig",0
+2013-04-30,3,11.116666,15,0,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",1
+2013-05-01,0,9.9,11,3,NA,NA,0,1,"Tag der Arbeit",NA,"Mittwoch","0",0,NA,"mittel",2
+2013-05-02,1,11.0375,12,6,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",0
+2013-05-03,0,12.9125,9,9,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2013-05-04,0,17.95,18,12,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",1
+2013-05-05,3,16.2125,10,15,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",1,NA,"hoch",2
+2013-05-06,0,15.675,8,18,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2013-05-07,1,17.4125,10,21,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",1
+2013-05-08,4,18.8125,9,21,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2013-05-09,7,16.125,11,21,NA,NA,0,1,"Christi Himmelfahrt, Pfingsten",NA,"Donnerstag","0",0,NA,"hoch",0
+2013-05-10,5,15.5,12,21,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",2
+2013-05-11,7,15.4125,11,41,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"mittel",2
+2013-05-12,7,11.7125,12,61,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",0
+2013-05-13,7,11.4375,10,65,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",1
+2013-05-14,5,12.6,10,21,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2013-05-15,4,20.5375,10,61,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2013-05-16,0,16.1625,13,5,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",1
+2013-05-17,0,21.3125,11,5,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2013-05-18,7,13.85,12,10,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"mittel",2
+2013-05-19,8,13.05,5,20,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",1
+2013-05-20,7,15.775,8,21,NA,NA,0,1,"Christi Himmelfahrt, Pfingsten",NA,"Montag","0",0,NA,"mittel",0
+2013-05-21,7,12.525,9,65,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2013-05-22,7,9.0625,23,63,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2013-05-23,5,10.525,8,61,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",1
+2013-05-24,5,12.5,8,61,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",0
+2013-05-25,7,11.3375,11,63,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,"mittel",2
+2013-05-26,7,14.1625,15,63,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",1
+2013-05-27,6,14.7875,10,41,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",0
+2013-05-28,6,15.4,10,20,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",1
+2013-05-29,7,13.6625,14,61,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",2
+2013-05-30,4,16.125,11,21,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",1
+2013-05-31,3,17.65,12,21,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",1
+2013-06-01,3,20.3875,10,21,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",2
+2013-06-02,2,14.975,18,18,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",1,NA,"mittel",1
+2013-06-03,0,17.35,13,16,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",2
+2013-06-04,3,17.1625,15,14,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",1
+2013-06-05,4,19.0875,9,11,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",0
+2013-06-06,0,20.85,12,9,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",0
+2013-06-07,0,19.7,8,7,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2013-06-08,1,16.9625,9,4,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",3
+2013-06-09,4,15.8875,7,2,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",3
+2013-06-10,2,17.725,8,0,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2013-06-11,2,16.6625,9,0,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2013-06-12,5,22.35,7,0,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",1
+2013-06-14,2,16.7125,16,0,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2013-06-15,6,17.0875,27,61,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",3
+2013-06-16,7,15.5875,16,21,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",2
+2013-06-17,0,17.9,8,10,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,"hoch",0
+2013-06-18,1,20.05,10,0,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"hoch",0
+2013-06-19,6,23.5375,10,63,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"hoch",1
+2013-06-20,2,21.8375,10,63,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"hoch",1
+2013-06-21,7,19.575,14,63,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"hoch",0
+2013-06-22,6,19.7375,10,42,NA,NA,1,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"hoch",1
+2013-06-23,6,17.5375,10,21,NA,NA,1,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"hoch",1
+2013-06-24,7,15.95,12,63,NA,NA,1,0,"Kein Feiertag",NA,"Montag","0",0,NA,"mittel",1
+2013-06-25,7,15.175,10,21,NA,NA,1,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,"mittel",0
+2013-06-26,7,13.825,18,61,NA,NA,1,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,"mittel",0
+2013-06-27,7,12.55,10,61,NA,NA,1,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,"mittel",1
+2013-06-28,7,13.05,10,61,NA,NA,1,0,"Kein Feiertag",NA,"Freitag","0",0,NA,"mittel",2
+2013-06-29,6,14.8375,16,61,NA,NA,1,0,"Kein Feiertag",NA,"Samstag","0",0,NA,"mittel",4
+2013-06-30,7,14.0125,15,63,NA,NA,1,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,"mittel",2
 2013-07-01,6,17.8375,15,20,1,148.828353112183,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",0
 2013-07-01,6,17.8375,15,20,2,535.856284785361,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",0
 2013-07-01,6,17.8375,15,20,3,201.198425690037,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",0
@@ -316,11 +710,11 @@
 2013-09-03,7,18.225,11,21,3,174.655491296255,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","mittel",1
 2013-09-03,7,18.225,11,21,4,66.7042185386037,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","mittel",1
 2013-09-03,7,18.225,11,21,5,270.350123886175,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","mittel",1
-2013-09-04,7,18.125,5,29,1,100.221969526295,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
-2013-09-04,7,18.125,5,29,2,362.249371679536,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
-2013-09-04,7,18.125,5,29,3,162.83743839423,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
-2013-09-04,7,18.125,5,29,4,102.369988965095,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
-2013-09-04,7,18.125,5,29,5,308.670506473354,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
+2013-09-04,7,18.125,5,29,1,100.221969526295,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",1
+2013-09-04,7,18.125,5,29,2,362.249371679536,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",1
+2013-09-04,7,18.125,5,29,3,162.83743839423,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",1
+2013-09-04,7,18.125,5,29,4,102.369988965095,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",1
+2013-09-04,7,18.125,5,29,5,308.670506473354,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",1
 2013-09-05,0,21.7,8,37,1,173.658100347255,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","hoch",0
 2013-09-05,0,21.7,8,37,2,400.95010523182,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","hoch",0
 2013-09-05,0,21.7,8,37,3,155.795527807677,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","hoch",0
@@ -932,11 +1326,14 @@
 2013-12-24,7,11.4375,18,61,3,131.060157748043,0,1,"Weihnachten",1,"Dienstag","0",0,"Winter","hoch",0
 2013-12-24,7,11.4375,18,61,5,251.566250844717,0,1,"Weihnachten",1,"Dienstag","0",0,"Winter","hoch",0
 2013-12-24,7,11.4375,18,61,6,61.36878208577,0,1,"Weihnachten",1,"Dienstag","0",0,"Winter","hoch",0
+2013-12-25,6,8.5625,13,21,NA,NA,0,1,"Weihnachten",1,"Mittwoch","0",0,"Winter","hoch",0
+2013-12-26,6,3.775,6,28,NA,NA,0,1,"Weihnachten",1,"Donnerstag","0",0,"Winter","mittel",0
 2013-12-27,7,5.7625,15,63,1,152.367434643543,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
 2013-12-27,7,5.7625,15,63,2,433.889713549154,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
 2013-12-27,7,5.7625,15,63,3,155.11961993256,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
 2013-12-27,7,5.7625,15,63,5,270.571377693833,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
 2013-12-27,7,5.7625,15,63,6,34.5569447026584,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
+2013-12-28,7,7.0625,9,21,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","hoch",0
 2013-12-29,7,5.7125,9,63,1,131.267289010755,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Winter","mittel",0
 2013-12-29,7,5.7125,9,63,2,510.015069971101,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Winter","mittel",0
 2013-12-29,7,5.7125,9,63,3,186.144873761997,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Winter","mittel",0
@@ -952,6 +1349,7 @@
 2013-12-31,4,5.0375,7,36,2,586.131309693688,0,1,"Silvester",1,"Dienstag","0",0,"Winter","mittel",0
 2013-12-31,4,5.0375,7,36,3,192.198716551642,0,1,"Silvester",1,"Dienstag","0",0,"Winter","mittel",0
 2013-12-31,4,5.0375,7,36,5,1625.69060128682,0,1,"Silvester",1,"Dienstag","0",0,"Winter","mittel",0
+2014-01-01,5,4.5125,8,63,NA,NA,0,1,"Neujahr",1,"Mittwoch","0",0,"Winter","mittel",0
 2014-01-02,7,6.25,9,63,1,153.166492227541,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Winter","hoch",0
 2014-01-02,7,6.25,9,63,2,449.418219323415,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Winter","hoch",0
 2014-01-02,7,6.25,9,63,3,142.307970667817,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Winter","hoch",0
@@ -1038,11 +1436,11 @@
 2014-01-18,7,5.8875,8,61,3,120.949485978232,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
 2014-01-18,7,5.8875,8,61,4,66.7096858590463,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
 2014-01-18,7,5.8875,8,61,5,296.458168922809,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
-2014-01-19,7,2.8625,19,10,1,53.0014671833047,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","mittel",0
-2014-01-19,7,2.8625,19,10,2,519.732257703175,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","mittel",0
-2014-01-19,7,2.8625,19,10,3,201.951819155127,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","mittel",0
-2014-01-19,7,2.8625,19,10,4,161.394205203827,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","mittel",0
-2014-01-19,7,2.8625,19,10,5,284.622738586554,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","mittel",0
+2014-01-19,7,2.8625,19,10,1,53.0014671833047,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
+2014-01-19,7,2.8625,19,10,2,519.732257703175,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
+2014-01-19,7,2.8625,19,10,3,201.951819155127,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
+2014-01-19,7,2.8625,19,10,4,161.394205203827,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
+2014-01-19,7,2.8625,19,10,5,284.622738586554,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
 2014-01-20,8,0.3875,13,61,1,99.6819363621683,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","niedrig",0
 2014-01-20,8,0.3875,13,61,2,273.490861004483,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","niedrig",0
 2014-01-20,8,0.3875,13,61,3,113.234752934943,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","niedrig",0
@@ -1483,6 +1881,7 @@
 2014-04-17,5,14.4,14,61,3,214.383480919186,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","mittel",0
 2014-04-17,5,14.4,14,61,4,81.8180814450846,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","mittel",0
 2014-04-17,5,14.4,14,61,5,427.107033298615,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","mittel",0
+2014-04-18,7,8.2375,11,61,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Fruehling","niedrig",0
 2014-04-19,1,11.125,13,5,1,290.428956680919,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","mittel",1
 2014-04-19,1,11.125,13,5,2,701.506792782752,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","mittel",1
 2014-04-19,1,11.125,13,5,3,273.491937842767,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","mittel",1
@@ -1541,11 +1940,14 @@
 2014-04-30,3,18,8,3,3,154.434645162314,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Fruehling","hoch",1
 2014-04-30,3,18,8,3,4,51.0562893306812,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Fruehling","hoch",1
 2014-04-30,3,18,8,3,5,324.692536719349,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Fruehling","hoch",1
+2014-05-01,4,10.4875,14,7,NA,NA,0,1,"Tag der Arbeit",1,"Donnerstag","0",0,"Fruehling","niedrig",0
 2014-05-02,6,10.225,13,10,1,194.877300541007,0,0,"Kein Feiertag",1,"Freitag","0",0,"Fruehling","niedrig",0
 2014-05-02,6,10.225,13,10,2,506.773609930646,0,0,"Kein Feiertag",1,"Freitag","0",0,"Fruehling","niedrig",0
 2014-05-02,6,10.225,13,10,3,183.845898367796,0,0,"Kein Feiertag",1,"Freitag","0",0,"Fruehling","niedrig",0
 2014-05-02,6,10.225,13,10,4,77.6145056918161,0,0,"Kein Feiertag",1,"Freitag","0",0,"Fruehling","niedrig",0
 2014-05-02,6,10.225,13,10,5,345.188442766659,0,0,"Kein Feiertag",1,"Freitag","0",0,"Fruehling","niedrig",0
+2014-05-03,3,11.8625,13,14,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",1
+2014-05-04,7,9.6,11,17,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Fruehling","niedrig",0
 2014-05-05,8,10.7125,6,21,1,344.712427419033,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","niedrig",0
 2014-05-05,8,10.7125,6,21,2,1203.43112985675,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","niedrig",0
 2014-05-05,8,10.7125,6,21,3,565.941679350249,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","niedrig",0
@@ -2059,6 +2461,7 @@
 2014-08-16,6,17.2,15,61,3,398.439701504847,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",2
 2014-08-16,6,17.2,15,61,4,72.4171950384352,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",2
 2014-08-16,6,17.2,15,61,5,434.075054526158,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",2
+2014-08-17,7,15.65,13,61,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","1",0,"Sommer","niedrig",1
 2014-08-18,6,15.2,15,61,1,204.943578961263,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",1
 2014-08-18,6,15.2,15,61,2,764.810921387808,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",1
 2014-08-18,6,15.2,15,61,3,452.006265844125,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",1
@@ -2751,6 +3154,8 @@
 2014-12-24,5,7.75,21,61,3,100.716513467206,0,1,"Weihnachten",1,"Mittwoch","0",0,"Winter","hoch",0
 2014-12-24,5,7.75,21,61,5,268.806966002035,0,1,"Weihnachten",1,"Mittwoch","0",0,"Winter","hoch",0
 2014-12-24,5,7.75,21,61,6,60.9934806252716,0,1,"Weihnachten",1,"Mittwoch","0",0,"Winter","hoch",0
+2014-12-25,7,3.125,17,71,NA,NA,0,1,"Weihnachten",1,"Donnerstag","0",0,"Winter","mittel",0
+2014-12-26,6,0,6,22,NA,NA,0,1,"Weihnachten",1,"Freitag","0",0,"Winter","niedrig",0
 2014-12-27,3,-0.25,8,11,1,133.160219555693,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","niedrig",0
 2014-12-27,3,-0.25,8,11,2,513.661678925283,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","niedrig",0
 2014-12-27,3,-0.25,8,11,3,184.816622133556,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","niedrig",0
@@ -2776,6 +3181,7 @@
 2014-12-31,6,7.375,11,61,2,643.377780141136,0,1,"Silvester",1,"Mittwoch","0",0,"Winter","hoch",0
 2014-12-31,6,7.375,11,61,3,162.622976706613,0,1,"Silvester",1,"Mittwoch","0",0,"Winter","hoch",0
 2014-12-31,6,7.375,11,61,5,1879.46183076734,0,1,"Silvester",1,"Mittwoch","0",0,"Winter","hoch",0
+2015-01-01,8,4.125,13,10,NA,NA,0,1,"Neujahr",1,"Donnerstag","0",0,"Winter","mittel",0
 2015-01-02,6,7.75,24,61,1,171.436480362582,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","hoch",0
 2015-01-02,6,7.75,24,61,2,512.177720196036,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","hoch",0
 2015-01-02,6,7.75,24,61,3,182.123009322643,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","hoch",0
@@ -3236,6 +3642,7 @@
 2015-04-02,6,6.5,19,61,3,183.215551302075,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
 2015-04-02,6,6.5,19,61,4,44.0544861327719,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
 2015-04-02,6,6.5,19,61,5,406.353937532213,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
+2015-04-03,5,7.375,14,61,NA,NA,0,1,"Ostern",1,"Freitag","0",0,"Fruehling","niedrig",0
 2015-04-04,0,8.375,11,61,1,274.149943740529,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",1
 2015-04-04,0,8.375,11,61,2,624.731396612574,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",1
 2015-04-04,0,8.375,11,61,3,262.841739078878,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",1
@@ -3369,6 +3776,7 @@
 2015-04-30,6,11.375,10,61,3,116.009163395934,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","mittel",0
 2015-04-30,6,11.375,10,61,4,78.2474106946107,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","mittel",0
 2015-04-30,6,11.375,10,61,5,303.34662044021,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","mittel",0
+2015-05-01,6,10,6,21,NA,NA,0,1,"Tag der Arbeit",0,"Freitag","0",0,"Fruehling","niedrig",0
 2015-05-02,3,11,12,0,1,205.277811156554,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",2
 2015-05-02,3,11,12,0,2,569.854066374337,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",2
 2015-05-02,3,11,12,0,3,216.662099390377,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",2
@@ -3948,11 +4356,11 @@
 2015-08-26,5,22.125,9,41,3,201.986667710507,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","hoch",1
 2015-08-26,5,22.125,9,41,4,74.963807309499,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","hoch",1
 2015-08-26,5,22.125,9,41,5,318.973552484698,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","hoch",1
-2015-08-27,6,18.125,12,61,1,141.911779920259,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","niedrig",3
-2015-08-27,6,18.125,12,61,2,413.885988542687,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","niedrig",3
-2015-08-27,6,18.125,12,61,3,189.080053057953,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","niedrig",3
-2015-08-27,6,18.125,12,61,4,76.475641716123,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","niedrig",3
-2015-08-27,6,18.125,12,61,5,302.491389703597,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","niedrig",3
+2015-08-27,6,18.125,12,61,1,141.911779920259,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","mittel",3
+2015-08-27,6,18.125,12,61,2,413.885988542687,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","mittel",3
+2015-08-27,6,18.125,12,61,3,189.080053057953,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","mittel",3
+2015-08-27,6,18.125,12,61,4,76.475641716123,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","mittel",3
+2015-08-27,6,18.125,12,61,5,302.491389703597,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","mittel",3
 2015-08-28,2,19.625,11,20,1,139.289247760728,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",0
 2015-08-28,2,19.625,11,20,2,476.398072412663,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",0
 2015-08-28,2,19.625,11,20,3,220.364674945731,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",0
@@ -3993,31 +4401,31 @@
 2015-09-04,7,15.625,10,61,3,171.837229866917,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
 2015-09-04,7,15.625,10,61,4,86.6224721527251,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
 2015-09-04,7,15.625,10,61,5,331.585851212094,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
-2015-09-05,5,14.125,20,61,1,156.958185021103,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",2
-2015-09-05,5,14.125,20,61,2,489.485517572011,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",2
-2015-09-05,5,14.125,20,61,3,222.910401079499,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",2
-2015-09-05,5,14.125,20,61,4,72.0601440458685,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",2
-2015-09-05,5,14.125,20,61,5,422.506310537134,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",2
-2015-09-06,5,17,18,40,1,82.710116719476,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",1
-2015-09-06,5,17,18,40,2,502.44714208799,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",1
-2015-09-06,5,17,18,40,3,165.931422433638,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",1
-2015-09-06,5,17,18,40,4,97.4301098856599,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",1
-2015-09-06,5,17,18,40,5,306.134556055382,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",1
-2015-09-07,0,17.25,12,20,1,153.007856994447,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",2
-2015-09-07,0,17.25,12,20,2,394.644880949285,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",2
-2015-09-07,0,17.25,12,20,3,162.201655398535,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",2
-2015-09-07,0,17.25,12,20,4,86.5338103694984,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",2
-2015-09-07,0,17.25,12,20,5,259.606631742264,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",2
+2015-09-05,5,14.125,20,61,1,156.958185021103,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",0
+2015-09-05,5,14.125,20,61,2,489.485517572011,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",0
+2015-09-05,5,14.125,20,61,3,222.910401079499,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",0
+2015-09-05,5,14.125,20,61,4,72.0601440458685,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",0
+2015-09-05,5,14.125,20,61,5,422.506310537134,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",0
+2015-09-06,5,17,18,40,1,82.710116719476,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",0
+2015-09-06,5,17,18,40,2,502.44714208799,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",0
+2015-09-06,5,17,18,40,3,165.931422433638,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",0
+2015-09-06,5,17,18,40,4,97.4301098856599,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",0
+2015-09-06,5,17,18,40,5,306.134556055382,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","niedrig",0
+2015-09-07,0,17.25,12,20,1,153.007856994447,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",0
+2015-09-07,0,17.25,12,20,2,394.644880949285,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",0
+2015-09-07,0,17.25,12,20,3,162.201655398535,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",0
+2015-09-07,0,17.25,12,20,4,86.5338103694984,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",0
+2015-09-07,0,17.25,12,20,5,259.606631742264,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",0
 2015-09-08,2,17.5,9,0,1,101.974900564771,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","niedrig",0
 2015-09-08,2,17.5,9,0,2,351.131949782145,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","niedrig",0
 2015-09-08,2,17.5,9,0,3,137.003350835869,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","niedrig",0
 2015-09-08,2,17.5,9,0,4,61.8558338270558,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","niedrig",0
 2015-09-08,2,17.5,9,0,5,290.365271054862,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","niedrig",0
-2015-09-09,1,16.875,10,20,1,85.9654454506722,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
-2015-09-09,1,16.875,10,20,2,376.926779721908,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
-2015-09-09,1,16.875,10,20,3,145.443243273014,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
-2015-09-09,1,16.875,10,20,4,55.8300832911426,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
-2015-09-09,1,16.875,10,20,5,283.205964937396,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",1
+2015-09-09,1,16.875,10,20,1,85.9654454506722,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",0
+2015-09-09,1,16.875,10,20,2,376.926779721908,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",0
+2015-09-09,1,16.875,10,20,3,145.443243273014,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",0
+2015-09-09,1,16.875,10,20,4,55.8300832911426,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",0
+2015-09-09,1,16.875,10,20,5,283.205964937396,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",0
 2015-09-10,1,17.625,14,40,1,117.413494347263,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","niedrig",0
 2015-09-10,1,17.625,14,40,2,389.614304848778,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","niedrig",0
 2015-09-10,1,17.625,14,40,3,160.140587535139,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","niedrig",0
@@ -4028,11 +4436,11 @@
 2015-09-11,7,15,12,61,3,117.688324874624,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
 2015-09-11,7,15,12,61,4,77.5963267214814,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
 2015-09-11,7,15,12,61,5,313.184481077626,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
-2015-09-12,5,18.5,8,40,1,133.717384428962,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",1
-2015-09-12,5,18.5,8,40,2,535.735851383828,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",1
-2015-09-12,5,18.5,8,40,3,256.24856314601,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",1
-2015-09-12,5,18.5,8,40,4,97.385176383401,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",1
-2015-09-12,5,18.5,8,40,5,291.384483107582,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",1
+2015-09-12,5,18.5,8,40,1,133.717384428962,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",0
+2015-09-12,5,18.5,8,40,2,535.735851383828,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",0
+2015-09-12,5,18.5,8,40,3,256.24856314601,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",0
+2015-09-12,5,18.5,8,40,4,97.385176383401,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",0
+2015-09-12,5,18.5,8,40,5,291.384483107582,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","mittel",0
 2015-09-13,6,18.5,5,20,1,103.751245279575,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","mittel",0
 2015-09-13,6,18.5,5,20,2,500.251121182591,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","mittel",0
 2015-09-13,6,18.5,5,20,3,180.682163454072,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","mittel",0
@@ -4063,11 +4471,11 @@
 2015-09-18,5,17.25,10,0,3,130.194081365583,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
 2015-09-18,5,17.25,10,0,4,82.7393131451718,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
 2015-09-18,5,17.25,10,0,5,320.346264402261,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
-2015-09-19,7,15.25,7,61,1,130.810510295333,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",3
-2015-09-19,7,15.25,7,61,2,489.258808159457,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",3
-2015-09-19,7,15.25,7,61,3,166.13465629308,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",3
-2015-09-19,7,15.25,7,61,4,76.9847906238951,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",3
-2015-09-19,7,15.25,7,61,5,428.872661572212,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",3
+2015-09-19,7,15.25,7,61,1,130.810510295333,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",0
+2015-09-19,7,15.25,7,61,2,489.258808159457,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",0
+2015-09-19,7,15.25,7,61,3,166.13465629308,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",0
+2015-09-19,7,15.25,7,61,4,76.9847906238951,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",0
+2015-09-19,7,15.25,7,61,5,428.872661572212,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",0
 2015-09-20,3,15.625,15,21,1,78.983124398745,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","niedrig",0
 2015-09-20,3,15.625,15,21,2,513.530323638994,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","niedrig",0
 2015-09-20,3,15.625,15,21,3,163.752648797866,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","niedrig",0
@@ -4595,6 +5003,8 @@
 2015-12-24,3,8.375,11,61,4,118.865410341769,0,1,"Weihnachten",1,"Donnerstag","0",0,"Winter","hoch",0
 2015-12-24,3,8.375,11,61,5,275.561444944486,0,1,"Weihnachten",1,"Donnerstag","0",0,"Winter","hoch",0
 2015-12-24,3,8.375,11,61,6,69.4000132648449,0,1,"Weihnachten",1,"Donnerstag","0",0,"Winter","hoch",0
+2015-12-25,2,7.875,14,0,NA,NA,0,1,"Weihnachten",1,"Freitag","0",0,"Winter","hoch",0
+2015-12-26,7,12.75,18,63,NA,NA,0,1,"Weihnachten",1,"Samstag","0",0,"Winter","hoch",0
 2015-12-27,7,10.875,15,61,1,50.7942094660487,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Winter","hoch",0
 2015-12-27,7,10.875,15,61,2,426.706629411613,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Winter","hoch",0
 2015-12-27,7,10.875,15,61,3,139.175735437382,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Winter","hoch",0
@@ -4624,6 +5034,7 @@
 2015-12-31,7,2,10,61,3,208.660491671414,0,1,"Silvester",1,"Donnerstag","0",0,"Winter","niedrig",0
 2015-12-31,7,2,10,61,5,1869.93772343872,0,1,"Silvester",1,"Donnerstag","0",0,"Winter","niedrig",0
 2015-12-31,7,2,10,61,6,43.6051606878586,0,1,"Silvester",1,"Donnerstag","0",0,"Winter","niedrig",0
+2016-01-01,7,4.5,6,28,NA,NA,0,1,"Neujahr",1,"Freitag","0",0,"Winter","mittel",0
 2016-01-02,8,0,16,10,1,122.885747411276,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","niedrig",0
 2016-01-02,8,0,16,10,2,534.255462379152,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","niedrig",0
 2016-01-02,8,0,16,10,3,182.703831244386,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","niedrig",0
@@ -4973,11 +5384,11 @@
 2016-03-11,8,3.5,11,5,3,91.4520450012182,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
 2016-03-11,8,3.5,11,5,4,84.0911815561759,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
 2016-03-11,8,3.5,11,5,5,240.691258075457,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
-2016-03-12,8,2.75,7,0,1,156.983737754714,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
-2016-03-12,8,2.75,7,0,2,369.210704930203,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
-2016-03-12,8,2.75,7,0,3,123.879594747325,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
-2016-03-12,8,2.75,7,0,4,64.8612566543002,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
-2016-03-12,8,2.75,7,0,5,257.066009798004,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
+2016-03-12,8,2.75,7,0,1,156.983737754714,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","niedrig",0
+2016-03-12,8,2.75,7,0,2,369.210704930203,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","niedrig",0
+2016-03-12,8,2.75,7,0,3,123.879594747325,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","niedrig",0
+2016-03-12,8,2.75,7,0,4,64.8612566543002,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","niedrig",0
+2016-03-12,8,2.75,7,0,5,257.066009798004,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","niedrig",0
 2016-03-13,8,0.875,8,10,1,85.1258324563042,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
 2016-03-13,8,0.875,8,10,2,457.374192354555,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
 2016-03-13,8,0.875,8,10,3,141.827571462778,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
@@ -5033,6 +5444,8 @@
 2016-03-23,1,9.125,13,41,3,108.098676775929,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","niedrig",0
 2016-03-23,1,9.125,13,41,4,54.9613227217267,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","niedrig",0
 2016-03-23,1,9.125,13,41,5,278.851630298633,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","niedrig",0
+2016-03-24,7,7.375,10,21,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
+2016-03-25,8,7.875,7,61,NA,NA,0,1,"Ostern",1,"Freitag","0",0,"Fruehling","niedrig",0
 2016-03-26,1,9.75,9,0,1,233.436259088557,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
 2016-03-26,1,9.75,9,0,2,603.695640303816,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
 2016-03-26,1,9.75,9,0,3,284.681250764875,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
@@ -5546,6 +5959,7 @@
 2016-07-06,5,16.5,22,21,3,164.349099555347,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",2
 2016-07-06,5,16.5,22,21,4,79.3752874106993,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",2
 2016-07-06,5,16.5,22,21,5,319.444668795495,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",2
+2016-07-07,6,18.25,11,21,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","mittel",2
 2016-07-08,6,19.125,8,63,1,127.247931501737,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","mittel",0
 2016-07-08,6,19.125,8,63,2,406.844268769529,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","mittel",0
 2016-07-08,6,19.125,8,63,3,157.876878826052,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","mittel",0
@@ -5596,6 +6010,7 @@
 2016-07-17,7,17.25,9,61,3,240.984092016883,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","niedrig",0
 2016-07-17,7,17.25,9,61,4,125.628666013292,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","niedrig",0
 2016-07-17,7,17.25,9,61,5,297.654915440869,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","niedrig",0
+2016-07-18,7,18.5,15,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","mittel",1
 2016-07-19,6,22.375,12,20,1,110.715440210892,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","hoch",0
 2016-07-19,6,22.375,12,20,2,498.531530465481,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","hoch",0
 2016-07-19,6,22.375,12,20,3,231.302041791688,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","hoch",0
@@ -5720,11 +6135,13 @@
 2016-08-12,7,18.25,12,61,3,316.412519279478,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",0
 2016-08-12,7,18.25,12,61,4,82.8057057640178,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",0
 2016-08-12,7,18.25,12,61,5,360.020079003047,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",0
-2016-08-13,7,18.125,12,61,1,242.04298764093,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",4
-2016-08-13,7,18.125,12,61,2,738.269009184729,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",4
-2016-08-13,7,18.125,12,61,3,402.860567190888,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",4
-2016-08-13,7,18.125,12,61,4,174.56607234021,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",4
-2016-08-13,7,18.125,12,61,5,456.299833761621,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",4
+2016-08-13,7,18.125,12,61,1,242.04298764093,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",4
+2016-08-13,7,18.125,12,61,2,738.269009184729,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",4
+2016-08-13,7,18.125,12,61,3,402.860567190888,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",4
+2016-08-13,7,18.125,12,61,4,174.56607234021,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",4
+2016-08-13,7,18.125,12,61,5,456.299833761621,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",4
+2016-08-14,6,18.125,12,21,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Sommer","mittel",1
+2016-08-15,5,18.625,11,27,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","mittel",0
 2016-08-16,2,19.375,10,34,1,111.26757761232,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","mittel",0
 2016-08-16,2,19.375,10,34,2,563.245539657153,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","mittel",0
 2016-08-16,2,19.375,10,34,3,268.715042972505,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","mittel",0
@@ -6377,6 +6794,7 @@
 2016-12-16,8,-1,5,10,4,38.9528425623819,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","niedrig",0
 2016-12-16,8,-1,5,10,5,182.735378148739,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","niedrig",0
 2016-12-16,8,-1,5,10,6,83.1967350210813,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","niedrig",0
+2016-12-17,8,2.125,6,10,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","niedrig",0
 2016-12-18,7,7,8,0,1,158.08476137293,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","mittel",0
 2016-12-18,7,7,8,0,2,565.041664760473,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","mittel",0
 2016-12-18,7,7,8,0,3,174.728998356701,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","mittel",0
@@ -6419,6 +6837,8 @@
 2016-12-24,6,6.125,14,95,4,95.06649534546,0,1,"Weihnachten",1,"Samstag","0",0,"Winter","hoch",0
 2016-12-24,6,6.125,14,95,5,223.415195457351,0,1,"Weihnachten",1,"Samstag","0",0,"Winter","hoch",0
 2016-12-24,6,6.125,14,95,6,39.5775381438053,0,1,"Weihnachten",1,"Samstag","0",0,"Winter","hoch",0
+2016-12-25,7,9.375,16,61,NA,NA,0,1,"Weihnachten",1,"Sonntag","0",0,"Winter","hoch",0
+2016-12-26,4,6.875,25,22,NA,NA,0,1,"Weihnachten",1,"Montag","0",0,"Winter","hoch",0
 2016-12-27,6,8.25,21,11,1,132.534941139693,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Winter","hoch",0
 2016-12-27,6,8.25,21,11,2,353.797791827776,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Winter","hoch",0
 2016-12-27,6,8.25,21,11,3,127.178228446889,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Winter","hoch",0
@@ -6446,6 +6866,7 @@
 2016-12-31,7,4.875,13,28,3,158.239302804042,0,1,"Silvester",1,"Samstag","0",0,"Winter","mittel",0
 2016-12-31,7,4.875,13,28,4,50.7706476580069,0,1,"Silvester",1,"Samstag","0",0,"Winter","mittel",0
 2016-12-31,7,4.875,13,28,5,1705.14420496386,0,1,"Silvester",1,"Samstag","0",0,"Winter","mittel",0
+2017-01-01,8,5.5,12,61,NA,NA,0,1,"Neujahr",1,"Sonntag","0",0,"Winter","mittel",0
 2017-01-02,3,1.625,8,0,1,127.942753867048,0,0,"Kein Feiertag",1,"Montag","0",0,"Winter","niedrig",0
 2017-01-02,3,1.625,8,0,2,363.785766586536,0,0,"Kein Feiertag",1,"Montag","0",0,"Winter","niedrig",0
 2017-01-02,3,1.625,8,0,3,93.0351063272558,0,0,"Kein Feiertag",1,"Montag","0",0,"Winter","niedrig",0
@@ -6956,6 +7377,7 @@
 2017-04-13,7,9,18,61,3,238.93565386119,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
 2017-04-13,7,9,18,61,4,67.6590164952461,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
 2017-04-13,7,9,18,61,5,318.637385965497,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
+2017-04-14,7,9.25,12,63,NA,NA,0,1,"Ostern",1,"Freitag","0",0,"Fruehling","niedrig",0
 2017-04-15,6,8.125,23,63,1,396.16076955053,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
 2017-04-15,6,8.125,23,63,2,703.461610637217,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
 2017-04-15,6,8.125,23,63,3,355.356015292507,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
@@ -7036,6 +7458,7 @@
 2017-04-30,1,11.875,12,0,3,263.074963178365,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",1
 2017-04-30,1,11.875,12,0,4,143.743529921784,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",1
 2017-04-30,1,11.875,12,0,5,376.406197015406,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",1
+2017-05-01,1,11.75,19,5,NA,NA,0,1,"Tag der Arbeit",0,"Montag","0",0,"Fruehling","mittel",0
 2017-05-02,2,10.875,21,5,1,155.095888788648,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","niedrig",0
 2017-05-02,2,10.875,21,5,2,315.630672686886,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","niedrig",0
 2017-05-02,2,10.875,21,5,3,121.933716606701,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","niedrig",0
@@ -7351,6 +7774,7 @@
 2017-07-03,7,18.625,14,95,3,187.71776492446,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","mittel",1
 2017-07-03,7,18.625,14,95,4,63.8439379450254,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","mittel",1
 2017-07-03,7,18.625,14,95,5,265.352384049741,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","mittel",1
+2017-07-04,6,17.25,15,86,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","niedrig",0
 2017-07-05,2,19,9,78,1,137.917961104922,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",1
 2017-07-05,2,19,9,78,2,457.585596181938,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",1
 2017-07-05,2,19,9,78,3,199.163798137962,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",1
@@ -7466,11 +7890,11 @@
 2017-07-27,6,19.5,10,61,3,264.347742587261,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","mittel",0
 2017-07-27,6,19.5,10,61,4,111.906264476103,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","mittel",0
 2017-07-27,6,19.5,10,61,5,274.724777653659,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","mittel",0
-2017-07-28,6,18.125,17,61,1,184.323576306162,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","niedrig",1
-2017-07-28,6,18.125,17,61,2,551.167149777235,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","niedrig",1
-2017-07-28,6,18.125,17,61,3,291.869109786323,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","niedrig",1
-2017-07-28,6,18.125,17,61,4,81.3318887692057,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","niedrig",1
-2017-07-28,6,18.125,17,61,5,265.400900332413,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","niedrig",1
+2017-07-28,6,18.125,17,61,1,184.323576306162,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",1
+2017-07-28,6,18.125,17,61,2,551.167149777235,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",1
+2017-07-28,6,18.125,17,61,3,291.869109786323,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",1
+2017-07-28,6,18.125,17,61,4,81.3318887692057,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",1
+2017-07-28,6,18.125,17,61,5,265.400900332413,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",1
 2017-07-29,5,19.625,11,61,1,202.431896081896,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",3
 2017-07-29,5,19.625,11,61,2,557.05720038088,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",3
 2017-07-29,5,19.625,11,61,3,367.886160346572,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",3
@@ -7891,6 +8315,7 @@
 2017-10-22,7,11.025,7,61,3,159.184270234296,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Herbst","mittel",0
 2017-10-22,7,11.025,7,61,4,141.570674941224,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Herbst","mittel",0
 2017-10-22,7,11.025,7,61,5,310.598534350843,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Herbst","mittel",0
+2017-10-23,7,11.95,8,61,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Herbst","hoch",0
 2017-10-24,7,11.925,8,61,1,101.985508618079,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Herbst","hoch",0
 2017-10-24,7,11.925,8,61,2,310.956784627679,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Herbst","hoch",0
 2017-10-24,7,11.925,8,61,3,168.714295010565,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Herbst","hoch",0
@@ -7927,6 +8352,7 @@
 2017-10-30,NA,8.1,11,20,4,112.065132966806,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
 2017-10-30,NA,8.1,11,20,5,349.552126584613,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
 2017-10-30,NA,8.1,11,20,6,64.6372397047353,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
+2017-10-31,NA,8.925,7,19,NA,NA,0,1,"Reformationstag",0,"Dienstag","0",0,"Herbst","mittel",0
 2017-11-01,NA,12.975,12,18,1,159.909558679611,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","hoch",0
 2017-11-01,NA,12.975,12,18,2,333.775763857183,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","hoch",0
 2017-11-01,NA,12.975,12,18,3,150.785546328459,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","hoch",0
@@ -7963,12 +8389,12 @@
 2017-11-06,NA,8.2125,7,13,4,111.788238328584,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
 2017-11-06,NA,8.2125,7,13,5,183.512613245384,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
 2017-11-06,NA,8.2125,7,13,6,56.8173975212702,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
-2017-11-07,NA,6.7875,5,12,1,83.177904930265,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
-2017-11-07,NA,6.7875,5,12,2,247.370645548107,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
-2017-11-07,NA,6.7875,5,12,3,81.7604387640664,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
-2017-11-07,NA,6.7875,5,12,4,86.9727880092749,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
-2017-11-07,NA,6.7875,5,12,5,209.558055324474,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
-2017-11-07,NA,6.7875,5,12,6,39.7253764673138,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
+2017-11-07,NA,6.7875,5,12,1,83.177904930265,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",0
+2017-11-07,NA,6.7875,5,12,2,247.370645548107,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",0
+2017-11-07,NA,6.7875,5,12,3,81.7604387640664,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",0
+2017-11-07,NA,6.7875,5,12,4,86.9727880092749,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",0
+2017-11-07,NA,6.7875,5,12,5,209.558055324474,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",0
+2017-11-07,NA,6.7875,5,12,6,39.7253764673138,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",0
 2017-11-08,NA,8.625,9,11,1,79.2557790596025,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","mittel",0
 2017-11-08,NA,8.625,9,11,2,231.568334395068,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","mittel",0
 2017-11-08,NA,8.625,9,11,3,80.2883384254973,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","mittel",0
@@ -8251,6 +8677,8 @@
 2017-12-24,7,8.1125,16,61,4,75.1339574883147,0,1,"Weihnachten",1,"Sonntag","0",0,"Winter","hoch",0
 2017-12-24,7,8.1125,16,61,5,199.910108801589,0,1,"Weihnachten",1,"Sonntag","0",0,"Winter","hoch",0
 2017-12-24,7,8.1125,16,61,6,60.9819687660936,0,1,"Weihnachten",1,"Sonntag","0",0,"Winter","hoch",0
+2017-12-25,7,8.7,14,61,NA,NA,0,1,"Weihnachten",1,"Montag","0",0,"Winter","hoch",0
+2017-12-26,7,6.25,14,61,NA,NA,0,1,"Weihnachten",1,"Dienstag","0",0,"Winter","hoch",0
 2017-12-27,7,4.6125,7,21,1,104.582475428322,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Winter","mittel",0
 2017-12-27,7,4.6125,7,21,2,366.39193384108,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Winter","mittel",0
 2017-12-27,7,4.6125,7,21,3,139.832220333738,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Winter","mittel",0
@@ -8262,11 +8690,11 @@
 2017-12-28,4,4.0875,11,61,3,105.138755478215,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Winter","mittel",0
 2017-12-28,4,4.0875,11,61,4,90.1810564800637,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Winter","mittel",0
 2017-12-28,4,4.0875,11,61,5,266.290326838145,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Winter","mittel",0
-2017-12-29,5,2.8125,11,61,1,120.681193840944,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
-2017-12-29,5,2.8125,11,61,2,433.432993002541,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
-2017-12-29,5,2.8125,11,61,3,179.594235115059,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
-2017-12-29,5,2.8125,11,61,4,82.3731844631151,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
-2017-12-29,5,2.8125,11,61,5,285.850859014997,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
+2017-12-29,5,2.8125,11,61,1,120.681193840944,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","niedrig",0
+2017-12-29,5,2.8125,11,61,2,433.432993002541,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","niedrig",0
+2017-12-29,5,2.8125,11,61,3,179.594235115059,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","niedrig",0
+2017-12-29,5,2.8125,11,61,4,82.3731844631151,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","niedrig",0
+2017-12-29,5,2.8125,11,61,5,285.850859014997,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","niedrig",0
 2017-12-30,7,4.05,10,61,1,162.150512622119,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","mittel",0
 2017-12-30,7,4.05,10,61,2,492.431858117778,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","mittel",0
 2017-12-30,7,4.05,10,61,3,151.571783733849,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","mittel",0
@@ -8277,6 +8705,7 @@
 2017-12-31,7,8.25,16,63,3,179.50840678603,0,1,"Silvester",1,"Sonntag","0",0,"Winter","hoch",0
 2017-12-31,7,8.25,16,63,4,44.1758294041723,0,1,"Silvester",1,"Sonntag","0",0,"Winter","hoch",0
 2017-12-31,7,8.25,16,63,5,1432.42234722783,0,1,"Silvester",1,"Sonntag","0",0,"Winter","hoch",0
+2018-01-01,6,6.6125,17,61,NA,NA,0,1,"Neujahr",1,"Montag","0",0,"Winter","hoch",0
 2018-01-02,6,5.7,8,61,1,154.786374942725,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Winter","mittel",0
 2018-01-02,6,5.7,8,61,2,362.106622620237,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Winter","mittel",0
 2018-01-02,6,5.7,8,61,3,150.502435605728,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Winter","mittel",0
@@ -8397,11 +8826,11 @@
 2018-01-25,7,7.95,9,21,3,81.1911029399639,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","hoch",0
 2018-01-25,7,7.95,9,21,4,76.0722903455264,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","hoch",0
 2018-01-25,7,7.95,9,21,5,189.908855738294,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","hoch",0
-2018-01-26,6,5.9625,5,45,1,98.0556839467947,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
-2018-01-26,6,5.9625,5,45,2,274.633939189323,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
-2018-01-26,6,5.9625,5,45,3,79.48711893513,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
-2018-01-26,6,5.9625,5,45,4,71.1908344949541,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
-2018-01-26,6,5.9625,5,45,5,241.003825744459,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
+2018-01-26,6,5.9625,5,45,1,98.0556839467947,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
+2018-01-26,6,5.9625,5,45,2,274.633939189323,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
+2018-01-26,6,5.9625,5,45,3,79.48711893513,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
+2018-01-26,6,5.9625,5,45,4,71.1908344949541,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
+2018-01-26,6,5.9625,5,45,5,241.003825744459,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
 2018-01-27,8,5.6375,9,10,1,130.945038639959,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
 2018-01-27,8,5.6375,9,10,2,245.309038638068,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
 2018-01-27,8,5.6375,9,10,3,104.368162476671,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
@@ -8587,11 +9016,11 @@
 2018-03-04,5,-2.3125,10,77,3,152.846041550908,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Winter","niedrig",0
 2018-03-04,5,-2.3125,10,77,4,96.6996987260264,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Winter","niedrig",0
 2018-03-04,5,-2.3125,10,77,5,286.911673800713,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Winter","niedrig",0
-2018-03-05,5,5.9875,7,10,1,119.676827681314,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
-2018-03-05,5,5.9875,7,10,2,236.272835967155,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
-2018-03-05,5,5.9875,7,10,3,89.9828037804588,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
-2018-03-05,5,5.9875,7,10,4,90.3080530152799,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
-2018-03-05,5,5.9875,7,10,5,205.928040152599,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
+2018-03-05,5,5.9875,7,10,1,119.676827681314,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
+2018-03-05,5,5.9875,7,10,2,236.272835967155,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
+2018-03-05,5,5.9875,7,10,3,89.9828037804588,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
+2018-03-05,5,5.9875,7,10,4,90.3080530152799,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
+2018-03-05,5,5.9875,7,10,5,205.928040152599,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
 2018-03-06,0,6.4,9,5,1,105.33896274036,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","hoch",0
 2018-03-06,0,6.4,9,5,2,254.035800587078,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","hoch",0
 2018-03-06,0,6.4,9,5,3,109.14348273407,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","hoch",0
@@ -8712,6 +9141,7 @@
 2018-03-29,7,0.9,8,71,3,266.201304515727,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
 2018-03-29,7,0.9,8,71,4,80.8223522620618,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
 2018-03-29,7,0.9,8,71,5,330.612859203759,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
+2018-03-30,1,3.225,13,5,NA,NA,0,1,"Ostern",1,"Freitag","0",0,"Fruehling","niedrig",0
 2018-03-31,7,2.225,17,38,1,416.788764354814,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
 2018-03-31,7,2.225,17,38,2,558.629402301118,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
 2018-03-31,7,2.225,17,38,3,320.93474056584,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
@@ -8867,6 +9297,7 @@
 2018-04-30,7,11.55,10,95,3,127.919448209593,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","mittel",0
 2018-04-30,7,11.55,10,95,4,79.2518033997529,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","mittel",0
 2018-04-30,7,11.55,10,95,5,349.222530501407,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","mittel",0
+2018-05-01,7,6.9875,13,63,NA,NA,0,1,"Tag der Arbeit",0,"Dienstag","0",0,"Fruehling","niedrig",0
 2018-05-02,1,14.725,9,5,1,114.081337561043,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","mittel",0
 2018-05-02,1,14.725,9,5,2,282.298347814055,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","mittel",0
 2018-05-02,1,14.725,9,5,3,133.16692373125,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","mittel",0
@@ -8962,6 +9393,7 @@
 2018-05-20,0,18.9,13,5,3,305.100783157298,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",1
 2018-05-20,0,18.9,13,5,4,65.4187870817839,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",1
 2018-05-20,0,18.9,13,5,5,330.380607140183,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",1
+2018-05-21,0,18.5125,16,5,NA,NA,0,1,"Christi Himmelfahrt, Pfingsten",0,"Montag","0",0,"Fruehling","hoch",3
 2018-05-22,0,20.325,13,5,1,156.307236988041,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","hoch",0
 2018-05-22,0,20.325,13,5,2,439.983048890548,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","hoch",0
 2018-05-22,0,20.325,13,5,3,191.073379157625,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","hoch",0
@@ -8987,11 +9419,11 @@
 2018-05-26,0,19.875,11,5,3,311.407509119781,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","hoch",1
 2018-05-26,0,19.875,11,5,4,85.097600524964,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","hoch",1
 2018-05-26,0,19.875,11,5,5,256.302811541552,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","hoch",1
-2018-05-27,7,16.425,12,20,1,99.6705421509629,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",2
-2018-05-27,7,16.425,12,20,2,551.785889665344,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",2
-2018-05-27,7,16.425,12,20,3,311.204724522649,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",2
-2018-05-27,7,16.425,12,20,4,87.1009984834016,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",2
-2018-05-27,7,16.425,12,20,5,296.455672065359,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",2
+2018-05-27,7,16.425,12,20,1,99.6705421509629,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",2
+2018-05-27,7,16.425,12,20,2,551.785889665344,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",2
+2018-05-27,7,16.425,12,20,3,311.204724522649,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",2
+2018-05-27,7,16.425,12,20,4,87.1009984834016,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",2
+2018-05-27,7,16.425,12,20,5,296.455672065359,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",2
 2018-05-28,2,20.2125,10,5,1,157.41929138371,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","hoch",0
 2018-05-28,2,20.2125,10,5,2,327.612062095694,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","hoch",0
 2018-05-28,2,20.2125,10,5,3,162.439462643652,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","hoch",0
@@ -9317,6 +9749,359 @@
 2018-07-31,5,31.2875,11,10,3,285.872615508632,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","hoch",3
 2018-07-31,5,31.2875,11,10,4,57.1027946933499,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","hoch",3
 2018-07-31,5,31.2875,11,10,5,261.341312948599,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","hoch",3
+2018-08-01,0,23.7625,10,0,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","hoch",0
+2018-08-02,0,26.1875,10,0,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","hoch",0
+2018-08-03,1,27.6625,10,0,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","hoch",0
+2018-08-04,4,25.1375,12,30,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","hoch",2
+2018-08-05,7,21.3,14,61,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",1,"Sommer","hoch",1
+2018-08-06,0,23.1,5,0,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","hoch",0
+2018-08-07,0,32.671428,7,7,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","hoch",0
+2018-08-08,4,28.15,10,14,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","hoch",0
+2018-08-09,5,24.575,13,21,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","hoch",0
+2018-08-10,5,17.325,16,61,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","niedrig",1
+2018-08-11,6,15.5,13,61,NA,NA,0,0,"Kein Feiertag",1,"Samstag","1",0,"Sommer","niedrig",5
+2018-08-12,7,18.375,9,61,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Sommer","mittel",2
+2018-08-13,7,21.9125,8,61,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","hoch",0
+2018-08-14,5,21.8,16,61,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","hoch",0
+2018-08-15,6,21.9875,13,21,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","hoch",0
+2018-08-16,3,25.075,9,0,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","hoch",0
+2018-08-17,7,19.55,9,61,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",1
+2018-08-18,4,21.75,10,47,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","hoch",2
+2018-08-19,7,21.3875,10,34,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","hoch",1
+2018-08-20,6,19.6,13,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","mittel",2
+2018-08-21,4,19.7875,8,15,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","mittel",0
+2018-08-22,0,26.6375,8,10,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","hoch",1
+2018-08-23,5,22.575,11,5,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","hoch",2
+2018-08-24,5,17.1,15,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
+2018-08-25,7,12.9,6,63,NA,NA,0,0,"Kein Feiertag",0,"Samstag","1",0,"Sommer","niedrig",3
+2018-08-26,3,16.9875,12,21,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","niedrig",1
+2018-08-27,6,16.5375,13,63,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","niedrig",0
+2018-08-28,6,18.6125,9,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","mittel",0
+2018-08-29,0,22.7,12,0,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","hoch",0
+2018-08-30,7,15.4625,13,63,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","niedrig",0
+2018-08-31,4,18.725,11,0,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","mittel",3
+2018-09-01,2,18.1125,8,2,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",1
+2018-09-02,1,18.95,11,5,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",1,"Sommer","mittel",2
+2018-09-03,2,21.0125,13,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","hoch",0
+2018-09-04,1,20.525,11,5,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","mittel",0
+2018-09-05,2,20.2875,11,0,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","mittel",0
+2018-09-06,0,21.275,11,0,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","hoch",1
+2018-09-07,7,17.475,12,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
+2018-09-10,5,19.2375,12,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","mittel",2
+2018-09-11,7,16.55,12,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","niedrig",1
+2018-09-12,7,14.3,11,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","niedrig",0
+2018-09-13,4,17.3375,7,0,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","niedrig",1
+2018-09-14,3,17.1125,9,30,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
+2018-09-21,6,14.957142,16,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","niedrig",0
+2018-09-22,4,13.025,20,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",0
+2018-09-23,6,11.65,6,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","hoch",1
+2018-09-24,2,11.2875,17,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
+2018-09-25,3,12.7625,9,0,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","hoch",0
+2018-09-26,7,14.2375,16,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","hoch",1
+2018-09-27,7,17.6,13,0,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","hoch",1
+2018-09-28,1,12.8625,15,21,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","hoch",0
+2018-09-29,6,13.1,10,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","1",0,"Herbst","hoch",0
+2018-09-30,5,13.9625,12,21,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","hoch",3
+2018-10-01,5,11.1625,12,21,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Herbst","mittel",0
+2018-10-02,6,10,18,61,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Herbst","mittel",1
+2018-10-03,4,12.2875,18,21,NA,NA,0,1,"Tag der Deutschen Einheit",1,"Mittwoch","0",0,"Herbst","hoch",0
+2018-10-04,7,14.2625,8,61,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Herbst","hoch",0
+2018-10-05,0,18.1125,8,5,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Herbst","hoch",0
+2018-10-06,1,14.3375,6,10,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Herbst","hoch",2
+2018-10-07,1,11.4,10,5,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Herbst","hoch",1
+2018-10-08,5,13.0625,10,2,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Herbst","hoch",0
+2018-10-09,3,15.125,9,0,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Herbst","hoch",0
+2018-10-10,0,17.1,6,10,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Herbst","hoch",0
+2018-10-11,0,19.633333,7,0,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Herbst","hoch",0
+2018-10-12,0,21.4125,7,0,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Herbst","hoch",0
+2018-10-15,0,20.7875,6,0,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Herbst","hoch",0
+2018-10-16,7,19.0625,6,10,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Herbst","hoch",0
+2018-10-17,2,20.8375,5,5,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Herbst","hoch",0
+2018-10-18,1,12.816666,12,5,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Herbst","hoch",0
+2018-10-19,3,10.925,6,5,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Herbst","mittel",0
+2018-10-22,2,11.1,14,0,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
+2018-10-23,7,11.925,23,63,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","hoch",0
+2018-10-24,4,10.357142,11,0,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","mittel",1
+2018-10-25,6,11.125,19,21,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","mittel",0
+2018-10-26,7,10.325,9,63,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","mittel",0
+2018-10-27,7,5.8375,13,63,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","niedrig",0
+2018-10-28,2,5.5875,14,0,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","niedrig",1
+2018-10-29,7,7.3625,17,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
+2018-10-30,7,10.6375,11,20,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",1
+2018-10-31,5,9.9,10,0,NA,NA,0,1,"Reformationstag",0,"Mittwoch","0",0,"Herbst","mittel",0
+2018-11-01,5,11.725,8,0,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","hoch",0
+2018-11-02,6,10.675,12,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","mittel",0
+2018-11-03,0,8.7,5,10,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","mittel",0
+2018-11-04,8,8.225,5,10,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","1",0,"Herbst","mittel",0
+2018-11-05,8,10.4125,6,10,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
+2018-11-06,7,8.5375,5,45,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",0
+2018-11-07,1,11.0875,4,28,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","mittel",0
+2018-11-08,6,11.625,7,20,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","hoch",0
+2018-11-09,7,9.3,6,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","mittel",0
+2018-11-10,7,11.425,8,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","hoch",0
+2018-11-11,7,12.2375,8,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","hoch",0
+2018-11-12,7,10.5375,4,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
+2018-11-13,7,10.325,9,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","mittel",0
+2018-11-14,7,8.4375,7,10,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","mittel",0
+2018-11-15,2,10.35,6,5,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","mittel",0
+2018-11-16,0,8.2625,7,10,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","mittel",0
+2018-11-17,0,5.375,10,10,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","niedrig",0
+2018-11-18,7,6.75,14,0,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","niedrig",0
+2018-11-19,6,5.775,21,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","niedrig",0
+2018-11-20,7,4.725,16,30,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
+2018-11-21,7,3.05,12,0,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","niedrig",0
+2018-11-22,8,1.5125,9,21,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","niedrig",0
+2018-11-23,8,1.8875,6,10,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","niedrig",0
+2018-11-24,8,3.025,4,10,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","niedrig",0
+2018-11-25,8,5.1625,12,53,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","1",0,"Herbst","niedrig",0
+2018-11-26,7,4.95,12,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","niedrig",0
+2018-11-27,8,2.1625,3,33,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
+2018-11-28,3,1.5,10,5,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","niedrig",0
+2018-11-29,7,3.3,10,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","niedrig",0
+2018-11-30,5,7.8375,8,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","mittel",0
+2018-12-01,7,7.1625,8,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","mittel",0
+2018-12-02,7,8.15,8,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","mittel",0
+2018-12-03,7,10.825,12,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","mittel",0
+2018-12-04,1,5.442857,14,21,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
+2018-12-05,1,3.7375,6,0,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","niedrig",0
+2018-12-06,7,6.725,7,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","niedrig",0
+2018-12-07,7,10.825,9,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","mittel",0
+2018-12-08,8,7.475,18,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","mittel",0
+2018-12-09,7,6.95,18,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","1",0,"Herbst","mittel",0
+2018-12-10,5,4.9125,15,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","niedrig",0
+2018-12-11,6,4.6375,11,21,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
+2018-12-12,7,4.175,12,21,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","niedrig",0
+2018-12-13,7,2.925,10,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","niedrig",0
+2018-12-14,7,2.175,12,22,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Herbst","niedrig",0
+2018-12-15,7,0.5375,7,21,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst","niedrig",0
+2018-12-16,7,0.2,9,20,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst","niedrig",0
+2018-12-17,8,0.65,6,20,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Herbst","niedrig",0
+2018-12-18,7,5.3125,6,21,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Herbst","niedrig",0
+2018-12-19,7,3.175,9,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst","niedrig",0
+2018-12-20,7,4.8875,4,53,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst","niedrig",0
+2018-12-21,7,6.1125,9,61,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Herbst","niedrig",0
+2018-12-22,8,4.3,4,61,NA,NA,0,0,"Kein Feiertag",1,"Samstag","1",0,"Winter","mittel",0
+2018-12-23,7,6.45,9,61,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Winter","hoch",0
+2018-12-24,7,2.5,10,22,NA,NA,0,1,"Weihnachten",1,"Montag","0",0,"Winter","niedrig",0
+2018-12-25,7,6.3625,16,11,NA,NA,0,1,"Weihnachten",1,"Dienstag","0",0,"Winter","hoch",0
+2018-12-26,7,7.9125,12,0,NA,NA,0,1,"Weihnachten",1,"Mittwoch","0",0,"Winter","hoch",0
+2018-12-27,7,7.125,12,20,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Winter","hoch",0
+2018-12-28,7,7.3125,11,61,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","hoch",0
+2018-12-29,8,7.675,10,61,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Winter","hoch",0
+2018-12-30,2,6.675,16,53,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Winter","hoch",0
+2018-12-31,7,7.3875,13,45,NA,NA,0,1,"Silvester",1,"Montag","0",0,"Winter","hoch",0
+2019-01-01,6,6.2875,26,21,NA,NA,0,1,"Neujahr",1,"Dienstag","0",0,"Winter","hoch",0
+2019-01-02,0,3.9125,20,0,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Winter","mittel",0
+2019-01-03,2,0.725,6,30,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Winter","niedrig",0
+2019-01-04,7,5.55,15,61,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Winter","mittel",0
+2019-01-05,5,7.85,8,21,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","hoch",1
+2019-01-06,7,3.65,7,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","mittel",0
+2019-01-07,8,5.9375,8,55,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
+2019-01-08,6,5.5,19,21,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","mittel",0
+2019-01-09,7,3.1375,22,0,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","mittel",0
+2019-01-10,7,1.4,7,30,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","niedrig",0
+2019-01-11,6,6.8625,15,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
+2019-01-12,7,6.0875,13,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","hoch",0
+2019-01-13,7,7.6875,20,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","hoch",0
+2019-01-14,2,1.9375,18,5,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","niedrig",0
+2019-01-15,7,6.6625,18,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","hoch",0
+2019-01-16,7,7.2125,14,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","hoch",0
+2019-01-17,7,4.1875,15,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","mittel",0
+2019-01-18,1,1.2625,7,0,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","niedrig",0
+2019-01-19,2,0.925,4,49,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","niedrig",0
+2019-01-20,1,0.85,4,10,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
+2019-01-21,6,-0.425,9,71,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","niedrig",0
+2019-01-22,5,0.1375,9,10,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","niedrig",0
+2019-01-23,4,-3.075,7,10,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","niedrig",0
+2019-01-24,8,-4.8125,6,22,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","niedrig",0
+2019-01-25,8,-3.3875,6,71,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","niedrig",0
+2019-01-26,7,3.8375,7,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
+2019-01-27,8,4.9375,7,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","mittel",0
+2019-01-28,8,2.75,5,20,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","niedrig",0
+2019-01-29,6,1.575,7,68,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","niedrig",0
+2019-01-30,5,1.6,10,44,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","niedrig",0
+2019-01-31,7,1.4,7,20,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","niedrig",0
+2019-02-01,7,-0.075,12,10,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","niedrig",0
+2019-02-02,8,1.7375,10,10,NA,NA,0,0,"Kein Feiertag",0,"Samstag","1",0,"Winter","niedrig",0
+2019-02-03,1,2.5,9,0,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","niedrig",0
+2019-02-04,7,2.95,12,30,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
+2019-02-05,7,4.6375,11,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","mittel",0
+2019-02-06,7,3.6625,11,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","mittel",0
+2019-02-07,7,6.0375,10,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","hoch",0
+2019-02-08,7,6.5,11,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
+2019-02-09,7,7.4,18,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","hoch",0
+2019-02-10,7,5.125,7,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","mittel",0
+2019-02-11,2,5.9375,16,0,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
+2019-02-12,4,5.225,12,20,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","mittel",0
+2019-02-13,8,7.5375,13,20,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","hoch",0
+2019-02-14,3,7.4,10,10,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","hoch",0
+2019-02-15,0,11.3375,7,0,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
+2019-02-16,0,10.425,12,5,NA,NA,0,0,"Kein Feiertag",0,"Samstag","1",0,"Winter","hoch",0
+2019-02-17,3,11.625,5,5,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","hoch",0
+2019-02-18,0,11.725,7,0,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
+2019-02-19,7,6.75,15,63,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","hoch",0
+2019-02-20,7,7.34,11,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","hoch",0
+2019-02-21,8,7.675,12,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","hoch",0
+2019-02-22,4,4.125,11,0,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
+2019-02-23,6,4.775,6,2,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
+2019-02-24,0,9.6875,9,5,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","hoch",0
+2019-02-25,0,9.8125,9,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
+2019-02-26,0,10.85,7,5,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","hoch",0
+2019-02-27,1,13.4125,10,5,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","hoch",0
+2019-02-28,5,7.8875,11,21,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","hoch",0
+2019-03-01,7,5.6375,8,34,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","mittel",0
+2019-03-02,7,5.4,7,47,NA,NA,0,0,"Kein Feiertag",0,"Samstag","1",0,"Winter","mittel",0
+2019-03-03,6,8.975,13,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","hoch",0
+2019-03-04,6,7.5375,20,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
+2019-03-05,5,6.8875,17,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","hoch",0
+2019-03-06,7,6.7625,9,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","hoch",0
+2019-03-07,6,9.65,19,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","hoch",0
+2019-03-08,5,6.8875,26,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
+2019-03-09,6,6.35,22,63,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","hoch",0
+2019-03-10,6,6.8875,10,21,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Winter","hoch",0
+2019-03-11,5,4.075,6,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","mittel",0
+2019-03-12,6,5.425,13,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","mittel",0
+2019-03-13,7,5.8,15,63,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Winter","mittel",0
+2019-03-14,7,5.5625,12,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Winter","mittel",0
+2019-03-15,7,7.4875,25,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Winter","hoch",0
+2019-03-16,7,5.5875,11,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Winter","mittel",0
+2019-03-17,5,7.4,20,21,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","1",0,"Winter","hoch",0
+2019-03-18,5,6.325,21,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Winter","hoch",0
+2019-03-19,3,7.0125,11,5,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Winter","hoch",0
+2019-03-20,8,8.2875,12,53,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","niedrig",0
+2019-03-21,8,10.225,14,10,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","niedrig",0
+2019-03-22,7,9.7,6,20,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","niedrig",0
+2019-03-23,6,10.2625,15,10,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","niedrig",0
+2019-03-24,4,7.6625,12,0,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","niedrig",0
+2019-03-25,4,7.3375,17,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","niedrig",0
+2019-03-26,7,7.8375,16,21,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","niedrig",0
+2019-03-27,8,8.375,14,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","niedrig",0
+2019-03-28,8,10.7,9,41,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","niedrig",0
+2019-03-29,5,12.1125,11,21,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","mittel",0
+2019-03-30,1,15.5,11,5,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",0
+2019-03-31,0,7.6625,13,5,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","niedrig",0
+2019-04-01,0,8.05,13,5,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","niedrig",0
+2019-04-02,0,11.685714,10,5,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","mittel",0
+2019-04-03,7,9.875,9,63,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","niedrig",0
+2019-04-05,2,12.0625,10,5,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Fruehling","mittel",0
+2019-04-06,0,12.7625,10,10,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","mittel",0
+2019-04-07,0,12.8375,8,5,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","1",0,"Fruehling","mittel",1
+2019-04-08,1,9.1125,16,5,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Fruehling","niedrig",0
+2019-04-09,1,6.6625,15,5,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Fruehling","niedrig",0
+2019-04-10,0,6.275,14,5,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Fruehling","niedrig",0
+2019-04-11,7,5.3375,12,22,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","niedrig",0
+2019-04-12,5,5.2125,11,22,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Fruehling","niedrig",1
+2019-04-13,7,3.475,16,68,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Fruehling","niedrig",0
+2019-04-14,7,5.9375,16,61,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Fruehling","niedrig",1
+2019-04-15,2,7.35,14,5,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Fruehling","niedrig",0
+2019-04-16,0,8.4375,15,5,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Fruehling","niedrig",0
+2019-04-17,0,11.6625,14,5,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Fruehling","mittel",0
+2019-04-18,0,13.0125,14,5,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling","mittel",0
+2019-04-19,0,14.1,12,5,NA,NA,0,1,"Ostern",0,"Freitag","0",0,"Fruehling","mittel",0
+2019-04-20,0,13.125,8,5,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",1
+2019-04-21,0,16.8125,10,5,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",1
+2019-04-22,0,15.775,16,5,NA,NA,0,1,"Ostern",0,"Montag","0",0,"Fruehling","mittel",0
+2019-04-23,0,14.225,19,5,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","mittel",0
+2019-04-24,2,17.65,10,21,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","hoch",1
+2019-04-25,0,19.6125,7,58,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","hoch",0
+2019-04-26,7,14.975,16,95,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","mittel",0
+2019-04-27,5,16.2125,13,0,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",1
+2019-04-28,7,9.85,10,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","niedrig",1
+2019-04-29,3,13.6125,12,10,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","mittel",0
+2019-04-30,6,17.65,11,0,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","hoch",0
+2019-05-01,7,9.2625,15,20,NA,NA,0,1,"Tag der Arbeit",0,"Mittwoch","0",0,"Fruehling","niedrig",0
+2019-05-02,7,8.95,16,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","niedrig",0
+2019-05-03,6,8.7625,18,21,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","niedrig",0
+2019-05-04,5,7.3,15,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","niedrig",1
+2019-05-05,5,10.6875,15,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","niedrig",0
+2019-05-06,3,9.1625,18,61,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","niedrig",0
+2019-05-07,3,9.6625,14,21,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","niedrig",0
+2019-05-08,6,12.8125,8,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","mittel",0
+2019-05-09,6,15,7,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","mittel",1
+2019-05-10,7,10.4625,11,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","niedrig",2
+2019-05-11,1,11.525,9,33,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",2
+2019-05-12,1,13.0125,16,5,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",0
+2019-05-13,1,12.7125,11,5,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","mittel",1
+2019-05-14,7,12.3375,9,23,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","mittel",2
+2019-05-15,2,13.9,11,42,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","mittel",0
+2019-05-16,7,12.475,15,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","mittel",2
+2019-05-17,7,11.95,11,10,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","mittel",1
+2019-05-18,3,16.4875,13,5,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","hoch",1
+2019-05-19,4,14.2375,12,10,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",1
+2019-05-20,3,16.8125,9,28,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","hoch",2
+2019-05-21,7,16.425,10,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","hoch",0
+2019-05-22,6,12.1,15,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","mittel",1
+2019-05-23,5,18.2375,10,0,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","hoch",0
+2019-05-24,2,18.4125,17,0,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","hoch",3
+2019-05-25,7,13.5375,14,30,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",0
+2019-05-26,7,13.625,10,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","mittel",1
+2019-05-27,6,15.2625,13,40,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","mittel",1
+2019-05-28,6,13.1625,12,20,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","mittel",2
+2019-05-29,3,13.3625,8,0,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","mittel",1
+2019-05-30,7,14.0125,9,61,NA,NA,0,1,"Christi Himmelfahrt, Pfingsten",0,"Donnerstag","0",0,"Fruehling","mittel",1
+2019-05-31,7,18.85,14,30,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","hoch",1
+2019-06-01,6,19.5625,15,0,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","hoch",2
+2019-06-02,2,24.35,8,10,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",2
+2019-06-03,6,22.225,12,21,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","hoch",0
+2019-06-04,7,16.0625,10,61,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","mittel",0
+2019-06-05,5,22.9125,11,61,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","hoch",1
+2019-06-06,6,19.5,13,61,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","hoch",3
+2019-06-07,1,17.45,10,61,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","hoch",1
+2019-06-08,7,16.2375,13,61,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","mittel",3
+2019-06-09,5,18.65,10,61,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",1
+2019-06-10,7,16.125,14,61,NA,NA,0,1,"Christi Himmelfahrt, Pfingsten",0,"Montag","0",0,"Fruehling","mittel",1
+2019-06-11,6,18.1375,6,95,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","hoch",0
+2019-06-12,7,16.6625,10,95,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","hoch",0
+2019-06-13,0,22.175,11,95,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","hoch",1
+2019-06-14,5,22.9,9,95,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Fruehling","hoch",0
+2019-06-15,7,18.2125,12,95,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Fruehling","hoch",3
+2019-06-16,6,20.3875,8,0,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Fruehling","hoch",2
+2019-06-17,3,21.875,9,47,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Fruehling","hoch",0
+2019-06-18,5,25.1125,6,95,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Fruehling","hoch",1
+2019-06-19,3,25.95,8,17,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Fruehling","hoch",0
+2019-06-20,6,19.275,8,21,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Fruehling","hoch",1
+2019-06-21,6,18.1625,11,13,NA,NA,0,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","mittel",0
+2019-06-22,6,17.025,9,5,NA,NA,1,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","niedrig",3
+2019-06-23,1,20.375,12,5,NA,NA,1,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","mittel",3
+2019-06-24,6,21.875,13,5,NA,NA,1,0,"Kein Feiertag",0,"Montag","0",0,"Sommer","hoch",1
+2019-06-25,3,28.775,7,5,NA,NA,1,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer","hoch",1
+2019-06-26,0,26.0375,16,5,NA,NA,1,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer","hoch",0
+2019-06-27,6,17.175,14,3,NA,NA,1,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer","niedrig",0
+2019-06-28,1,20.225,7,1,NA,NA,1,0,"Kein Feiertag",0,"Freitag","0",0,"Sommer","mittel",1
+2019-06-29,0,24.0375,8,0,NA,NA,1,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer","hoch",3
+2019-06-30,0,27.3375,19,5,NA,NA,1,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer","hoch",2
+2019-07-01,5,20.25,20,0,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","mittel",2
+2019-07-02,6,15.1875,18,21,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","niedrig",0
+2019-07-03,5,16.5,13,21,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","niedrig",1
+2019-07-04,7,15.9625,15,61,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","niedrig",1
+2019-07-05,7,15.7375,13,61,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","niedrig",0
+2019-07-06,7,15.9125,17,61,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","niedrig",2
+2019-07-07,7,14.4625,16,61,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Sommer","niedrig",0
+2019-07-08,7,16.0125,15,61,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",0
+2019-07-09,7,16.625,13,20,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","niedrig",2
+2019-07-10,1,19.2125,11,36,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","mittel",1
+2019-07-11,7,17.6125,6,53,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","niedrig",0
+2019-07-12,7,18.475,7,61,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","mittel",1
+2019-07-13,7,19.9,12,20,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","mittel",3
+2019-07-14,8,15.3625,9,20,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Sommer","niedrig",2
+2019-07-15,7,15.5875,16,10,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",1
+2019-07-16,5,19.1125,14,0,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","mittel",1
+2019-07-17,4,17.5375,6,0,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","niedrig",0
+2019-07-18,6,21.25,8,0,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","hoch",0
+2019-07-19,6,21.0875,11,21,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","hoch",2
+2019-07-20,7,24.35,14,95,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","hoch",2
+2019-07-21,8,18.9,16,21,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Sommer","mittel",1
+2019-07-22,7,16.6375,5,61,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","niedrig",1
+2019-07-23,0,26.1,9,0,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","hoch",0
+2019-07-24,0,27.6875,10,0,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","hoch",0
+2019-07-25,6,29.725,11,2,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","hoch",1
+2019-07-26,0,26.925,14,5,NA,NA,0,0,"Kein Feiertag",1,"Freitag","0",0,"Sommer","hoch",0
+2019-07-27,4,23.5375,21,5,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Sommer","hoch",3
+2019-07-28,3,23.35,14,5,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Sommer","hoch",2
+2019-07-29,6,25.25,7,61,NA,NA,0,0,"Kein Feiertag",1,"Montag","0",0,"Sommer","hoch",1
+2019-07-30,7,20.7375,8,61,NA,NA,0,0,"Kein Feiertag",1,"Dienstag","0",0,"Sommer","mittel",1
+2019-07-31,6,20.45,7,61,NA,NA,0,0,"Kein Feiertag",1,"Mittwoch","0",0,"Sommer","mittel",1
+2019-08-01,5,21.0625,9,61,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Sommer","hoch",1
 2016-12-11,NA,NA,NA,NA,1,58.5289054212942,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst",NA,0
 2017-10-04,NA,NA,NA,NA,1,125.991807553769,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst",NA,1
 2017-10-05,NA,NA,NA,NA,1,146.081884421956,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst",NA,0
@@ -9333,410 +10118,172 @@
 2017-10-04,NA,NA,NA,NA,5,222.932328659137,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Herbst",NA,1
 2017-10-05,NA,NA,NA,NA,5,157.712941182534,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Herbst",NA,0
 2016-12-11,NA,NA,NA,NA,6,84.5644203966836,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Herbst",NA,0
-2013-12-25,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Winter",NA,0
-2013-12-26,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Winter",NA,0
-2013-12-28,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Winter",NA,0
-2014-01-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Winter",NA,0
-2014-04-18,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Fruehling",NA,0
-2014-05-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Fruehling",NA,0
-2014-05-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,1
-2014-05-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",1,"Fruehling",NA,0
-2014-08-17,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","1",0,"Sommer",NA,1
-2014-12-25,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Winter",NA,0
-2014-12-26,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Winter",NA,0
-2015-01-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Winter",NA,0
-2015-04-03,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Fruehling",NA,0
-2015-05-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,0
-2015-12-25,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Winter",NA,0
-2015-12-26,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Winter",NA,0
-2016-01-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Winter",NA,0
-2016-03-24,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Fruehling",NA,0
-2016-03-25,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Fruehling",NA,0
-2016-07-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Sommer",NA,2
-2016-07-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Sommer",NA,1
-2016-08-14,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Sommer",NA,1
-2016-08-15,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Sommer",NA,0
-2016-12-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2016-12-25,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Winter",NA,0
-2016-12-26,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Winter",NA,0
-2017-01-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Winter",NA,0
-2017-04-14,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Fruehling",NA,0
-2017-05-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,0
-2017-07-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Sommer",NA,0
-2017-10-23,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Herbst",NA,0
-2017-10-31,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2017-12-25,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Winter",NA,0
-2017-12-26,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Winter",NA,0
-2018-01-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Winter",NA,0
-2018-03-30,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Fruehling",NA,0
-2018-05-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2018-05-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,3
-2018-08-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Sommer",NA,0
-2018-08-02,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Sommer",NA,0
-2018-08-03,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Sommer",NA,0
-2018-08-04,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Sommer",NA,2
-2018-08-05,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",1,"Sommer",NA,1
-2018-08-06,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Sommer",NA,0
-2018-08-07,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Sommer",NA,0
-2018-08-08,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Sommer",NA,0
-2018-08-09,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Sommer",NA,0
-2018-08-10,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Sommer",NA,1
-2018-08-11,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","1",0,"Sommer",NA,5
-2018-08-12,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Sommer",NA,2
-2018-08-13,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Sommer",NA,0
-2018-08-14,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Sommer",NA,0
-2018-08-15,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Sommer",NA,0
-2018-08-16,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Sommer",NA,0
-2018-08-17,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Sommer",NA,1
-2018-08-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Sommer",NA,2
-2018-08-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Sommer",NA,1
-2018-08-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Sommer",NA,2
-2018-08-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Sommer",NA,0
-2018-08-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Sommer",NA,1
-2018-08-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Sommer",NA,2
-2018-08-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Sommer",NA,0
-2018-08-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","1",0,"Sommer",NA,3
-2018-08-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Sommer",NA,1
-2018-08-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Sommer",NA,0
-2018-08-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Sommer",NA,0
-2018-08-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Sommer",NA,0
-2018-08-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Sommer",NA,0
-2018-08-31,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Sommer",NA,3
-2018-09-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Sommer",NA,1
-2018-09-02,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",1,"Sommer",NA,2
-2018-09-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Sommer",NA,0
-2018-09-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Sommer",NA,0
-2018-09-05,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Sommer",NA,0
-2018-09-06,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Sommer",NA,1
-2018-09-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Sommer",NA,0
-2018-09-08,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Sommer",NA,2
-2018-09-09,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Sommer",NA,1
-2018-09-10,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Sommer",NA,2
-2018-09-11,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Sommer",NA,1
-2018-09-12,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Sommer",NA,0
-2018-09-13,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Sommer",NA,1
-2018-09-14,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Sommer",NA,0
-2018-09-15,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Sommer",NA,0
-2018-09-16,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","1",0,"Sommer",NA,1
-2018-09-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Sommer",NA,1
-2018-09-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Sommer",NA,0
-2018-09-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Sommer",NA,0
-2018-09-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Sommer",NA,0
-2018-09-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Sommer",NA,0
-2018-09-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Sommer",NA,0
-2018-09-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Herbst",NA,1
-2018-09-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-09-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-09-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,1
-2018-09-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,1
-2018-09-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-09-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","1",0,"Herbst",NA,0
-2018-09-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Herbst",NA,3
-2018-10-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Herbst",NA,0
-2018-10-02,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Herbst",NA,1
-2018-10-03,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Herbst",NA,0
-2018-10-04,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Herbst",NA,0
-2018-10-05,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Herbst",NA,0
-2018-10-06,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Herbst",NA,2
-2018-10-07,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Herbst",NA,1
-2018-10-08,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Herbst",NA,0
-2018-10-09,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Herbst",NA,0
-2018-10-10,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Herbst",NA,0
-2018-10-11,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Herbst",NA,0
-2018-10-12,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Herbst",NA,0
-2018-10-13,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Herbst",NA,0
-2018-10-14,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Herbst",NA,1
-2018-10-15,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Herbst",NA,0
-2018-10-16,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Herbst",NA,0
-2018-10-17,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Herbst",NA,0
-2018-10-18,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Herbst",NA,0
-2018-10-19,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Herbst",NA,0
-2018-10-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-10-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","1",0,"Herbst",NA,1
-2018-10-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-10-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-10-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,1
-2018-10-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-10-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-10-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-10-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Herbst",NA,1
-2018-10-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-10-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,1
-2018-10-31,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,0
-2018-11-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-11-02,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-11-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-11-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","1",0,"Herbst",NA,0
-2018-11-05,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-11-06,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-11-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,0
-2018-11-08,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-11-09,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-11-10,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-11-11,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Herbst",NA,0
-2018-11-12,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-11-13,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-11-14,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,0
-2018-11-15,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-11-16,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-11-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-11-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Herbst",NA,0
-2018-11-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-11-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-11-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,0
-2018-11-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-11-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-11-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-11-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","1",0,"Herbst",NA,0
-2018-11-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-11-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-11-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,0
-2018-11-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-11-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-12-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-12-02,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Herbst",NA,0
-2018-12-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-12-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-12-05,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,0
-2018-12-06,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-12-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-12-08,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-12-09,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","1",0,"Herbst",NA,0
-2018-12-10,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-12-11,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-12-12,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,0
-2018-12-13,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-12-14,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Herbst",NA,0
-2018-12-15,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Herbst",NA,0
-2018-12-16,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Herbst",NA,0
-2018-12-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Herbst",NA,0
-2018-12-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Herbst",NA,0
-2018-12-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Herbst",NA,0
-2018-12-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Herbst",NA,0
-2018-12-21,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Herbst",NA,0
-2018-12-22,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","1",0,"Winter",NA,0
-2018-12-23,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Winter",NA,0
-2018-12-24,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Winter",NA,0
-2018-12-25,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Winter",NA,0
-2018-12-26,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Winter",NA,0
-2018-12-27,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Winter",NA,0
-2018-12-28,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Winter",NA,0
-2018-12-29,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Winter",NA,0
-2018-12-30,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Winter",NA,0
-2018-12-31,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Winter",NA,0
-2019-01-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Winter",NA,0
-2019-01-02,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Winter",NA,0
-2019-01-03,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Winter",NA,0
-2019-01-04,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Winter",NA,0
-2019-01-05,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Winter",NA,1
-2019-01-06,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-01-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-01-08,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-01-09,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-01-10,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-01-11,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-01-12,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Winter",NA,0
-2019-01-13,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-01-14,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-01-15,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-01-16,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-01-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-01-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-01-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Winter",NA,0
-2019-01-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-01-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-01-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-01-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-01-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-01-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-01-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Winter",NA,0
-2019-01-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-01-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-01-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-01-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-01-31,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-02-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-02-02,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","1",0,"Winter",NA,0
-2019-02-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-02-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-02-05,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-02-06,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-02-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-02-08,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-02-09,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Winter",NA,0
-2019-02-10,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-02-11,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-02-12,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-02-13,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-02-14,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-02-15,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-02-16,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","1",0,"Winter",NA,0
-2019-02-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-02-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-02-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-02-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-02-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-02-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-02-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Winter",NA,0
-2019-02-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-02-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-02-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-02-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-02-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-03-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-03-02,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","1",0,"Winter",NA,0
-2019-03-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-03-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-03-05,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-03-06,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-03-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-03-08,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-03-09,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Winter",NA,0
-2019-03-10,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Winter",NA,0
-2019-03-11,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-03-12,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-03-13,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Winter",NA,0
-2019-03-14,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Winter",NA,0
-2019-03-15,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Winter",NA,0
-2019-03-16,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Winter",NA,0
-2019-03-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","1",0,"Winter",NA,0
-2019-03-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Winter",NA,0
-2019-03-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Winter",NA,0
-2019-03-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,0
-2019-03-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,0
-2019-03-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,0
-2019-03-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,0
-2019-03-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,0
-2019-03-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,0
-2019-03-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2019-03-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,0
-2019-03-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,0
-2019-03-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,0
-2019-03-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,0
-2019-03-31,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,0
-2019-04-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,0
-2019-04-02,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2019-04-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,0
-2019-04-04,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Fruehling",NA,0
-2019-04-05,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Fruehling",NA,0
-2019-04-06,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Fruehling",NA,0
-2019-04-07,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","1",0,"Fruehling",NA,1
-2019-04-08,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Fruehling",NA,0
-2019-04-09,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Fruehling",NA,0
-2019-04-10,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Fruehling",NA,0
-2019-04-11,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Fruehling",NA,0
-2019-04-12,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Fruehling",NA,1
-2019-04-13,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Fruehling",NA,0
-2019-04-14,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Fruehling",NA,1
-2019-04-15,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Fruehling",NA,0
-2019-04-16,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Fruehling",NA,0
-2019-04-17,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Fruehling",NA,0
-2019-04-18,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Fruehling",NA,0
-2019-04-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,0
-2019-04-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,1
-2019-04-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,1
-2019-04-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,0
-2019-04-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2019-04-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,1
-2019-04-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,0
-2019-04-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,0
-2019-04-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,1
-2019-04-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,1
-2019-04-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,0
-2019-04-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2019-05-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,0
-2019-05-02,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,0
-2019-05-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,0
-2019-05-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,1
-2019-05-05,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,0
-2019-05-06,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,0
-2019-05-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2019-05-08,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,0
-2019-05-09,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,1
-2019-05-10,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,2
-2019-05-11,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,2
-2019-05-12,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,0
-2019-05-13,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,1
-2019-05-14,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,2
-2019-05-15,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,0
-2019-05-16,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,2
-2019-05-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,1
-2019-05-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,1
-2019-05-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,1
-2019-05-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,2
-2019-05-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2019-05-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,1
-2019-05-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,0
-2019-05-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,3
-2019-05-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,0
-2019-05-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,1
-2019-05-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,1
-2019-05-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,2
-2019-05-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,1
-2019-05-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,1
-2019-05-31,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,1
-2019-06-01,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,2
-2019-06-02,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,2
-2019-06-03,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,0
-2019-06-04,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2019-06-05,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,1
-2019-06-06,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,3
-2019-06-07,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,1
-2019-06-08,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,3
-2019-06-09,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,1
-2019-06-10,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,1
-2019-06-11,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,0
-2019-06-12,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,0
-2019-06-13,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,1
-2019-06-14,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Fruehling",NA,0
-2019-06-15,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Fruehling",NA,3
-2019-06-16,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Fruehling",NA,2
-2019-06-17,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Fruehling",NA,0
-2019-06-18,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Fruehling",NA,1
-2019-06-19,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Fruehling",NA,0
-2019-06-20,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Fruehling",NA,1
-2019-06-21,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Sommer",NA,0
-2019-06-22,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Sommer",NA,3
-2019-06-23,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Sommer",NA,3
-2019-06-24,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Montag","0",0,"Sommer",NA,1
-2019-06-25,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Dienstag","0",0,"Sommer",NA,1
-2019-06-26,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Mittwoch","0",0,"Sommer",NA,0
-2019-06-27,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Donnerstag","0",0,"Sommer",NA,0
-2019-06-28,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Freitag","0",0,"Sommer",NA,1
-2019-06-29,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Samstag","0",0,"Sommer",NA,3
-2019-06-30,NA,NA,NA,NA,NA,NA,0,NA,NA,0,"Sonntag","0",0,"Sommer",NA,2
-2019-07-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Sommer",NA,2
-2019-07-02,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Sommer",NA,0
-2019-07-03,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Sommer",NA,1
-2019-07-04,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Sommer",NA,1
-2019-07-05,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Sommer",NA,0
-2019-07-06,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Sommer",NA,2
-2019-07-07,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Sommer",NA,0
-2019-07-08,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Sommer",NA,0
-2019-07-09,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Sommer",NA,2
-2019-07-10,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Sommer",NA,1
-2019-07-11,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Sommer",NA,0
-2019-07-12,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Sommer",NA,1
-2019-07-13,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Sommer",NA,3
-2019-07-14,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Sommer",NA,2
-2019-07-15,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Sommer",NA,1
-2019-07-16,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Sommer",NA,1
-2019-07-17,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Sommer",NA,0
-2019-07-18,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Sommer",NA,0
-2019-07-19,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Sommer",NA,2
-2019-07-20,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Sommer",NA,2
-2019-07-21,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Sommer",NA,1
-2019-07-22,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Sommer",NA,1
-2019-07-23,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Sommer",NA,0
-2019-07-24,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Sommer",NA,0
-2019-07-25,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Sommer",NA,1
-2019-07-26,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Freitag","0",0,"Sommer",NA,0
-2019-07-27,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Samstag","0",0,"Sommer",NA,3
-2019-07-28,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Sonntag","0",0,"Sommer",NA,2
-2019-07-29,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Montag","0",0,"Sommer",NA,1
-2019-07-30,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Dienstag","0",0,"Sommer",NA,1
-2019-07-31,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Mittwoch","0",0,"Sommer",NA,1
-2019-08-01,NA,NA,NA,NA,NA,NA,0,NA,NA,1,"Donnerstag","0",0,"Sommer",NA,1
+2012-07-24,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2012-10-06,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-10-07,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","1",0,NA,NA,0
+2012-10-13,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-10-14,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-10-20,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-10-21,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-10-27,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-10-28,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","1",0,NA,NA,0
+2012-11-03,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-11-04,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-11-10,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,NA,0
+2012-11-11,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-11-17,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-11-18,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-11-24,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-11-25,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-12-01,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,NA,0
+2012-12-02,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-12-08,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-12-09,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-12-15,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-12-16,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-12-22,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-12-23,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-12-24,NA,NA,NA,NA,NA,NA,0,1,"Weihnachten",NA,"Montag","0",0,NA,NA,0
+2012-12-25,NA,NA,NA,NA,NA,NA,0,1,"Weihnachten",NA,"Dienstag","0",0,NA,NA,0
+2012-12-26,NA,NA,NA,NA,NA,NA,0,1,"Weihnachten",NA,"Mittwoch","0",0,NA,NA,0
+2012-12-27,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2012-12-28,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2012-12-29,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2012-12-30,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2012-12-31,NA,NA,NA,NA,NA,NA,0,1,"Silvester",NA,"Montag","0",0,NA,NA,0
+2013-01-01,NA,NA,NA,NA,NA,NA,0,1,"Neujahr",NA,"Dienstag","0",0,NA,NA,0
+2013-01-02,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-01-03,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-01-04,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-01-05,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-01-06,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-01-07,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-01-08,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-01-09,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-01-10,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-01-11,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-01-12,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-01-13,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-01-14,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-01-15,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-01-16,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-01-17,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-01-18,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-01-19,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-01-20,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-01-21,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-01-22,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-01-23,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-01-24,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-01-25,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-01-26,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-01-27,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-01-28,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-01-29,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-01-30,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-01-31,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-02-01,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-02-02,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-02-03,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-02-04,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-02-05,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-02-06,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-02-07,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-02-08,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-02-09,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-02-10,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-02-11,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-02-12,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-02-13,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-02-14,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-02-15,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-02-16,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-02-17,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-02-18,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-02-19,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-02-20,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-02-21,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-02-22,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-02-23,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-02-24,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-02-25,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-02-26,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-02-27,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-02-28,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-03-01,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","1",0,NA,NA,0
+2013-03-02,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-03-03,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",1,NA,NA,0
+2013-03-04,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-03-05,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-03-06,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-03-07,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-03-08,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-03-09,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,NA,0
+2013-03-10,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-03-11,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-03-12,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-03-13,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-03-14,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-03-15,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-03-16,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-03-17,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-03-18,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-03-19,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-03-20,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-03-21,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-03-22,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-03-23,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-03-24,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-03-25,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-03-26,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-03-27,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-03-28,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","1",0,NA,NA,0
+2013-03-29,NA,NA,NA,NA,NA,NA,0,1,"Ostern",NA,"Freitag","0",0,NA,NA,0
+2013-03-30,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-03-31,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-04-01,NA,NA,NA,NA,NA,NA,0,1,"Ostern",NA,"Montag","0",0,NA,NA,0
+2013-04-02,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-04-03,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-04-04,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-04-05,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-04-06,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,0
+2013-04-07,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",1,NA,NA,0
+2013-04-08,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-04-09,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-04-10,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,0
+2013-04-11,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-04-12,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-04-13,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","1",0,NA,NA,1
+2013-04-14,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-04-15,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-04-16,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,0
+2013-04-17,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,1
+2013-04-18,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,0
+2013-04-19,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-04-20,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,1
+2013-04-21,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","0",0,NA,NA,0
+2013-04-22,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-04-23,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Dienstag","0",0,NA,NA,1
+2013-04-24,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Mittwoch","0",0,NA,NA,1
+2013-04-25,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,1
+2013-04-26,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Freitag","0",0,NA,NA,0
+2013-04-27,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Samstag","0",0,NA,NA,1
+2013-04-28,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Sonntag","1",0,NA,NA,1
+2013-04-29,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Montag","0",0,NA,NA,0
+2013-06-13,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",NA,"Donnerstag","0",0,NA,NA,1
+2018-09-08,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer",NA,2
+2018-09-09,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","0",0,"Sommer",NA,1
+2018-09-15,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Sommer",NA,0
+2018-09-16,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","1",0,"Sommer",NA,1
+2018-09-17,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Montag","0",0,"Sommer",NA,1
+2018-09-18,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Dienstag","0",0,"Sommer",NA,0
+2018-09-19,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Mittwoch","0",0,"Sommer",NA,0
+2018-09-20,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Donnerstag","0",0,"Sommer",NA,0
+2018-10-13,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",1,"Samstag","0",0,"Herbst",NA,0
+2018-10-14,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",1,"Sonntag","0",0,"Herbst",NA,1
+2018-10-20,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Samstag","0",0,"Herbst",NA,0
+2018-10-21,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",0,"Sonntag","1",0,"Herbst",NA,1
+2019-04-04,NA,NA,NA,NA,NA,NA,0,0,"Kein Feiertag",1,"Donnerstag","0",0,"Fruehling",NA,0
 2019-08-02,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sommer",NA,1
 2019-08-03,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sommer",NA,2
 2019-08-04,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sommer",NA,0
@@ -9767,51 +10314,6 @@
 2019-08-29,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sommer",NA,0
 2019-08-30,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sommer",NA,2
 2019-08-31,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Sommer",NA,2
-2013-04-13,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-04-17,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-04-20,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-04-23,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-04-24,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-04-25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-04-27,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-04-28,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-04-30,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-01,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-05-04,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-05-07,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-10,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-05-11,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-05-13,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-16,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-05-19,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-23,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-05-26,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-28,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-29,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-05-30,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-05-31,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-01,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-06-02,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-03,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-06-04,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-08,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3
-2013-06-09,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3
-2013-06-12,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-13,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-15,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3
-2013-06-16,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-06-19,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-20,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-22,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-23,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-24,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-27,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
-2013-06-28,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
-2013-06-29,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,4
-2013-06-30,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
 2019-09-01,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2
 2019-09-02,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
 2019-09-05,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1
