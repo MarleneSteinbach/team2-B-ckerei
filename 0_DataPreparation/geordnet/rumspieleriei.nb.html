@@ -1772,18 +1772,42 @@ for (pkg in pkgs) {
 <p>Lineare und neronale laden</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsZV9wYXRoIDwtIGZpbGUucGF0aChnZXR3ZCgpLCBcImthZ2dsZV9zdWJtaXNzaW9uIG5ldXJvbmFsLmNzdlwiKVxubmV1cm9uYWwgPC0gcmVhZC5jc3YoZmlsZV9wYXRoKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsZV9wYXRoIDwtIGZpbGUucGF0aChnZXR3ZCgpLCBcImthZ2dsZV9zdWJtaXNzaW9uIG5ldXJvbmFsLmNzdlwiKVxubmV1cm9uYWwgPC0gcmVhZC5jc3YoZmlsZV9wYXRoKVxuXG5maWxlX3BhdGggPC0gZmlsZS5wYXRoKGdldHdkKCksIFwia2FnZ2xlX3N1Ym1pc3Npb24uY3N2XCIpXG5saW5lYXIgPC0gcmVhZC5jc3YoZmlsZV9wYXRoKVxuXG5gYGAifQ== -->
 <pre class="r"><code>file_path &lt;- file.path(getwd(), &quot;kaggle_submission neuronal.csv&quot;)
-neuronal &lt;- read.csv(file_path)</code></pre>
+neuronal &lt;- read.csv(file_path)
+
+file_path &lt;- file.path(getwd(), &quot;kaggle_submission.csv&quot;)
+linear &lt;- read.csv(file_path)
+</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybnVuZzoga2FubiBEYXRlaSAnQzovVXNlcnMvcmFoaW0vT25lRHJpdmUvRG9rdW1lbnRlL3RlYW0yLUItY2tlcmVpL2thZ2dsZV9zdWJtaXNzaW9uIG5ldXJvbmFsLmNzdicgbmljaHQgw7ZmZm5lbjogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeUZlaGxlciBpbiBmaWxlKGZpbGUsIFwicnRcIikgOiBrYW5uIFZlcmJpbmR1bmcgbmljaHQgw7ZmZm5lblxuIn0= -->
-<pre><code>Warnung: kann Datei &#39;C:/Users/rahim/OneDrive/Dokumente/team2-B-ckerei/kaggle_submission neuronal.csv&#39; nicht öffnen: No such file or directoryFehler in file(file, &quot;rt&quot;) : kann Verbindung nicht öffnen</code></pre>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Unterschied zwischen den beiden</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cbiMgVmVyZ2xlaWNoZSBkaWUgYmVpZGVuIERhdGVuc8OkdHplXG5jb21wYXJpc29uX2RmIDwtIGRhdGEuZnJhbWUoXG4gIGlkID0gbmV1cm9uYWwkaWQsXG4gIERpZmZlcmVueiA9IG5ldXJvbmFsJFVtc2F0eiAtIGxpbmVhciRVbXNhdHpcbilcblxuIyBCZXJlY2huZSBkZW4gTWVhbiBBYnNvbHV0ZSBFcnJvciAoTUFFKVxubWFlIDwtIG1lYW4oYWJzKGNvbXBhcmlzb25fZGYkRGlmZmVyZW56KSlcblxuXG5jYXQoXCJNZWFuIEFic29sdXRlIEVycm9yIChNQUUpOiBcIiwgbWFlLCBcIlxcblwiKVxuYGBgIn0= -->
+<pre class="r"><code>
+
+# Vergleiche die beiden Datensätze
+comparison_df &lt;- data.frame(
+  id = neuronal$id,
+  Differenz = neuronal$Umsatz - linear$Umsatz
+)
+
+# Berechne den Mean Absolute Error (MAE)
+mae &lt;- mean(abs(comparison_df$Differenz))
+
+
+cat(&quot;Mean Absolute Error (MAE): &quot;, mae, &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTWVhbiBBYnNvbHV0ZSBFcnJvciAoTUFFKTogIDM3LjIwMzU1IFxuIn0= -->
+<pre><code>Mean Absolute Error (MAE):  37.20355 </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYWxsZSBMaWJyYXJpZXJzIGxhZGVuDQpgYGB7cn0NCiMgQ3JlYXRlIGxpc3Qgd2l0aCBuZWVkZWQgbGlicmFyaWVzDQpwa2dzIDwtIGMoInJlYWRyIiwgImRwbHlyIiwgInJldGljdWxhdGUiLCAiZ2dwbG90MiIsICJNZXRyaWNzIiwic3R5bGVyIiwidGlkeXZlcnNlIiwicnNhbXBsZSIsInpvbyIpDQoNCiMgTG9hZCBlYWNoIGxpc3RlZCBsaWJyYXJ5IGFuZCBjaGVjayBpZiBpdCBpcyBpbnN0YWxsZWQgYW5kIGluc3RhbGwgaWYgbmVjZXNzYXJ5DQpmb3IgKHBrZyBpbiBwa2dzKSB7DQogIGlmICghcmVxdWlyZShwa2csIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSkpIHsNCiAgICBpbnN0YWxsLnBhY2thZ2VzKHBrZykNCiAgICBsaWJyYXJ5KHBrZywgY2hhcmFjdGVyLm9ubHkgPSBUUlVFKQ0KICB9DQp9DQpgYGANCg0KTGluZWFyZSB1bmQgbmVyb25hbGUgbGFkZW4NCmBgYHtyfQ0KZmlsZV9wYXRoIDwtIGZpbGUucGF0aChnZXR3ZCgpLCAia2FnZ2xlX3N1Ym1pc3Npb24gbmV1cm9uYWwuY3N2IikNCm5ldXJvbmFsIDwtIHJlYWQuY3N2KGZpbGVfcGF0aCkNCg0KZmlsZV9wYXRoIDwtIGZpbGUucGF0aChnZXR3ZCgpLCAia2FnZ2xlX3N1Ym1pc3Npb24gbGluZWFyLmNzdiIpDQpsaW5lYXIgPC0gcmVhZC5jc3YoZmlsZV9wYXRoKQ0KDQpgYGANCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYWxsZSBMaWJyYXJpZXJzIGxhZGVuDQpgYGB7cn0NCiMgQ3JlYXRlIGxpc3Qgd2l0aCBuZWVkZWQgbGlicmFyaWVzDQpwa2dzIDwtIGMoInJlYWRyIiwgImRwbHlyIiwgInJldGljdWxhdGUiLCAiZ2dwbG90MiIsICJNZXRyaWNzIiwic3R5bGVyIiwidGlkeXZlcnNlIiwicnNhbXBsZSIsInpvbyIpDQoNCiMgTG9hZCBlYWNoIGxpc3RlZCBsaWJyYXJ5IGFuZCBjaGVjayBpZiBpdCBpcyBpbnN0YWxsZWQgYW5kIGluc3RhbGwgaWYgbmVjZXNzYXJ5DQpmb3IgKHBrZyBpbiBwa2dzKSB7DQogIGlmICghcmVxdWlyZShwa2csIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSkpIHsNCiAgICBpbnN0YWxsLnBhY2thZ2VzKHBrZykNCiAgICBsaWJyYXJ5KHBrZywgY2hhcmFjdGVyLm9ubHkgPSBUUlVFKQ0KICB9DQp9DQpgYGANCg0KTGluZWFyZSB1bmQgbmVyb25hbGUgbGFkZW4NCmBgYHtyfQ0KZmlsZV9wYXRoIDwtIGZpbGUucGF0aChnZXR3ZCgpLCAia2FnZ2xlX3N1Ym1pc3Npb24gbmV1cm9uYWwuY3N2IikNCm5ldXJvbmFsIDwtIHJlYWQuY3N2KGZpbGVfcGF0aCkNCg0KZmlsZV9wYXRoIDwtIGZpbGUucGF0aChnZXR3ZCgpLCAia2FnZ2xlX3N1Ym1pc3Npb24uY3N2IikNCmxpbmVhciA8LSByZWFkLmNzdihmaWxlX3BhdGgpDQoNCmBgYA0KVW50ZXJzY2hpZWQgendpc2NoZW4gZGVuIGJlaWRlbg0KYGBge3J9DQoNCg0KIyBWZXJnbGVpY2hlIGRpZSBiZWlkZW4gRGF0ZW5zw6R0emUNCmNvbXBhcmlzb25fZGYgPC0gZGF0YS5mcmFtZSgNCiAgaWQgPSBuZXVyb25hbCRpZCwNCiAgRGlmZmVyZW56ID0gbmV1cm9uYWwkVW1zYXR6IC0gbGluZWFyJFVtc2F0eg0KKQ0KDQojIEJlcmVjaG5lIGRlbiBNZWFuIEFic29sdXRlIEVycm9yIChNQUUpDQptYWUgPC0gbWVhbihhYnMoY29tcGFyaXNvbl9kZiREaWZmZXJlbnopKQ0KDQoNCmNhdCgiTWVhbiBBYnNvbHV0ZSBFcnJvciAoTUFFKTogIiwgbWFlLCAiXG4iKQ0KDQpgYGANCg0K</div>
 
 
 

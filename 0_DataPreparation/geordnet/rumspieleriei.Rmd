@@ -21,8 +21,25 @@ Lineare und neronale laden
 file_path <- file.path(getwd(), "kaggle_submission neuronal.csv")
 neuronal <- read.csv(file_path)
 
-file_path <- file.path(getwd(), "kaggle_submission linear.csv")
+file_path <- file.path(getwd(), "kaggle_submission.csv")
 linear <- read.csv(file_path)
+
+```
+Unterschied zwischen den beiden
+```{r}
+
+
+# Vergleiche die beiden Datensätze
+comparison_df <- data.frame(
+  id = neuronal$id,
+  Differenz = neuronal$Umsatz - linear$Umsatz
+)
+
+# Berechne den Mean Absolute Error (MAE)
+mae <- mean(abs(comparison_df$Differenz))
+
+
+cat("Mean Absolute Error (MAE): ", mae, "\n")
 
 ```
 
