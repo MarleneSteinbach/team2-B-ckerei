@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+alle Librariers laden
+```{r}
+# Create list with needed libraries
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo")
+
+# Load each listed library and check if it is installed and install if necessary
+for (pkg in pkgs) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+
+Lineare und neronale laden
+```{r}
+file_path <- file.path(getwd(), "kaggle_submission neuronal.csv")
+neuronal <- read.csv(file_path)
+
+file_path <- file.path(getwd(), "kaggle_submission linear.csv")
+linear <- read.csv(file_path)
+
+```
+
