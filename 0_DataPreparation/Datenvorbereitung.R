@@ -22,15 +22,25 @@ for (pkg in pkgs) {
 ### Data Import ####
 
 # Reading the data file
-data <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/Gesamtdatensatz.csv?token=GHSAT0AAAAAACMNUPXXX4G6M7XWMJRIICMEZMYCB3Q")
+data <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/Gesamtdatensatz.csv?token=GHSAT0AAAAAACMNUPXWLXRYI5TBQRXA2BX6ZMZJHQQ")
 names(data)
-data <- na.omit(data, cols = c("Bewoelkung"))
-# füge Datum und Warengruppe zu einer variable zusammen im Format 201801011 (01. Januar 2018, Warengruppe 1, entferne die Striche bei Datum)
 
+set_na_to_zero <- function(data, columns) {
+  for (col in columns) {
+    data[[col]][is.na(data[[col]])] <- 0
+  }
+  return(data)
+}
+#,"id", "Jahreszeit", "Fussballspiel", "Ferien"
+columns_to_set_zero <- c(
+  "Warengruppe", "Umsatz","Temperatur" ,"Bewoelkung","Windgeschwindigkeit",
+  "Feiertag","id", "Jahreszeit", "Fussballspiel", "Ferien", "Temperaturkategorie",
+  "KielerWoche", "Wochentag", "Flohmarkt" , "Kreuzfahrtschiffe", "Wettercode"
+)
 
-data$id <- paste0(data$Datum, data$Warengruppe)
-# entferne die Striche bei Datum
-data$id <- gsub("-", "", data$id)
+data <- set_na_to_zero(data, columns_to_set_zero)
+data <- data %>%
+  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2019-07-31"))
 
 
 
@@ -41,6 +51,7 @@ data$id <- gsub("-", "", data$id)
 # Preparation of independent variables ('features') by dummy coding the categorical variables
 features <- as_tibble(model.matrix(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe,data))
 names(features)
+features <- cbind(features, Datum =data$Datum , id=data$id )
 
 # Construction of prepared data set
 prepared_data <- tibble(label=data$Umsatz, features) %>%  # inclusion of the dependent variable ('label')
@@ -51,34 +62,44 @@ prepared_data <- tibble(label=data$Umsatz, features) %>%  # inclusion of the dep
 
 ###################################################
 ### Selection of Training, Validation and Test Data ####
+# Assuming your data is in the data frame 'ourdata_fussball'
+# and the prepared data is in 'prepared_data'
 
-# Set a random seed for reproducibility
-set.seed(42)
-# Shuffle the data
-prepared_data_shuffled <- prepared_data %>% sample_frac(1)
+# Train dataset (01.07.2013 to 31.07.2017)
+train_data <- prepared_data %>%
+  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2017-07-31"))
+
+# Validation dataset (01.08.2017 to 31.07.2018)
+valid_data <- prepared_data %>%
+  filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
+
+# Test dataset (01.08.2018 and onwards, assuming you want the remaining data for testing)
+test_data <- prepared_data %>%
+  filter(Datum >= as.Date("2018-08-01"))
+
+# Extract features and labels for training
+training_features <- select(train_data, -c(label,id, Datum))
+training_labels <- select(train_data, label)
+
+# Extract features and labels for validation
+validation_features <- select(valid_data, -c(label,id, Datum))
+validation_labels <- select(valid_data, label)
+
+# Extract features and labels for test
+test_features <- select(test_data, -c(label, Datum))
+test_labels <- select(test_data, label)
 
 
-# Calculate the number of rows for each dataset
-n_total <- nrow(prepared_data_shuffled)
-n_training <- floor(0.7 * n_total)
-n_validation <- floor(0.20 * n_total)
 
+# Check the number of rows in each dataset
+nrow_train <- nrow(training_features)
+nrow_valid <- nrow(validation_features)
+nrow_test <- nrow(test_features)
 
-# Split the features and labels for training, validation, and test
-training_features <-
-  prepared_data_shuffled %>% select(-label) %>% slice(1:n_training)
-validation_features <-
-  prepared_data_shuffled %>% select(-label) %>% slice((n_training + 1):(n_training + n_validation))
-test_features <-
-  prepared_data_shuffled %>% select(-label) %>% slice((n_training + n_validation + 1):n_total)
-
-training_labels <-
-  prepared_data_shuffled %>% select(label) %>% slice(1:n_training)
-validation_labels <-
-  prepared_data_shuffled %>% select(label) %>% slice((n_training + 1):(n_training + n_validation))
-test_labels <-
-  prepared_data_shuffled %>% select(label) %>% slice((n_training + n_validation + 1):n_total)
-
+# Print the number of rows in each dataset
+cat("Number of rows in training dataset:", nrow_train, "\n")
+cat("Number of rows in validation dataset:", nrow_valid, "\n")
+cat("Number of rows in test dataset:", nrow_test, "\n")
 
 # Check the dimensions of the dataframes
 cat("Training features dimensions:", dim(training_features), "\n")
@@ -90,6 +111,8 @@ cat("\n")
 cat("Training labels dimensions:", dim(training_labels), "\n")
 cat("Validation labels dimensions:", dim(validation_labels), "\n")
 cat("Test labels dimensions:", dim(test_labels), "\n")
+
+
 
 ###################################################
 ### Export of the prepared data ####

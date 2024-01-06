@@ -17,17 +17,20 @@ library(readr)
 csvwetter <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv"
 csvumsatzdaten_gekuerzt <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv"
 csvkiwo <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv"
+csvtest <- "https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/test.csv?token=GHSAT0AAAAAACMNUPXX3FGD3IXXQ3RYJENMZMZI7GQ"
 
 wetter <- read.table(csvwetter, head=TRUE, sep = ",")
 umdat <- read.csv(csvumsatzdaten_gekuerzt)
 kiwo <- read.csv(csvkiwo)
-
+testid <- read.csv(csvtest)
 #Wettercodes approximieren 
 library(zoo)
 wetter$Wettercode <- na.approx(wetter$Wettercode)
 wetter$Wettercode <- as.integer(wetter$Wettercode)
 
-alle <- full_join(wetter, umdat, by = "Datum") %>%
+salesid <- full_join(umdat, testid, join_by( Datum, Warengruppe))
+
+alle <- full_join(wetter, salesid, by = "Datum") %>%
   full_join(kiwo, by = "Datum")
 as_tibble(alle)
 nrow(umdat)
@@ -94,7 +97,7 @@ alle_Feier <- full_join(alle_gefiltert, Feiertage, by = "Datum") %>%
 Ich füge den Datensatz Ferientage zu der Tabelle hinzu 
 
 ```{r}
-neue_ferientage_data <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/neue_ferientage_count.csv?token=GHSAT0AAAAAACMNUPXXM4HRJY4VUIXF7UPWZMYGO4A")
+neue_ferientage_data <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/neue_ferientage_count.csv?token=GHSAT0AAAAAACMNUPXXFLLE4HFUOWGPKMMYZMZH7MQ")
 neue_ferientage_data$Datum <- as.Date(neue_ferientage_data$Datum, format="%Y-%m-%d")
 
 feiertage_ferientage <- full_join (alle_Feier, neue_ferientage_data, by = "Datum") %>%
@@ -206,7 +209,7 @@ sum(ourdata_fussball$Flohmarkt == 1)
 
 Füge Jahreszeiten hinzu
 ```{r}
-Jahreszeiten <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/Jahreszeiten_Fruehling.csv?token=GHSAT0AAAAAACMNUPXXD3GUE32DYX2BMIJSZMYHPZQ")
+Jahreszeiten <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/Jahreszeiten_Fruehling.csv?token=GHSAT0AAAAAACMNUPXX4LSXPOSWGKIWBZ2AZMZIBKQ")
 class(Jahreszeiten$Datum)
 Jahreszeiten$Datum <- as.Date(Jahreszeiten$Datum)
 
@@ -246,7 +249,7 @@ head(ourdata_fussball)
 Füge Kreuzfahrten ein
 
 ```{r}
-Kreuzfahrten <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/kreuzfahrtengesamt.csv?token=GHSAT0AAAAAACMNUPXX22C7RZUSYNZRMNJUZMYHS5Q")
+Kreuzfahrten <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/kreuzfahrten.csv?token=GHSAT0AAAAAACMNUPXWU4GZ3SRWAOR5LERWZMZICKA")
 
 # Konvertiere Datum ins gewünschte Format
 Kreuzfahrten$Datum <- as.Date(Kreuzfahrten$Datum, format = "%y-%m-%d")
@@ -407,6 +410,6 @@ CSV für die Datenaufbereitung
 ```{r}
 # Kreuzfahrtschiffe NAs entfernen und CSV für Python
 ourdata_fussball$Kreuzfahrtschiffe[is.na(ourdata_fussball$Kreuzfahrtschiffe)] <- 0
-write.csv(ourdata_fussball, "Gesamtdatensatz2.csv", row.names = FALSE)
+write.csv(ourdata_fussball, "Gesamtdatensatz.csv", row.names = FALSE)
 ```
 
