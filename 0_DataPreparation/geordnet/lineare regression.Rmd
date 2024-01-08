@@ -50,8 +50,8 @@ as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.
 as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien    
 , data = train_data)
 
-
-valid_predictions <- predict(model_1, newdata = valid_data)
+unique(valid_data$Wettercode)
+unique(train_data$Wettercode)
 
 # Vergleiche die Vorhersagen mit den tatsächlichen Werten im Validierungsdatensatz
 validation_results <- data.frame(
