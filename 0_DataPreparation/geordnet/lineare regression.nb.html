@@ -1802,7 +1802,7 @@ test_data &lt;- data %&gt;%
 <p>regressionsgleichung aufstellen random</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9kZWxfMSA8LSBsbShVbXNhdHogfiBXZXR0ZXJjb2RlICsgQmV3b2Vsa3VuZyArIFdpbmRnZXNjaHdpbmRpZ2tlaXQgKyBUZW1wZXJhdHVyICsgIGFzLmZhY3RvcihKYWhyZXN6ZWl0KSArIGFzLmZhY3RvcihUZW1wZXJhdHVya2F0ZWdvcmllKSArIGFzLmZhY3RvcihXYXJlbmdydXBwZSkrIGFzLmZhY3RvcihBcnRfZGVzX0ZlaWVydGFncykgK0Z1c3NiYWxsc3BpZWwgKyBGZXJpZW4gKyBGZWllcnRhZyAgKyBLaWVsZXJXb2NoZSArIGFzLmZhY3RvcihXb2NoZW50YWcpICsgRmxvaG1hcmt0ICsgIEtyZXV6ZmFocnRzY2hpZmZlICsgXG5XZXR0ZXJjb2RlICogQmV3b2Vsa3VuZyAqIFdpbmRnZXNjaHdpbmRpZ2tlaXQgKiBUZW1wZXJhdHVyICsgXG5hcy5mYWN0b3IoV2FyZW5ncnVwcGUpICogYXMuZmFjdG9yKEFydF9kZXNfRmVpZXJ0YWdzKSArIFxuYXMuZmFjdG9yKEphaHJlc3plaXQpICogYXMuZmFjdG9yKFRlbXBlcmF0dXJrYXRlZ29yaWUpICsgRGlmZl90ZW1wICsgRGlmZl9iZXdvZWxrdW5nICsgRGlmZl93aW5kICtcbmFzLmZhY3RvcihKYWhyZXN6ZWl0KSAqIGFzLmZhY3RvcihUZW1wZXJhdHVya2F0ZWdvcmllKSAqIEtyZXV6ZmFocnRzY2hpZmZlICsgYXMuZmFjdG9yKEphaHJlc3plaXQpICogYXMuZmFjdG9yKFRlbXBlcmF0dXJrYXRlZ29yaWUpICogRnVzc2JhbGxzcGllbCsgXG5hcy5mYWN0b3IoSmFocmVzemVpdCkgKiBhcy5mYWN0b3IoVGVtcGVyYXR1cmthdGVnb3JpZSkgKiBGZXJpZW4gICAgXG4sIGRhdGEgPSB0cmFpbl9kYXRhKVxuXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9kZWxfMSA8LSBsbShVbXNhdHogfiBXZXR0ZXJjb2RlICsgQmV3b2Vsa3VuZyArIFdpbmRnZXNjaHdpbmRpZ2tlaXQgKyBUZW1wZXJhdHVyICsgIGFzLmZhY3RvcihKYWhyZXN6ZWl0KSArIGFzLmZhY3RvcihUZW1wZXJhdHVya2F0ZWdvcmllKSArIGFzLmZhY3RvcihXYXJlbmdydXBwZSkrIGFzLmZhY3RvcihBcnRfZGVzX0ZlaWVydGFncykgK0Z1c3NiYWxsc3BpZWwgKyBGZXJpZW4gKyBGZWllcnRhZyAgKyBLaWVsZXJXb2NoZSArIGFzLmZhY3RvcihXb2NoZW50YWcpICsgRmxvaG1hcmt0ICsgIEtyZXV6ZmFocnRzY2hpZmZlICsgXG5XZXR0ZXJjb2RlICogQmV3b2Vsa3VuZyAqIFdpbmRnZXNjaHdpbmRpZ2tlaXQgKiBUZW1wZXJhdHVyICsgXG5hcy5mYWN0b3IoV2FyZW5ncnVwcGUpICogYXMuZmFjdG9yKEFydF9kZXNfRmVpZXJ0YWdzKSArIFxuYXMuZmFjdG9yKEphaHJlc3plaXQpICogYXMuZmFjdG9yKFRlbXBlcmF0dXJrYXRlZ29yaWUpICsgRGlmZl90ZW1wICsgRGlmZl9iZXdvZWxrdW5nICsgRGlmZl93aW5kICtcbmFzLmZhY3RvcihKYWhyZXN6ZWl0KSAqIGFzLmZhY3RvcihUZW1wZXJhdHVya2F0ZWdvcmllKSAqIEtyZXV6ZmFocnRzY2hpZmZlICsgYXMuZmFjdG9yKEphaHJlc3plaXQpICogYXMuZmFjdG9yKFRlbXBlcmF0dXJrYXRlZ29yaWUpICogRnVzc2JhbGxzcGllbCsgXG5hcy5mYWN0b3IoSmFocmVzemVpdCkgKiBhcy5mYWN0b3IoVGVtcGVyYXR1cmthdGVnb3JpZSkgKiBGZXJpZW4gICAgXG4sIGRhdGEgPSB0cmFpbl9kYXRhKVxuXG5cbnZhbGlkX3ByZWRpY3Rpb25zIDwtIHByZWRpY3QobW9kZWxfMSwgbmV3ZGF0YSA9IHZhbGlkX2RhdGEpXG5gYGAifQ== -->
 <pre class="r"><code>model_1 &lt;- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur +  as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe)+ as.factor(Art_des_Feiertags) +Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt +  Kreuzfahrtschiffe + 
 Wettercode * Bewoelkung * Windgeschwindigkeit * Temperatur + 
 as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
@@ -1810,10 +1810,36 @@ as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_bewoel
 as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
 as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien    
 , data = train_data)
-</code></pre>
+
+
+valid_predictions &lt;- predict(model_1, newdata = valid_data)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRmVobGVyIGluIGV2YWwocHJlZHZhcnMsIGRhdGEsIGVudikgOiBPYmpla3QgJ0RpZmZfdGVtcCcgbmljaHQgZ2VmdW5kZW5cbiJ9 -->
-<pre><code>Fehler in eval(predvars, data, env) : Objekt &#39;Diff_temp&#39; nicht gefunden</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybnVuZzogcHJlZGljdGlvbiBmcm9tIHJhbmstZGVmaWNpZW50IGZpdDsgYXR0cigqLCBcIm5vbi1lc3RpbVwiKSBoYXMgZG91YnRmdWwgY2FzZXNcbiJ9 -->
+<pre><code>Warnung: prediction from rank-deficient fit; attr(*, &quot;non-estim&quot;) has doubtful cases</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBWZXJnbGVpY2hlIGRpZSBWb3JoZXJzYWdlbiBtaXQgZGVuIHRhdHPDpGNobGljaGVuIFdlcnRlbiBpbSBWYWxpZGllcnVuZ3NkYXRlbnNhdHpcbnZhbGlkYXRpb25fcmVzdWx0cyA8LSBkYXRhLmZyYW1lKFxuICBVbXNhdHogPSB2YWxpZF9kYXRhJFVtc2F0eixcbiAgUHJlZGljdGlvbnMgPSB2YWxpZF9wcmVkaWN0aW9uc1xuKVxuXG4jIEJlcmVjaG5lIGRlbiBNZWFuIEFic29sdXRlIEVycm9yIChNQUUpXG5tYWUgPC0gbWVhbihhYnModmFsaWRhdGlvbl9yZXN1bHRzJFVtc2F0eiAtIHZhbGlkYXRpb25fcmVzdWx0cyRQcmVkaWN0aW9ucykpXG5cbiMgQmVyZWNobmUgZGVuIE1lYW4gU3F1YXJlZCBFcnJvciAoTVNFKVxubXNlIDwtIG1lYW4oKHZhbGlkYXRpb25fcmVzdWx0cyRVbXNhdHogLSB2YWxpZGF0aW9uX3Jlc3VsdHMkUHJlZGljdGlvbnMpXjIpXG5cbmNhdChcIk1lYW4gQWJzb2x1dGUgRXJyb3IgKE1BRSkgYXVmIGRlbSBWYWxpZGllcnVuZ3NkYXRlbnNhdHo6IFwiLCBtYWUsIFwiXFxuXCIpXG5gYGAifQ== -->
+<pre class="r"><code># Vergleiche die Vorhersagen mit den tatsächlichen Werten im Validierungsdatensatz
+validation_results &lt;- data.frame(
+  Umsatz = valid_data$Umsatz,
+  Predictions = valid_predictions
+)
+
+# Berechne den Mean Absolute Error (MAE)
+mae &lt;- mean(abs(validation_results$Umsatz - validation_results$Predictions))
+
+# Berechne den Mean Squared Error (MSE)
+mse &lt;- mean((validation_results$Umsatz - validation_results$Predictions)^2)
+
+cat(&quot;Mean Absolute Error (MAE) auf dem Validierungsdatensatz: &quot;, mae, &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTWVhbiBBYnNvbHV0ZSBFcnJvciAoTUFFKSBhdWYgZGVtIFZhbGlkaWVydW5nc2RhdGVuc2F0ejogIDQ4LjE0NjI1IFxuIn0= -->
+<pre><code>Mean Absolute Error (MAE) auf dem Validierungsdatensatz:  48.14625 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2F0KFwiTWVhbiBTcXVhcmVkIEVycm9yIChNU0UpIGF1ZiBkZW0gVmFsaWRpZXJ1bmdzZGF0ZW5zYXR6OiBcIiwgbXNlLCBcIlxcblwiKVxuYGBgIn0= -->
+<pre class="r"><code>cat(&quot;Mean Squared Error (MSE) auf dem Validierungsdatensatz: &quot;, mse, &quot;\n&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTWVhbiBTcXVhcmVkIEVycm9yIChNU0UpIGF1ZiBkZW0gVmFsaWRpZXJ1bmdzZGF0ZW5zYXR6OiAgNDAwNC4zOTcgXG4ifQ== -->
+<pre><code>Mean Squared Error (MSE) auf dem Validierungsdatensatz:  4004.397 </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
