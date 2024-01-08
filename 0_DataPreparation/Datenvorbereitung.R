@@ -22,7 +22,8 @@ for (pkg in pkgs) {
 ### Data Import ####
 
 # Reading the data file
-data <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/Gesamtdatensatz.csv?token=GHSAT0AAAAAACMNUPXWLXRYI5TBQRXA2BX6ZMZJHQQ")
+file_path <- file.path(getwd(), "0_DataPreparation/geordnet/Data.csv")
+data <- read.csv(file_path)
 names(data)
 
 set_na_to_zero <- function(data, columns) {
@@ -49,7 +50,7 @@ data <- data %>%
 ### Data Preparation ####
 
 # Preparation of independent variables ('features') by dummy coding the categorical variables
-features <- as_tibble(model.matrix(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe,data))
+features <- as_tibble(model.matrix(Umsatz ~ as.factor(Wettercode) + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe,data))
 names(features)
 features <- cbind(features, Datum =data$Datum , id=data$id )
 
@@ -119,7 +120,7 @@ cat("Test labels dimensions:", dim(test_labels), "\n")
 
 # Create subdirectory for the csv files
 subdirectory <- "csv_data"
-dir.create(subdirectory)
+#dir.create(subdirectory)
 
 # Export of the prepared data to subdirectory
 write_csv(training_features, paste0(subdirectory, "/training_features.csv"))
