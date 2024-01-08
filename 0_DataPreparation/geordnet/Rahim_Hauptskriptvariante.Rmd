@@ -29,12 +29,12 @@ kiwo <- read.csv(csvkiwo)
 
 #Wettercodes und Temperatur approximieren 
 
-wetter$Wettercode <- na.approx(wetter$Wettercode)
-wetter$Wettercode <- as.integer(wetter$Wettercode)
-wetter$Bewoelkung<- na.approx(wetter$Bewoelkung)
-wetter$Bewoelkung <- as.integer(wetter$Bewoelkung)
-wetter$Windgeschwindigkeit<- na.approx(wetter$Windgeschwindigkeit)
-wetter$Windgeschwindigkeit <- as.integer(wetter$Windgeschwindigkeit)
+#wetter$Wettercode <- na.approx(wetter$Wettercode) 
+#wetter$Wettercode <- as.integer(wetter$Wettercode)
+#wetter$Bewoelkung<- na.approx(wetter$Bewoelkung)
+#wetter$Bewoelkung <- as.integer(wetter$Bewoelkung)
+#wetter$Windgeschwindigkeit<- na.approx(wetter$Windgeschwindigkeit)
+#wetter$Windgeschwindigkeit <- as.integer(wetter$Windgeschwindigkeit)
 
 ```
 Alle Dateien laden
