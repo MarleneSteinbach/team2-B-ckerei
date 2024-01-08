@@ -22,7 +22,7 @@ for (pkg in pkgs) {
 ### Data Import ####
 
 # Reading the data file
-file_path <- file.path(getwd(), "0_DataPreparation/Gesamtdatensatz.csv")
+file_path <- file.path(getwd(), "0_DataPreparation/geordnet/Data.csv")
 data <- read.csv(file_path)
 names(data)
 
