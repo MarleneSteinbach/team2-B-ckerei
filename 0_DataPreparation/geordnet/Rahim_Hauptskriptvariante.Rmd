@@ -51,27 +51,27 @@ file_path <- file.path(getwd(), "Datenvorbereitungcsv/test.csv")
 testid<- read.csv(file_path)
 
 # Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Kreuzfahrten.csv")
+file_path <- file.path(getwd(), "Datenvorbereitungcsv/Kreuzfahrten.csv")
 Kreuzfahrten<- read.csv(file_path)
 Kreuzfahrten$Datum <- as.Date(Kreuzfahrten$Datum, format = "%y-%m-%d")
 
 # Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Jahreszeiten.csv")
+file_path <- file.path(getwd(), "Datenvorbereitungcsv/Jahreszeiten.csv")
 Jahreszeiten<- read.csv(file_path)
 Jahreszeiten$Datum <- as.Date(Jahreszeiten$Datum, format = "%Y-%m-%d")
 
 # Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Fußballspiele.csv")
+file_path <- file.path(getwd(), "Datenvorbereitungcsv/Fußballspiele.csv")
 Fussballspiele<- read.csv(file_path)
 Fussballspiele$Datum <- as.Date(Fussballspiele$Datum, format = "%Y-%m-%d")
 
 # Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Flohmarkt.csv")
+file_path <- file.path(getwd(), "Datenvorbereitungcsv/Flohmarkt.csv")
 Flohmarkt<- read.csv(file_path)
 Flohmarkt$Datum <- as.Date(Flohmarkt$Datum, format = "%Y-%m-%d")
 
 # Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Ferientage.csv")
+file_path <- file.path(getwd(), "Datenvorbereitungcsv/Ferientage.csv")
 Ferientage<- read.csv(file_path)
 Ferientage$Datum <- as.Date(Ferientage$Datum, format = "%Y-%m-%d")
 ```
