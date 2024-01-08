@@ -458,22 +458,22 @@ regressionsgleichung aufstellen random
 
 ```{r}
 #Modelle mit train_data
-model_1 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + Jahreszeit + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
+model_1 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
-model_2 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
+model_2 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
-model_3 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
+model_3 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
-model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
+model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
 #Modelle mit valid_data
-model_1v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + Jahreszeit + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+model_1v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_2v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+model_2v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_3v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+model_3v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
 # Vorhersagen für den Validierungsdatensatz
 pred_valid_1 <- predict(model_1, newdata = valid_data)
