@@ -45,7 +45,7 @@ regressionsgleichung aufstellen random
 model_1 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur +  as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe)+ as.factor(Art_des_Feiertags) +Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt +  Kreuzfahrtschiffe + 
 Wettercode * Bewoelkung * Windgeschwindigkeit * Temperatur + 
 as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
-as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_bewoelkung + Diff_wind +
 as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
 as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien    
 , data = train_data)

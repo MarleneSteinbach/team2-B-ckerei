@@ -201,7 +201,7 @@ set_na_to_zero <- function(data, columns) {
 columns_to_set_zero <- c(
   "Warengruppe", "Umsatz","Temperatur" ,"Bewoelkung","Windgeschwindigkeit",
   "Feiertag","id", "Jahreszeit", "Fussballspiel", "Ferien", "Temperaturkategorie",
-  "KielerWoche", "Wochentag", "Flohmarkt" , "Kreuzfahrtschiffe", "Wettercode"
+  "KielerWoche", "Wochentag", "Flohmarkt" , "Kreuzfahrtschiffe", "Wettercode", "Handballspiele", "Diff_temp", "Diff_bewoelkung", "Diff_wind"
 )
 
 data <- set_na_to_zero(data, columns_to_set_zero)
