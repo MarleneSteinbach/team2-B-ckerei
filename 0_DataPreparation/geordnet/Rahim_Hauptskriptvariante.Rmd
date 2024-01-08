@@ -42,12 +42,12 @@ Alle Dateien laden
 
 
 # Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Feiertage.csv")
+file_path <- file.path(getwd(), "Datenvorbereitungcsv/Feiertage.csv")
 Feiertage <- read.csv(file_path)
 Feiertage$Datum <- as.Date(Feiertage$Datum, format = "%Y-%m-%d")
 
 # Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/test.csv")
+file_path <- file.path(getwd(), "Datenvorbereitungcsv/test.csv")
 testid<- read.csv(file_path)
 
 # Definiere den vollständigen Pfad zur CSV-Datei
