@@ -1,0 +1,71 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+alle Librariers laden
+```{r}
+# Create list with needed libraries
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo")
+
+# Load each listed library and check if it is installed and install if necessary
+for (pkg in pkgs) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+
+Füge hinzu, ob ein Flohmarkt stattgefunden hat: 
+```{r}
+library(tibble)
+
+# Erstelle ein Datenframe mit dem gewünschten Zeitraum
+start_date <- as.Date("2012-01-01")
+end_date <- as.Date("2019-08-01")
+date_sequence <- seq(start_date, end_date, by = "1 day")
+
+# Datenframe für den gesamten Zeitraum erstellen, standardmäßig mit Flohmarkt = 0
+Flohmarkt <- data.frame(Datum = date_sequence, Flohmarkt = rep(0, length(date_sequence)))
+
+# Daten für den Flohmarkt erstellen
+flohmarkt_datum <- c("2013-03-03", "2013-04-07", "2013-05-05", "2013-06-02", "2013-07-07", "2013-08-04", "2013-09-01", 
+                      "2014-03-02", "2014-04-06", "2014-05-04", "2014-06-01", "2014-07-06", "2014-08-03", "2014-09-07",  
+                      "2015-03-01", "2015-04-05", "2015-05-03", "2015-06-07", "2015-07-05", "2015-08-02", "2015-09-06", 
+                      "2016-03-06", "2016-04-03", "2016-05-01", "2016-06-05", "2016-07-03", "2016-08-07", "2016-09-04", 
+                      "2017-03-05", "2017-04-02", "2017-05-07", "2017-06-04", "2017-07-02", "2017-08-06", "2017-09-03", 
+                      "2018-03-04", "2018-04-01", "2018-05-06", "2018-06-03", "2018-07-01", "2018-08-05", "2018-09-02")
+
+# Setze Flohmarkt = 1 an den Tagen, an denen ein Flohmarkt stattgefunden hat
+Flohmarkt$Flohmarkt[Flohmarkt$Datum %in% flohmarkt_datum] <- 1
+
+# Tibble erstellen
+flohmarkt_tibble <- as_tibble(Flohmarkt)
+
+# Ergebnisse anzeigen
+print(flohmarkt_tibble)
+
+# Summe der Flohmärkte (Flohmarkt = 1) zählen
+cat("Anzahl der Flohmärkte (Flohmarkt = 1):", sum(flohmarkt_tibble$Flohmarkt == 1), "\n")
+
+```
+Fußballspiele speichern und in eine CSV Schreiben
+```{r}
+
+# Erstellen Sie den Dateipfad zum Zielverzeichnis
+subdirectory <- "../Datenvorbereitungcsv"
+target_directory <- file.path(getwd(), subdirectory)
+
+
+# Erstellen Sie den vollständigen Dateipfad zur CSV-Datei im Zielverzeichnis
+file_path <- file.path(target_directory, "Flohmarkt.csv")
+
+# Schreiben Sie die CSV-Datei
+write.csv(flohmarkt_tibble, file_path, row.names = FALSE)
+
+# Optional: Bestätigungsnachricht ausgeben
+cat("CSV-Datei erfolgreich erstellt und im Zielverzeichnis gespeichert:", file_path, "\n")
+
+
+
+```

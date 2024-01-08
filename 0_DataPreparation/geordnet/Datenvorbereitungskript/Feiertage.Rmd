@@ -1,0 +1,74 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+alle Librariers laden
+```{r}
+# Create list with needed libraries
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo")
+
+# Load each listed library and check if it is installed and install if necessary
+for (pkg in pkgs) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+Ιch erstelle hier eine Liste für die Feiertage vom "2012-01-01" bis zum "2019-08-01"
+
+```{r}
+# Erstelle ein Datenframe mit dem gewünschten Zeitraum
+start_date <- as.Date("2012-01-01")
+end_date <- as.Date("2019-08-01")
+date_sequence <- seq(start_date, end_date, by = "1 day")
+
+Feiertage <- data.frame(Datum = date_sequence)
+
+Feiertage$Feiertag <- ifelse(
+  format(Feiertage$Datum, "%m-%d") %in% c("01-01", "05-01", "10-03", "10-31", "12-24", "12-25", "12-26", "12-31") | 
+  format(Feiertage$Datum, "%Y-%m-%d") %in% c("2012-04-06", "2012-04-09", "2012-05-17", "2012-05-28", "2013-03-29", "2013-04-01", "2013-05-09", "2013-05-20", "2014-004-18", "2014-04-21", "2014-05-29", "2014-06-09", "2015-04-03", "2015-04-06", "2015-05-14", "2015-05-25", "2016-03-25", "2016-03-28", "2016-05-05", "2016-05-16", "2017-04-14", "2017-04-17", "2017-05-25", "2017-06-05", "2018-03-30", "2018-04-02", "2018-05-10", "2018-05-21", "2019-04-19", "2019-04-22", "2019-05-30", "2019-06-10"),
+  "1", 
+  "0"
+)
+# Die Ja/Nein Abfrage in int umwandeln
+Feiertage$Feiertag <- as.integer(Feiertage$Feiertag)
+
+# Erstelle eine leere Spalte für die Art des Feiertags
+Feiertage$Art_des_Feiertags <- ""
+
+# Fülle die Art des Feiertags entsprechend der Bedingung
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "01-01"] <- "Neujahr"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "05-01"] <- "Tag der Arbeit"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "10-03"] <- "Tag der Deutschen Einheit"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "10-31"] <- "Reformationstag"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") %in% c("12-24", "12-25", "12-26")] <- "Weihnachten"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") == "12-31"] <- "Silvester"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") %in% c("04-06", "04-09", "03-29", "04-01", "04-18", "04-21", "04-03", "04-06", "03-25", "03-28", "04-14", "04-17", "03-30", "04-02", "04-19", "04-22")] <- "Ostern"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "1" & format(Feiertage$Datum, "%m-%d") %in% c("05-17", "05-28", "05-09", "05-20", "05-29", "06-09", "05-14", "05-25", "05-05", "05-16", "05-25", "06-05", "05-10", "05-21", "05-30", "06-10")] <- "Christi Himmelfahrt, Pfingsten"
+Feiertage$Art_des_Feiertags[Feiertage$Feiertag == "0"] <- "Kein Feiertag"
+# Anzeigen der ersten Zeilen des erstellten Datenframes
+head(Feiertage)
+
+```
+Feiertage speichern und in eine CSV Schreiben
+```{r}
+
+# Erstellen Sie den Dateipfad zum Zielverzeichnis
+subdirectory <- "../Datenvorbereitungcsv"
+target_directory <- file.path(getwd(), subdirectory)
+
+
+# Erstellen Sie den vollständigen Dateipfad zur CSV-Datei im Zielverzeichnis
+file_path <- file.path(target_directory, "Feiertage.csv")
+
+# Schreiben Sie die CSV-Datei
+write.csv(Feiertage, file_path, row.names = FALSE)
+
+# Optional: Bestätigungsnachricht ausgeben
+cat("CSV-Datei erfolgreich erstellt und im Zielverzeichnis gespeichert:", file_path, "\n")
+
+
+
+```
+

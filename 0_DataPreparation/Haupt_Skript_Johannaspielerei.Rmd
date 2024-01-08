@@ -13,7 +13,9 @@ Hier habe ich noch einmal das Skript für die Ursprungstabelle
 library(styler)
 library(dplyr)
 library(readr)
-
+train_csv <- read.csv("train.csv")
+# Hochladen von Test.csv
+test_csv <- read.csv("test.csv")
 csvwetter <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv"
 csvumsatzdaten_gekuerzt <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv"
 csvkiwo <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv"
@@ -22,14 +24,29 @@ wetter <- read.table(csvwetter, head=TRUE, sep = ",")
 umdat <- read.csv(csvumsatzdaten_gekuerzt)
 kiwo <- read.csv(csvkiwo)
 
-alle <- full_join(wetter, umdat, by = "Datum") %>%
+wetter$Datum <- as.Date(wetter$Datum, format="%Y-%m-%d")
+umdat$Datum <- as.Date(umdat$Datum, format="%Y-%m-%d")
+kiwo$Datum <- as.Date(kiwo$Datum, format="%Y-%m-%d")
+train_csv$Datum <- as.Date(train_csv$Datum, format="%Y-%m-%d")
+test_csv$Datum <- as.Date(test_csv$Datum, format="%Y-%m-%d")
+
+all <- full_join(train_csv, test_csv, by = "Datum")
+# Verbinde die Spalten "id.x" und "id.y" zu einer neuen Spalte "id"
+all <- all %>%
+  mutate(id = coalesce(id.x, id.y)) %>%
+  select(-id.x, -id.y)
+
+all <- all %>%
+  mutate(Warengruppe = coalesce(Warengruppe.x, Warengruppe.y)) %>%
+  select(-Warengruppe.x, -Warengruppe.y)
+
+alle <- full_join(all, wetter, by = "Datum") %>%
   full_join(kiwo, by = "Datum")
 as_tibble(alle)
 nrow(umdat)
 
 alle_gefiltert <- alle
 
-# Warengruppe für Vorhersage ins Skript schreiben
 
 #nrow(alle)
 # alle_gefiltert <- alle %>%
@@ -197,48 +214,6 @@ ourdata_fussball$Umsatz <- as.numeric(ourdata_fussball$Umsatz)
 ourdata_fussball$Temperatur <- as.numeric(ourdata_fussball$Temperatur)
 ```
 
-Einfügen Warengruppe für Zeitraum Test
-```{r}
-
-# lösche alle Zeilen, wo im Umsatz NA steht aber nur bis zum 01.08.2018
-ourdata_fussball <- ourdata_fussball %>% 
-  filter(!(is.na(Umsatz) & Datum <= as.Date("2018-08-01")))
-
-
-# Warengruppe ergänzen: 
-#Bei Daten wo Warengruppe = NA ist, wird die Zeile 5 mal kopiert und die  Warengruppe 1, 2, 3, 4, 5 eingefügt
-# Erstellen Sie eine Funktion, die die Zeilen mit NA in Warengruppe expandiert
-expand_na_rows <- function(df) {
-  # Filtern Sie die Zeilen, wo Warengruppe NA ist
-  na_rows <- df %>% filter(is.na(Warengruppe))
-  
-  # Entfernen Sie die Zeilen mit NA aus dem ursprünglichen Datensatz
-  df <- df %>% filter(!is.na(Warengruppe))
-  
-  # Erstellen Sie einen Datensatz, der jede NA-Zeile fünfmal wiederholt
-  # und fügen Sie die Warengruppe 1 bis 5 hinzu
-    expanded_rows <- na_rows %>%
-    slice(rep(1:n(), each = 5)) %>%
-    mutate(Warengruppe = rep(1:5, length.out = n()))
-  
-  # Fügen Sie die expandierten Zeilen wieder an den ursprünglichen Datensatz an
-  df <- bind_rows(df, expanded_rows)
-  
-  # Rückgabe des bearbeiteten Datensatzes
-  return(df)
-}
-
-# Wende die Funktion auf Ihren Datensatz an
-ourdata_fussball <- expand_na_rows(ourdata_fussball)
-
-
-#sort by datum
-ourdata_fussball <- ourdata_fussball %>% 
-  arrange(Datum)
-
-```
-
-
 Füge hinzu, ob ein Flohmarkt stattgefunden hat:
 
 ```{r}
@@ -394,9 +369,9 @@ library(caret)
 ourdata_fussball$Datum <- as.Date(ourdata_fussball$Datum)
 
 #Löschen von der Spalte Jahreszeit
-ourdata_fussball <- ourdata_fussball %>%
-  ungroup() %>%
-  select(-Jahreszeit)
+#ourdata_fussball <- ourdata_fussball %>%
+  #ungroup() %>%
+  #select(-Jahreszeit)
 
 # Trainingsdatensatz (01.07.2013 bis 31.07.2017)
 train_data <- ourdata_fussball %>% 
@@ -406,9 +381,9 @@ train_data <- ourdata_fussball %>%
 valid_data <- ourdata_fussball %>% 
   filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
 
-# Testdatensatz (01.08.2018 bis 30.07.2019)
+# Testdatensatz (01.08.2018 bis 01.08.2019)
 test_data <- ourdata_fussball %>% 
-  filter(Datum >= as.Date("2018-08-01") & Datum <= as.Date("2019-07-30"))
+  filter(Datum >= as.Date("2018-08-01") & Datum <= as.Date("2019-08-01"))
 
 # alle Zeilen mit "Umsatz" = NA aus train_data entfernen
 train_data <- train_data %>% 
@@ -436,22 +411,22 @@ regressionsgleichung aufstellen random
 
 ```{r}
 #Modelle mit train_data
-model_1 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur +  as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
+model_1 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + Jahreszeit + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
-model_2 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
+model_2 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
-model_3 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur *  as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
+model_3 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
-model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur *  as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
+model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = train_data_noNA)
 
 #Modelle mit valid_data
-model_1v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+model_1v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + Jahreszeit + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_2v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+model_2v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_3v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur *  as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+model_3v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
-model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
+model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * Jahreszeit * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe, data = valid_data)
 
 # Vorhersagen für den Validierungsdatensatz
 pred_valid_1 <- predict(model_1, newdata = valid_data)
@@ -508,16 +483,6 @@ result_table_valid <- do.call(rbind, mae_values)
 versuche, den Datensatz für kaggle richtig hochzuladen
 
 ```{r}
-# füge Datum und Warengruppe zu einer variable zusammen im Format 201801011 (01. Januar 2018, Warengruppe 1, entferne die Striche bei Datum)
-
-test_data$id <- paste0(test_data$Datum, test_data$Warengruppe)
-# entferne die Striche bei Datum
-test_data$id <- gsub("-", "", test_data$id)
-levels_train <- levels(as.factor(train_data_noNA$Warengruppe))
-levels_valid <- levels(as.factor(valid_data_noNA$Warengruppe))
-levels_test <- levels(as.factor(test_data$Warengruppe))
-
-
 # Überprüfen, ob die Stufen übereinstimmen
 if (!identical(levels_valid, levels_test)) {
   # Wenn nicht, passen Sie die Stufen an oder fügen Sie fehlende Stufen hinzu
@@ -535,34 +500,47 @@ Füge eine Variable zu test_data hinzu, die predUmsatz heißt und wo die vorherg
 ## Entferne die Gruppierung nach Jahreszeit
 test_data <- ungroup(test_data)
 
-# füge eine Variable zu test_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
-
-test_data$predUmsatz <- predict(model_2, test_data)
-
-
-# erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
-test_data_pred <- test_data %>% 
-  select(id, predUmsatz) %>%
-  rename(umsatz = predUmsatz)
-
 # id solllte numerisch sein
 test_data_pred$id <- as.numeric(test_data_pred$id)
-test_data_pred_ <- test_data_pred[-nrow(test_data_pred), ]
+
 # Entfernen Sie vorübergehend Zeilen mit fehlenden Werten in der 'id'-Spalte
 test_data_pred <- test_data_pred[complete.cases(test_data_pred$id), ]
 
-# Führen Sie dann die Umwandlung durch
-test_data_pred$id <- as.numeric(test_data_pred$id)
+# füge eine Variable zu test_data hinzu, die predUmsatz heißt und wo die vorhergesagten Umsätze stehen
+test_data_1 <- test_data
+test_data_2 <- test_data
+test_data_3 <- test_data
+test_data_4 <- test_data
 
-#Löschen von "20"
+test_data_1$predUmsatz <- predict(model_1, test_data)
+test_data_2$predUmsatz <- predict(model_2, test_data)
+test_data_3$predUmsatz <- predict(model_3, test_data)
+test_data_4$predUmsatz <- predict(model_4, test_data)
 
-#valid_data_pred_ <- valid_data_pred_ %>%
- # mutate(id = as.numeric(str_remove(id, "^20")))
+# erstelle einen neuen Datensatz, wo nur die Variablen id und predUmsatz drin sind
+test_data_pred_1 <- test_data_1 %>% 
+  select(id, predUmsatz) %>%
+  rename(umsatz = predUmsatz)#
+test_data_pred_2 <- test_data_2 %>% 
+  select(id, predUmsatz) %>%
+  rename(umsatz = predUmsatz)
+test_data_pred_3 <- test_data_3 %>% 
+  select(id, predUmsatz) %>%
+  rename(umsatz = predUmsatz)
+test_data_pred_4 <- test_data_4 %>% 
+  select(id, predUmsatz) %>%
+  rename(umsatz = predUmsatz)
+
+test_data_pred_1 <- na.omit(test_data_pred_1)
+test_data_pred_2 <- na.omit(test_data_pred_2)
+test_data_pred_3 <- na.omit(test_data_pred_3)
+test_data_pred_4 <- na.omit(test_data_pred_4)
 
 # exportiere als .csv datei in github repository. seperate by comma und die predicted Umsatz Variable sollte "umsatz" heißen
 
-
-write.csv(valid_data_pred_, "valid_data_pred_model_3.csv", row.names = FALSE)
-write.csv(valid_data, "valid_data.csv", row.names = FALSE)
+write.csv(test_data_pred_1, "test_data_pred_model_1.csv", row.names = FALSE)
+write.csv(test_data_pred_2, "test_data_pred_model_2.csv", row.names = FALSE)
+write.csv(test_data_pred_3, "test_data_pred_model_3.csv", row.names = FALSE)
+write.csv(test_data_pred_4, "test_data_pred_model_4.csv", row.names = FALSE)
 
 ```

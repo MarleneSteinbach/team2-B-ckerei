@@ -1,0 +1,179 @@
+---
+title: "Tabelle für Auswertung"
+output: html_notebook
+---
+
+alle Librariers laden
+```{r}
+# Create list with needed libraries
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo")
+
+# Load each listed library and check if it is installed and install if necessary
+for (pkg in pkgs) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+
+Vorgegebene Dateien herunterladen Wetter aproximieren und joinen
+```{r}
+csvwetter <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv"
+csvumsatzdaten_gekuerzt <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv"
+csvkiwo <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv"
+
+wetter <- read.table(csvwetter, head=TRUE, sep = ",")
+umdat <- read.csv(csvumsatzdaten_gekuerzt)
+kiwo <- read.csv(csvkiwo)
+
+#Wettercodes und Temperatur approximieren 
+
+wetter$Wettercode <- na.approx(wetter$Wettercode)
+wetter$Wettercode <- as.integer(wetter$Wettercode)
+wetter$Bewoelkung<- na.approx(wetter$Bewoelkung)
+wetter$Bewoelkung <- as.integer(wetter$Bewoelkung)
+wetter$Windgeschwindigkeit<- na.approx(wetter$Windgeschwindigkeit)
+wetter$Windgeschwindigkeit <- as.integer(wetter$Windgeschwindigkeit)
+
+```
+Alle Dateien laden
+```{r}
+
+
+# Definiere den vollständigen Pfad zur CSV-Datei
+file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Feiertage.csv")
+Feiertage <- read.csv(file_path)
+Feiertage$Datum <- as.Date(Feiertage$Datum, format = "%Y-%m-%d")
+
+# Definiere den vollständigen Pfad zur CSV-Datei
+file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/test.csv")
+testid<- read.csv(file_path)
+
+# Definiere den vollständigen Pfad zur CSV-Datei
+file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Kreuzfahrten.csv")
+Kreuzfahrten<- read.csv(file_path)
+Kreuzfahrten$Datum <- as.Date(Kreuzfahrten$Datum, format = "%y-%m-%d")
+
+# Definiere den vollständigen Pfad zur CSV-Datei
+file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Jahreszeiten.csv")
+Jahreszeiten<- read.csv(file_path)
+Jahreszeiten$Datum <- as.Date(Jahreszeiten$Datum, format = "%Y-%m-%d")
+
+# Definiere den vollständigen Pfad zur CSV-Datei
+file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Fußballspiele.csv")
+Fussballspiele<- read.csv(file_path)
+Fussballspiele$Datum <- as.Date(Fussballspiele$Datum, format = "%Y-%m-%d")
+
+# Definiere den vollständigen Pfad zur CSV-Datei
+file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Flohmarkt.csv")
+Flohmarkt<- read.csv(file_path)
+Flohmarkt$Datum <- as.Date(Flohmarkt$Datum, format = "%Y-%m-%d")
+
+# Definiere den vollständigen Pfad zur CSV-Datei
+file_path <- file.path(getwd(), "geordnet/Datenvorbereitungcsv/Ferientage.csv")
+Ferientage<- read.csv(file_path)
+Ferientage$Datum <- as.Date(Ferientage$Datum, format = "%Y-%m-%d")
+```
+
+```{r}
+salesid <- full_join(umdat, testid, join_by( Datum, Warengruppe))
+
+Grundtabelle <- full_join(wetter, salesid, by = "Datum") %>%
+  full_join(kiwo, by = "Datum")
+as_tibble(Grundtabelle)
+
+
+#Grundtabelle  hat noch den falschen Typ bei Datum, hab das mal angeglichen
+Grundtabelle$Datum <- as.Date(Grundtabelle$Datum, format = "%Y-%m-%d")
+
+# Variable wochentag hinzufügen
+Grundtabelle$Wochentag <- weekdays(Grundtabelle$Datum)
+
+# Wochentag als faktor
+Grundtabelle$Wochentag <- as.factor(Grundtabelle$Wochentag)
+```
+
+Alle Dateien Joinen
+```{r}
+Daten <- full_join(Grundtabelle, Feiertage, by = "Datum") %>%
+  full_join(Kreuzfahrten, by = "Datum") %>%
+  full_join(Jahreszeiten, by = "Datum") %>%
+  full_join(Fussballspiele, by = "Datum") %>%
+  full_join(Flohmarkt, by = "Datum") %>%
+  full_join(Ferientage, by = "Datum")
+
+
+#Grundtabelle  hat noch den falschen Typ bei Datum, hab das mal angeglichen
+Daten$Datum <- as.Date(Daten$Datum, format = "%Y-%m-%d")
+
+
+```
+
+
+Füge die Einordnung der Temperaturen nach high/medium/low ein
+```{r}
+# Fügen Sie eine leere Spalte für die Temperaturkategorie hinzu
+Daten$Temperaturkategorie <- NA
+
+# Funktion zur Einteilung in drei Kategorien
+categorize_temperature <- function(temperature) {
+  lower_threshold <- quantile(temperature, 1/3, na.rm = TRUE)
+  upper_threshold <- quantile(temperature, 2/3, na.rm = TRUE)
+  
+  ifelse(temperature < lower_threshold, "niedrig",
+         ifelse(temperature < upper_threshold, "mittel", "hoch"))
+}
+
+# Anwenden der Funktion auf jede Jahreszeit
+data <- Daten %>%
+  group_by(Jahreszeit) %>%
+  mutate(Temperaturkategorie = categorize_temperature(Temperatur))
+
+
+# Überprüfen Sie die erstellte Spalte
+head(Daten)
+
+```
+
+Funktion erstellen um alle NA's auf Null zu setzten und den Zeitrahmen einhalten
+```{r}
+set_na_to_zero <- function(data, columns) {
+  for (col in columns) {
+    data[[col]][is.na(data[[col]])] <- 0
+  }
+  return(data)
+}
+#,"id", "Jahreszeit", "Fussballspiel", "Ferien"
+columns_to_set_zero <- c(
+  "Warengruppe", "Umsatz","Temperatur" ,"Bewoelkung","Windgeschwindigkeit",
+  "Feiertag","id", "Jahreszeit", "Fussballspiel", "Ferien", "Temperaturkategorie",
+  "KielerWoche", "Wochentag", "Flohmarkt" , "Kreuzfahrtschiffe", "Wettercode"
+)
+
+data <- set_na_to_zero(data, columns_to_set_zero)
+data <- data %>%
+  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2019-07-31"))
+
+```
+
+
+
+CSV für die Datenaufbereitung
+Feiertage speichern und in eine CSV Schreiben
+
+```{r}
+
+# Dateipfad zur CSV-Datei im aktuellen Arbeitsverzeichnis erstellen
+file_path <- "Data.csv"
+
+# Schreiben Sie die CSV-Datei
+write.csv(data, file_path, row.names = FALSE)
+
+# Optional: Bestätigungsnachricht ausgeben
+cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeichert:", file_path, "\n")
+
+
+```
+
+
