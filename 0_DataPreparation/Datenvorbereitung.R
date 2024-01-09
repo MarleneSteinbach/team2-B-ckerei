@@ -50,7 +50,7 @@ data <- data %>%
 ### Data Preparation ####
 
 # Preparation of independent variables ('features') by dummy coding the categorical variables
-features <- as_tibble(model.matrix(Umsatz ~ as.factor(Wettercode) + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + Handballspiele + Diff_wind + Diff_bewoelkung +Diff_temp,data))
+features <- as_tibble(model.matrix(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + Handballspiele + Diff_wind + Diff_bewoelkung +Diff_temp,data))
 names(features)
 features <- cbind(features, Datum =data$Datum , id=data$id )
 
