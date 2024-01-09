@@ -78,7 +78,7 @@ Ferientage$Datum <- as.Date(Ferientage$Datum, format = "%Y-%m-%d")
 # Definiere den vollständigen Pfad zur CSV-Datei
 file_path <- file.path(getwd(), "Datenvorbereitungcsv/Handballspiele.csv")
 Handballspiele<- read.csv(file_path)
-Handballspiele$Datum <- as.Date(Ferientage$Datum, format = "%Y-%m-%d")
+Handballspiele$Datum <- as.Date(Handballspiele$Datum, format = "%Y-%m-%d")
 ```
 
 ```{r}
