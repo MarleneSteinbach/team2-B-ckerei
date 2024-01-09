@@ -6,7 +6,7 @@ output: html_notebook
 alle Librariers laden
 ```{r}
 # Create list with needed libraries
-pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo")
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo","mice")
 
 # Load each listed library and check if it is installed and install if necessary
 for (pkg in pkgs) {
@@ -23,11 +23,14 @@ csvwetter <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-dat
 csvumsatzdaten_gekuerzt <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv"
 csvkiwo <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv"
 
-wetter <- read.table(csvwetter, head=TRUE, sep = ",")
+wetter1 <- read.table(csvwetter, head=TRUE, sep = ",")
 umdat <- read.csv(csvumsatzdaten_gekuerzt)
 kiwo <- read.csv(csvkiwo)
 
-#Wettercodes und Temperatur approximieren 
+#Wetter approximieren 
+
+imputed_data <- mice(wetter1, method = "pmm", m = 5)
+wetter <- complete(imputed_data)
 
 #wetter$Wettercode <- na.approx(wetter$Wettercode) 
 #wetter$Wettercode <- as.integer(wetter$Wettercode)
@@ -37,6 +40,7 @@ kiwo <- read.csv(csvkiwo)
 #wetter$Windgeschwindigkeit <- as.integer(wetter$Windgeschwindigkeit)
 
 ```
+
 Alle Dateien laden
 ```{r}
 
