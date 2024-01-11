@@ -208,9 +208,6 @@ data <- data %>%
   filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2019-07-31"))
 
 ```
-
-
-
 CSV für die Datenaufbereitung
 Feiertage speichern und in eine CSV Schreiben
 
