@@ -32,11 +32,11 @@ all <- all %>%
   mutate(Warengruppe = coalesce(Warengruppe.x, Warengruppe.y)) %>%
   select(-Warengruppe.x, -Warengruppe.y)
 
-csvwetter <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv"
+csvwetter <- ("https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv")
 csvumsatzdaten_gekuerzt <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv"
 csvkiwo <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv"
 
-wetter1 <- read.table(csvwetter, head=TRUE, sep = ",")
+wetter <- read.table(csvwetter, head=TRUE, sep = ",")
 umdat <- read.csv(csvumsatzdaten_gekuerzt)
 kiwo <- read.csv(csvkiwo)
 
@@ -135,17 +135,26 @@ Daten <- full_join(Grundtabelle, Feiertage, by = "Datum") %>%
 #Grundtabelle  hat noch den falschen Typ bei Datum, hab das mal angeglichen
 Daten$Datum <- as.Date(Daten$Datum, format = "%Y-%m-%d")
 
+# Umwandeln von "Wettercode" in eine kategoriale Variable
+Daten$Wettercode <- factor(Daten$Wettercode)
 
+# Umwandeln von "Bewoelkung" in eine ordinale Variable
+Daten$Bewoelkung <- factor(Daten$Bewoelkung, ordered = TRUE)
+
+
+# Subset the data frame to include only rows within the specified date range
+Daten <- data[Daten$Datum >= "2013-07-01" & Daten$Datum <= "2019-07-30", ]
+
+# Print a summary of the subset_table
+head(Daten)
+
+# Set NAs of Kreuzfahrtschiffe and KiWo to 0
+Daten$Kreuzfahrtschiffe <- ifelse(is.na(Daten$Kreuzfahrtschiffe), 0, Daten$Kreuzfahrtschiffe)
+Daten$KielerWoche <- ifelse(is.na(Daten$KielerWoche), 0, Daten$KielerWoche)
 ```
-
-
 Füge Wetter change variables ein, die das Wetter im Verhältnis mit dem Wetter der letzten Woche beerechnen
 
 ```{r}
-
-# Ensure Datum is a Date variable.
-Daten$Datum <- as.Date(Daten$Datum, format="%Y-%m-%d")
-
 # Order the dataframe by Datum and ungroup if it was previously grouped
 Daten <- Daten %>% 
   ungroup() %>%
@@ -180,7 +189,6 @@ Daten <- Daten %>%
 head(Daten)
 ```
 
-
 Füge die Einordnung der Temperaturen nach high/medium/low ein
 ```{r}
 # Fügen Sie eine leere Spalte für die Temperaturkategorie hinzu
@@ -200,16 +208,22 @@ data <- Daten %>%
   group_by(Jahreszeit) %>%
   mutate(Temperaturkategorie = categorize_temperature(Temperatur))
 
+# Alle Zeilen löschen, die keine Id haben
+data <- data[!is.na(data$id), ]
 
 # Überprüfen Sie die erstellte Spalte
-head(Daten)
+head(data)
 
 ```
 Visualisierung fehlender Werte
 ```{r}
-aggr(Daten,
-combined=TRUE,
-numbers=TRUE)
+result <- aggr(data, combined = TRUE, numbers = TRUE)
+
+# Display the result in the plot window
+plot(result)
+pdf("aggr_plot.pdf", width = 10, height = 8)
+plot(result)
+dev.off()
 ```
 
 Funktion erstellen um alle NA's auf Null zu setzten und den Zeitrahmen einhalten
