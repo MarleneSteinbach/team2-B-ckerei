@@ -50,7 +50,7 @@ data <- data %>%
 ### Data Preparation ####
 
 # Preparation of independent variables ('features') by dummy coding the categorical variables
-features <- as_tibble(model.matrix(Umsatz ~ as.factor(Wettercode) + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe,data))
+features <- as_tibble(model.matrix(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + Handballspiele + Diff_wind  + Diff_temp,data))
 names(features)
 features <- cbind(features, Datum =data$Datum , id=data$id )
 
@@ -105,8 +105,7 @@ cat("Number of rows in test dataset:", nrow_test, "\n")
 # Check the dimensions of the dataframes
 cat("Training features dimensions:", dim(training_features), "\n")
 cat("Validation features dimensions:",
-    dim(validation_features),
-    "\n")
+    dim(validation_features), "\n")
 cat("Test features dimensions:", dim(test_features), "\n")
 cat("\n")
 cat("Training labels dimensions:", dim(training_labels), "\n")
