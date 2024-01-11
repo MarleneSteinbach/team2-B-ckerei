@@ -236,6 +236,19 @@ Daten$Bewoelkung <- factor(Daten$Bewoelkung, ordered = TRUE)
 
 ```  
 
+```{r}
+
+missing_Wettercode <- subset(Daten, is.na(Daten$Wettercode))
+
+# zählen, wie viele Missings:
+nrow(missing_Wettercode)
+
+nrow(missing_Wettercode) / nrow(Daten)
+
+
+```
+
+
 Dafür erstmal random Daten löschen:
 
 ```{r}  
