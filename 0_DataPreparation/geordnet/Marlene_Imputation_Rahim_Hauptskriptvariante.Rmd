@@ -269,83 +269,53 @@ Jetzt sind für bestimmte Tage und Spalten zufällig Werte entfernt. Als nächst
 ```{r}
 library(zoo)
 
-# Interpolieren Sie nur die numerischen Spalten
+# Interpoliere nur die numerischen Spalten
 for (col in columns_to_remove) {
   if (is.numeric(Daten_with_NA[[col]])) {
     Daten_with_NA[[col]] <- na.approx(Daten_with_NA[[col]], na.rm = FALSE)
   }
   # Für nicht-numerische Daten müssen Sie andere Imputationsmethoden verwenden
 }
+
+Daten_imputed <- Daten_with_NA
+# lineare Interpolation für Temperatur und Windgeschwindigkeit
+Daten_imputed$Temperatur <- na.approx(Daten_with_NA$Temperatur, na.rm = FALSE)
+Daten_imputed$Windgeschwindigkeit <- na.approx(Daten_with_NA$Windgeschwindigkeit, na.rm = FALSE)
+
 ```
 
 Hot-Deck imputation für Bewoelkung und Wettercode
 
 ```{r}
-# Benutzerdefinierte Hot-Deck-Imputation für "Wettercode"
-hot_deck_imputation <- function(data, variable, donor_vars) {
-  # Erstellen Sie eine Kopie der Daten für die Imputation
-  imputed_data <- data
-  
-  # Finden Sie die Zeilen mit fehlenden Werten im "Wettercode"
-  missing_indices <- which(is.na(data[[variable]]))
-  
-  # Für jede fehlende Beobachtung
-  for (i in missing_indices) {
-    # Wählen Sie die Beobachtungen ohne fehlende Werte im "Wettercode"
-    available_data <- data[!is.na(data[[variable]]), ]
-    
-    # Berechnen Sie die Distanz zwischen der fehlenden Beobachtung und allen verfügbaren Beobachtungen
-    distances <- apply(available_data[, donor_vars], 1, function(x) {
-      sum((x - data[i, donor_vars])^2, na.rm = TRUE)
-    })
-    
-    # Finden Sie den Index des nächsten Nachbarn (Spender)
-    donor_index <- which.min(distances)
-    
-    # Imputieren Sie den "Wettercode" von der ähnlichsten Beobachtung
-    imputed_data[i, variable] <- available_data[donor_index, variable]
-  }
-  
-  return(imputed_data)
-}
+donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode", "Diff_temp", "Diff_wind")
+donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Diff_temp", "Diff_wind", "Bewoelkung")
+Daten_imputed2 <- hotdeck(Daten_imputed, "Bewoelkung")
+Daten_imputed2<- hotdeck(Daten_imputed2, "Wettercode")
 
-# Führen Sie die Hot-Deck-Imputation aus
-donor_vars <- c("Bewoelkung", "Windgeschwindigkeit", "Temperatur", "Diff_temp", "Diff_wind")
-Daten_imputed2 <- hot_deck_imputation(Daten_imputed, "Wettercode", donor_vars)
 
+Daten_imputed3 <- hotdeck(Daten_imputed2, "Wettercode", donor_vars_wettercode)
+Daten_imputed3 <- hotdeck(Daten_imputed3, "Bewoelkung", donor_vars_bewoelkung)
 ```
-
-Try again: 
-
-```{r}
-Daten_hotdeck <- Daten_imputed %>% hotdeck(variable = "Wettercode", donor_vars = c("Bewoelkung", "Windgeschwindigkeit", "Temperatur", "Diff_temp", "Diff_wind"))
-```
-
-
 
 ```{r}
 library(Metrics)
 
 for (col in columns_to_remove) {
   if (is.numeric(Daten[[col]])) {
-    # Erstellen Sie einen Vektor, der TRUE ist, wenn der Wert im Originaldatensatz für die Berechnung verwendet werden soll
     days_to_evaluate <- Daten$Datum %in% days_to_remove
-    
-    # Wählen Sie nur die Werte aus, die für die Berechnung des Fehlers verwendet werden sollen
+    # Wähle nur die Werte aus, die für die Berechnung des Fehlers verwendet werden sollen
     original_values <- Daten[days_to_evaluate, col]
     imputed_values <- Daten_with_NA[days_to_evaluate, col]
-    
-    # Entfernen Sie NA-Werte, bevor Sie MSE und MAE berechnen
+    # Entferne NA-Werte, bevor MSE und MAE berechnet werden
     na_indices <- !is.na(original_values) & !is.na(imputed_values)
     original_values <- original_values[na_indices]
     imputed_values <- imputed_values[na_indices]
-    
-    # Berechnen Sie MSE und MAE
+    # Berechne MSE und MAE
     mse <- mse(original_values, imputed_values)
     mae <- mae(original_values, imputed_values)
-    
     print(paste(col, "- Mean Squared Error:", mse))
     print(paste(col, "- Mean Absolute Error:", mae))
   }
 }
+
 ```

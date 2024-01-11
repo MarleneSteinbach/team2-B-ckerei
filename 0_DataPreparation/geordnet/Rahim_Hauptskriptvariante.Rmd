@@ -19,9 +19,9 @@ for (pkg in pkgs) {
 
 Vorgegebene Dateien herunterladen Wetter aproximieren und joinen
 ```{r}
-train_csv <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/geordnet/train.csv?token=GHSAT0AAAAAACMWX4TNU5JZYA2G2UUPEFNKZM735OA")
+train_csv <- read.csv("train.csv")
 # Hochladen von Test.csv
-test_csv <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/geordnet/Datenvorbereitungcsv/test.csv?token=GHSAT0AAAAAACMWX4TMEQ2LUP4JTCI6JPM6ZM734SQ")
+test_csv <- read.csv("test.csv")
 
 all <- full_join(train_csv, test_csv, by = "Datum")
 # Verbinde die Spalten "id.x" und "id.y" zu einer neuen Spalte "id"
@@ -143,7 +143,9 @@ Daten$Bewoelkung <- factor(Daten$Bewoelkung, ordered = TRUE)
 
 
 # Subset the data frame to include only rows within the specified date range
-Daten <- data[Daten$Datum >= "2013-07-01" & Daten$Datum <= "2019-07-30", ]
+
+Daten <- Daten[Daten$Datum >= "2013-07-01" & Daten$Datum <= "2019-07-30", ]
+
 
 # Print a summary of the subset_table
 head(Daten)
@@ -186,7 +188,7 @@ Daten <- Daten %>%
   )
 
 # View the data frame with the new variables
-head(Daten)
+# head(Daten)
 ```
 
 Füge die Einordnung der Temperaturen nach high/medium/low ein
