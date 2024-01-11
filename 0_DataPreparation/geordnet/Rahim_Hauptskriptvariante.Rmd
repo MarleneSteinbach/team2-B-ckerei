@@ -6,7 +6,7 @@ output: html_notebook
 alle Librariers laden
 ```{r}
 # Create list with needed libraries
-pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo","mice")
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo","mice","VIM")
 
 # Load each listed library and check if it is installed and install if necessary
 for (pkg in pkgs) {
@@ -19,6 +19,19 @@ for (pkg in pkgs) {
 
 Vorgegebene Dateien herunterladen Wetter aproximieren und joinen
 ```{r}
+train_csv <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/geordnet/train.csv?token=GHSAT0AAAAAACMWX4TNU5JZYA2G2UUPEFNKZM735OA")
+# Hochladen von Test.csv
+test_csv <- read.csv("https://raw.githubusercontent.com/MarleneSteinbach/team2-B-ckerei/main/0_DataPreparation/geordnet/Datenvorbereitungcsv/test.csv?token=GHSAT0AAAAAACMWX4TMEQ2LUP4JTCI6JPM6ZM734SQ")
+
+all <- full_join(train_csv, test_csv, by = "Datum")
+# Verbinde die Spalten "id.x" und "id.y" zu einer neuen Spalte "id"
+all <- all %>%
+  mutate(id = coalesce(id.x, id.y)) %>%
+  select(-id.x, -id.y)
+all <- all %>%
+  mutate(Warengruppe = coalesce(Warengruppe.x, Warengruppe.y)) %>%
+  select(-Warengruppe.x, -Warengruppe.y)
+
 csvwetter <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv"
 csvumsatzdaten_gekuerzt <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv"
 csvkiwo <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv"
@@ -29,8 +42,8 @@ kiwo <- read.csv(csvkiwo)
 
 #Wetter approximieren 
 
-imputed_data <- mice(wetter1, method = "pmm", m = 5)
-wetter <- complete(imputed_data)
+#imputed_data <- mice(wetter1, method = "pmm", m = 5)
+#wetter <- complete(imputed_data)
 
 #wetter$Wettercode <- na.approx(wetter$Wettercode) 
 #wetter$Wettercode <- as.integer(wetter$Wettercode)
@@ -43,8 +56,6 @@ wetter <- complete(imputed_data)
 
 Alle Dateien laden
 ```{r}
-
-
 # Definiere den vollständigen Pfad zur CSV-Datei
 file_path <- file.path(getwd(), "Datenvorbereitungcsv/Feiertage.csv")
 Feiertage <- read.csv(file_path)
@@ -86,9 +97,16 @@ Handballspiele$Datum <- as.Date(Handballspiele$Datum, format = "%Y-%m-%d")
 ```
 
 ```{r}
-salesid <- full_join(umdat, testid, join_by( Datum, Warengruppe))
+first_table <- full_join(all, umdat, join_by(Datum)) 
 
-Grundtabelle <- full_join(wetter, salesid, by = "Datum") %>%
+first_table <- first_table %>%
+  mutate(Umsatz = coalesce(Umsatz.x, Umsatz.y)) %>%
+  select(-Umsatz.x, -Umsatz.y)
+first_table <- first_table %>%
+  mutate(Warengruppe = coalesce(Warengruppe.x, Warengruppe.y)) %>%
+  select(-Warengruppe.x, -Warengruppe.y)
+
+Grundtabelle <- full_join(wetter, first_table, by = "Datum") %>%
   full_join(kiwo, by = "Datum")
 as_tibble(Grundtabelle)
 
@@ -186,6 +204,12 @@ data <- Daten %>%
 # Überprüfen Sie die erstellte Spalte
 head(Daten)
 
+```
+Visualisierung fehlender Werte
+```{r}
+aggr(Daten,
+combined=TRUE,
+numbers=TRUE)
 ```
 
 Funktion erstellen um alle NA's auf Null zu setzten und den Zeitrahmen einhalten
