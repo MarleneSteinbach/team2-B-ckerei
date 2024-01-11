@@ -55,7 +55,7 @@ kiwo <- read.csv(csvkiwo)
 ```
 
 Alle Dateien laden
-```{r}
+```{r} 
 # Definiere den vollständigen Pfad zur CSV-Datei
 file_path <- file.path(getwd(), "Datenvorbereitungcsv/Feiertage.csv")
 Feiertage <- read.csv(file_path)
