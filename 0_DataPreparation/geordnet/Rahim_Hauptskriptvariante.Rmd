@@ -217,13 +217,19 @@ head(data)
 ```
 Visualisierung fehlender Werte
 ```{r}
-result <- aggr(data, combined = TRUE, numbers = TRUE)
+#Lösche mehrere Spalten, die keine NAs enthalten
+Data_short <- select(data, -Warengruppe:-Temperaturkategorie)
+Data_short <- Data_short %>%
+  select(-Jahreszeit, -id)
 
-# Display the result in the plot window
+# Select a subset of columns
+selected_columns <- c("Bewoelkung", "Temperatur", "Windgeschwindigkeit", "Wettercode")
+
+# Perform missing data analysis using aggr for the selected columns
+result <- aggr(Data_short[, selected_columns], combined = TRUE, numbers = TRUE)
+
+# Plot the result
 plot(result)
-pdf("aggr_plot.pdf", width = 10, height = 8)
-plot(result)
-dev.off()
 ```
 
 Funktion erstellen um alle NA's auf Null zu setzten und den Zeitrahmen einhalten
