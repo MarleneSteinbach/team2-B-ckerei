@@ -150,6 +150,9 @@ Daten <- Daten[Daten$Datum >= "2013-07-01" & Daten$Datum <= "2019-07-30", ]
 # Print a summary of the subset_table
 head(Daten)
 
+Daten <- Daten %>%
+  distinct()
+
 # Set NAs of Kreuzfahrtschiffe and KiWo to 0
 Daten$Kreuzfahrtschiffe <- ifelse(is.na(Daten$Kreuzfahrtschiffe), 0, Daten$Kreuzfahrtschiffe)
 Daten$KielerWoche <- ifelse(is.na(Daten$KielerWoche), 0, Daten$KielerWoche)

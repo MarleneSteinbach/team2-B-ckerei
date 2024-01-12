@@ -178,13 +178,13 @@ categorize_temperature <- function(temperature) {
 }
 
 # Anwenden der Funktion auf jede Jahreszeit
-data <- Daten %>%
+data <- data %>%
   group_by(Jahreszeit) %>%
   mutate(Temperaturkategorie = categorize_temperature(Temperatur))
 
 
 # Überprüfen Sie die erstellte Spalte
-head(Daten)
+head(data)
 
 ```
 
@@ -224,7 +224,56 @@ cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeich
 
 
 ```
-`Testen des Imputationsverfahrens (erstmal nur lineare Regression)
+
+Besondere Fälle betrachten: Fehlen von min. 3 aufeinanderfolgenden Tagen
+
+```{r}
+# Finde die Anzahl der aufeinanderfolgenden NA-Werte für Temperatur
+
+# zeige alle Fälle, wo Temperatur in data mindestens 15 mal hintereinander NA ist
+miss_temp <- data %>%
+  mutate(is_na = is.na(Temperatur)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) >= 3) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum)) # wähle nur Zeilen aus (ganze Zeile) worin unterschiedlice Werte für Datum stehen
+  
+# dasselbe mit Bewoelkung, Wettercode und Windgeschwindigkeit
+miss_bewoelkung <- data %>%
+  mutate(is_na = is.na(Bewoelkung)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) >= 15) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum))
+
+
+
+```
+
+
+Hot-Deck imputation für Bewoelkung und Wettercode
+
+```{r}
+donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode", "Diff_temp", "Diff_wind")
+donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Diff_temp", "Diff_wind", "Bewoelkung")
+Daten_imputed2 <- hotdeck(Daten_imputed, "Bewoelkung")
+Daten_imputed2<- hotdeck(Daten_imputed2, "Wettercode")
+
+
+Daten_imputed3 <- hotdeck(Daten_imputed2, "Wettercode", donor_vars_wettercode)
+Daten_imputed3 <- hotdeck(Daten_imputed3, "Bewoelkung", donor_vars_bewoelkung)
+```
+
+
+
+
+
+
+
+
+Testen des Imputationsverfahrens 
 
 ```{r}  
 # Umwandeln von "Wettercode" in eine kategoriale Variable
@@ -264,10 +313,10 @@ unique_dates <- unique(Daten$Datum)
 # Wähle zufällig Tage aus, an denen Daten entfernt werden sollen (z.B. 10% der Tage)
 days_to_remove <- sample(unique_dates, length(unique_dates) * 0.1)
 
-# Erstellen Sie eine Kopie Ihrer Daten
+# Erstelle eine Kopie Ihrer Daten
 Daten_with_NA <- Daten
 
-# Entfernen Sie Werte für die ausgewählten Tage in den spezifischen Spalten
+# Entfern Werte für die ausgewählten Tage in den spezifischen Spalten
 for (date in days_to_remove) {
   for (col in columns_to_remove) {
     Daten_with_NA[Daten_with_NA$Datum == date, col] <- NA
@@ -297,18 +346,6 @@ Daten_imputed$Windgeschwindigkeit <- na.approx(Daten_with_NA$Windgeschwindigkeit
 
 ```
 
-Hot-Deck imputation für Bewoelkung und Wettercode
-
-```{r}
-donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode", "Diff_temp", "Diff_wind")
-donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Diff_temp", "Diff_wind", "Bewoelkung")
-Daten_imputed2 <- hotdeck(Daten_imputed, "Bewoelkung")
-Daten_imputed2<- hotdeck(Daten_imputed2, "Wettercode")
-
-
-Daten_imputed3 <- hotdeck(Daten_imputed2, "Wettercode", donor_vars_wettercode)
-Daten_imputed3 <- hotdeck(Daten_imputed3, "Bewoelkung", donor_vars_bewoelkung)
-```
 
 ```{r}
 library(Metrics)
@@ -332,3 +369,8 @@ for (col in columns_to_remove) {
 }
 
 ```
+Schau dir die Fälle an wo viele Werte hintereinander fehlen. Starten wir mit Temperatur:
+
+```{r}
+```
+
