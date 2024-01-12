@@ -228,10 +228,10 @@ Data_short <- Data_short %>%
 selected_columns <- c("Bewoelkung", "Temperatur", "Windgeschwindigkeit", "Wettercode")
 
 # Perform missing data analysis using aggr for the selected columns
-result <- aggr(Data_short[, selected_columns], combined = TRUE, numbers = TRUE)
+# result <- aggr(Data_short[, selected_columns], combined = TRUE, numbers = TRUE)
 
 # Plot the result
-plot(result)
+#plot(result)
 ```
 
 Funktion erstellen um alle NA's auf Null zu setzten und den Zeitrahmen einhalten
@@ -244,9 +244,8 @@ set_na_to_zero <- function(data, columns) {
 }
 #,"id", "Jahreszeit", "Fussballspiel", "Ferien"
 columns_to_set_zero <- c(
-  "Warengruppe", "Umsatz","Temperatur" ,"Bewoelkung","Windgeschwindigkeit",
-  "Feiertag","id", "Jahreszeit", "Fussballspiel", "Ferien", "Temperaturkategorie",
-  "KielerWoche", "Wochentag", "Flohmarkt" , "Kreuzfahrtschiffe", "Wettercode", "Handballspiele", "Diff_temp", "Diff_bewoelkung", "Diff_wind"
+ "Feiertag","id", "Jahreszeit", "Fussballspiel", "Ferien", "Temperaturkategorie",
+  "KielerWoche", "Flohmarkt" , "Kreuzfahrtschiffe", "Handballspiele"
 )
 
 data <- set_na_to_zero(data, columns_to_set_zero)
