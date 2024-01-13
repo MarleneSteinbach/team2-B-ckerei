@@ -182,13 +182,13 @@ Daten <- Daten %>%
   )
 
 # Repeat the process for other variables
-Daten <- Daten %>%
-  mutate(
-    RollingMean_wind = calculate_rolling_mean(Daten, "Windgeschwindigkeit"),
-    Diff_wind = Windgeschwindigkeit - RollingMean_wind,
-    RollingMean_bewoelkung = calculate_rolling_mean(Daten, "Bewoelkung"),
-    Diff_bewoelkung = Bewoelkung - RollingMean_bewoelkung
-  )
+#Daten <- Daten %>%
+ # mutate(
+  #  RollingMean_wind = calculate_rolling_mean(Daten, "Windgeschwindigkeit"),
+   # Diff_wind = Windgeschwindigkeit - RollingMean_wind,
+    #RollingMean_bewoelkung = calculate_rolling_mean(Daten, "Bewoelkung"),
+  #  Diff_bewoelkung = Bewoelkung - RollingMean_bewoelkung
+  #)
 
 # View the data frame with the new variables
 # head(Daten)
@@ -219,22 +219,6 @@ data <- data[!is.na(data$id), ]
 # Überprüfen Sie die erstellte Spalte
 head(data)
 
-```
-Visualisierung fehlender Werte
-```{r}
-#Lösche mehrere Spalten, die keine NAs enthalten
-Data_short <- select(data, -Warengruppe:-Temperaturkategorie)
-Data_short <- Data_short %>%
-  select(-Jahreszeit, -id)
-
-# Select a subset of columns
-selected_columns <- c("Bewoelkung", "Temperatur", "Windgeschwindigkeit", "Wettercode")
-
-# Perform missing data analysis using aggr for the selected columns
-# result <- aggr(Data_short[, selected_columns], combined = TRUE, numbers = TRUE)
-
-# Plot the result
-#plot(result)
 ```
 
 Funktion erstellen um alle NA's auf Null zu setzten und den Zeitrahmen einhalten
@@ -271,6 +255,19 @@ write.csv(data, file_path, row.names = FALSE)
 cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeichert:", file_path, "\n")
 
 
+```
+
+Fehlende Werte
+```{r}
+missing_summary <- summary(data)
+prop_missing <- colMeans(is.na(data))
+
+# Combine the results into a data frame
+missing_data <- data.frame(
+  Variable = names(prop_missing),
+  Proportion_Missing = prop_missing
+)
+print(missing_data)
 ```
 
 Besondere Fälle betrachten: Fehlen von min. 3 aufeinanderfolgenden Tagen
@@ -335,13 +332,15 @@ miss_code_3<- miss_code_2 %>%
   filter(!duplicated(Datum))
 ```
 
-Imputationen von Temperatur und Windgeschwindigkeit
+Linear interpolation von Temperatur und Windgeschwindigkeit
 ```{r}
-# Lineare Imputation der NAs in der Windgeschwindigkeits-Spalte
-data$Temperatur_imputed <- na.approx(data$Temperatur)
-# Lineare Imputation der NAs in der Windgeschwindigkeits-Spalte
-data$Windgeschwindigkeit_imputed <- na.approx(data$Windgeschwindigkeit)
+data <- data %>%
+  mutate(Temperatur_imputed = ifelse(row_number() %in% miss_temp_3$Datum, 
+                                      as.numeric(zoo::na.approx(Temperatur)), Temperatur),
+         Windgeschwindigkeit_imputed = ifelse(row_number() %in% miss_temp_3$Datum, 
+                                                as.numeric(zoo::na.approx(Windgeschwindigkeit)), Windgeschwindigkeit))
 ```
+
 Ersetzen der Nas in data
 ```{r}
 data <- data %>%
