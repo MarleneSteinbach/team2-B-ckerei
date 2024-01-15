@@ -182,13 +182,13 @@ Daten <- Daten %>%
   )
 
 # Repeat the process for other variables
-#Daten <- Daten %>%
- # mutate(
-  #  RollingMean_wind = calculate_rolling_mean(Daten, "Windgeschwindigkeit"),
-   # Diff_wind = Windgeschwindigkeit - RollingMean_wind,
-    #RollingMean_bewoelkung = calculate_rolling_mean(Daten, "Bewoelkung"),
-  #  Diff_bewoelkung = Bewoelkung - RollingMean_bewoelkung
-  #)
+Daten <- Daten %>%
+ mutate(
+  RollingMean_wind = calculate_rolling_mean(Daten, "Windgeschwindigkeit"),
+   Diff_wind = Windgeschwindigkeit - RollingMean_wind,
+   RollingMean_bewoelkung = calculate_rolling_mean(Daten, "Bewoelkung"),
+    Diff_bewoelkung = Bewoelkung - RollingMean_bewoelkung
+  )
 
 # View the data frame with the new variables
 # head(Daten)
@@ -295,7 +295,39 @@ miss_bewoelkung <- data %>%
 
 ```
 
-Fehlen von Wetterdaten an 1 oder 2 Tagen
+Fehlen von Wetterdaten an allen anderen Tagen
+```{r}
+data_test <- data
+```
+
+```{r}
+# Assuming data_test is your larger data frame
+# Convert Datum to a data frame if it's not already
+data_test <- as.data.frame(data_test)
+
+# Convert Datum to a time series object
+data_test$Datum <- as.POSIXct(data_test$Datum)
+
+# Sort data frame by Datum if not already sorted
+data_test <- data_test[order(data_test$Datum), ]
+
+# Define a function for conditional interpolation
+conditional_interpolation <- function(df) {
+  na_indices <- apply(is.na(df), 1, function(row) sum(row) <= 2)
+  df[na_indices, ] <- t(apply(df[na_indices, ], 1, zoo::na.approx))
+  return(df)
+}
+
+# Apply conditional interpolation to selected columns
+columns_to_interpolate <- c("Windgeschwindigkeit", "Temperatur")
+
+data_test[columns_to_interpolate] <- conditional_interpolation(data_test[columns_to_interpolate])
+
+# Check the result
+print(data_test[c("Datum", "Windgeschwindigkeit", "Temperatur")])
+
+```
+
 ```{r}
 # zeige alle Fälle, wo Temperatur, Bewoelkung und Windgeschwindigkeit im Dateframe "data" maximal 2 mal hintereinander NA ist
 miss_temp_2 <- data %>%
@@ -330,15 +362,34 @@ miss_code_3<- miss_code_2 %>%
   ungroup() %>%
   select(-grp) %>%
   filter(!duplicated(Datum))
+as_tibble(miss_code_3)
+
 ```
 
 Linear interpolation von Temperatur und Windgeschwindigkeit
 ```{r}
-data <- data %>%
-  mutate(Temperatur_imputed = ifelse(row_number() %in% miss_temp_3$Datum, 
-                                      as.numeric(zoo::na.approx(Temperatur)), Temperatur),
-         Windgeschwindigkeit_imputed = ifelse(row_number() %in% miss_temp_3$Datum, 
-                                                as.numeric(zoo::na.approx(Windgeschwindigkeit)), Windgeschwindigkeit))
+# Assuming miss_temp_3 is your data frame for Temperatur
+# Convert Datum to a data frame if it's not already
+miss_temp_3 <- as.data.frame(miss_temp_3)
+
+# Convert Datum to a time series object
+miss_temp_3$Datum <- as.POSIXct(miss_temp_3$Datum)
+
+# Sort data frame by Datum if not already sorted
+miss_temp_3 <- miss_temp_3[order(miss_temp_3$Datum), ]
+
+# Create a sequence of timestamps for interpolation
+timestamps <- seq(min(miss_temp_3$Datum), max(miss_temp_3$Datum), by = "days")
+
+# Interpolate Windgeschwindigkeit and Temperatur
+interpolated_values <- approx(miss_temp_3$Datum, miss_temp_3$Windgeschwindigkeit, xout = timestamps)$y
+
+# Replace the original Windgeschwindigkeit values with the interpolated values
+miss_temp_3$Windgeschwindigkeit <- interpolated_values[match(miss_temp_3$Datum, timestamps)]
+
+# Repeat the process for Temperatur
+interpolated_values <- approx(miss_temp_3$Datum, miss_temp_3$Temperatur, xout = timestamps)$y
+miss_temp_3$Temperatur <- interpolated_values[match(miss_temp_3$Datum, timestamps)]
 ```
 
 Ersetzen der Nas in data
@@ -357,10 +408,10 @@ data <- data %>%
 Hot-Deck imputation für Bewoelkung und Wettercode
 
 ```{r}
-donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode", "Diff_temp", "Diff_wind")
-donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Diff_temp", "Diff_wind", "Bewoelkung")
-Daten_imputed2 <- hotdeck(Daten_imputed, "Bewoelkung")
-Daten_imputed2<- hotdeck(Daten_imputed2, "Wettercode")
+donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode", "Diff_temp")
+donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Diff_temp", "Bewoelkung")
+Daten_imputed2 <- hotdeck(data_test, "Bewoelkung")
+Daten_imputed2<- hotdeck(data_test, "Wettercode")
 
 
 Daten_imputed3 <- hotdeck(Daten_imputed2, "Wettercode", donor_vars_wettercode)
@@ -368,6 +419,20 @@ Daten_imputed3 <- hotdeck(Daten_imputed3, "Bewoelkung", donor_vars_bewoelkung)
 ```
 
 
+CSV schreiben aus Imputation
+```{r}
+
+# Dateipfad zur CSV-Datei im aktuellen Arbeitsverzeichnis erstellen
+file_path <- "Daten_imputed.csv"
+
+# Schreiben Sie die CSV-Datei
+write.csv(Daten_imputed3, file_path, row.names = FALSE)
+
+# Optional: Bestätigungsnachricht ausgeben
+cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeichert:", file_path, "\n")
+
+
+```
 
 
 
@@ -378,22 +443,22 @@ Testen des Imputationsverfahrens
 
 ```{r}  
 # Umwandeln von "Wettercode" in eine kategoriale Variable
-Daten$Wettercode <- factor(Daten$Wettercode)
+Daten_imputed3$Wettercode <- factor(Daten_imputed3$Wettercode)
 
 # Umwandeln von "Bewoelkung" in eine ordinale Variable
 
-Daten$Bewoelkung <- factor(Daten$Bewoelkung, ordered = TRUE)
+Daten_imputed3$Bewoelkung <- factor(Daten_imputed3$Bewoelkung, ordered = TRUE)
 
 ```  
 
 ```{r}
 
-missing_Wettercode <- subset(Daten, is.na(Daten$Wettercode))
+missing_Wettercode <- subset(Daten_imputed3, is.na(Daten_imputed3$Wettercode))
 
 # zählen, wie viele Missings:
 nrow(missing_Wettercode)
 
-nrow(missing_Wettercode) / nrow(Daten)
+nrow(missing_Wettercode) / nrow(Daten_imputed3)
 
 
 ```
@@ -409,13 +474,13 @@ set.seed(123) # Für reproduzierbare Ergebnisse
 columns_to_remove <- c("Wettercode", "Temperatur", "Bewoelkung", "Windgeschwindigkeit", "Diff_temp", "Diff_wind")
 
 # Finde eindeutige Tage
-unique_dates <- unique(Daten$Datum)
+unique_dates <- unique(Daten_imputed3$Datum)
 
 # Wähle zufällig Tage aus, an denen Daten entfernt werden sollen (z.B. 10% der Tage)
 days_to_remove <- sample(unique_dates, length(unique_dates) * 0.1)
 
 # Erstelle eine Kopie Ihrer Daten
-Daten_with_NA <- Daten
+Daten_with_NA <- Daten_imputed3
 
 # Entfern Werte für die ausgewählten Tage in den spezifischen Spalten
 for (date in days_to_remove) {
@@ -452,10 +517,10 @@ Daten_imputed$Windgeschwindigkeit <- na.approx(Daten_with_NA$Windgeschwindigkeit
 library(Metrics)
 
 for (col in columns_to_remove) {
-  if (is.numeric(Daten[[col]])) {
-    days_to_evaluate <- Daten$Datum %in% days_to_remove
+  if (is.numeric(Daten_imputed3[[col]])) {
+    days_to_evaluate <- Daten_imputed3$Datum %in% days_to_remove
     # Wähle nur die Werte aus, die für die Berechnung des Fehlers verwendet werden sollen
-    original_values <- Daten[days_to_evaluate, col]
+    original_values <- Daten_imputed3[days_to_evaluate, col]
     imputed_values <- Daten_with_NA[days_to_evaluate, col]
     # Entferne NA-Werte, bevor MSE und MAE berechnet werden
     na_indices <- !is.na(original_values) & !is.na(imputed_values)
