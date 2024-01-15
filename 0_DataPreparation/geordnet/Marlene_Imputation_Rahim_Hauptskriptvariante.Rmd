@@ -2,229 +2,6 @@
 title: "Tabelle für Auswertung"
 output: html_notebook
 ---
-
-alle Librariers laden
-```{r}
-# Create list with needed libraries
-pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo","mice")
-
-# Load each listed library and check if it is installed and install if necessary
-for (pkg in pkgs) {
-  if (!require(pkg, character.only = TRUE)) {
-    install.packages(pkg)
-    library(pkg, character.only = TRUE)
-  }
-}
-```
-
-Vorgegebene Dateien herunterladen Wetter aproximieren und joinen
-```{r}
-csvwetter <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/wetter.csv"
-csvumsatzdaten_gekuerzt <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/umsatzdaten_gekuerzt.csv"
-csvkiwo <- "https://raw.githubusercontent.com/opencampus-sh/einfuehrung-in-data-science-und-ml/main/kiwo.csv"
-
-wetter1 <- read.table(csvwetter, head=TRUE, sep = ",")
-umdat <- read.csv(csvumsatzdaten_gekuerzt)
-kiwo <- read.csv(csvkiwo)
-
-#Wetter approximieren 
-
-imputed_data <- mice(wetter1, method = "pmm", m = 5)
-wetter <- complete(imputed_data)
-
-#wetter$Wettercode <- na.approx(wetter$Wettercode) 
-#wetter$Wettercode <- as.integer(wetter$Wettercode)
-#wetter$Bewoelkung<- na.approx(wetter$Bewoelkung)
-#wetter$Bewoelkung <- as.integer(wetter$Bewoelkung)
-#wetter$Windgeschwindigkeit<- na.approx(wetter$Windgeschwindigkeit)
-#wetter$Windgeschwindigkeit <- as.integer(wetter$Windgeschwindigkeit)
-
-```
-
-Alle Dateien laden
-```{r}
-
-
-# Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "Datenvorbereitungcsv/Feiertage.csv")
-Feiertage <- read.csv(file_path)
-Feiertage$Datum <- as.Date(Feiertage$Datum, format = "%Y-%m-%d")
-
-# Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "Datenvorbereitungcsv/test.csv")
-testid<- read.csv(file_path)
-
-# Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "Datenvorbereitungcsv/Kreuzfahrten.csv")
-Kreuzfahrten<- read.csv(file_path)
-Kreuzfahrten$Datum <- as.Date(Kreuzfahrten$Datum, format = "%y-%m-%d")
-
-# Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "Datenvorbereitungcsv/Jahreszeiten.csv")
-Jahreszeiten<- read.csv(file_path)
-Jahreszeiten$Datum <- as.Date(Jahreszeiten$Datum, format = "%Y-%m-%d")
-
-# Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "Datenvorbereitungcsv/Fußballspiele.csv")
-Fussballspiele<- read.csv(file_path)
-Fussballspiele$Datum <- as.Date(Fussballspiele$Datum, format = "%Y-%m-%d")
-
-# Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "Datenvorbereitungcsv/Flohmarkt.csv")
-Flohmarkt<- read.csv(file_path)
-Flohmarkt$Datum <- as.Date(Flohmarkt$Datum, format = "%Y-%m-%d")
-
-# Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "Datenvorbereitungcsv/Ferientage.csv")
-Ferientage<- read.csv(file_path)
-Ferientage$Datum <- as.Date(Ferientage$Datum, format = "%Y-%m-%d")
-
-# Definiere den vollständigen Pfad zur CSV-Datei
-file_path <- file.path(getwd(), "Datenvorbereitungcsv/Handballspiele.csv")
-Handballspiele<- read.csv(file_path)
-Handballspiele$Datum <- as.Date(Handballspiele$Datum, format = "%Y-%m-%d")
-```
-
-```{r}
-salesid <- full_join(umdat, testid, join_by( Datum, Warengruppe))
-
-Grundtabelle <- full_join(wetter1, salesid, by = "Datum") %>%
-  full_join(kiwo, by = "Datum")
-as_tibble(Grundtabelle)
-
-
-#Grundtabelle  hat noch den falschen Typ bei Datum, hab das mal angeglichen
-Grundtabelle$Datum <- as.Date(Grundtabelle$Datum, format = "%Y-%m-%d")
-
-# Variable wochentag hinzufügen
-Grundtabelle$Wochentag <- weekdays(Grundtabelle$Datum)
-
-# Wochentag als faktor
-Grundtabelle$Wochentag <- as.factor(Grundtabelle$Wochentag)
-```
-
-Alle Dateien Joinen
-```{r}
-Daten <- full_join(Grundtabelle, Feiertage, by = "Datum") %>%
-  full_join(Kreuzfahrten, by = "Datum") %>%
-  full_join(Jahreszeiten, by = "Datum") %>%
-  full_join(Fussballspiele, by = "Datum") %>%
-  full_join(Flohmarkt, by = "Datum") %>%
-  full_join(Handballspiele, by = "Datum") %>%
-  full_join(Ferientage, by = "Datum")
-
-
-#Grundtabelle  hat noch den falschen Typ bei Datum, hab das mal angeglichen
-Daten$Datum <- as.Date(Daten$Datum, format = "%Y-%m-%d")
-
-
-```
-
-
-Füge Wetter change variables ein, die das Wetter im Verhältnis mit dem Wetter der letzten Woche beerechnen
-
-```{r}
-
-# Ensure Datum is a Date variable.
-Daten$Datum <- as.Date(Daten$Datum, format="%Y-%m-%d")
-
-# Order the dataframe by Datum and ungroup if it was previously grouped
-Daten <- Daten %>% 
-  ungroup() %>%
-  arrange(Datum)
-
-# Function to calculate rolling mean for a given column
-calculate_rolling_mean <- function(data, column_name) {
-  sapply(seq_along(data[[column_name]]), function(i) {
-    start_index <- max(1, i - 6)
-    current_values <- data[[column_name]][start_index:i]
-    mean(current_values, na.rm = TRUE)
-  })
-}
-
-# Add rolling mean and difference for Temperatur
-Daten <- Daten %>%
-  mutate(
-    RollingMean_temp = calculate_rolling_mean(Daten, "Temperatur"),
-    Diff_temp = Temperatur - RollingMean_temp
-  )
-
-# Repeat the process for other variables
-Daten <- Daten %>%
-  mutate(
-    RollingMean_wind = calculate_rolling_mean(Daten, "Windgeschwindigkeit"),
-    Diff_wind = Windgeschwindigkeit - RollingMean_wind,
-    RollingMean_bewoelkung = calculate_rolling_mean(Daten, "Bewoelkung"),
-    Diff_bewoelkung = Bewoelkung - RollingMean_bewoelkung
-  )
-
-# View the data frame with the new variables
-head(Daten)
-```
-
-
-Füge die Einordnung der Temperaturen nach high/medium/low ein
-```{r}
-# Fügen Sie eine leere Spalte für die Temperaturkategorie hinzu
-Daten$Temperaturkategorie <- NA
-
-# Funktion zur Einteilung in drei Kategorien
-categorize_temperature <- function(temperature) {
-  lower_threshold <- quantile(temperature, 1/3, na.rm = TRUE)
-  upper_threshold <- quantile(temperature, 2/3, na.rm = TRUE)
-  
-  ifelse(temperature < lower_threshold, "niedrig",
-         ifelse(temperature < upper_threshold, "mittel", "hoch"))
-}
-
-# Anwenden der Funktion auf jede Jahreszeit
-data <- data %>%
-  group_by(Jahreszeit) %>%
-  mutate(Temperaturkategorie = categorize_temperature(Temperatur))
-
-
-# Überprüfen Sie die erstellte Spalte
-head(data)
-
-```
-
-Funktion erstellen um alle NA's auf Null zu setzten und den Zeitrahmen einhalten
-```{r}
-set_na_to_zero <- function(data, columns) {
-  for (col in columns) {
-    data[[col]][is.na(data[[col]])] <- 0
-  }
-  return(data)
-}
-#,"id", "Jahreszeit", "Fussballspiel", "Ferien"
-columns_to_set_zero <- c(
-  "Warengruppe", "Umsatz","Temperatur" ,"Bewoelkung","Windgeschwindigkeit",
-  "Feiertag","id", "Jahreszeit", "Fussballspiel", "Ferien", "Temperaturkategorie",
-  "KielerWoche", "Wochentag", "Flohmarkt" , "Kreuzfahrtschiffe", "Wettercode", "Handballspiele", "Diff_temp", "Diff_bewoelkung", "Diff_wind"
-)
-
-data <- set_na_to_zero(data, columns_to_set_zero)
-data <- data %>%
-  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2019-07-31"))
-
-```
-CSV für die Datenaufbereitung
-Feiertage speichern und in eine CSV Schreiben
-
-```{r}
-
-# Dateipfad zur CSV-Datei im aktuellen Arbeitsverzeichnis erstellen
-file_path <- "Data.csv"
-
-# Schreiben Sie die CSV-Datei
-write.csv(data, file_path, row.names = FALSE)
-
-# Optional: Bestätigungsnachricht ausgeben
-cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeichert:", file_path, "\n")
-
-
-```
-
 Besondere Fälle betrachten: Fehlen von min. 3 aufeinanderfolgenden Tagen
 
 ```{r}
@@ -248,10 +25,34 @@ miss_bewoelkung <- data %>%
   select(-grp) %>%
   filter(!duplicated(Datum))
 
-# zähle missing values in temperatur
-sum(is.na(Daten$Temperatur))
+miss_code <- data %>%
+  mutate(is_na = is.na(Wettercode)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) >= 15) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum))
 
-  
+miss_wind <- data %>% 
+  mutate(is_na = is.na(Windgeschwindigkeit)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) >= 15) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum))
+
+
+# zähle missing values in temperatur
+sum(is.na(data$Temperatur))
+sum(is.na(data$Bewoelkung))
+sum(is.na(data$Wettercode))
+sum(is.na(data$Windgeschwindigkeit))
+
+if (!require("naniar")) install.packages("naniar")
+library(naniar)
+missing_summary <- miss_var_summary(data)
+missing_case <- miss_case_summary(data)
+vis_miss(Data_short, sort_miss=TRUE)
 
 ```
 
