@@ -96,6 +96,23 @@ cat("Submission-Datei erstellt: 'kaggle_submission.csv' im aktuellen Arbeitsverz
 
 
 ```
+Lineares Modell mit 0.27 aber funktioniert jetzt nicht mehr
+```{r}
+lm1 <- lm(Umsatz ~ (Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur +
+              as.factor(Jahreszeit) + as.factor(Temperaturkategorie) +
+              as.factor(Warengruppe) + as.factor(Art_des_Feiertags) +
+              Fussballspiel + Ferien + Feiertag + KielerWoche +
+              as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe +
+              Diff_temp)^2 +
+             Wettercode * Bewoelkung * Windgeschwindigkeit * Temperatur +
+             as.factor(Warengruppe) * as.factor(Art_des_Feiertags) +
+             as.factor(Jahreszeit) * as.factor(Temperaturkategorie) +
+             as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe +
+             as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel +
+             as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien,
+           data = your_data)
+
+```
 
 
 

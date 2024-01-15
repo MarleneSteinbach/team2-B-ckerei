@@ -182,13 +182,13 @@ Daten <- Daten %>%
   )
 
 # Repeat the process for other variables
-Daten <- Daten %>%
-  mutate(
-    RollingMean_wind = calculate_rolling_mean(Daten, "Windgeschwindigkeit"),
-    Diff_wind = Windgeschwindigkeit - RollingMean_wind,
-    RollingMean_bewoelkung = calculate_rolling_mean(Daten, "Bewoelkung"),
-    Diff_bewoelkung = Bewoelkung - RollingMean_bewoelkung
-  )
+#Daten <- Daten %>%
+ # mutate(
+  #  RollingMean_wind = calculate_rolling_mean(Daten, "Windgeschwindigkeit"),
+   # Diff_wind = Windgeschwindigkeit - RollingMean_wind,
+    #RollingMean_bewoelkung = calculate_rolling_mean(Daten, "Bewoelkung"),
+  #  Diff_bewoelkung = Bewoelkung - RollingMean_bewoelkung
+  #)
 
 # View the data frame with the new variables
 # head(Daten)
@@ -219,22 +219,6 @@ data <- data[!is.na(data$id), ]
 # Überprüfen Sie die erstellte Spalte
 head(data)
 
-```
-Visualisierung fehlender Werte
-```{r}
-#Lösche mehrere Spalten, die keine NAs enthalten
-Data_short <- select(data, -Warengruppe:-Temperaturkategorie)
-Data_short <- Data_short %>%
-  select(-Jahreszeit, -id)
-
-# Select a subset of columns
-selected_columns <- c("Bewoelkung", "Temperatur", "Windgeschwindigkeit", "Wettercode")
-
-# Perform missing data analysis using aggr for the selected columns
-# result <- aggr(Data_short[, selected_columns], combined = TRUE, numbers = TRUE)
-
-# Plot the result
-#plot(result)
 ```
 
 Funktion erstellen um alle NA's auf Null zu setzten und den Zeitrahmen einhalten
@@ -271,6 +255,224 @@ write.csv(data, file_path, row.names = FALSE)
 cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeichert:", file_path, "\n")
 
 
+```
+
+Fehlende Werte
+```{r}
+missing_summary <- summary(data)
+prop_missing <- colMeans(is.na(data))
+
+# Combine the results into a data frame
+missing_data <- data.frame(
+  Variable = names(prop_missing),
+  Proportion_Missing = prop_missing
+)
+print(missing_data)
+```
+
+Besondere Fälle betrachten: Fehlen von min. 3 aufeinanderfolgenden Tagen
+
+```{r}
+# Finde die Anzahl der aufeinanderfolgenden NA-Werte für Temperatur
+
+# zeige alle Fälle, wo Temperatur in data mindestens 15 mal hintereinander NA ist
+miss_temp <- data %>%
+  mutate(is_na = is.na(Temperatur)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) >= 3) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum)) # wähle nur Zeilen aus (ganze Zeile) worin unterschiedlice Werte für Datum stehen
+  
+# dasselbe mit Bewoelkung, Wettercode und Windgeschwindigkeit
+miss_bewoelkung <- data %>%
+  mutate(is_na = is.na(Bewoelkung)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) >= 15) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum))
+
+```
+
+Fehlen von Wetterdaten an 1 oder 2 Tagen
+```{r}
+# zeige alle Fälle, wo Temperatur, Bewoelkung und Windgeschwindigkeit im Dateframe "data" maximal 2 mal hintereinander NA ist
+miss_temp_2 <- data %>%
+  mutate(is_na = is.na(Temperatur)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) >= 1) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum))
+
+miss_temp_3<- miss_temp_2 %>%
+  mutate(is_na = is.na(Temperatur)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) < 3) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum))
+
+# zeige alle Fälle, wo Wettercode im Dateframe "data" maximal 2 mal hintereinander NA ist
+miss_code_2 <- data %>%
+  mutate(is_na = is.na(Wettercode)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) >= 1) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum))
+
+miss_code_3<- miss_code_2 %>%
+  mutate(is_na = is.na(Wettercode)) %>%
+  group_by(grp = cumsum(!is_na)) %>%
+  filter(sum(is_na) < 3) %>%
+  ungroup() %>%
+  select(-grp) %>%
+  filter(!duplicated(Datum))
+```
+
+Linear interpolation von Temperatur und Windgeschwindigkeit
+```{r}
+data <- data %>%
+  mutate(Temperatur_imputed = ifelse(row_number() %in% miss_temp_3$Datum, 
+                                      as.numeric(zoo::na.approx(Temperatur)), Temperatur),
+         Windgeschwindigkeit_imputed = ifelse(row_number() %in% miss_temp_3$Datum, 
+                                                as.numeric(zoo::na.approx(Windgeschwindigkeit)), Windgeschwindigkeit))
+```
+
+Ersetzen der Nas in data
+```{r}
+data <- data %>%
+  mutate(Windgeschwindigkeit = coalesce(Windgeschwindigkeit, Windgeschwindigkeit_imputed))
+
+data <- data %>%
+  mutate(Temperatur = coalesce(Temperatur, Temperatur_imputed))
+
+# Entfernen der Spalte "Windgeschwindigkeit_imputed", falls nicht mehr benötigt
+data <- data %>%
+  select(-Temperatur_imputed, -Windgeschwindigkeit_imputed)
+```
+
+Hot-Deck imputation für Bewoelkung und Wettercode
+
+```{r}
+donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode", "Diff_temp", "Diff_wind")
+donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Diff_temp", "Diff_wind", "Bewoelkung")
+Daten_imputed2 <- hotdeck(Daten_imputed, "Bewoelkung")
+Daten_imputed2<- hotdeck(Daten_imputed2, "Wettercode")
+
+
+Daten_imputed3 <- hotdeck(Daten_imputed2, "Wettercode", donor_vars_wettercode)
+Daten_imputed3 <- hotdeck(Daten_imputed3, "Bewoelkung", donor_vars_bewoelkung)
+```
+
+
+
+
+
+
+
+
+Testen des Imputationsverfahrens 
+
+```{r}  
+# Umwandeln von "Wettercode" in eine kategoriale Variable
+Daten$Wettercode <- factor(Daten$Wettercode)
+
+# Umwandeln von "Bewoelkung" in eine ordinale Variable
+
+Daten$Bewoelkung <- factor(Daten$Bewoelkung, ordered = TRUE)
+
+```  
+
+```{r}
+
+missing_Wettercode <- subset(Daten, is.na(Daten$Wettercode))
+
+# zählen, wie viele Missings:
+nrow(missing_Wettercode)
+
+nrow(missing_Wettercode) / nrow(Daten)
+
+
+```
+
+
+Dafür erstmal random Daten löschen:
+
+```{r}  
+
+set.seed(123) # Für reproduzierbare Ergebnisse
+
+# Angenommene Namen der Spalten, aus denen Werte entfernt werden sollen
+columns_to_remove <- c("Wettercode", "Temperatur", "Bewoelkung", "Windgeschwindigkeit", "Diff_temp", "Diff_wind")
+
+# Finde eindeutige Tage
+unique_dates <- unique(Daten$Datum)
+
+# Wähle zufällig Tage aus, an denen Daten entfernt werden sollen (z.B. 10% der Tage)
+days_to_remove <- sample(unique_dates, length(unique_dates) * 0.1)
+
+# Erstelle eine Kopie Ihrer Daten
+Daten_with_NA <- Daten
+
+# Entfern Werte für die ausgewählten Tage in den spezifischen Spalten
+for (date in days_to_remove) {
+  for (col in columns_to_remove) {
+    Daten_with_NA[Daten_with_NA$Datum == date, col] <- NA
+  }
+}
+```
+
+Jetzt sind für bestimmte Tage und Spalten zufällig Werte entfernt. Als nächstes können wir die lineare Interpolation (und andere Verfahren) auf die Spalten anwenden, die numerische Daten enthalten. Jetzt die daten interpolieren, erstmal nur Temperatur und windgeschwindigkeit:
+
+
+
+```{r}
+library(zoo)
+
+# Interpoliere nur die numerischen Spalten
+for (col in columns_to_remove) {
+  if (is.numeric(Daten_with_NA[[col]])) {
+    Daten_with_NA[[col]] <- na.approx(Daten_with_NA[[col]], na.rm = FALSE)
+  }
+  # Für nicht-numerische Daten müssen Sie andere Imputationsmethoden verwenden
+}
+
+Daten_imputed <- Daten_with_NA
+# lineare Interpolation für Temperatur und Windgeschwindigkeit
+Daten_imputed$Temperatur <- na.approx(Daten_with_NA$Temperatur, na.rm = FALSE)
+Daten_imputed$Windgeschwindigkeit <- na.approx(Daten_with_NA$Windgeschwindigkeit, na.rm = FALSE)
+
+```
+
+
+```{r}
+library(Metrics)
+
+for (col in columns_to_remove) {
+  if (is.numeric(Daten[[col]])) {
+    days_to_evaluate <- Daten$Datum %in% days_to_remove
+    # Wähle nur die Werte aus, die für die Berechnung des Fehlers verwendet werden sollen
+    original_values <- Daten[days_to_evaluate, col]
+    imputed_values <- Daten_with_NA[days_to_evaluate, col]
+    # Entferne NA-Werte, bevor MSE und MAE berechnet werden
+    na_indices <- !is.na(original_values) & !is.na(imputed_values)
+    original_values <- original_values[na_indices]
+    imputed_values <- imputed_values[na_indices]
+    # Berechne MSE und MAE
+    mse <- mse(original_values, imputed_values)
+    mae <- mae(original_values, imputed_values)
+    print(paste(col, "- Mean Squared Error:", mse))
+    print(paste(col, "- Mean Absolute Error:", mae))
+  }
+}
+
+```
+Schau dir die Fälle an wo viele Werte hintereinander fehlen. Starten wir mit Temperatur:
+
+```{r}
 ```
 
 
