@@ -88,7 +88,7 @@ Handballspiele$Datum <- as.Date(Handballspiele$Datum, format = "%Y-%m-%d")
 ```{r}
 salesid <- full_join(umdat, testid, join_by( Datum, Warengruppe))
 
-Grundtabelle <- full_join(wetter, salesid, by = "Datum") %>%
+Grundtabelle <- full_join(wetter1, salesid, by = "Datum") %>%
   full_join(kiwo, by = "Datum")
 as_tibble(Grundtabelle)
 
@@ -248,7 +248,10 @@ miss_bewoelkung <- data %>%
   select(-grp) %>%
   filter(!duplicated(Datum))
 
+# zähle missing values in temperatur
+sum(is.na(Daten$Temperatur))
 
+  
 
 ```
 
