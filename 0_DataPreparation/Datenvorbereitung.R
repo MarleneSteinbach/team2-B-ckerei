@@ -36,7 +36,7 @@ set_na_to_zero <- function(data, columns) {
 columns_to_set_zero <- c(
   "Warengruppe", "Umsatz","Temperatur" ,"Bewoelkung","Windgeschwindigkeit",
   "Feiertag","id", "Jahreszeit", "Fussballspiel", "Ferien", "Temperaturkategorie",
-  "KielerWoche", "Wochentag", "Flohmarkt" , "Kreuzfahrtschiffe", "Wettercode"
+  "KielerWoche", "Wochentag", "Flohmarkt" , "Kreuzfahrtschiffe", "Wettercode","Diff_temp"
 )
 
 data <- set_na_to_zero(data, columns_to_set_zero)
@@ -50,7 +50,7 @@ data <- data %>%
 ### Data Preparation ####
 
 # Preparation of independent variables ('features') by dummy coding the categorical variables
-features <- as_tibble(model.matrix(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + Handballspiele + Diff_wind  + Diff_temp,data))
+features <- as_tibble(model.matrix(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + Handballspiele + Diff_temp,data))
 names(features)
 features <- cbind(features, Datum =data$Datum , id=data$id )
 
