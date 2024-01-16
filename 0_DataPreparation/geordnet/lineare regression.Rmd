@@ -17,7 +17,7 @@ for (pkg in pkgs) {
 ```
 Datenladen
 ```{r}
-file_path <- file.path(getwd(), "Daten_imputed.csv")
+file_path <- file.path(getwd(), "data")
 data <- read.csv(file_path)
 data$Datum <- as.Date(data$Datum, format = "%Y-%m-%d")
 
@@ -45,18 +45,13 @@ regressionsgleichung aufstellen random
 model_1 <- lm(Umsatz ~ as.factor(Wettercode) + Bewoelkung + Windgeschwindigkeit + Temperatur +  as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe)+ as.factor(Art_des_Feiertags) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt +  Kreuzfahrtschiffe + 
 as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
 as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
-as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_bewoelkung + Diff_wind +
 as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
 as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien    
 , data = train_data)
 
 unique(valid_data$Wettercode)
 unique(train_data$Wettercode)
-
-valid_features_for_prediction <- test_data[, !names(test_data) %in% c('id')]
-
-# Make predictions
-valid_predictions <- predict(model_1, valid_features_for_prediction)
 
 # Vergleiche die Vorhersagen mit den tatsächlichen Werten im Validierungsdatensatz
 validation_results <- data.frame(

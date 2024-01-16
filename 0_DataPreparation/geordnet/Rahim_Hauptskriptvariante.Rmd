@@ -54,6 +54,53 @@ kiwo <- read.csv(csvkiwo)
 
 ```
 
+
+Fehlen von Wetterdaten an allen anderen Tagen
+```{r}
+data_test <- wetter
+```
+
+```{r}
+# Assuming data_test is your larger data frame
+# Convert Datum to a data frame if it's not already
+data_test <- as.data.frame(data_test)
+
+# Convert Datum to a time series object
+data_test$Datum <- as.POSIXct(data_test$Datum)
+
+# Sort data frame by Datum if not already sorted
+data_test <- data_test[order(data_test$Datum), ]
+
+# Define a function for conditional interpolation
+conditional_interpolation <- function(df) {
+  na_indices <- apply(is.na(df), 1, function(row) sum(row) <= 2)
+  df[na_indices, ] <- t(apply(df[na_indices, ], 1, zoo::na.approx))
+  return(df)
+}
+
+# Apply conditional interpolation to selected columns
+columns_to_interpolate <- c("Windgeschwindigkeit", "Temperatur")
+
+data_test[columns_to_interpolate] <- conditional_interpolation(data_test[columns_to_interpolate])
+
+# Check the result
+print(data_test[c("Datum", "Windgeschwindigkeit", "Temperatur")])
+
+```
+Hot-Deck imputation für Bewoelkung und Wettercode
+
+```{r}
+donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode")
+donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Bewoelkung")
+Daten_imputed2 <- hotdeck(data_test, "Bewoelkung")
+Daten_imputed2<- hotdeck(data_test, "Wettercode")
+
+
+Daten_imputed3 <- hotdeck(Daten_imputed2, "Wettercode", donor_vars_wettercode)
+Daten_imputed3 <- hotdeck(Daten_imputed3, "Bewoelkung", donor_vars_bewoelkung)
+```
+
+
 Alle Dateien laden
 ```{r} 
 # Definiere den vollständigen Pfad zur CSV-Datei
@@ -106,7 +153,11 @@ first_table <- first_table %>%
   mutate(Warengruppe = coalesce(Warengruppe.x, Warengruppe.y)) %>%
   select(-Warengruppe.x, -Warengruppe.y)
 
-Grundtabelle <- full_join(wetter, first_table, by = "Datum") %>%
+Daten_imputed3$Datum <- as.Date(Daten_imputed3$Datum)
+first_table$Datum <- as.Date(first_table$Datum)
+kiwo$Datum <- as.Date(kiwo$Datum)
+                                                                
+Grundtabelle <- full_join(Daten_imputed3, first_table, by = "Datum") %>%
   full_join(kiwo, by = "Datum")
 as_tibble(Grundtabelle)
 
@@ -186,8 +237,6 @@ Daten <- Daten %>%
  mutate(
   RollingMean_wind = calculate_rolling_mean(Daten, "Windgeschwindigkeit"),
    Diff_wind = Windgeschwindigkeit - RollingMean_wind,
-   RollingMean_bewoelkung = calculate_rolling_mean(Daten, "Bewoelkung"),
-    Diff_bewoelkung = Bewoelkung - RollingMean_bewoelkung
   )
 
 # View the data frame with the new variables
@@ -256,7 +305,7 @@ cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeich
 
 
 ```
-
+##STOPP
 Fehlende Werte
 ```{r}
 missing_summary <- summary(data)
