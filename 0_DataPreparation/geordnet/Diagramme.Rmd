@@ -1,0 +1,119 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+alle Librariers laden
+```{r}
+# Create list with needed libraries
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo")
+
+# Load each listed library and check if it is installed and install if necessary
+for (pkg in pkgs) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+Datenladen
+```{r}
+file_path <- file.path(getwd(), "data.csv")
+data <- read.csv(file_path)
+data$Datum <- as.Date(data$Datum, format = "%Y-%m-%d")
+data$Wochentag <- as.factor(data$Wochentag)
+# Train dataset (01.07.2013 to 31.07.2017)
+data <- data %>%
+  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2018-07-31"))
+datenkreuzfahrt5<-
+
+```
+Diagramm Wochentage
+```{r}
+data_avg <- data %>%
+  group_by(Wochentag) %>%
+  summarize(mean_Umsatz = mean(Umsatz), sd_Umsatz = sd(Umsatz))
+
+konfidenz_wochentag <- data %>%
+  group_by(Wochentag) %>%
+  summarise(t_test_result = list(t.test(Umsatz))) %>%
+  mutate(conf_int = map(t_test_result, ~ broom::tidy(.))) %>%
+  unnest(conf_int)
+
+zusammengefügt<-merge(data_avg, konfidenz_wochentag, by="Wochentag" )
+wochentage <- c("Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag")
+zusammengefügt$Wochentag <- factor(zusammengefügt$Wochentag, levels = wochentage)
+
+
+p <- ggplot(zusammengefügt, aes(x = Wochentag, y = mean_Umsatz, fill = Wochentag)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
+                width = 0.25, position = position_dodge(0.9)) +
+  labs(title = "Balkendiagramm mit Konfidenzintervallen",
+       x = "Wochentag", y = "Durchschnitts-Umsatz") +
+  theme_minimal()
+
+# Das Diagramm anzeigen
+print(p)
+
+
+```
+Diagramm Kreuzfahrtschiffe
+```{r}
+data_avg <- data %>%
+  group_by(Kreuzfahrtschiffe) %>%
+  summarize(mean_Umsatz = mean(Umsatz), sd_Umsatz = sd(Umsatz))
+
+
+konfidenz_Kreuzfahrtschiffe <- data %>%
+  group_by(Kreuzfahrtschiffe) %>%
+  summarise(t_test_result = list(t.test(Umsatz))) %>%
+  mutate(conf_int = map(t_test_result, ~ broom::tidy(.))) %>%
+  unnest(conf_int)
+
+zusammengefügt<-merge(data_avg, konfidenz_Kreuzfahrtschiffe, by="Kreuzfahrtschiffe" )
+
+
+p <- ggplot(zusammengefügt, aes(x = Kreuzfahrtschiffe, y = mean_Umsatz, fill = Kreuzfahrtschiffe)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
+                width = 0.25, position = position_dodge(0.9)) +
+  labs(title = "Balkendiagramm mit Konfidenzintervallen",
+       x = "Kreuzfahrtschiffe", y = "Durchschnitts-Umsatz") +
+  theme_minimal()
+
+# Das Diagramm anzeigen
+print(p)
+
+
+```
+
+Diagramm Jahreszeiten
+```{r}
+data_avg <- data %>%
+  group_by(Jahreszeit) %>%
+  summarize(mean_Umsatz = mean(Umsatz), sd_Umsatz = sd(Umsatz))
+konfidenz_Jahreszeit <- data %>%
+  group_by(Jahreszeit) %>%
+  summarise(t_test_result = list(t.test(Umsatz))) %>%
+  mutate(conf_int = map(t_test_result, ~ broom::tidy(.))) %>%
+  unnest(conf_int)
+
+zusammengefügt<-merge(data_avg, konfidenz_Jahreszeit, by="Jahreszeit" )
+Jahreszeit <- c("Fruehling", "Sommer", "Herbst", "Winter")
+zusammengefügt$Jahreszeit <- factor(zusammengefügt$Jahreszeit, levels = Jahreszeit)
+
+
+p <- ggplot(zusammengefügt, aes(x = Jahreszeit, y = mean_Umsatz, fill = Jahreszeit)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
+                width = 0.25, position = position_dodge(0.9)) +
+  labs(title = "Balkendiagramm mit Konfidenzintervallen",
+       x = "Wochentag", y = "Durchschnitts-Umsatz") +
+  theme_minimal()
+
+# Das Diagramm anzeigen
+print(p)
+```
+
+```
