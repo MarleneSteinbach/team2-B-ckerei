@@ -60,45 +60,8 @@ Fehlen von Wetterdaten an allen anderen Tagen
 data_test <- wetter
 ```
 
-```{r}
-# Assuming data_test is your larger data frame
-# Convert Datum to a data frame if it's not already
-data_test <- as.data.frame(data_test)
-
-# Convert Datum to a time series object
-data_test$Datum <- as.POSIXct(data_test$Datum)
-
-# Sort data frame by Datum if not already sorted
-data_test <- data_test[order(data_test$Datum), ]
-
-# Define a function for conditional interpolation
-conditional_interpolation <- function(df) {
-  na_indices <- apply(is.na(df), 1, function(row) sum(row) <= 2)
-  df[na_indices, ] <- t(apply(df[na_indices, ], 1, zoo::na.approx))
-  return(df)
-}
-
-# Apply conditional interpolation to selected columns
-columns_to_interpolate <- c("Windgeschwindigkeit", "Temperatur")
-
-data_test[columns_to_interpolate] <- conditional_interpolation(data_test[columns_to_interpolate])
-
-# Check the result
-print(data_test[c("Datum", "Windgeschwindigkeit", "Temperatur")])
-
-```
 Hot-Deck imputation für Bewoelkung und Wettercode
 
-```{r}
-donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode")
-donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Bewoelkung")
-Daten_imputed2 <- hotdeck(data_test, "Bewoelkung")
-Daten_imputed2<- hotdeck(data_test, "Wettercode")
-
-
-Daten_imputed3 <- hotdeck(Daten_imputed2, "Wettercode", donor_vars_wettercode)
-Daten_imputed3 <- hotdeck(Daten_imputed3, "Bewoelkung", donor_vars_bewoelkung)
-```
 
 
 Alle Dateien laden
@@ -153,11 +116,11 @@ first_table <- first_table %>%
   mutate(Warengruppe = coalesce(Warengruppe.x, Warengruppe.y)) %>%
   select(-Warengruppe.x, -Warengruppe.y)
 
-Daten_imputed3$Datum <- as.Date(Daten_imputed3$Datum)
 first_table$Datum <- as.Date(first_table$Datum)
+data_test$Datum <- as.Date(data_test$Datum)
 kiwo$Datum <- as.Date(kiwo$Datum)
                                                                 
-Grundtabelle <- full_join(Daten_imputed3, first_table, by = "Datum") %>%
+Grundtabelle <- full_join(data_test, first_table, by = "Datum") %>%
   full_join(kiwo, by = "Datum")
 as_tibble(Grundtabelle)
 
@@ -208,7 +171,7 @@ Daten <- Daten %>%
 Daten$Kreuzfahrtschiffe <- ifelse(is.na(Daten$Kreuzfahrtschiffe), 0, Daten$Kreuzfahrtschiffe)
 Daten$KielerWoche <- ifelse(is.na(Daten$KielerWoche), 0, Daten$KielerWoche)
 ```
-Füge Wetter change variables ein, die das Wetter im Verhältnis mit dem Wetter der letzten Woche beerechnen
+Füge Wetter change variables ein, die das Wetter im Verhältnis mit dem Wetter der letzten Woche berechnen
 
 ```{r}
 # Order the dataframe by Datum and ungroup if it was previously grouped
@@ -305,7 +268,7 @@ cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeich
 
 
 ```
-##STOPP
+
 Fehlende Werte
 ```{r}
 missing_summary <- summary(data)
@@ -318,6 +281,106 @@ missing_data <- data.frame(
 )
 print(missing_data)
 ```
+
+Fehlende Daten interpolieren
+
+
+```{r}
+# Assuming data_test is your larger data frame
+# Convert Datum to a data frame if it's not already
+data_test <- as.data.frame(data)
+
+# Convert Datum to a time series object
+data_test$Datum <- as.POSIXct(data_test$Datum)
+
+# Sort data frame by Datum if not already sorted
+data_test <- data_test[order(data_test$Datum), ]
+
+# neue Spalten imp_temp, imp_wind, imp_bewoelkung und imp_wettercode erstellen
+data_test$imp_temp <- FALSE
+data_test$imp_wind <- FALSE
+data_test$imp_bewoelkung <- FALSE
+
+
+#Immer, wenn Temperatur = NA ist ist data_test$imp_temp = TRUE  
+data_test$imp_temp[is.na(data_test$Temperatur)] <- TRUE
+data_test$imp_wind[is.na(data_test$Windgeschwindigkeit)] <- TRUE
+data_test$imp_bewoelkung[is.na(data_test$Bewoelkung)] <- TRUE
+
+#Für die Kategorialen Variable Wettercode: die ist immer = 0 wenn sie NA ist
+
+data_test$Wettercode[is.na(data_test$Wettercode)] <- 0
+
+# zähle die TRUE Werte in imp_temp
+sum(data_test$imp_temp)
+sum(data_test$imp_bewoelkung)
+sum(data_test$imp_wind)
+
+
+
+```
+
+Hot-Deck imputation für Bewoelkung 
+
+```{r}
+donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode")
+Daten_imputed2 <- hotdeck(data_test, "Bewoelkung")
+
+data_test <- hotdeck(data_test, "Bewoelkung", donor_vars_bewoelkung)
+sum(is.na(data_test$Bewoelkung))
+
+
+```
+
+Imputation für Temperatur und Windgeschwindigkeit
+
+```{r}
+
+
+#IMPUTATION
+data_test <- data_test %>%
+  group_by(Warengruppe) %>%
+  mutate(Temperatur = na.approx(Temperatur)) %>%
+  mutate(Windgeschwindigkeit = na.approx(Windgeschwindigkeit)) %>%
+  ungroup()
+
+sum(is.na(data_test$Temperatur))
+sum(is.na(data_test$Windgeschwindigkeit))
+sum(is.na(data_test$Bewoelkung))
+
+# Check the result
+
+data_test %>%
+  filter(imp_temp==TRUE)
+data <- data_test
+
+missing_summary <- summary(data)
+prop_missing <- colMeans(is.na(data))
+
+# Combine the results into a data frame
+missing_data <- data.frame(
+  Variable = names(prop_missing),
+  Proportion_Missing = prop_missing
+)
+print(missing_data)
+
+```
+
+```{r}  
+
+file_path2 <- "Data2.csv"
+# Schreiben Sie die CSV-Datei
+write.csv(data, file_path2, row.names = FALSE)
+
+# Optional: Bestätigungsnachricht ausgeben
+cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeichert:", file_path2, "\n")
+
+
+```
+
+
+# outtake!
+
 
 Besondere Fälle betrachten: Fehlen von min. 3 aufeinanderfolgenden Tagen
 
@@ -345,37 +408,6 @@ miss_bewoelkung <- data %>%
 ```
 
 Fehlen von Wetterdaten an allen anderen Tagen
-```{r}
-data_test <- data
-```
-
-```{r}
-# Assuming data_test is your larger data frame
-# Convert Datum to a data frame if it's not already
-data_test <- as.data.frame(data_test)
-
-# Convert Datum to a time series object
-data_test$Datum <- as.POSIXct(data_test$Datum)
-
-# Sort data frame by Datum if not already sorted
-data_test <- data_test[order(data_test$Datum), ]
-
-# Define a function for conditional interpolation
-conditional_interpolation <- function(df) {
-  na_indices <- apply(is.na(df), 1, function(row) sum(row) <= 2)
-  df[na_indices, ] <- t(apply(df[na_indices, ], 1, zoo::na.approx))
-  return(df)
-}
-
-# Apply conditional interpolation to selected columns
-columns_to_interpolate <- c("Windgeschwindigkeit", "Temperatur")
-
-data_test[columns_to_interpolate] <- conditional_interpolation(data_test[columns_to_interpolate])
-
-# Check the result
-print(data_test[c("Datum", "Windgeschwindigkeit", "Temperatur")])
-
-```
 
 ```{r}
 # zeige alle Fälle, wo Temperatur, Bewoelkung und Windgeschwindigkeit im Dateframe "data" maximal 2 mal hintereinander NA ist
@@ -454,19 +486,6 @@ data <- data %>%
   select(-Temperatur_imputed, -Windgeschwindigkeit_imputed)
 ```
 
-Hot-Deck imputation für Bewoelkung und Wettercode
-
-```{r}
-donor_vars_bewoelkung <- c("Temperatur", "Windgeschwindigkeit", "Wettercode", "Diff_temp")
-donor_vars_wettercode <- c("Temperatur", "Windgeschwindigkeit", "Diff_temp", "Bewoelkung")
-Daten_imputed2 <- hotdeck(data_test, "Bewoelkung")
-Daten_imputed2<- hotdeck(data_test, "Wettercode")
-
-
-Daten_imputed3 <- hotdeck(Daten_imputed2, "Wettercode", donor_vars_wettercode)
-Daten_imputed3 <- hotdeck(Daten_imputed3, "Bewoelkung", donor_vars_bewoelkung)
-```
-
 Alle NAs, die übrig sind =0
 ```{r}
 #is.na=0
@@ -487,8 +506,6 @@ cat("CSV-Datei erfolgreich erstellt und im aktuellen Arbeitsverzeichnis gespeich
 
 
 ```
-
-
 
 
 
