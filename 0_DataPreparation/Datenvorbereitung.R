@@ -22,7 +22,7 @@ for (pkg in pkgs) {
 ### Data Import ####
 
 # Reading the data file
-file_path <- file.path(getwd(), "0_DataPreparation/geordnet/Daten_imputed.csv")
+file_path <- file.path(getwd(), "0_DataPreparation/geordnet/Data2.csv")
 data <- read.csv(file_path)
 names(data)
 
@@ -33,16 +33,16 @@ set_na_to_zero <- function(data, columns) {
   return(data)
 }
 #,"id", "Jahreszeit", "Fussballspiel", "Ferien"
-columns_to_set_zero <- c("Datum",                  "Bewoelkung",             "Temperatur" ,
-                         "Windgeschwindigkeit",    "Wettercode" ,            "id"  ,
-                         "Umsatz",                 "Warengruppe",            "KielerWoche" ,
-                          "Wochentag",              "Feiertag" ,              "Art_des_Feiertags",
-                         "Kreuzfahrtschiffe" ,     "Jahreszeit",             "Fussballspiel",
-                          "Flohmarkt" ,             "Handballspiele",         "Ferien",
-                         "RollingMean_temp" ,      "Diff_temp" ,             "RollingMean_wind",
-                         "Diff_wind",              "RollingMean_bewoelkung", "Diff_bewoelkung" ,
-                         "Temperaturkategorie",    "Wettercode_imp",         "Wettercode_imp.1" ,
-                         "Bewoelkung_imp"
+columns_to_set_zero <- c(
+  "Datum",               "Bewoelkung" ,         "Temperatur",
+  "Windgeschwindigkeit", "Wettercode" ,         "id",
+  "Umsatz" ,             "Warengruppe" ,        "KielerWoche",
+   "Wochentag" ,          "Feiertag" ,           "Art_des_Feiertags" ,
+   "Kreuzfahrtschiffe",   "Jahreszeit" ,         "Fussballspiel" ,
+   "Flohmarkt",           "Handballspiele",      "Ferien" ,
+   "RollingMean_temp",    "Diff_temp",           "RollingMean_wind" ,
+   "Diff_wind" ,          "Temperaturkategorie", "imp_temp",
+   "imp_wind",            "imp_bewoelkung",      "Bewoelkung_imp"
 )
 
 data <- set_na_to_zero(data, columns_to_set_zero)
@@ -56,7 +56,8 @@ data <- data %>%
 ### Data Preparation ####
 
 # Preparation of independent variables ('features') by dummy coding the categorical variables
-features <- as_tibble(model.matrix(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + Handballspiele + Diff_temp+ Diff_wind+ Bewoelkung_imp + Wettercode_imp,data))
+features <- as_tibble(model.matrix(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur + as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + Handballspiele + Diff_temp+ Diff_wind+ imp_temp+
+                                   imp_wind+            imp_bewoelkung+      Bewoelkung_imp  ,data))
 names(features)
 features <- cbind(features, Datum =data$Datum , id=data$id )
 
