@@ -109,11 +109,120 @@ p <- ggplot(zusammengefügt, aes(x = Jahreszeit, y = mean_Umsatz, fill = Jahresz
   geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
                 width = 0.25, position = position_dodge(0.9)) +
   labs(title = "Balkendiagramm mit Konfidenzintervallen",
-       x = "Wochentag", y = "Durchschnitts-Umsatz") +
+       x = "Jahreszeit", y = "Durchschnitts-Umsatz") +
   theme_minimal()
 
 # Das Diagramm anzeigen
 print(p)
 ```
+
+Diagramm Fußballspiele
+```{r}
+data_avg <- data %>%
+  group_by(Fussballspiel) %>%
+  summarize(mean_Umsatz = mean(Umsatz), sd_Umsatz = sd(Umsatz))
+
+konfidenz_fussball <- data %>%
+  group_by(Fussballspiel) %>%
+  summarise(t_test_result = list(t.test(Umsatz))) %>%
+  mutate(conf_int = map(t_test_result, ~ broom::tidy(.))) %>%
+  unnest(conf_int)
+
+zusammengefügt<-merge(data_avg, konfidenz_fussball, by="Fussballspiel" )
+
+p <- ggplot(zusammengefügt, aes(x = Fussballspiel, y = mean_Umsatz, fill = Fussballspiel)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
+                width = 0.25, position = position_dodge(0.9)) +
+  labs(title = "Balkendiagramm mit Konfidenzintervallen",
+       x = "Fußballspiele", y = "Durchschnitts-Umsatz") +
+  theme_minimal()
+
+# Das Diagramm anzeigen
+print(p)
+
+
+```
+Diagramm Handballspiele
+```{r}
+data_avg <- data %>%
+  group_by(Handballspiele) %>%
+  summarize(mean_Umsatz = mean(Umsatz), sd_Umsatz = sd(Umsatz))
+
+konfidenz_handball <- data %>%
+  group_by(Handballspiele) %>%
+  summarise(t_test_result = list(t.test(Umsatz))) %>%
+  mutate(conf_int = map(t_test_result, ~ broom::tidy(.))) %>%
+  unnest(conf_int)
+
+zusammengefügt<-merge(data_avg, konfidenz_handball, by="Handballspiele" )
+
+p <- ggplot(zusammengefügt, aes(x = Handballspiele, y = mean_Umsatz, fill = Handballspiele)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
+                width = 0.25, position = position_dodge(0.9)) +
+  labs(title = "Balkendiagramm mit Konfidenzintervallen",
+       x = "Handspiele", y = "Durchschnitts-Umsatz") +
+  theme_minimal()
+
+# Das Diagramm anzeigen
+print(p)
+
+
+```
+
+Diagramm Feiertag
+```{r}
+data_avg <- data %>%
+  group_by(Feiertag) %>%
+  summarize(mean_Umsatz = mean(Umsatz), sd_Umsatz = sd(Umsatz))
+
+konfidenz_feiertag <- data %>%
+  group_by(Feiertag) %>%
+  summarise(t_test_result = list(t.test(Umsatz))) %>%
+  mutate(conf_int = map(t_test_result, ~ broom::tidy(.))) %>%
+  unnest(conf_int)
+
+zusammengefügt<-merge(data_avg, konfidenz_feiertag, by="Feiertag" )
+
+p <- ggplot(zusammengefügt, aes(x = Feiertag, y = mean_Umsatz, fill = Feiertag)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
+                width = 0.25, position = position_dodge(0.9)) +
+  labs(title = "Balkendiagramm mit Konfidenzintervallen",
+       x = "Feiertage", y = "Durchschnitts-Umsatz") +
+  theme_minimal()
+
+# Das Diagramm anzeigen
+print(p)
+
+
+```
+
+Diagramm Ferien
+```{r}
+data_avg <- data %>%
+  group_by(Ferien) %>%
+  summarize(mean_Umsatz = mean(Umsatz), sd_Umsatz = sd(Umsatz))
+
+konfidenz_Ferien <- data %>%
+  group_by(Ferien) %>%
+  summarise(t_test_result = list(t.test(Umsatz))) %>%
+  mutate(conf_int = map(t_test_result, ~ broom::tidy(.))) %>%
+  unnest(conf_int)
+
+zusammengefügt<-merge(data_avg, konfidenz_Ferien, by="Ferien" )
+
+p <- ggplot(zusammengefügt, aes(x = Ferien, y = mean_Umsatz, fill = Ferien)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
+                width = 0.25, position = position_dodge(0.9)) +
+  labs(title = "Balkendiagramm mit Konfidenzintervallen",
+       x = "Ferien", y = "Durchschnitts-Umsatz") +
+  theme_minimal()
+
+# Das Diagramm anzeigen
+print(p)
+
 
 ```
