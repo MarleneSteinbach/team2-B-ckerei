@@ -21,8 +21,12 @@ for (pkg in pkgs) {
 ###################################################
 ### Data Import ####
 
-# Reading the data file
-file_path <- file.path(getwd(), "0_DataPreparation/geordnet/Data2.csv")
+setwd(getwd())
+# Zielverzeichnis relativ zum aktuellen Arbeitsverzeichnis
+target_directory <- file.path("..", "0_DataPreparation", "geordnet")
+
+# Setze den Dateipfad
+file_path <- file.path(target_directory, "Data2.csv")
 data <- read.csv(file_path)
 names(data)
 
