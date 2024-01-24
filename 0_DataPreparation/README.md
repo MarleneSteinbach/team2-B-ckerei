@@ -1,1 +1,2 @@
 # Data Preparation
+Für die Datenaufbereitung wurden zunächst die vorgegebenen CSV-Dateien kiwo, umsatz, wetter, training-ids und test-ids heruntergeladen. Dann haben wir die Bewölkung mit der Hotdeckmethode und die Temperatur und Windgeschwindigkeit mit der linearen Interpolation imputiert. Dann haben wir in separaten Skripten neue Variablen erstellt und in eine CSV geschrieben. Diese konnten wir dann in unser Hauptskript laden und zur bestehenden Tabelle hinzufügen. Unsere hinzugefügten Variablen hatten keine fehlenden Werte. 
