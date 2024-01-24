@@ -8,10 +8,10 @@ Imputierte Variablen: Temperatur, Wind, Bewölkung
 Unterschiede zum Tag davor: Temperatur, Wind
 
 Missing Values:
+Waren in den Wetterdaten, Umsatzdaten vorhanden. Wettercode: NA = 0; Bewölkung: Hotdeck-Imputation; Temperatur & Windgeschwindigkeit: Lineare Interpolation
 
-  
 Feature Distributions:
-
+s. PowerPoint Folie 3. Wir sind uns nicht ganz sicher, was sich hinter den feature Distrutions steckt. Wir vermuten, dass du die Fehler 
 
 Correlations:
 Wir haben versucht einen Korrelationplot zu erstellen, bekamen aber immer wieder die gleiche Fehlermeldung. Wir vermuten es liegt an unseren       RStudio-Versionen, da dies ein Fehler bzgl. der Bildschirmgröße war. Es gab generell nach Download des VIM-Packages immer wieder Probleme. 
