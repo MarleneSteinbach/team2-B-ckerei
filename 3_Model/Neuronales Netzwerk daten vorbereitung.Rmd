@@ -1,0 +1,63 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+### Preparation of the Environment ####
+```{r}
+# Clear environment
+remove(list = ls())
+
+# Create list with needed libraries
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample")
+
+# Load each listed library and check if it is installed and install if necessary
+for (pkg in pkgs) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+
+### Data Import ####
+```{r}
+
+
+setwd(getwd())
+# Zielverzeichnis relativ zum aktuellen Arbeitsverzeichnis
+target_directory <- file.path("..", "0_DataPreparation", "geordnet")
+
+# Setze den Dateipfad
+file_path <- file.path(target_directory, "Data2.csv")
+data <- read.csv(file_path)
+names(data)
+
+set_na_to_zero <- function(data, columns) {
+  for (col in columns) {
+    data[[col]][is.na(data[[col]])] <- 0
+  }
+  return(data)
+}
+#,"id", "Jahreszeit", "Fussballspiel", "Ferien"
+columns_to_set_zero <- c(
+  "Datum",               "Bewoelkung" ,         "Temperatur",
+  "Windgeschwindigkeit", "Wettercode" ,         "id",
+  "Umsatz" ,             "Warengruppe" ,        "KielerWoche",
+   "Wochentag" ,          "Feiertag" ,           "Art_des_Feiertags" ,
+   "Kreuzfahrtschiffe",   "Jahreszeit" ,         "Fussballspiel" ,
+   "Flohmarkt",           "Handballspiele",      "Ferien" ,
+   "RollingMean_temp",    "Diff_temp",           "RollingMean_wind" ,
+   "Diff_wind" ,          "Temperaturkategorie", "imp_temp",
+   "imp_wind",            "imp_bewoelkung",      "Bewoelkung_imp"
+)
+
+data <- set_na_to_zero(data, columns_to_set_zero)
+data <- data %>%
+  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2019-07-31"))
+
+
+
+```
+
