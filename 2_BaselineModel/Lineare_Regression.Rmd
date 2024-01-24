@@ -1,0 +1,167 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+# Create list with needed libraries
+pkgs <- c("readr", "dplyr", "reticulate", "ggplot2", "Metrics","styler","tidyverse","rsample","zoo")
+
+# Load each listed library and check if it is installed and install if necessary
+for (pkg in pkgs) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+```
+Datenladen
+```{r}
+target_directory <- file.path("..", "0_DataPreparation", "geordnet")
+# Setze den Dateipfad
+file_path <- file.path(target_directory, "Data2.csv")
+data <- read.csv(file_path)
+data$Datum <- as.Date(data$Datum, format = "%Y-%m-%d")
+
+```
+
+
+Einteilung in Training Validierungs und test
+```{r}
+
+# Train dataset (01.07.2013 to 31.07.2017)
+train_data <- data %>%
+  filter(Datum >= as.Date("2013-07-01") & Datum <= as.Date("2017-07-31"))
+
+# Validation dataset (01.08.2017 to 31.07.2018)
+valid_data <- data %>%
+  filter(Datum >= as.Date("2017-08-01") & Datum <= as.Date("2018-07-31"))
+
+# Test dataset (01.08.2018 and onwards, assuming you want the remaining data for testing)
+test_data <- data %>%
+  filter(Datum >= as.Date("2018-08-01"))
+```
+
+
+regressionsgleichung aufstellen 
+
+```{r}
+model_1 <- lm(Umsatz ~ as.factor(Wettercode) + Bewoelkung + Windgeschwindigkeit + Temperatur +  as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe)+ as.factor(Art_des_Feiertags) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt +  Kreuzfahrtschiffe + 
+as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
+as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien    
+, data = train_data)
+
+model_2 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + 
+as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
+as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien, data = train_data)
+
+model_3 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe +
+  as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
+as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien, data = train_data)
+
+model_4 <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe +
+as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
+as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien, data = train_data)
+
+model_1v <- lm(Umsatz ~ as.factor(Wettercode) + Bewoelkung + Windgeschwindigkeit + Temperatur +  as.factor(Jahreszeit) + as.factor(Temperaturkategorie) + as.factor(Warengruppe)+ as.factor(Art_des_Feiertags) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt +  Kreuzfahrtschiffe + 
+as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
+as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien, data = valid_data)
+
+model_2v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien + Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe +
+as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
+as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien, data = valid_data)
+
+model_3v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + 
+as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
+as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien, data = valid_data)
+
+model_4v <- lm(Umsatz ~ Wettercode + Bewoelkung + Windgeschwindigkeit + Temperatur * as.factor(Jahreszeit) * as.factor(Temperaturkategorie)+ as.factor(Warengruppe) + Fussballspiel + Ferien * Feiertag  + KielerWoche + as.factor(Wochentag) + Flohmarkt + Kreuzfahrtschiffe + 
+as.factor(Wettercode) * Bewoelkung * Windgeschwindigkeit * Temperatur + 
+as.factor(Warengruppe) * as.factor(Art_des_Feiertags) + 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) + Diff_temp + Diff_wind +
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Kreuzfahrtschiffe + as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Fussballspiel+ 
+as.factor(Jahreszeit) * as.factor(Temperaturkategorie) * Ferien, data = valid_data)
+
+unique(valid_data$Wettercode)
+unique(train_data$Wettercode)
+
+# Vergleiche die Vorhersagen mit den tatsächlichen Werten im Validierungsdatensatz
+
+valid_predictions <- predict(model_1v)
+train_predictions <- predict(model_1)
+
+validation_results <- list(
+  Actual_predictions = train_predictions,
+  Predictions = valid_predictions
+)
+
+# Berechne den Mean Absolute Error (MAE)
+mae <- mean(abs(validation_results$Actual_predictions - validation_results$Predictions))
+
+# Berechne den Mean Squared Error (MSE)
+mse <- mean((validation_results$Actual_predictions - validation_results$Predictions)^2)
+
+cat("Mean Absolute Error (MAE) auf dem Validierungsdatensatz: ", mae, "\n")
+cat("Mean Squared Error (MSE) auf dem Validierungsdatensatz: ", mse, "\n")
+
+
+```
+
+```{r}
+# ...
+
+# Berechnen Sie r^2-Werte für Trainingsdaten
+r_squared_train <- c(
+  summary(model_1)$r.squared,
+  summary(model_2)$r.squared,
+  summary(model_3)$r.squared,
+  summary(model_4)$r.squared
+)
+
+# Berechnen Sie r^2-Werte für Validierungsdaten
+r_squared_valid <- c(
+  summary(model_1v)$r.squared,
+  summary(model_2v)$r.squared,
+  summary(model_3v)$r.squared,
+  summary(model_4v)$r.squared
+)
+
+# Erstellen Sie ein Datenrahmen für ggplot
+df <- data.frame(
+  Model = rep(c("Model 1", "Model 2", "Model 3", "Model 4"), 2),
+  R_Squared = c(r_squared_train, r_squared_valid),
+  Dataset = rep(c("Training", "Validation"), each = 4)
+)
+
+# Erstellen Sie das Balkendiagramm direkt in ggplot
+ggplot(df, aes(x = Model, y = R_Squared, fill = Dataset)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  labs(title = "R² Values for Training and Validation Sets",
+       x = "Model",
+       y = "R² Value") +
+  theme_minimal()
+
+
+````
+
